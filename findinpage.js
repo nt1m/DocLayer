@@ -10,7 +10,6 @@ TODO:
 */
 
 function startsearch() {
-	e.preventDefault();
 $("#findinpage-input").show().css("width", "0px").animate({width: "200px"}, 70).focus();
 }
 

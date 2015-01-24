@@ -84,6 +84,7 @@ h2 {
 
 #findinpage-input {
 	vertical-align: middle;
+	/* width of this is set in findinpage.js */
 }
 
 .highlight { background-color: yellow  !important}
