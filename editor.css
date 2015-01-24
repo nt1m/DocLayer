@@ -27,7 +27,7 @@ body, html {
 	height:calc(100vh - 50px);
 	display: inline-block;
 	text-align: left;
-	padding:10px;
+	padding:15px;
 	overflow: auto; /* horizontal scrolling */
 	z-index: -1;
 	box-shadow: unset;
@@ -54,6 +54,10 @@ article[contenteditable] * {
 
 article[contenteditable] h2 {
 	top: -10px; /* compensante for padding in the page so that subheadings owrk */
+}
+
+blockquote {
+	margin: 1.5em;
 }
 
 /* special subheader style */
