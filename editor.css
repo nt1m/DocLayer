@@ -60,7 +60,10 @@ blockquote {
 	margin: 1.5em;
 }
 
-/* special subheader style */
+/* special header styles */
+h1 {
+	margin-bottom: 0.2em;
+}
 h2 {
 	border-bottom: 1px solid currentColor;
 	margin-bottom: 0.4em;
