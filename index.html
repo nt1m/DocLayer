@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>document editor prototype</title>
+	<link rel="stylesheet" href="http://standaert.net/material-framework/css/material.css"/>
+	<link rel="stylesheet" href="editor.css"/>
+	<link rel="stylesheet" href="lib/grande.css"/>
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+	<meta charset="utf-8">
+</head>
+	<body class="editor card-container">
+<body>
+
+	<div class="toolbar editor-toolbar">
+		<button class="icon-button"><i class="icon-menu"></i></button>
+		<span class="toolbar-label docs-name"><span contenteditable="" class="doc-name">Untitled Document</span></span>
+		<span class="float-right">
+			<input type="text" id="findinpage-input" class="text-input" placeholder="find something..."/>
+			<button class="icon-button" id="findinpage-button"><i class="icon-search"></i></button>
+			<button class="icon-button"><i class="icon-star"></i></button>
+		</span>
+	</div>
+	
+	
+	<div class="page-container">
+	
+	<article contenteditable="true" class="page card" id="document-editor"></article>
+	</div>
+		
+            <script src="lib/grande.js"></script>
+		<script>grande.bind(document.querySelectorAll("article"))</script>
+	
+	<script src="editor.js"></script>
+	<script src="darktheme.js"></script>
+	<script src="lib/highlight.js"></script>
+	<script src="findinpage.js"></script>
+</body>
+	
+	</body>
+	</html>

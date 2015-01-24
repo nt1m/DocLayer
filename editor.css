@@ -1,0 +1,82 @@
+/* global styles */
+
+body, html {
+	min-width: 100%;
+	min-height: 100%;
+	max-height: 100%;
+	overflow: hidden;
+}
+
+* {
+	-webkit-overflow-scrolling: touch;
+	-webkit-font-smoothing: antialiased;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.g-body * { /* grande.js doesn't like box-sizing, we need to turn it off */
+	box-sizing: content-box;
+}
+
+/* the editor shell */
+
+.page {
+	width:100%;
+	background-color: #fff;
+	height:calc(100vh - 50px);
+	display: inline-block;
+	text-align: left;
+	padding:10px;
+	overflow: auto; /* horizontal scrolling */
+	z-index: -1;
+	box-shadow: unset;
+}
+
+.page-container {
+	text-align: center;
+	width: 100%;
+}
+
+/* bugfixes for the editor */
+
+hr {
+	display:none; /* hide random black lines around paragraphs */
+}
+
+.text-menu {
+	z-index: 99999999; /* the menu always floats on top */
+}
+
+article[contenteditable] * {
+	background-color: inherit; /* make subheaders work correctly */
+}
+
+article[contenteditable] h2 {
+	top: -10px; /* compensante for padding in the page so that subheadings owrk */
+}
+
+/* special subheader style */
+h2 {
+	border-bottom: 1px solid currentColor;
+	margin-bottom: 0.4em;
+}
+
+/* navbr styles */
+
+.editor-toolbar {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	color: #444;
+}
+.dark-theme .editor-toolbar {
+	background-color: #555;
+	color: #F5F5F5;
+}
+
+/* find in page */
+
+#findinpage-input {
+	vertical-align: middle;
+}
+
+.highlight { background-color: yellow  !important}
