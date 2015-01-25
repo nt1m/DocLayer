@@ -27,10 +27,16 @@ function insertsubheading() {
         pasteHtmlAtCaret(input, false);
 }
 
+function insertmap() {
+	        var input = "<iframe src='extend-maps/map.html#40.7127,-74.0059' class='map-extend-block'></iframe>"; //default coordinates are NYC
+        pasteHtmlAtCaret(input, false);
+}
+
 //bind button events - use mousedown so that the buttons can't steal the focus
 
 $("#heading-insert").mousedown(insertheading);
 $("#subheading-insert").mousedown(insertsubheading);
+$("#map-insert").mousedown(insertmap);
 
 //these are defined in extend-images.js
 $("#image-insert").mousedown(imagedialogopen);

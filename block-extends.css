@@ -5,3 +5,13 @@
 	margin-bottom: 0.66em;
 	display: block;
 }
+
+.map-extend-block {
+	width:50%;
+	min-width: 320px;
+	height: 300px;
+	float: right;
+	border: 0;
+	margin: 10px;
+	border-top: 1px rgba(0, 0, 0, 0.5) solid;
+}
