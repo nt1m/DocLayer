@@ -28,15 +28,17 @@ function insertsubheading() {
 }
 
 function imagedialogopen() {
+	        var input = "<img class='imageplaceholder'/>"; //add a placeholder to mark the cursor position
+        pasteHtmlAtCaret(input, false);
 $(".image-url-chooser").val(""); //reset the value
 $(".image-dialog").fadeIn(100);
 }
 
 function insertimagefromdialog() {
 	var newimage = $(".image-url-chooser").val();
-	var imagetemplate = '<img src="imageval" class="img-extend-block"/>'
-	imagetemplate = imagetemplate.replace("imageval", newimage);
-	$("#document-editor").append(imagetemplate);
+	var placeholder = $(".imageplaceholder");
+	placeholder.attr("src", newimage);
+	placeholder.removeClass("imageplaceholder").addClass("img-extend-block"); //use the placeholder to add an image
 	$(".image-dialog").fadeOut(100);
 }
 //bind button events - use mousedown so that the buttons can't steal the focus
