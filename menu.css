@@ -1,13 +1,13 @@
 .start-button {
 	position: fixed;
-	bottom: 30px;
-	right: 30px;
+	bottom: 24px;
+	right: 24px;
 }
 
 .start-menu {
 	position: fixed;
-	bottom: 100px;
-	right: 30px;
+	bottom: 94px;
+	right: 24px;
 }
 
 .menu li > a > i {
