@@ -34,6 +34,11 @@ $(".image-url-chooser").val(""); //reset the value
 $(".image-dialog").fadeIn(100);
 }
 
+function imagedialogclose() {
+	$(".image-dialog").fadeOut(100);
+	$(".imageplaceholder").remove();
+}
+
 function insertimagefromdialog() {
 	var newimage = $(".image-url-chooser").val();
 	var placeholder = $(".imageplaceholder");
@@ -46,4 +51,5 @@ function insertimagefromdialog() {
 $("#heading-insert").mousedown(insertheading);
 $("#subheading-insert").mousedown(insertsubheading);
 $("#image-insert").mousedown(imagedialogopen);
-$("#imagechooser-okay-button").mousedown(insertimagefromdialog);
+$("#imagechooser-okay-button").click(insertimagefromdialog); //this doesn't need focus, you can use a regular click event
+$("#imagechooser-cancel-button").click(imagedialogclose); //this doesn't need focus, you can use a regular click event
