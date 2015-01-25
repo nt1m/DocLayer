@@ -52,7 +52,7 @@ article[contenteditable] * {
 }
 
 article[contenteditable] h2 {
-	top: -10px; /* compensante for padding in the page so that subheadings owrk */
+	top: -15px; /* compensante for padding in the page so that subheadings owrk */
 }
 
 blockquote {
