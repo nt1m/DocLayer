@@ -98,7 +98,7 @@ h2 {
 /* printing */
 
 @media print {
-	.editor-toolbar {
+	.editor-toolbar, .start-button, .start-menu {
 		display: none;
 	}
 }
