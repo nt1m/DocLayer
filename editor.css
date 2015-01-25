@@ -79,6 +79,12 @@ h2 {
 	color: #F5F5F5;
 }
 
+.doc-name {
+	vertical-align: middle;
+}
+.doc-name:not(:focus) {
+	border: 0;
+}
 /* find in page */
 
 #findinpage-input {

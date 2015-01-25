@@ -3,7 +3,7 @@
 <head>
 	<title>document editor prototype</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://standaert.net/material-framework/css/material.css"/>
+	<link rel="stylesheet" href="lib/material-framework/css/material.css"/>
 	<link rel="stylesheet" href="editor.css"/>
 	<link rel="stylesheet" href="lib/grande.css"/>
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -15,7 +15,7 @@
 
 	<div class="toolbar editor-toolbar">
 		<button class="icon-button"><i class="icon-menu"></i></button>
-		<span class="toolbar-label docs-name"><span contenteditable="" class="doc-name">Untitled Document</span></span>
+		<span class="toolbar-label docs-name"><input type="text" class="text-input doc-name" placeholder="Untitled Document"/></span>
 		<span class="float-right">
 			<input type="text" id="findinpage-input" class="text-input" placeholder="find something..."/>
 			<button class="icon-button" id="findinpage-button"><i class="icon-search"></i></button>
