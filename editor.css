@@ -80,3 +80,4 @@ h2 {
 }
 
 .highlight { background-color: yellow  !important}
+.dark-theme .highlight { color: #000 !important}
