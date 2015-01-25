@@ -1,0 +1,45 @@
+.start-button {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+}
+
+.start-menu {
+	position: fixed;
+	bottom: 100px;
+	right: 30px;
+}
+
+.menu li > a > i {
+	margin: 0.2em /* margin around icons in the menu items */
+}
+
+.image-dialog {
+	position: fixed;
+	top: calc(50% - 75px);
+	left: calc(50% - 150px);
+	height: 150px;
+	width: 300px;
+	padding: 1em;
+}
+
+.image-dialog .title {
+	font-size: 140%;
+}
+
+.image-url-chooser {
+	width: 100%;
+	margin-top: 0.8em;
+}
+#imagechooser-okay-button {
+	position: absolute;
+	bottom: 0;
+	right:0;
+	width: 50%;
+}
+#imagechooser-cancel-button {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 50%;
+}

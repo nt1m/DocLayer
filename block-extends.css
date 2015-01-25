@@ -1,0 +1,7 @@
+.img-extend-block {
+	max-width: 100vw;
+	margin-left: -15px; /* images aren't affected by padding */
+	margin-top: 0.66em;
+	margin-bottom: 0.66em;
+	display: block;
+}

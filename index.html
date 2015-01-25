@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="lib/material-framework/css/material.css"/>
 	<link rel="stylesheet" href="editor.css"/>
+	<link rel="stylesheet" href="menu.css"/>
+	<link rel="stylesheet" href="block-extends.css"/>
 	<link rel="stylesheet" href="lib/grande.css"/>
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
@@ -28,7 +30,29 @@
 	
 	<article contenteditable="true" class="page card" id="document-editor"><h1>Welcome to the document editor</h1> delete this text and start typing something...</article>
 	</div>
-		
+	
+<button class="fab bg-red-500 color-white start-button">
+    <i class="icon-add"></i>
+	</button>		
+
+	
+<div class="start-menu">
+	<ul class="menu">
+
+    <li><a id="heading-insert"><i class="icon-write"></i>heading</a></li>
+    <li><a id="subheading-insert"><i class="icon-write"></i>subheading</a></li>
+    <li><a id="image-insert"><i class="icon-image"></i>image</a></li>
+    <li><a>chart</a></li>
+
+</ul></div>
+
+	
+	<div class="dialog image-dialog card">
+		<span class="title">Choose an image</span>
+		<input type="text" class="image-url-chooser text-input" placeholder="paste a url here"/>
+		<button id="imagechooser-cancel-button" class="button">Cancel</button>
+		<button id="imagechooser-okay-button" class="button color-blue-500">Choose image</button>
+	</div>
             <script src="lib/grande.js"></script>
 		<script>grande.bind(document.querySelectorAll("article"))</script>
 	
@@ -36,6 +60,8 @@
 	<script src="darktheme.js"></script>
 	<script src="lib/highlight.js"></script>
 	<script src="findinpage.js"></script>
+	<script src="carat.api.js"></script>
+	<script src="menu.js"></script>
 </body>
 	
 	</body>
