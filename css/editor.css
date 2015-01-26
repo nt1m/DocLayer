@@ -53,6 +53,9 @@ article[contenteditable] * {
 
 article[contenteditable] h2 {
 	top: -15px; /* compensante for padding in the page so that subheadings owrk */
+	z-index: 0; /* override material-framework */
+	margin-left: -15px; /* compensate for padding */
+	margin-right: -15px; /* compensate for padding */
 }
 
 blockquote {
