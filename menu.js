@@ -28,7 +28,7 @@ function insertsubheading() {
 }
 
 function insertmap() {
-	        var input = "<iframe src='extend-maps/map.html#40.7127,-74.0059' class='map-extend-block'></iframe>"; //default coordinates are NYC
+	        var input = "<iframe src='extend-maps/map.html#40.7127,-74.0059' class='extend-block map-extend-block'></iframe>"; //default coordinates are NYC
         pasteHtmlAtCaret(input, false);
 }
 
