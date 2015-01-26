@@ -16,6 +16,6 @@ function insertimagefromdialog() {
 	var newimage = $(".image-url-chooser").val();
 	var placeholder = $(".imageplaceholder");
 	placeholder.attr("src", newimage);
-	placeholder.removeClass("imageplaceholder").addClass("img-extend-block"); //use the placeholder to add an image
+	placeholder.removeClass("imageplaceholder")addClass("extend-block").addClass("img-extend-block"); //use the placeholder to add an image
 	$(".image-dialog").fadeOut(100);
 }
