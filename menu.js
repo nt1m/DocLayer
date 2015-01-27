@@ -32,11 +32,17 @@ function insertmap() {
         pasteHtmlAtCaret(input, false);
 }
 
+function insertdivider() {
+	        var input = "<div class='divider'></div>";
+        pasteHtmlAtCaret(input, false);
+}
+
 //bind button events - use mousedown so that the buttons can't steal the focus
 
 $("#heading-insert").mousedown(insertheading);
 $("#subheading-insert").mousedown(insertsubheading);
 $("#map-insert").mousedown(insertmap);
+$("#divider-insert").mousedown(insertdivider);
 
 //these are defined in extend-images.js
 $("#image-insert").mousedown(imagedialogopen);
