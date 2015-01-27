@@ -5,6 +5,9 @@ The goal of scratchpad is to provide a minamalist text editor that helps you foc
 
 features:
 
- - format headings, quotes, links
+ - headings, quotes, lists, links
+ - dividers
+ - maps
+ - images from URL
  -  dark theme
  -  find in page
