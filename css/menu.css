@@ -32,13 +32,13 @@
 	width: 100%;
 	margin-top: 0.8em;
 }
-#imagechooser-okay-button {
+#imagechooser-okay-button, #map-okay-button {
 	position: absolute;
 	bottom: 0;
 	right:0;
 	width: 50%;
 }
-#imagechooser-cancel-button {
+#imagechooser-cancel-button, #map-cancel-button {
 	position: absolute;
 	bottom: 0;
 	left: 0;
