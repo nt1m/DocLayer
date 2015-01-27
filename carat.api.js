@@ -2,6 +2,8 @@
 
 function pasteHtmlAtCaret(html, selectPastedContent) {
     var sel, range;
+
+if(document.activeElement.id == "document-editor") {
     if (window.getSelection) {
         // IE9 and non-IE
         sel = window.getSelection();
@@ -28,4 +30,9 @@ function pasteHtmlAtCaret(html, selectPastedContent) {
             range.select();
         }
     }
+	} // end focus check
+	
+	else {
+		$("#document-editor").append(html);
+	}
 }
