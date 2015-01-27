@@ -34,5 +34,7 @@ if(document.activeElement.id == "document-editor") {
 	
 	else {
 		$("#document-editor").append(html);
+		var elem = document.getElementById('document-editor');
+		elem.scrollTop = elem.scrollHeight;
 	}
 }
