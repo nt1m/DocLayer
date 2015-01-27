@@ -9,24 +9,27 @@ TODO:
 
 */
 
+var findinpageinput = $("#findinpage-input");
+var editor = $("#document-editor");
+
 function startsearch() {
-$("#findinpage-input").show().css("width", "0px").animate({width: "200px"}, 70).focus();
+findinpageinput.show().css("width", "0px").animate({width: "200px"}, 70).focus();
 }
 
 function endsearch() {
-	$("#findinpage-input").hide().val("");
-		$("#document-editor").removeHighlight();
+	findinpageinput.hide().val("");
+	editor.removeHighlight();
 }
 
 function highlightmatches() {
-		$("#document-editor").removeHighlight();
-	$("#document-editor").highlight($("#findinpage-input").val());
+	editor.removeHighlight();
+	editor.highlight(findinpageinput.val());
 }
 
-$("#findinpage-input").hide();
+findinpageinput.hide();
 
 $("#findinpage-button").click(startsearch);
 
-$("#findinpage-input").blur(endsearch);
+findinpageinput.blur(endsearch);
 
-$("#findinpage-input").keyup(highlightmatches);
+findinpageinput.keyup(highlightmatches);
