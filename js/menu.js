@@ -27,11 +27,6 @@ function insertsubheading() {
         pasteHtmlAtCaret(input, false);
 }
 
-function insertmap() {
-	        var input = "<iframe src='extend-maps/map.html#40.7127,-74.0059' class='extend-block map-extend-block'></iframe>"; //default coordinates are NYC
-        pasteHtmlAtCaret(input, false);
-}
-
 function insertdivider() {
 	        var input = "<div class='extend-block divider-extend-block'></div>";
         pasteHtmlAtCaret(input, false);
@@ -41,10 +36,15 @@ function insertdivider() {
 
 $("#heading-insert").mousedown(insertheading);
 $("#subheading-insert").mousedown(insertsubheading);
-$("#map-insert").mousedown(insertmap);
 $("#divider-insert").mousedown(insertdivider);
 
 //these are defined in extend-images.js
 $("#image-insert").mousedown(imagedialogopen);
 $("#imagechooser-okay-button").click(insertimagefromdialog); //this doesn't need focus, you can use a regular click event
 $("#imagechooser-cancel-button").click(imagedialogclose); //this doesn't need focus, you can use a regular click event
+
+//these are defined in extend-maps.js
+
+$("#map-insert").mousedown(mapdialogopen);
+$("#map-okay-button").click(insertmapfromdialog); //this doesn't need focus, you can use a regular click event
+$("#map-cancel-button").click(mapdialogclose);

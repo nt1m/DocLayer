@@ -92,6 +92,7 @@ nibh interdum id.
 
     <li><a id="heading-insert"><i class="icon-write"></i>heading</a></li>
     <li><a id="subheading-insert"><i class="icon-write"></i>subheading</a></li>
+ 	<li><a id="divider-insert"><i class="icon-view-headline"></i>divider</a></li>
     <li><a id="image-insert"><i class="icon-image"></i>image</a></li>
     <li><a id="map-insert"><i class="icon-map"></i>map</a></li>
 
@@ -104,6 +105,14 @@ nibh interdum id.
 		<button id="imagechooser-cancel-button" class="button">Cancel</button>
 		<button id="imagechooser-okay-button" class="button color-blue-500">Choose image</button>
 	</div>
+		
+		<div class="dialog map-dialog card">
+		<span class="title">Choose coordinates</span>
+		<input type="text" class="map-lat-chooser text-input" placeholder="paste a url here"/>
+		<input type="text" class="map-long-chooser text-input" placeholder="paste a url here"/>
+		<button id="map-cancel-button" class="button">Cancel</button>
+		<button id="map-okay-button" class="button color-blue-500">Choose map</button>
+	</div>
             <script src="lib/grande/grande.js"></script>
 		<script>grande.bind(document.querySelectorAll("article"))</script>
 	
@@ -113,6 +122,7 @@ nibh interdum id.
 	<script src="js/findinpage.js"></script>
 	<script src="js/carat.api.js"></script>
 	<script src="js/extend-images.js"></script>
+	<script src="js/extend-maps.js"></script>
 	<script src="js/menu.js"></script>
 </body>
 	

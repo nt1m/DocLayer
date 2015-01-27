@@ -33,3 +33,7 @@
 .dark-theme .extend-block.divider-extend-block {
 	backgroud-color: #FFF;
 }
+
+.mapplaceholder {
+	display: none;
+}
