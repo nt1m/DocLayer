@@ -1,26 +1,23 @@
 .img-extend-block {
-	width: 50%;
-	float: right;
-	margin-left: 15px;
-	margin-top: 0.66em;
-	margin-bottom: 0.66em;
 	display: block;
 }
 
 .map-extend-block {
-	width:50%;
-	min-width: 320px;
 	height: 300px;
-	float: right;
 	border: 0;
-	margin: 20px;
 	border-top: 1px rgba(0, 0, 0, 0.5) solid;
 }
 
-@media all and (max-width:600px) {
+.extend-block {
+	width: 50%;
+	float: right;
+	margin: 1.2em;
+}
+@media all and (max-width: 750px) {
 	.extend-block {
 		width:100%;
-		margin-left:-15px; /* compensate for padding */
+		margin-left:  0;
+		margin-right: 0;
 	}
 }
 
