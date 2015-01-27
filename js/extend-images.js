@@ -14,6 +14,13 @@ function imagedialogclose() {
 
 function insertimagefromdialog() {
 	var newimage = $(".image-url-chooser").val();
+	
+	//format the url
+	
+	    if (!newimage.match("^(http://|https://|mailto:)")) {
+      newimage = "http://" + newimage;
+    }
+
 	var placeholder = $(".imageplaceholder");
 	placeholder.attr("src", newimage);
 	placeholder.removeClass("imageplaceholder").addClass("extend-block").addClass("img-extend-block"); //use the placeholder to add an image
