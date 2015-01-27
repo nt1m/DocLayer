@@ -34,7 +34,7 @@ if(document.activeElement.id == "document-editor") {
 	
 	else {
 		$("#document-editor").append(html);
-		var elem = document.getElementById('document-editor');
+		var elem = document.getElementById('document-editor'); //scroll to the bottom so the user knows that something was added
 		elem.scrollTop = elem.scrollHeight;
 	}
 }
