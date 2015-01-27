@@ -33,7 +33,7 @@ function insertmap() {
 }
 
 function insertdivider() {
-	        var input = "<div class='divider'></div>";
+	        var input = "<div class='extend-block divider-extend-block'></div>";
         pasteHtmlAtCaret(input, false);
 }
 
