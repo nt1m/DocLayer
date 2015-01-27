@@ -74,6 +74,7 @@ h1 {
 h2 {
 	border-bottom: 1px solid currentColor;
 	margin-bottom: 0.4em;
+	clear: both; /* should not layer over blocks */
 }
 
 /* navbr styles */
