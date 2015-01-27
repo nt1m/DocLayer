@@ -66,6 +66,7 @@ blockquote {
 @media all and (max-width:600px) {
 	blockquote {
 		width:100%;
+		float: none; /* show the whole quote */
 	}
 }
 ul {
