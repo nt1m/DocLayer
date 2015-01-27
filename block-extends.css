@@ -24,7 +24,7 @@
 	}
 }
 
-.divider-extend-block {
+.extend-block.divider-extend-block {
 	width: 100%;
 	height: 1px;
 	background-color: #999;
@@ -32,6 +32,6 @@
 	margin-bottom: 2em;
 }
 
-.dark-theme .divider-extend-block {
+.dark-theme .extend-block.divider-extend-block {
 	backgroud-color: #FFF;
 }
