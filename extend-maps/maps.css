@@ -12,20 +12,5 @@ body, html {
 
 #map-main {
 	width: 100%;
-	height: calc(100% - 40px);
-}
-
-.maps-controller {
-	height: 30px;
-	width: 100%;
-	background-color: #FFF;
-	
-}
-
-.maps-controller > * {
-	vertical-align: middle;
-}
-
-.maps-controller > .data-controller {
-	width: calc(50% - 12px);
+	height: 100%;
 }

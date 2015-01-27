@@ -10,17 +10,4 @@ var map = L.map('map-main').setView([lat, long], 13);
     maxZoom: 18,
     subdomains: '1234',
 	attribution: "&copy; 2015 MapQuest"
-}).addTo(map);		
-
-//update the data fields
-
-$(".lat-controller").val(lat);
-$(".long-controller").val(long);
-
-$(".data-controller").change(function() {
-	
-	var lat = $(".lat-controller").val();
-	var long = $(".long-controller").val();
-	map.panTo( [lat, long] );
-	window.location.hash = lat + "," + long; //for syncing with the main document
-})
+}).addTo(map);
