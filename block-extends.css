@@ -30,6 +30,7 @@
 	background-color: #999;
 	margin-top: 2em;
 	margin-bottom: 2em;
+	clear: both;
 }
 
 .dark-theme .extend-block.divider-extend-block {
