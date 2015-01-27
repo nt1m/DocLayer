@@ -63,11 +63,11 @@ blockquote {
 	margin: 1.5em;
 }
 
-+@media all and (max-width:600px) {
-+	blockquote {
-+		width:100%;
-+	}
-+}
+@media all and (max-width:600px) {
+	blockquote {
+		width:100%;
+	}
+}
 ul {
 	margin: 1.5em;
 	line-height: 1.5em;
