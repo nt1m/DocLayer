@@ -109,6 +109,22 @@ h2 {
 	/* width of this is set in findinpage.js */
 }
 
+.findinpage {
+	position: relative;
+	vertical-align: middle;
+}
+
+.findinpage-count {
+	position: absolute;
+	right: 0;
+	top: 15%;
+	background-color: #FFF;
+	background-clip: padding-box;
+	padding-left: 0.66em;
+}
+.dark-theme .findinpage-count {
+	background-color: #555;
+}
 .highlight { background-color: yellow  !important}
 .dark-theme .highlight { color: #000 !important}
 
