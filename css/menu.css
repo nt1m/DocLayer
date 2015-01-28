@@ -5,14 +5,15 @@
 }
 
 .start-menu {
+	width: 5em;
 	position: fixed;
 	bottom: 94px;
 	right: 24px;
 	z-index: 9999999;
 }
 
-.menu li > a > i {
-	margin: 0.2em /* margin around icons in the menu items */
+.start-menu > a {
+	margin: 0.2em /* margin around the menu items */
 }
 
 .image-dialog {
