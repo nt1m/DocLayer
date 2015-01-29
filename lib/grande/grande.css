@@ -211,7 +211,7 @@
 
 .options:before {
   content: "";
-  border-top: 5px solid rgba(0,0,0,0.9);
+  border-top: 5px solid #262625;
   border-bottom: 5px solid transparent;
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;

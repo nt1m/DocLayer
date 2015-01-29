@@ -19,16 +19,17 @@ body, html {
 }
 
 /* the editor shell */
-
+.page-container {
+	overflow: auto; /* horizontal scrolling */
+	height: calc(100vh - 51px);
+}
 .page {
-	width:100%;
+	width: 100%;
 	background-color: #fff;
-	height:calc(100vh - 50px);
 	display: inline-block;
 	text-align: left;
-	padding:15px;
+	padding: 15px;
 	padding-bottom: 40px;
-	overflow: auto; /* horizontal scrolling */
 	z-index: -1;
 	box-shadow: unset;
 }
@@ -125,7 +126,7 @@ h2 {
 .dark-theme .findinpage-count {
 	background-color: #555;
 }
-.highlight { background-color: yellow  !important}
+.highlight { background-color: #fdd835 !important}
 .dark-theme .highlight { color: #000 !important}
 
 /* printing */
