@@ -23,5 +23,5 @@ function insertmapfromdialog() {
 	var placeholder = $(".mapplaceholder");
 	placeholder.attr("src", "extend-maps/map.html#" + lat + "," + long);
 	placeholder.removeClass("mapplaceholder").addClass("extend-block").addClass("map-extend-block"); //use the placeholder to add a map
-	$(".map-dialog").fadeOut(100);
+	mapdialogclose();
 }
