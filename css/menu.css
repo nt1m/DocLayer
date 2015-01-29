@@ -1,19 +1,29 @@
-.start-button {
+#start-menu-container {
 	position: fixed;
 	bottom: 24px;
 	right: 24px;
 }
 
+#start-menu-container:not(:hover) .start-menu {
+	height: 0;
+	overflow: hidden;
+}
+
 .start-menu {
 	width: 3.25em;
-	position: fixed;
-	bottom: 94px;
-	right: 24px;
 	z-index: 9999999;
+	margin-bottom: 0.2em 0.15em;
 }
 
 .start-menu > a {
-	margin: 0.2em /* margin around the menu items */
+	margin: 0.2em; /* margin around the menu items */
+	transition: all .3s;
+}
+
+#start-menu-container:not(:hover) .start-menu > a {
+	transform: translateY(500%);
+	opacity: 0;
+	visibility: collapse;
 }
 
 .image-dialog {
