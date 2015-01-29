@@ -18,13 +18,13 @@ scratchpad.modules.define("editor", {
 	init: function() {
 		var _ = this;
 		grande.bind(document.querySelectorAll("article"));
-		$("#heading-insert").on("click", function() {
+		$("#heading-insert").on("mousedown", function() {
 			_.insertItem("h1");
 		});
-		$("#subheading-insert").on("click", function() {
+		$("#subheading-insert").on("mousedown", function() {
 			_.insertItem("h2");
 		});
-		$("#divider-insert").on("click", function() {
+		$("#divider-insert").on("mousedown", function() {
 			_.insertItem("divider");
 		});
 	}
