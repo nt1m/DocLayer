@@ -5,10 +5,12 @@ function imagedialogopen() {
         pasteHtmlAtCaret(input, false);
 $(".image-url-chooser").val(""); //reset the value
 $(".image-dialog").fadeIn(100);
+$(".dialog-overlay").fadeIn(100);
 }
 
 function imagedialogclose() {
 	$(".image-dialog").fadeOut(100);
+	$(".dialog-overlay").fadeOut(100);
 	$(".imageplaceholder").remove();
 }
 

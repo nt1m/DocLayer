@@ -8,10 +8,12 @@ function mapdialogopen() {
 $(".map-lat-chooser").val(""); //reset the value
 $(".map-long-chooser").val(""); //reset the value
 $(".map-dialog").fadeIn(100);
+$(".dialog-overlay").fadeIn(100);
 }
 
 function mapdialogclose() {
 	$(".map-dialog").fadeOut(100);
+	$(".dialog-overlay").fadeOut(100);
 	$(".mapplaceholder").remove();
 }
 

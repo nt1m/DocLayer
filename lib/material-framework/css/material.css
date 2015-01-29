@@ -2,10 +2,14 @@
 /******** by Tim Nguyen *************/
 /** http://twitter.com/therealntim **/
 
-@import url("https://fonts.googleapis.com/css?family=RobotoDraft:500,400,300,300italic,400italic,500italic"); /* customized to work locally */
+@import url("//fonts.googleapis.com/css?family=RobotoDraft:500,400,300,300italic,400italic,500italic|Roboto+Slab:500,600");
+@import url("//fonts.googleapis.com/css?family=Roboto+Slab:400,700");
 /* General styles */
 body {
+	margin: 0;
+	padding: 0;
 	font-family: RobotoDraft, Roboto, Arial, sans-serif;
+	background-color: #fff;
 	color: rgba(0, 0, 0, 0.87);
 }
 .dark-theme {
@@ -125,6 +129,21 @@ blockquote + cite {
 	padding: 0.5em;
 	margin-left: 4em;
 }
+.bold {
+	font-weight: 500;
+}
+.transparent {
+	background: none;
+	box-shadow: none;
+}
+code {
+	font-family: Consolas, Menlo, monospace;
+	display: inline-block;
+	padding: 1em;
+	font-size: 0.9em;
+	line-height: 1.5em;
+	font-weight: 400;
+}
 
 /* CSS Ripple */
 .ripple, [ripple] {
@@ -136,7 +155,7 @@ blockquote + cite {
 	position: absolute;
 	top: 0;
 	left: 44%;
-	background-color: rgba(190, 190, 190, 0.29);
+	background-color: currentColor;
 	height: 100%;
 	width: 12%;
 	border-radius: 0.75em / 2em;
@@ -156,18 +175,12 @@ blockquote + cite {
 	left: 0;
 	top: 0 !important;
 	height: 100% !important;
-	opacity: 1;
+	opacity: 0.15;
 	border-radius: 0 !important;
 }
 [ripple="false"]::after, [ripple="none"]::after {
 	all: unset;
 	display: none;
-}
-.button[class^="bg-"]::after, .button[class*=" bg-"]::after,
-.fab[class^="bg-"]::after, .fab[class*=" bg-"]::after,
-[ripple][class^="bg-"]::after, [ripple][class*=" bg-"]::after,
-.ripple[class^="bg-"]::after, .ripple[class*=" bg-"]::after {
-	background-color: rgba(230, 230, 230, 0.29);
 }
 
 /* Switches, checkboxes and radios */
@@ -179,7 +192,12 @@ blockquote + cite {
 .checkbox label,
 .radio label,
 .switch label {
-	vertical-align: top;
+	vertical-align: middle;
+}
+.checkbox .form-control-label,
+.radio .form-control-label,
+.switch .form-control-label {
+	margin-left: 0.5em;
 }
 /* Hide the native controls */
 .checkbox input[type="checkbox"],
@@ -202,13 +220,13 @@ blockquote + cite {
 }
 /* Radio & switch active state */
 .radio input[type="radio"] + label:active {
-	box-shadow: 0 0 0 9px rgba(204, 204, 204, 0.8);
-	background: rgba(204, 204, 204, 0.8);
+	box-shadow: 0 0 0 0.55em rgba(204, 204, 204, 0.29);
+	background: rgba(204, 204, 204, 0.29);
 }
 
 .radio input[type="radio"]:checked + label:active,
 .switch input:checked + label:active::after {
-	box-shadow: 0 0 0 9px rgba(15, 157, 88, 0.29);
+	box-shadow: 0 0 0 0.55em rgba(15, 157, 88, 0.29);
 	background: rgba(15, 157, 88, 0.29);
 }
 /* Checkbox container */
@@ -277,7 +295,7 @@ blockquote + cite {
 .radio input[type="radio"] + label::before,
 .radio input[type="radio"] + label::after {
 	content:"";
-	border: 2px solid #5a5a5a;
+	border: 0.125em solid #5a5a5a;
 	width: 1em;
 	height: 1em;
 	margin-left: -0.12em;
@@ -330,6 +348,7 @@ blockquote + cite {
 	background-color: #b0afaf;
 	display: inline-block;
 	position: relative;
+	top: 0.28em;
 	vertical-align: top;
 }
 .switch input:checked + label::before {
@@ -343,10 +362,10 @@ blockquote + cite {
 	width: 1em;
 	height: 1em;
 	border-radius: 50%;
-	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26), 0px 2px 10px 0px rgba(0, 0, 0, 0.16);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
 	box-sizing: border-box;
-	left: -0.15em;
-	top: -0.15em;
+	left: -0.2em;
+	top: 0.05em;
 	background-color: #f1f1f1;
 	transition: box-shadow 0.2s ease, transform 0.08s linear;
 	vertical-align: top;
@@ -354,8 +373,6 @@ blockquote + cite {
 .switch input:checked + label::after {
 	background-color: #0f9d58 !important;
 	border: none;
-	width: 18px;
-	height: 18px;
 	-webkit-transform: translateX(1.3125em);
 	transform: translateX(1.3125em);
 	width: 1.125em;
@@ -363,18 +380,19 @@ blockquote + cite {
 	margin-top: -1px;
 }
 .switch input + label:active::after {
-	box-shadow: 0 0 0 9px rgba(204,204,204, 0.8);
+	box-shadow: 0 0 0 0.55em rgba(204, 204, 204, 0.8);
 }
 .dark-theme .switch input:checked + label::after {
 	filter: brightness(110%);
 }
 
 /* Text inputs */
-.text-input {
+.text-input,
+.dropdown-menu {
 	padding: 0.3125em;
 	border: none;
 	border-radius: 0;
-	border-bottom: 1px solid #757575;
+	border-bottom: 1px solid #4285f4;
 	background-color: inherit;
 	transition: border-color 0.3s;
 	color: inherit;
@@ -382,10 +400,26 @@ blockquote + cite {
 	font-size: 1em;
 	font-weight: 400;
 }
-.text-input:focus {
-	border-bottom-color: #4285f4;
+.text-input:not(:focus),
+.dropdown-menu:not(:focus):not(.active) {
+	border-bottom-color: #888 !important;
+}
+.text-input:focus,
+.dropdown-menu:focus,
+.dropdown-menu.active {
 	border-bottom-width: 2px;
 	padding-bottom: 0.25em;
+}
+.text-input-container {
+	display: inline-block;
+}
+.text-input-container * {
+	vertical-align: middle;
+}
+.text-input-icon {
+	display: inline-block;
+	font-size: 1em;
+	margin-right: 1em;
 }
 
 /* Buttons */
@@ -393,11 +427,11 @@ blockquote + cite {
 	position: relative;
 	border: none;
 	text-transform: uppercase;
-	text-decoration: none;
+	text-decoration: none !important;
 	padding: 0.5em 0.75em;
 	font-size: 1em;
 	font-weight: 400;
-	font-family: Roboto, Arial, sans-serif;
+	font-family: inherit;
 	border-radius: 2px;
 	overflow: hidden;
 	transition: all 0.1s;
@@ -434,6 +468,8 @@ blockquote + cite {
 	height: 2.33em;
 	border-radius: 100%;
 	font-size: 1.5em;
+	font-family: inherit;
+	text-transform: none;
 	box-sizing: border-box;
 	color: #000;
 	padding: 0.625em 0.417em;
@@ -561,6 +597,32 @@ blockquote + cite {
 	margin: 0 5px;
 }
 
+/* Navigation bar */
+.navbar {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: 3.125em;
+	height: 3.125em;
+	text-transform: uppercase;
+}
+.navbar li {
+	margin: 0;
+	padding: 0;
+}
+.navbar a {
+	display: inline-block;
+	height: 100%;
+	color: inherit;
+	text-decoration: none;
+	line-height: 3.125em;
+	padding: 0 1em;
+}
+.navbar .fab {
+	margin: 0.66em;
+}
+
 /* Tabs */
 .tabs {
 	display: -webkit-flex;
@@ -616,6 +678,10 @@ blockquote + cite {
 	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26);
 	line-height: 1.57em;
 	border-radius: 2px;
+	overflow: hidden;
+}
+.toast.rounded {
+	border-radius: 1.5em;
 }
 .toast-label {
 	-webkit-flex: 1;
@@ -682,6 +748,19 @@ blockquote + cite {
 	line-height: inherit !important;
 }
 
+/* Dividers */
+.divider {
+	margin: 0;
+	padding: 0;
+	display: block;
+	width: 100%;
+	height: 1px !important;
+	border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+.dark-theme .divider {
+	border-top-color: rgba(255, 255, 255, 0.12);
+}
+
 /* Menu */
 .menu {
 	display: inline-block;
@@ -715,6 +794,29 @@ blockquote + cite {
 	color: inherit;
 }
 
+/* Dialogs */
+.dialog-overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.5); /* FIXME : Magic color */
+}
+.dialog {
+	padding: 1.5em 1.5em 0.5em 1.5em;
+}
+.dialog-title {
+	font-size: 1.4em;
+	font-weight: 500;
+}
+.dialog-content {
+	padding-bottom: 1em;
+}
+.dialog-footer {
+	height: 3em;
+}
+
 /* Cards */
 .card-container {
 	background-color: #e5e5e5;
@@ -722,18 +824,23 @@ blockquote + cite {
 .dark-theme .card-container {
 	background-color: #222;
 }
+.dialog,
 .card {
 	background-color: #fff;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26),
-	            0 2px 10px 0 rgba(0, 0, 0, 0.16);
 }
+.dark-theme .dialog,
 .dark-theme .card {
 	background-color: #444;
+}
+.card {
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26),
+	            0 2px 10px 0 rgba(0, 0, 0, 0.16);
 }
 .card[z="2"] {
 	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
 	            0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.dialog,
 .card[z="3"] {
 	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
 	            0 17px 50px 0 rgba(0, 0, 0, 0.19);
@@ -745,6 +852,36 @@ blockquote + cite {
 .card[z="5"] {
 	box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2),
 	            0 40px 77px 0 rgba(0, 0, 0, 0.22);
+}
+
+/* Rich cards */
+.rich-card {
+	display: inline-block;
+}
+.card-hero {
+	background-position: center;
+	color: rgba(255, 255, 255, 0.87);
+	position: relative;
+}
+.card-hero h1 {
+	font-family: "Roboto Slab", Cambria, serif;
+	font-size: 1.5em;
+	position: absolute;
+	bottom: 0.5rem;
+	left: 0.5rem;
+}
+.card-hero:not(.side) {
+	height: 10em;
+	width: 100%;
+	background-size: 100% auto;
+}
+.card-hero.side {
+	height: 100%;
+	background-size: auto 100%;
+}
+.card-footer,
+.card-content {
+	padding: 0.5em;
 }
 
 /* Icons (will need to update this) */

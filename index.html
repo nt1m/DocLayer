@@ -95,20 +95,28 @@ nibh interdum id.
 
 </div>
 
-	
+	<div class="dialog-overlay" hidden></div>
 	<div class="dialog image-dialog card" z="3">
-		<span class="title">Choose an image</span>
-		<input type="text" class="image-url-chooser text-input" placeholder="paste a url here"/>
+		<span class="dialog-title">Choose an image</span>
+		<div class="dialog-content">
+				<input type="text" class="image-url-chooser text-input" placeholder="paste a url here"/>
+		</div>
+		<div class="dialog-footer">
 		<button id="imagechooser-cancel-button" class="button">Cancel</button>
 		<button id="imagechooser-okay-button" class="button color-blue-500">Choose image</button>
+		</div>
 	</div>
 		
 		<div class="dialog map-dialog card" z="3">
-		<span class="title">Choose map coordinates</span>
+		<span class="dialog-title">Choose map coordinates</span>
+		<div class="dialog-content">
 		<input type="text" class="map-lat-chooser text-input" placeholder="latitude"/>
 		<input type="text" class="map-long-chooser text-input" placeholder="longitude"/>
+			</div>
+			<div class="dialog-footer">
 		<button id="map-cancel-button" class="button">Cancel</button>
 		<button id="map-okay-button" class="button color-blue-500">add map</button>
+				</div>
 	</div>
             <script src="lib/grande/grande.js"></script>
 		<script>grande.bind(document.querySelectorAll("article"))</script>
