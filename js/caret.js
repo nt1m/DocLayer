@@ -34,7 +34,7 @@ scratchpad.modules.define("caret", {
 		} // end focus check
 		else {
 			$("#document-editor").append(html);
-			var elem = document.getElementById('document-editor'); //scroll to the bottom so the user knows that something was added
+			var elem = document.getElementsByClassName('page-container')[0]; //scroll to the bottom so the user knows that something was added
 			elem.scrollTop = elem.scrollHeight;
 		}
 	}
