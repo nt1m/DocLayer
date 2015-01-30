@@ -18,7 +18,9 @@ scratchpad.modules.define("findinpage", {
 		this.findinpagecount.html("");
 		this.findinpagecontainer.show().css("width", "0px").animate({width: "200px"}, 70);
 		this.findinpageinput.focus();
-		this.editor.attr("contenteditable", "false"); //temp fix for firefox bug
+		if(window.location.hash != "#debug") {
+		  this.editor.attr("contenteditable", "false"); //temp fix for firefox bug
+			}
 	},
 
 	endsearch: function() {
