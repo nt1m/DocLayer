@@ -12,21 +12,16 @@
 	float: right;
 	margin: 1.2em;
 }
+.extend-block.fullwidth {
+	width: 100%;
+	float: none;
+}
 @media all and (max-width: 750px) {
 	.extend-block {
 		width:100%;
 		margin-left:  0;
 		margin-right: 0;
 	}
-}
-
-.extend-block.divider-extend-block {
-	width: 100%;
-	height: 1px;
-	background-color: #999;
-	margin-top: 2em;
-	margin-bottom: 2em;
-	clear: both;
 }
 
 .dark-theme .extend-block.divider-extend-block {

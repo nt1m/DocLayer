@@ -2,7 +2,7 @@ scratchpad.modules.define("editor", {
 	insertItem: function(item) {
 		switch(item) {
 			case "divider":
-				var input = "<div class='extend-block divider'></div>";
+				var input = "<div class='extend-block fullwidth divider'></div>";
 				break;
 
 			case "h1":
