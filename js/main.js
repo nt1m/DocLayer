@@ -15,11 +15,18 @@ var scratchpad = {
 		}
 	},
 	init: function() {
+		var starttime = Date.now(); // start performance logging
+
 		// The modules are loaded in the order they are specified
 		var modulesToLoad = ["editor", "caret", "ui", "darktheme", "images", "maps", "findinpage" ];
 		modulesToLoad.forEach(function(value) {
 			scratchpad.modules.load(value);
 		});
+
+		//performance logging
+		var endtime = Date.now();
+		var diff = endtime - starttime;
+		console.log("modules loaded in " + diff + " ms");
 	}
 }
 $(function() {
