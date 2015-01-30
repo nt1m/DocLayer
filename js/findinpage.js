@@ -18,12 +18,14 @@ scratchpad.modules.define("findinpage", {
 		this.findinpagecount.html("");
 		this.findinpagecontainer.show().css("width", "0px").animate({width: "200px"}, 70);
 		this.findinpageinput.focus();
+		this.editor.attr("contenteditable", "false"); //temp fix for firefox bug
 	},
 
 	endsearch: function() {
 		this.findinpagecontainer.hide().css("width", "0px");
 		this.findinpageinput.val("");
 		this.editor.removeHighlight();
+		this.editor.attr("contenteditable", "true"); //temp fix for firefox bug
 	},
 
 	highlightmatches: function() {
