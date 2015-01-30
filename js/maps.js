@@ -18,7 +18,7 @@ scratchpad.modules.define("maps", {
 	},
 	init: function() {
 		var _ = this;
-		this.launchButton.on("click", function() {
+		this.launchButton.on("mousedown", function() {
 			scratchpad.ui.dialogs.show(_.dialogEl);
 		});
 		this.dialogEl.on("dialog-shown", this.ondialogopen);
