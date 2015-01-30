@@ -28,8 +28,8 @@ body, html {
 	background-color: #fff;
 	display: inline-block;
 	text-align: left;
-	padding: 15px;
-	padding-bottom: 40px;
+	padding: calc(2% + 10px);
+	padding-top: calc(0.5% + 25px);
 	z-index: -1;
 	box-shadow: unset;
 }
