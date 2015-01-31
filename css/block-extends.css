@@ -28,6 +28,6 @@
 	backgroud-color: #FFF;
 }
 
-.mapplaceholder {
+.mapplaceholder, .videoplaceholder {
 	display: none;
 }

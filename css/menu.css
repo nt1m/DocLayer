@@ -46,3 +46,13 @@
 	width: 100%;
 	margin-top: 0.8em;
 }
+
+.video-dialog {
+	position: fixed;
+	top: calc(50% - 75px);
+	left: calc(50% - 150px);
+}
+.video-url-chooser {
+	width: 100%;
+	margin-top: 0.8em;
+}
