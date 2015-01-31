@@ -154,4 +154,6 @@ So delete this text and start typing something, or look at the <a href="http://g
 	<script src="lib/offline/offline.min.js"></script>
 	<link rel="stylesheet" href="lib/offline/offline-theme-default.css"/>
 	<link rel="stylesheet" href="lib/offline/offline-language-english.css"/>
+	<!-- offline doesn't check if there is no requests - do this manually -->
+	<script>setTimout(Offline.check, 5000);</script>
 </html>
