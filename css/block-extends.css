@@ -2,11 +2,14 @@
 	display: block;
 }
 
-.map-extend-block {
+.map-extend-block, .embed-extend-block { /* these use iframes */
 	height: 300px;
 	border: 0;
 }
 
+.embed-extend-block {
+	height: 400px;
+}
 .extend-block {
 	width: 50%;
 	float: right;
@@ -28,6 +31,6 @@
 	backgroud-color: #FFF;
 }
 
-.mapplaceholder, .videoplaceholder {
+.mapplaceholder, .videoplaceholder, .embedplaceholder {
 	display: none;
 }

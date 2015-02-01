@@ -26,10 +26,15 @@
 	visibility: collapse;
 }
 
-.image-dialog {
+.small-dialog {
 	position: fixed;
 	top: calc(50% - 75px);
 	left: calc(50% - 150px);
+}
+.map-dialog {
+	position: fixed;
+	top: calc(50% - 100px);
+	left: calc(50% - 200px);
 }
 
 .image-url-chooser {
@@ -37,22 +42,12 @@
 	margin-top: 0.8em;
 }
 
-.map-dialog {
-	position: fixed;
-	top: calc(50% - 100px);
-	left: calc(50% - 200px);
-}
 .map-lat-chooser, .map-long-chooser {
 	width: 100%;
 	margin-top: 0.8em;
 }
 
-.video-dialog {
-	position: fixed;
-	top: calc(50% - 75px);
-	left: calc(50% - 150px);
-}
-.video-url-chooser {
+.video-url-chooser, .embed-url-chooser {
 	width: 100%;
 	margin-top: 0.8em;
 }

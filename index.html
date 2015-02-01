@@ -105,6 +105,7 @@ So delete this text and start typing something, or look at the <a href="http://g
 		    <a class="small fab color-white bg-blue-500" id="image-insert"><i class="icon-image"></i></a>
 		    <a class="small fab color-white bg-green-500" id="map-insert"><i class="icon-map"></i></a>
 		    <a class="small fab color-white bg-grey-800" id="video-insert"><i class="icon-video"></i></a>
+		    <a class="small fab color-white bg-pink-500" id="embed-insert">&lt;&gt;</a>
 		</div>
 
 		<button class="fab bg-red-500 color-white start-button">
@@ -113,7 +114,7 @@ So delete this text and start typing something, or look at the <a href="http://g
 	</div>
 
 	<div noprint class="dialog-overlay" hidden></div>
-	<div noprint class="dialog image-dialog" hidden>
+	<div noprint class="dialog image-dialog small-dialog" hidden>
 		<span class="dialog-title">Choose an image</span>
 		<div class="dialog-content">
 			<input type="text" class="image-url-chooser text-input" placeholder="Paste a URL here"/>
@@ -136,7 +137,7 @@ So delete this text and start typing something, or look at the <a href="http://g
 		</div>
 	</div>
 	
-	<div noprint class="dialog video-dialog" hidden>
+	<div noprint class="dialog video-dialog small-dialog" hidden>
 		<span class="dialog-title">Choose a video</span>
 		<div class="dialog-content">
 			<input type="text" class="video-url-chooser text-input" placeholder="Paste a URL here"/>
@@ -144,6 +145,17 @@ So delete this text and start typing something, or look at the <a href="http://g
 		<div class="dialog-footer">
 			<button id="video-cancel-button" class="button dialog-cancel">Cancel</button>
 			<button id="video-okay-button" class="button color-blue-500 dialog-confirm">Choose video</button>
+		</div>
+	</div>
+	
+	<div noprint class="dialog embed-dialog small-dialog" hidden>
+		<span class="dialog-title">Choose a URL to embed</span>
+		<div class="dialog-content">
+			<input type="text" class="embed-url-chooser text-input" placeholder="Paste a URL here"/>
+		</div>
+		<div class="dialog-footer">
+			<button id="embed-cancel-button" class="button dialog-cancel">Cancel</button>
+			<button id="embed-okay-button" class="button color-blue-500 dialog-confirm">Add url</button>
 		</div>
 	</div>
 
@@ -155,5 +167,5 @@ So delete this text and start typing something, or look at the <a href="http://g
 	<link rel="stylesheet" href="lib/offline/offline-theme-default.css"/>
 	<link rel="stylesheet" href="lib/offline/offline-language-english.css"/>
 	<!-- offline doesn't check if there is no requests - do this manually -->
-	<script>setTimout(Offline.check, 5000);</script>
+	<script>setInterval(Offline.check, 5000);</script>
 </html>
