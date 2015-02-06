@@ -139,8 +139,11 @@ h2 {
 
 @media print {
 	[noprint] {
-		display: none;
+		display: none !important;
 	}
+  .offline-ui {
+    display: none !important; /* we can't add a noprint to this */
+  }
 	.page-container {
 		height: auto;
 	}
@@ -150,4 +153,6 @@ h2 {
 	position: absolute;
 	top: 0;
 	left: 0;
+  margin: 10px;
+  display: none;
 }
