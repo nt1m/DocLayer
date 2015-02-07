@@ -50,10 +50,7 @@ article[contenteditable] * {
 }
 
 article[contenteditable] h2 {
-	top: -15px; /* compensante for padding in the page so that subheadings owrk */
 	z-index: 0; /* override material-framework */
-	margin-left: -15px; /* compensate for padding */
-	margin-right: -15px; /* compensate for padding */
 }
 
 blockquote {
@@ -72,13 +69,8 @@ ul, ol {
 }
 
 /* special header styles */
-h1 {
-	margin-bottom: 0.2em;
+h1, h2, h3 {
 	clear: both; /* correct layout with blocks longer than the text */
-}
-h2 {
-	margin-bottom: 0.4em;
-	clear: both; /* should not layer over blocks */
 }
 
 [starred]::before {
