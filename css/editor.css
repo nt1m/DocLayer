@@ -77,7 +77,6 @@ h1 {
 	clear: both; /* correct layout with blocks longer than the text */
 }
 h2 {
-	border-bottom: 1px solid currentColor;
 	margin-bottom: 0.4em;
 	clear: both; /* should not layer over blocks */
 }
