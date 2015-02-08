@@ -106,6 +106,12 @@ body.has-toolbar {
 }
 /* find in page */
 
+.navbar-to-right {
+  position: absolute;
+  right: 0;
+  background-color: inherit;
+  padding-left: 1em;
+}
 #findinpage-input {
 	vertical-align: middle;
 	/* width of this is set in findinpage.js */
