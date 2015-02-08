@@ -1,0 +1,90 @@
+.infocard-shell {
+  width: 40%;
+  min-width: 250px;
+  max-width: 400px;
+  height: calc(100% - 50px);
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  background-color: inherit;
+  z-index: 99;
+  transition: .2s all;
+}
+
+.infocard-shell:hover {
+  max-width: 600px;
+}
+.infocard-shell:empty {
+  display: none;
+}
+.infocard-shell * {
+  max-width: 100%;
+  background-color: inherit;
+}
+
+.infocard-shell img {
+  width: 100%;
+}
+
+.infocard-shell ul > li {
+  list-style: none;
+}
+
+.InfoCard-text {
+  padding: 1.5em;
+}
+
+.InfoCard-tabs {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.InfoCard-selected {
+  border-bottom: 2px solid currentcolor;
+}
+
+.InfoCard-tabs li {
+  line-height: 2.857em;
+  height: 2.857em;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px 1em;
+  white-space: nowrap;
+  font-size: 0.875em
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}
+
+.InfoCard-link-icon {
+  display: none;
+}
+
+.InfoCard-entity {
+  padding: 0;
+	margin: 0;
+	padding-left: 1em;
+	font-size: 1em;
+	line-height: 3em;
+	font-weight: 400;
+	background-color: inherit;
+	z-index: 99;
+	color: rgba(0, 0, 0, 0.54);
+}
+
+.InfoCard-links {
+  margin-top: 1em;
+}
+
+.InfoCard-list {
+  display: none; /* TODO add support for these */
+}
+.infocard-shell img + p {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}

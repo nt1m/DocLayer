@@ -35,17 +35,35 @@ scratchpad.modules.define("findinpage", {
 		this.editor.highlight(this.findinpageinput.val());
 		this.findinpagecount.html($(".highlight").length);
 	},
+  
+  showinfo: function() {
+    var search = this.findinpageinput.val();
+    var cardbox = $(".infocard-shell");
+    cardbox.html("");
+            infocard = new InfoCard({
+            query: search,
+            container: cardbox[0]
+        });
+  },
+  
+  hideinfo: function() {
+    $(".infocard-shell").html("");
+  },
 
 	init: function() {
 		// Bind functions
 		this.startsearch = this.startsearch.bind(this);
 		this.endsearch = this.endsearch.bind(this);
 		this.highlightmatches = this.highlightmatches.bind(this);
+		this.showinfo = this.showinfo.bind(this);
+		this.hideinfo = this.hideinfo.bind(this);
 
 		// Event listeners
 		this.findinpagecontainer.hide();
 		$("#findinpage-button").click(this.startsearch);
-		this.findinpageinput.blur(this.endsearch);
+		this.editor.mousedown(this.endsearch);
 		this.findinpageinput.keyup(this.highlightmatches);
+    this.findinpageinput.keyup(this.showinfo);
+    this.editor.mousedown(this.hideinfo);
 	}
 });
