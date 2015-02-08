@@ -224,10 +224,14 @@
   overflow: hidden;
   vertical-align: top;
   display: inline-block;
+  transition: width .2s;
 }
 .url-mode .category {
   width: 0px;
 }
 .category:hover {
-  width: auto;
+  width: 120px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0px 6px;
 }
