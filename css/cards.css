@@ -1,6 +1,6 @@
 .infocard-shell {
   width: 40%;
-  min-width: 250px;
+  min-width: 200px;
   max-width: 400px;
   height: calc(100% - 50px);
   overflow: auto;
@@ -8,11 +8,14 @@
   right: 0;
   background-color: inherit;
   z-index: 99;
-  transition: .2s all;
+  transition: .15s all;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26),
+	            0 2px 10px 0 rgba(0, 0, 0, 0.16);
 }
 
 .infocard-shell:hover {
   max-width: 600px;
+  min-width: 300px;
 }
 .infocard-shell:empty {
   display: none;
@@ -87,4 +90,13 @@
 .infocard-shell img + p {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
+}
+
+@media all and (max-width: 700px) {
+  .infocard-shell {
+    font-size: 0.9em;
+  }
+  .infocard-shell p {
+    text-align: left;
+  }
 }
