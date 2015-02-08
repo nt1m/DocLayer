@@ -20,11 +20,7 @@ body, html {
 }
 
 /* the editor shell */
-.page-container {
-	overflow: auto; /* horizontal scrolling */
-	width: 100%;
-	height: calc(100vh - 51px);
-}
+
 .page {
 	width: 100%;
 	min-height: 100%;
@@ -88,12 +84,20 @@ h1, h2, h3 {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 	color: #444;
 	box-shadow: unset; /* override framework */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
 }
 .dark-theme .editor-toolbar {
 	background-color: #555;
 	color: #F5F5F5;
 }
 
+body.has-toolbar {
+  padding-top: 3.2em;
+}
 .doc-name {
 	vertical-align: middle;
 }
