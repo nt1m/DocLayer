@@ -73,7 +73,7 @@
   transition: opacity 180ms, margin 180ms;
 
   position: absolute;
-  color: #fff;
+  color: currentColor;
   margin-top: -20px;
   margin-left: -115px;
 }
@@ -104,7 +104,7 @@
 }
 
 .text-menu .active {
-  color: #60d778;
+  color: #F44336;
 }
 
 .text-menu button {
@@ -132,8 +132,8 @@
 }
 
 .options {
-  background-color: #262625;
-  box-shadow: 0 0 2px #262625;
+  background-color: inherit;
+  box-shadow: 0 0 5px rgba(50, 50, 50, 0.7);
   position: absolute;
   border-radius: 5px;
   margin-left: 23px;
@@ -184,12 +184,9 @@
 }
 
 .options.url-mode input{
-  border-left: 2px solid transparent;
-  padding-right: 5px;
-  padding-left: 5px;
   width: 155px;
   background: transparent;
-  color: #fff;
+  color: currentColor;
 }
 
 .options input {
@@ -205,7 +202,8 @@
 
 .options:before {
   content: "";
-  border-top: 5px solid #262625;
+  border-top: 5px solid purple; /* this doesn't actually get used */
+  border-top-color: inherit;
   border-bottom: 5px solid transparent;
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
@@ -232,6 +230,5 @@
 .category:hover {
   width: 120px;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.1);
   padding: 0px 6px;
 }

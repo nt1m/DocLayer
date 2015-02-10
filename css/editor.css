@@ -4,8 +4,12 @@ body, html {
 	min-width: 100%;
 	min-height: 100%;
 	overflow: auto;
+  border-color: #FFF; /* for grande menu arrow */
 }
 
+body.dark-theme {
+  border-color: #333; /* for grande menu arrow */
+}
 * {
 	-webkit-overflow-scrolling: touch;
 	-webkit-font-smoothing: antialiased;
@@ -13,6 +17,8 @@ body, html {
 	margin: 0;
 	border: 0;
 	box-sizing: border-box;
+  background-color: inherit;
+  border-color: inherit;
 }
 
 .g-body * { /* grande.js doesn't like box-sizing, we need to turn it off */
