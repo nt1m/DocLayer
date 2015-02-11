@@ -3,7 +3,7 @@ scratchpad.modules.define("embeds", {
 	launchButton: $("#embed-insert"),
 	ondialogopen: function() {
 		var input = "<iframe allowfullscreen sandbox='allow-forms allow-same-origin allow-scripts' class='embedplaceholder'/>"; //add a placeholder to mark the cursor position (also add some sandbox attributes)
-        scratchpad.caret.pasteHtmlAtCaret(input, false);
+				scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function() {
 		$(".embedplaceholder").remove();
@@ -11,8 +11,8 @@ scratchpad.modules.define("embeds", {
 	insertembedfromdialog: function() {
 		var embed = $(".embed-url-chooser").val();
 		if (!embed.match("^(http://|https://)")) {
-	      embed = "http://" + embed;
-	    }
+				embed = "http://" + embed;
+			}
 
 		var placeholder = $(".embedplaceholder");
 		placeholder.attr("src", embed);

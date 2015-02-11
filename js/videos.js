@@ -3,7 +3,7 @@ scratchpad.modules.define("videos", {
 	launchButton: $("#video-insert"),
 	ondialogopen: function() {
 		var input = "<video controls class='videoplaceholder'/>"; //add a placeholder to mark the cursor position
-        scratchpad.caret.pasteHtmlAtCaret(input, false);
+				scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function() {
 		$(".videoplaceholder").remove();
@@ -13,8 +13,8 @@ scratchpad.modules.define("videos", {
 		//add prefixes when needed
 		var video = $(".video-url-chooser").val();
 		if (!video.match("^(http://|https://)")) {
-	      video = "http://" + video;
-	    }
+				video = "http://" + video;
+			}
 
 		//detect the video type
 		if (video.indexOf("webm") > 0 ) {
@@ -30,7 +30,7 @@ scratchpad.modules.define("videos", {
 
 		//insert the video
 		var placeholder = $(".videoplaceholder");
-		var source = "<source type='" + type + "' codecs='" + codecs + "' src='" +  video + "'></source>";
+		var source = "<source type='" + type + "' codecs='" + codecs + "' src='" +	video + "'></source>";
 		placeholder.html(source);
 		placeholder.removeClass("videoplaceholder").addClass("extend-block").addClass("video-extend-block"); //use the placeholder to add a video
 		scratchpad.ui.dialogs.hide($(this));

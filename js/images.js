@@ -3,7 +3,7 @@ scratchpad.modules.define("images", {
 	launchButton: $("#image-insert"),
 	ondialogopen: function() {
 		var input = "<img class='imageplaceholder'/>"; //add a placeholder to mark the cursor position
-        scratchpad.caret.pasteHtmlAtCaret(input, false);
+				scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function() {
 		$(".imageplaceholder").remove();
@@ -11,8 +11,8 @@ scratchpad.modules.define("images", {
 	insertimagefromdialog: function() {
 		var newimage = $(".image-url-chooser").val();
 		if (!newimage.match("^(http://|https://|mailto:)")) {
-	      newimage = "http://" + newimage;
-	    }
+				newimage = "http://" + newimage;
+			}
 
 		var placeholder = $(".imageplaceholder");
 		placeholder.attr("src", newimage);

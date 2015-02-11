@@ -1,75 +1,75 @@
 .infocard-shell {
-  width: 40%;
-  min-width: 200px;
-  max-width: 400px;
-  height: calc(100% - 50px);
-  overflow: auto;
-  position: fixed;
-  right: 0;
-  background-color: inherit;
-  z-index: 99;
-  transition: .15s all;
+	width: 40%;
+	min-width: 200px;
+	max-width: 400px;
+	height: calc(100% - 50px);
+	overflow: auto;
+	position: fixed;
+	right: 0;
+	background-color: inherit;
+	z-index: 99;
+	transition: .15s all;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26),
-	            0 2px 10px 0 rgba(0, 0, 0, 0.16);
+							0 2px 10px 0 rgba(0, 0, 0, 0.16);
 }
 
 .infocard-shell:hover {
-  max-width: 600px;
-  min-width: 300px;
+	max-width: 600px;
+	min-width: 300px;
 }
 .infocard-shell:empty {
-  display: none;
+	display: none;
 }
 .infocard-shell * {
-  max-width: 100%;
-  background-color: inherit;
+	max-width: 100%;
+	background-color: inherit;
 }
 
 .infocard-shell img {
-  width: 100%;
+	width: 100%;
 }
 
 .infocard-shell ul > li {
-  list-style: none;
+	list-style: none;
 }
 
 .InfoCard-text {
-  padding: 1.5em;
+	padding: 1.5em;
 }
 
 .InfoCard-tabs {
-    padding: 0px;
-    margin: 0px;
-    width: 100%;
-    overflow: auto;
-    white-space: nowrap;
+		padding: 0px;
+		margin: 0px;
+		width: 100%;
+		overflow: auto;
+		white-space: nowrap;
 }
 
 .InfoCard-selected {
-  border-bottom: 2px solid currentcolor;
+	border-bottom: 2px solid currentcolor;
 }
 
 .InfoCard-tabs li {
-  line-height: 2.857em;
-  height: 2.857em;
-  display: inline-block;
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px 1em;
-  white-space: nowrap;
-  font-size: 0.875em
-  font-weight: 500;
-  text-transform: uppercase;
-  text-align: center;
-  cursor: pointer;
+	line-height: 2.857em;
+	height: 2.857em;
+	display: inline-block;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px 1em;
+	white-space: nowrap;
+	font-size: 0.875em
+	font-weight: 500;
+	text-transform: uppercase;
+	text-align: center;
+	cursor: pointer;
 }
 
 .InfoCard-link-icon {
-  display: none;
+	display: none;
 }
 
 .InfoCard-entity {
-  padding: 0;
+	padding: 0;
 	margin: 0;
 	padding-left: 1em;
 	font-size: 1em;
@@ -81,22 +81,22 @@
 }
 
 .InfoCard-links {
-  margin-top: 1em;
+	margin-top: 1em;
 }
 
 .InfoCard-list {
-  display: none; /* TODO add support for these */
+	display: none; /* TODO add support for these */
 }
 .infocard-shell img + p {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
 }
 
 @media all and (max-width: 700px) {
-  .infocard-shell {
-    font-size: 0.9em;
-  }
-  .infocard-shell p {
-    text-align: left;
-  }
+	.infocard-shell {
+		font-size: 0.9em;
+	}
+	.infocard-shell p {
+		text-align: left;
+	}
 }

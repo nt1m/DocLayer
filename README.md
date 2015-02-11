@@ -9,5 +9,5 @@ features:
  - dividers
  - maps
  - images from URL
- -  dark theme
- -  find in page
+ -	dark theme
+ -	find in page

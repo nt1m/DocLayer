@@ -1,5 +1,5 @@
 scratchpad.modules.define("editor", {
-  deletionButton: $(".deletion-button"),
+	deletionButton: $(".deletion-button"),
 	insertItem: function(item) {
 		switch(item) {
 			case "divider":
@@ -16,20 +16,20 @@ scratchpad.modules.define("editor", {
 		}
 		scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
-  showDeletion: function(item) {
-    var button = this.deletionButton;
-    var offset = item.offset();
-    button.css({top: offset.top, left: offset.left});
-    button.show();
-    button.off();
-    button.on("click", function() {
-      item.remove();
-      button.hide();
-    });
-  },
-  hideDeletion: function() {
-    this.deletionButton.hide();
-  },
+	showDeletion: function(item) {
+		var button = this.deletionButton;
+		var offset = item.offset();
+		button.css({top: offset.top, left: offset.left});
+		button.show();
+		button.off();
+		button.on("click", function() {
+			item.remove();
+			button.hide();
+		});
+	},
+	hideDeletion: function() {
+		this.deletionButton.hide();
+	},
 	init: function() {
 		var _ = this;
 		grande.bind(document.querySelectorAll("article"));
@@ -42,11 +42,11 @@ scratchpad.modules.define("editor", {
 		$("#divider-insert").on("mousedown", function() {
 			_.insertItem("divider");
 		});
-    $("#document-editor").on( "mouseover", ".extend-block", function() {
-      _.showDeletion($(this));
-    });
-    $("#document-editor").on("click", function() {
-      _.hideDeletion();
-    });
+		$("#document-editor").on( "mouseover", ".extend-block", function() {
+			_.showDeletion($(this));
+		});
+		$("#document-editor").on("click", function() {
+			_.hideDeletion();
+		});
 	}
 });

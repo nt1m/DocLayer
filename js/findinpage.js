@@ -19,7 +19,7 @@ scratchpad.modules.define("findinpage", {
 		this.findinpagecontainer.show().css("width", "0px").animate({width: "200px"}, 70);
 		this.findinpageinput.focus();
 		if(window.location.hash != "#debug") {
-		  this.editor.attr("contenteditable", "false"); //temp fix for firefox bug
+			this.editor.attr("contenteditable", "false"); //temp fix for firefox bug
 			}
 	},
 
@@ -35,20 +35,20 @@ scratchpad.modules.define("findinpage", {
 		this.editor.highlight(this.findinpageinput.val());
 		this.findinpagecount.html($(".highlight").length);
 	},
-  
-  showinfo: function() {
-    var search = this.findinpageinput.val();
-    var cardbox = $(".infocard-shell");
-    cardbox.html("");
-            infocard = new InfoCard({
-            query: search,
-            container: cardbox[0]
-        });
-  },
-  
-  hideinfo: function() {
-    $(".infocard-shell").html("");
-  },
+	
+	showinfo: function() {
+		var search = this.findinpageinput.val();
+		var cardbox = $(".infocard-shell");
+		cardbox.html("");
+						infocard = new InfoCard({
+						query: search,
+						container: cardbox[0]
+				});
+	},
+	
+	hideinfo: function() {
+		$(".infocard-shell").html("");
+	},
 
 	init: function() {
 		// Bind functions
@@ -63,7 +63,7 @@ scratchpad.modules.define("findinpage", {
 		$("#findinpage-button").click(this.startsearch);
 		this.editor.mousedown(this.endsearch);
 		this.findinpageinput.keyup(this.highlightmatches);
-    this.findinpageinput.keyup(this.showinfo);
-    this.editor.mousedown(this.hideinfo);
+		this.findinpageinput.keyup(this.showinfo);
+		this.editor.mousedown(this.hideinfo);
 	}
 });

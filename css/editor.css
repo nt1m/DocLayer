@@ -4,11 +4,11 @@ body, html {
 	min-width: 100%;
 	min-height: 100%;
 	overflow: auto;
-  border-color: #FFF; /* for grande menu arrow */
+	border-color: #FFF; /* for grande menu arrow */
 }
 
 body.dark-theme {
-  border-color: #333; /* for grande menu arrow */
+	border-color: #333; /* for grande menu arrow */
 }
 * {
 	-webkit-overflow-scrolling: touch;
@@ -17,8 +17,8 @@ body.dark-theme {
 	margin: 0;
 	border: 0;
 	box-sizing: border-box;
-  background-color: inherit;
-  border-color: inherit;
+	background-color: inherit;
+	border-color: inherit;
 }
 
 .g-body * { /* grande.js doesn't like box-sizing, we need to turn it off */
@@ -54,7 +54,7 @@ article[contenteditable] * {
 article[contenteditable] h2 {
 	z-index: 0; /* override material-framework */
 }
-
+	
 blockquote {
 	margin: 1.5em;
 }
@@ -82,84 +82,4 @@ h1, h2, h3 {
 	font-size: 1.2em;
 	margin: 0.5em;
 	margin-left: -1.7em;
-}
-
-/* navbr styles */
-
-.editor-toolbar {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-	color: #444;
-	box-shadow: unset; /* override framework */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 99;
-}
-.dark-theme .editor-toolbar {
-	background-color: #555;
-	color: #F5F5F5;
-}
-
-body.has-toolbar {
-  padding-top: 3.2em;
-}
-.doc-name {
-	vertical-align: middle;
-}
-.doc-name:not(:focus) {
-	border: 0;
-}
-/* find in page */
-
-.navbar-to-right {
-  position: absolute;
-  right: 0;
-  background-color: inherit;
-  padding-left: 1em;
-}
-#findinpage-input {
-	vertical-align: middle;
-	/* width of this is set in findinpage.js */
-}
-
-.findinpage {
-	position: relative;
-	vertical-align: middle;
-}
-
-.findinpage-count {
-	position: absolute;
-	right: 0;
-	top: 15%;
-	background-color: #FFF;
-	background-clip: padding-box;
-	padding-left: 0.66em;
-}
-.dark-theme .findinpage-count {
-	background-color: #555;
-}
-.highlight { background-color: #fdd835 !important}
-.dark-theme .highlight { color: #000 !important}
-
-/* printing */
-
-@media print {
-	[noprint] {
-		display: none !important;
-	}
-  .offline-ui {
-    display: none !important; /* we can't add a noprint to this */
-  }
-	.page-container {
-		height: auto;
-	}
-}
-
-.deletion-button {
-	position: absolute;
-	top: 0;
-	left: 0;
-  margin: 10px;
-  display: none;
 }

@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="lib/material-framework/css/material.css"/>
 	<link rel="stylesheet" href="css/editor.css"/>
+	<link rel="stylesheet" href="css/ui.css"/>
 	<link rel="stylesheet" href="css/menu.css"/>
 	<link rel="stylesheet" href="css/cards.css"/>
 	<link rel="stylesheet" href="css/block-extends.css"/>
@@ -24,7 +25,7 @@
 		</span>
 	</div>
 
-  <div class="infocard-shell"></div>
+	<div class="infocard-shell"></div>
 
 		<article contenteditable="true" class="page" id="document-editor">
 <h1>Welcome to Scratchpad!</h1><h2>the minimalist document editor</h2><p><br></p><p>Scratchpad is a new kind of document editor. The goals of scratchpad are to<br></p><ul><li>help you focus on writing</li><li>make it really easy and fast to take notes</li><li>make it easy to extend the editor with extra features</li><li>work on any device</li><li>easily add interactive features to documents</li></ul><p>You can also add quotes to documents. They look best if they are at least two lines long in length.</p><p>Scratchpad uses <a href="https://github.com/nt1m/material-framework/">material-framework</a> for its design, and has text editing features based on <a href="https://github.com/mduvall/grande.js">grande.js</a>. You can add <b>bold</b> text, <i>italics</i>, and <a href="https://github.com/PalmerAL/scratchpad">links</a>. type a * character or a number and a period on a new line to start a list. Select text to format it or turn it into a heading.</p><p><br></p><h2>dividers</h2><p><br></p><p>I'm above a divider<div class="extend-block fullwidth divider"></div></p><p>I'm below a divider<br></p><h2>Interactive components</h2><p><br></p><p>To
@@ -32,21 +33,21 @@
 bottom right corner. You can add maps, images, dividers, videos, and 
 embeds from other websites to the document (more in the future). A quick
  sampling of components (which float to the right of your text):<br></p><p><br></p><h2>images (image from <a href="http://unsplash.com">unsplash</a>)</h2><p><img src="https://ununsplash.imgix.net/uploads/141202616623001715bb7/c1b3b9b0?q=75&amp;fm=jpg&amp;s=07faf9fb6409579bda59881970b284d1" class="extend-block img-extend-block"><br></p><p><br></p><h2>maps</h2><p><iframe src="extend-maps/map.html#40.7127,-74.0059" class="extend-block map-extend-block"></iframe><br></p><h2>videos (video from <a href="http://www.html5rocks.com/en/tutorials/video/basics/">html5rocks</a>)<br></h2><p><video controls="" class="extend-block video-extend-block"><source type="video/webm" codecs="vp8,vorbis" src="http://www.html5rocks.com/en/tutorials/video/basics/devstories.webm"></video><br></p><h2>custom embeds (example from <a href="https://www.youtube.com/watch?v=DVwHCGAr_OE">this video</a>)</h2><p><iframe src="https://www.youtube.com/embed/DVwHCGAr_OE" allowfullscreen="" sandbox="allow-forms allow-same-origin allow-scripts" class="extend-block embed-extend-block"></iframe><br></p>		
-  </article>
+	</article>
 	
 	<div noprint id="start-menu-container">	
 		<div class="start-menu">
-		    <a class="small fab" id="heading-insert">h1</a>
-		    <a class="small fab" id="subheading-insert">h2</a>
-		    <a class="small fab" id="divider-insert"><i class="icon-view-headline"></i></a>
-		    <a class="small fab color-white bg-blue-500" id="image-insert"><i class="icon-image"></i></a>
-		    <a class="small fab color-white bg-green-500" id="map-insert"><i class="icon-map"></i></a>
-		    <a class="small fab color-white bg-grey-800" id="video-insert"><i class="icon-video"></i></a>
-		    <a class="small fab color-white bg-pink-500" id="embed-insert">&lt;&gt;</a>
+				<a class="small fab" id="heading-insert">h1</a>
+				<a class="small fab" id="subheading-insert">h2</a>
+				<a class="small fab" id="divider-insert"><i class="icon-view-headline"></i></a>
+				<a class="small fab color-white bg-blue-500" id="image-insert"><i class="icon-image"></i></a>
+				<a class="small fab color-white bg-green-500" id="map-insert"><i class="icon-map"></i></a>
+				<a class="small fab color-white bg-grey-800" id="video-insert"><i class="icon-video"></i></a>
+				<a class="small fab color-white bg-pink-500" id="embed-insert">&lt;&gt;</a>
 		</div>
 
 		<button class="fab bg-red-500 color-white start-button">
-		    <i class="icon-add"></i>
+				<i class="icon-add"></i>
 		</button>
 	</div>
 
@@ -96,7 +97,7 @@ embeds from other websites to the document (more in the future). A quick
 		</div>
 	</div>
 
-  <div noprint class="deletion-button small fab color-red-500"><i class="icon-close"></i></div>
+	<div noprint class="deletion-button small fab color-red-500"><i class="icon-close"></i></div>
 
 	<script src="lib/grande/grande.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

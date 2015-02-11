@@ -2,6 +2,7 @@
 	position: fixed;
 	bottom: 24px;
 	right: 24px;
+	background-color: transparent;
 }
 
 #start-menu-container:not(:hover) .start-menu {
