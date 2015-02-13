@@ -19,9 +19,12 @@
 	width: 100%;
 	float: none;
 }
+.extend-block.small {
+	width: 25%;
+}
 @media all and (max-width: 750px) {
 	.extend-block {
-		width:100%;
+		width:100% !important;
 		margin-left: 0;
 		margin-right: 0;
 	}

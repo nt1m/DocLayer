@@ -1,7 +1,7 @@
 .infocard-shell {
 	width: 40%;
 	min-width: 200px;
-	max-width: 600px;
+	max-width: 550px;
 	height: calc(100% - 50px);
 	overflow: auto;
 	position: fixed;
@@ -96,4 +96,24 @@
 	width: 100%;
 	text-align: center;
 	margin-top: 20px;
+}
+
+.research-insert-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	margin: 10px;
+}
+
+.attribution {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	z-index: 999999;
+}
+.attribution img {
+	height: 40px;
+	width: 40px;
+	vertical-align: middle;
 }
