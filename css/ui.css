@@ -37,6 +37,10 @@ body.has-toolbar {
 	/* width of this is set in findinpage.js */
 }
 
+#findinpage-input.no-matches {
+	color: #f44336;
+	border-color: #f44336;
+}
 .findinpage {
 	position: relative;
 	vertical-align: middle;

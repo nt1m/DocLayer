@@ -16,6 +16,7 @@ scratchpad.modules.define("findinpage", {
 	startsearch: function() {
 		this.findinpagecount.html("");
 		this.findinpageinput.val("");
+			this.findinpageinput.removeClass("no-matches");
 		this.findinpagecontainer.show().css("width", "0px").animate({width: "200px"}, 70);
 		this.findinpageinput.focus();
 		if(window.location.hash != "#debug") {
@@ -32,7 +33,13 @@ scratchpad.modules.define("findinpage", {
 	highlightmatches: function() {
 		this.editor.removeHighlight();
 		this.editor.highlight(this.findinpageinput.val());
-		this.findinpagecount.html($(".highlight").length);
+		var matches = $(".highlight").length
+		this.findinpagecount.html(matches);
+		if(matches == 0 && this.findinpageinput.val() != "") {
+			this.findinpageinput.addClass("no-matches")
+		} else {
+			this.findinpageinput.removeClass("no-matches");
+		}
 	},
 
 	init: function() {
