@@ -18,7 +18,7 @@ var scratchpad = {
 		var starttime = Date.now(); // start performance logging
 
 		// The modules are loaded in the order they are specified
-		var modulesToLoad = ["editortooltip", "editor", "caret", "ui", "darktheme", "images", "maps", "videos", "embeds", "findinpage", "research" ];
+		var modulesToLoad = ["editor", "caret", "ui", "darktheme", "images", "maps", "videos", "embeds", "findinpage", "research", "editortooltip" ];
 		modulesToLoad.forEach(function(value) {
 			scratchpad.modules.load(value);
 		});

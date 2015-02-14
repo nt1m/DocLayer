@@ -1,8 +1,7 @@
 scratchpad.modules.define("editortooltip", {
-	
 	init: function() {
+	
 	var EDGE = -999,
-
 			editableNodes = document.querySelectorAll("#document-editor"),
 			editNode = editableNodes[0], // TODO: cross el support for imageUpload
 			isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
@@ -13,23 +12,6 @@ scratchpad.modules.define("editortooltip", {
 			optionsNode,
 			urlInput,
 			previouslySelectedText,
-
-			grande = {
-				bind: function(bindableNodes, opts) {
-					if (bindableNodes) {
-						editableNodes = bindableNodes;
-					}
-
-					options = opts || options;
-
-					attachToolbarTemplate();
-					bindTextSelectionEvents();
-					bindTextStylingEvents();
-				},
-				select: function() {
-					triggerTextSelection();
-				}
-			},
 
 			tagClassMap = {
 				"b": "bold",
@@ -44,6 +26,12 @@ scratchpad.modules.define("editortooltip", {
 				"research": "research"
 			};
 		
+		
+							attachToolbarTemplate();
+					bindTextSelectionEvents();
+					bindTextStylingEvents();
+		
+
 	function attachToolbarTemplate() {
 		var div = document.createElement("div"),
 				toolbarTemplate = "<div class='options'> \
@@ -347,17 +335,7 @@ scratchpad.modules.define("editortooltip", {
 						optionsNode.className = "options url-mode";
 						return;
 					case "research":
-						var selection = window.getSelection();
-						$(".infocard-content").html("");
-						var infocard = new InfoCard({
-            query: selection,
-            container: document.querySelector(".infocard-content"),
-            onEmpty: function(container) {
-                container.innerHTML="<div class='secondary-text error-message'>No results found.</div>"
-            }
-						});
-						$(".infocard-shell").show();
-						$("#ddg-attr-result").attr("href", "http://duckduckgo.com/?q=" + encodeURIComponent(selection));
+						scratchpad.research.show(window.getSelection());
 						return;
 
 				}
@@ -495,7 +473,6 @@ scratchpad.modules.define("editortooltip", {
 			}
 		}
 	}
-grande.bind(document.querySelectorAll("article"))
 
 }
 													});

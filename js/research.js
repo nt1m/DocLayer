@@ -1,4 +1,16 @@
 scratchpad.modules.define("research", {
+	show: function(data) {
+		$(".infocard-content").html("");
+		var infocard = new InfoCard({
+			query: data,
+			container: document.querySelector(".infocard-content"),
+			onEmpty: function(container) {
+				container.innerHTML="<div class='secondary-text error-message'>No results found.</div>"
+			}
+			});
+			$(".infocard-shell").show();
+			$("#ddg-attr-result").attr("href", "http://duckduckgo.com/?q=" + encodeURIComponent(data) + "&t=scratchpad");
+	},
 	generateImage: function(input) {
 		var imagetemplate = "<img class='extend-block image-extend-block small' src='" + input + "'/>"
 		scratchpad.caret.pasteHtmlAtCaret(imagetemplate, false);
