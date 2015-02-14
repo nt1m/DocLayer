@@ -52,16 +52,16 @@ scratchpad.modules.define("editortooltip", {
 							<div class='category'>\
 							<button title='Bold' class='bold'>B</button> \
 							<button title='Italic' class='italic'>i</button> \
-							<button title='Underline' class='underline'><ins>U</ins></button> \
-							<button title='Strikethrough' class='strikethrough'><del>S</del></button> \
+							<button title='Underline' class='underline'><i class='icon-format-underline'></i></button> \
+							<button title='Strikethrough' class='strikethrough'><i class='icon-format-strikethrough'></i></button> \
 							</div> \
 							<div class='category'>\
 							<button title='Heading 1' class='header1'>h1</button> \
 							<button title='Heading 2' class='header2'>h2</button> \
 							<button title='Heading 3' class='header3'>h3</button> \
 							</div> \
-							<button title='Quote' class='quote'>&rdquo;</button> \
-							<button title='Link' class='url'><i class='icon icon-attachment'></i></button> \
+							<button title='Quote' class='quote'><i class='icon-quote'></i></button> \
+							<button title='Link' class='url'><i class='icon icon-link'></i></button> \
 							<button title='Research' class='research'><i class='icon icon-book'></i></button> \
 							<input class='url-input' type='text' placeholder='Paste or type a link'/> \
 						</span> \
@@ -332,8 +332,7 @@ scratchpad.modules.define("editortooltip", {
 					case "i":
 					case "del":
 					case "ins":
-						scratchpad.modules.caret.pasteHtmlAtCaret("<div>thing</div", false);
-						//document.execCommand(tagClass, false);
+						document.execCommand(tagClass, false);
 						return;
 
 					case "h1":
