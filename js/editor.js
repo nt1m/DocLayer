@@ -32,7 +32,6 @@ scratchpad.modules.define("editor", {
 	},
 	init: function() {
 		var _ = this;
-		grande.bind(document.querySelectorAll("article"));
 		$("#heading-insert").on("mousedown", function() {
 			_.insertItem("h1");
 		});

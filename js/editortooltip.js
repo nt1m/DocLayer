@@ -1,10 +1,9 @@
-(function() {
-	/*jshint multistr:true */
-	var EDGE = -999;
+scratchpad.modules.define("editortooltip", {
+	
+	init: function() {
+	var EDGE = -999,
 
-	var root = this,	 // Root object, this is going to be the window for now
-			document = this.document, // Safely store a document here for us to use
-			editableNodes = document.querySelectorAll(".g-body article"),
+			editableNodes = document.querySelectorAll("#document-editor"),
 			editNode = editableNodes[0], // TODO: cross el support for imageUpload
 			isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
 			options = {
@@ -14,9 +13,6 @@
 			optionsNode,
 			urlInput,
 			previouslySelectedText,
-			imageTooltip,
-			imageInput,
-			imageBound;
 
 			grande = {
 				bind: function(bindableNodes, opts) {
@@ -47,7 +43,7 @@
 				"blockquote": "quote",
 				"research": "research"
 			};
-
+		
 	function attachToolbarTemplate() {
 		var div = document.createElement("div"),
 				toolbarTemplate = "<div class='options'> \
@@ -71,26 +67,17 @@
 						</span> \
 					</span> \
 				</div>",
-				imageTooltipTemplate = document.createElement("div"),
 				toolbarContainer = document.createElement("div");
-
 		toolbarContainer.className = "g-body";
 		document.body.appendChild(toolbarContainer);
-
-		imageTooltipTemplate.innerHTML = "<div class='pos-abs file-label'>Insert image</div> \
-																				<input class='file-hidden pos-abs' type='file' id='files' name='files[]' accept='image/*' multiple/>";
-		imageTooltipTemplate.className = "image-tooltip hide";
 
 		div.className = "text-menu hide";
 		div.innerHTML = toolbarTemplate;
 
 		if (document.querySelectorAll(".text-menu").length === 0) {
 			toolbarContainer.appendChild(div);
-			toolbarContainer.appendChild(imageTooltipTemplate);
 		}
 
-		imageInput = document.querySelectorAll(".file-label + input")[0];
-		imageTooltip = document.querySelectorAll(".image-tooltip")[0];
 		textMenu = document.querySelectorAll(".text-menu")[0];
 		optionsNode = document.querySelectorAll(".text-menu .options")[0];
 		urlInput = document.querySelectorAll(".text-menu .url-input")[0];
@@ -126,106 +113,14 @@
 		};
 
 		// Handle window resize events
-		root.onresize = triggerTextSelection;
+		window.onresize = triggerTextSelection;
 
 		urlInput.onblur = triggerUrlBlur;
 		urlInput.onkeydown = triggerUrlSet;
 
-		if (options.allowImages) {
-			imageTooltip.onmousedown = triggerImageUpload;
-			imageInput.onchange = uploadImage;
-			document.onmousemove = triggerOverlayStyling;
-		}
-
-		for (i = 0, len = editableNodes.length; i < len; i++) {
-			node = editableNodes[i];
+			node = editableNodes[0];
 			node.contentEditable = true;
 			node.onmousedown = node.onkeyup = node.onmouseup = triggerTextSelection;
-		}
-	}
-
-	function triggerOverlayStyling(event) {
-		toggleImageTooltip(event, event.target);
-	}
-
-	function triggerImageUpload(event) {
-		// Cache the bound that was originally clicked on before the image upload
-		var childrenNodes = editNode.children,
-				editBounds = editNode.getBoundingClientRect();
-
-		imageBound = getHorizontalBounds(childrenNodes, editBounds, event);
-	}
-
-	function uploadImage(event) {
-		// Only allow uploading of 1 image for now, this is the first file
-		var file = this.files[0],
-				reader = new FileReader(),
-				figEl;
-
-		reader.onload = (function(f) {
-			return function(e) {
-				figEl = document.createElement("figure");
-				figEl.innerHTML = "<img src=\"" + e.target.result + "\"/>";
-				editNode.insertBefore(figEl, imageBound.bottomElement);
-			};
-		}(file));
-
-		reader.readAsDataURL(file);
-	}
-
-	function toggleImageTooltip(event, element) {
-		var childrenNodes = editNode.children,
-				editBounds = editNode.getBoundingClientRect(),
-				bound = getHorizontalBounds(childrenNodes, editBounds, event);
-
-		if (bound) {
-			imageTooltip.style.left = (editBounds.left - 90 ) + "px";
-			imageTooltip.style.top = (bound.top - 17) + "px";
-		} else {
-			imageTooltip.style.left = EDGE + "px";
-			imageTooltip.style.top = EDGE + "px";
-		}
-	}
-
-	function getHorizontalBounds(nodes, target, event) {
-		var bounds = [],
-				bound,
-				i,
-				len,
-				preNode,
-				postNode,
-				bottomBound,
-				topBound,
-				coordY;
-
-		// Compute top and bottom bounds for each child element
-		for (i = 0, len = nodes.length - 1; i < len; i++) {
-			preNode = nodes[i];
-			postNode = nodes[i+1] || null;
-
-			bottomBound = preNode.getBoundingClientRect().bottom - 5;
-			topBound = postNode.getBoundingClientRect().top;
-
-			bounds.push({
-				top: topBound,
-				bottom: bottomBound,
-				topElement: preNode,
-				bottomElement: postNode,
-				index: i+1
-			});
-		}
-
-		coordY = event.pageY - root.scrollY;
-
-		// Find if there is a range to insert the image tooltip between two elements
-		for (i = 0, len = bounds.length; i < len; i++) {
-			bound = bounds[i];
-			if (coordY < bound.top && coordY > bound.bottom) {
-				return bound;
-			}
-		}
-
-		return null;
 	}
 
 	function iterateTextMenuButtons(callback) {
@@ -253,7 +148,7 @@
 	}
 
 	function getFocusNode() {
-		return root.getSelection().focusNode;
+		return window.getSelection().focusNode;
 	}
 
 	function reloadMenuState() {
@@ -437,7 +332,8 @@
 					case "i":
 					case "del":
 					case "ins":
-						document.execCommand(tagClass, false);
+						scratchpad.modules.caret.pasteHtmlAtCaret("<div>thing</div", false);
+						//document.execCommand(tagClass, false);
 						return;
 
 					case "h1":
@@ -560,7 +456,7 @@
 	}
 
 	function triggerTextSelection(e) {
-		var selectedText = root.getSelection(),
+		var selectedText = window.getSelection(),
 				range,
 				clientRectBounds,
 				target = e.target || e.srcElement;
@@ -582,7 +478,7 @@
 			// Every time we show the menu, reload the state
 			reloadMenuState();
 			setTextMenuPosition(
-				clientRectBounds.top - 5 + root.pageYOffset,
+				clientRectBounds.top - 5 + window.pageYOffset,
 				(clientRectBounds.left + clientRectBounds.right) / 2
 			);
 		}
@@ -600,7 +496,7 @@
 			}
 		}
 	}
+grande.bind(document.querySelectorAll("article"))
 
-	root.grande = grande;
-
-}).call(this);
+}
+													});
