@@ -83,3 +83,13 @@ h1, h2, h3 {
 	margin: 0.5em;
 	margin-left: -1.7em;
 }
+
+/* override defaults */
+
+p[align=center] {
+	text-align: center;
+}
+
+p[align=right] {
+	text-align: right;
+}

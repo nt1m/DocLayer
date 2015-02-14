@@ -21,6 +21,9 @@ scratchpad.modules.define("editortooltip", {
 				"h1": "header1",
 				"h2": "header2",
 				"h3": "header3",
+				"leftalign": "justifyLeft",
+				"centeralign": "justifyCenter",
+				"rightalign": "justifyRight",
 				"a": "url",
 				"blockquote": "quote",
 				"research": "research"
@@ -47,6 +50,11 @@ scratchpad.modules.define("editortooltip", {
 							<button title='Heading 1' class='header1'>h1</button> \
 							<button title='Heading 2' class='header2'>h2</button> \
 							<button title='Heading 3' class='header3'>h3</button> \
+							</div> \
+							<div class='category'>\
+							<button title='Left Align' class='justifyLeft'><i class='icon-align-left'></i></button> \
+							<button title='Center Align' class='justifyCenter'><i class='icon-align-center'></i></button> \
+							<button title='Right Align' class='justifyRight'><i class='icon-align-right'></i></button> \
 							</div> \
 							<button title='Quote' class='quote'><i class='icon-quote'></i></button> \
 							<button title='Link' class='url'><i class='icon icon-link'></i></button> \
@@ -328,6 +336,12 @@ scratchpad.modules.define("editortooltip", {
 					case "h3":
 					case "blockquote":
 						toggleFormatBlock(tag);
+						return;
+
+					case "leftalign":
+					case "centeralign":
+					case "rightalign":
+						document.execCommand(tagClass, false);
 						return;
 
 					case "a":
