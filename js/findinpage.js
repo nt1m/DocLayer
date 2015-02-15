@@ -43,6 +43,7 @@ scratchpad.modules.define("findinpage", {
 	},
 
 	init: function() {
+		var _ = this;
 		// Bind functions
 		this.startsearch = this.startsearch.bind(this);
 		this.endsearch = this.endsearch.bind(this);
@@ -53,5 +54,8 @@ scratchpad.modules.define("findinpage", {
 		$("#findinpage-button").click(this.startsearch);
 		this.findinpageinput.blur(this.endsearch);
 		this.findinpageinput.keyup(this.highlightmatches);
+		scratchpad.keybindings.addBinding(102, function() {
+			_.startsearch();
+		})
 	}
 });

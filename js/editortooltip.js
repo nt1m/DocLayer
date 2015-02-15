@@ -488,5 +488,24 @@ scratchpad.modules.define("editortooltip", {
 		}
 	}
 
-}
+			//keyboard shortcuts
+	
+		scratchpad.keybindings.addBinding(98, function() {
+			document.execCommand("bold", false);
+		});
+		scratchpad.keybindings.addBinding(105, function() {
+			document.execCommand("italic", false);
+		});
+		scratchpad.keybindings.addBinding(117, function() {
+			document.execCommand("underline", false);
+		});
+		scratchpad.keybindings.addBinding(107, function() {
+						toggleUrlInput();
+						optionsNode.className = "options url-mode";
+		});
+		scratchpad.keybindings.addBinding(105, function() {
+			scratchpad.research.show(window.getSelection());
+		});
+	}
+
 													});
