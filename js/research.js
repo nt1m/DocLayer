@@ -32,6 +32,9 @@ scratchpad.modules.define("research", {
 		$(".infocard-shell").on("mouseover", "img", function(e) {
 			_.imageInsertFlow(e);
 		});
+		$(".infocard-shell").on("click", "h2", function(e) {
+			_.show(e.target.innerHTML);
+		});
 		$(document.body).on("click", function() {
 			$(".research-insert-button").hide();
 		});
