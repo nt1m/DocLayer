@@ -35,5 +35,13 @@ scratchpad.modules.define("research", {
 		$(document.body).on("click", function() {
 			$(".research-insert-button").hide();
 		});
+		scratchpad.keybindings.addBinding(115, function() {
+			scratchpad.research.show(window.getSelection());
+		});
+		window.addEventListener("keypress", function(e) {
+			if(e.keyCode == 27) {
+				$(".infocard-shell").hide();
+			}
+		});
 	}
 });

@@ -12,12 +12,12 @@
 
 scratchpad.modules.define("keybindings", {
 addBinding: function(keycode, eventFunction) {
-	window.onkeypress = function(e) {
+	window.addEventListener("keypress", function(e) {
 		if	((e.charCode == keycode && e.metaKey) || (e.charCode && e.ctrlKey)) {
 			e.preventDefault();
 			eventFunction(e);
 		}
-	}
+	});
 },
 	init: function() {
 		console.log("initialized keyboard shortcuts module");
