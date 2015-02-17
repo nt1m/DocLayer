@@ -115,7 +115,6 @@ scratchpad.modules.define("editortooltip", {
 		urlInput.onkeydown = triggerUrlSet;
 
 			node = editableNodes[0];
-			node.contentEditable = true;
 			node.onmousedown = node.onkeyup = node.onmouseup = triggerTextSelection;
 	}
 
