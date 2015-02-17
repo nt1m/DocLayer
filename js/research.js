@@ -13,7 +13,11 @@ scratchpad.modules.define("research", {
 			},
 			appReferName: "scratchpad",
 			onHeadingClick: function(e) {
+				if (e.target.tagName == "H2") { //category names for meanings
 				_.show(e.target.innerHTML);
+				} else { //headers that will just show the same results when clicked
+					window.open("https://duckduckgo.com/?q=" + encodeURIComponent(e.target.innerHTML),'_blank');
+				}
 			}
 			});
 			$(".infocard-shell").show();
