@@ -1,15 +1,19 @@
 scratchpad.modules.define("research", {
 	show: function(data) {
+		var _ = this;
 		$(".infocard-content").html("");
 		var infocard = new InfoCard({
 			query: data,
 			container: document.querySelector(".infocard-content"),
 			onEmpty: function(container) {
 				container.innerHTML="<div class='secondary-text error-message'>No results found.</div>"
+			},
+			appReferName: "scratchpad",
+			onHeadingClick: function(e) {
+				_.show(e.target.innerHTML);
 			}
 			});
 			$(".infocard-shell").show();
-			$("#ddg-attr-result").attr("href", "http://duckduckgo.com/?q=" + encodeURIComponent(data) + "&t=scratchpad");
 	},
 	generateImage: function(input) {
 		var imagetemplate = "<img class='extend-block image-extend-block small' src='" + input + "'/>"
@@ -31,9 +35,6 @@ scratchpad.modules.define("research", {
 		$(document.body).append('<div noprint hidden class="research-insert-button small fab color-green-500" title="Add image to document"><i class="icon-add"></i></div>');
 		$(".infocard-shell").on("mouseover", "img", function(e) {
 			_.imageInsertFlow(e);
-		});
-		$(".infocard-shell").on("click", "h2", function(e) {
-			_.show(e.target.innerHTML);
 		});
 		$(document.body).on("click", function() {
 			$(".research-insert-button").hide();
