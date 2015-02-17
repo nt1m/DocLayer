@@ -8,6 +8,9 @@ scratchpad.modules.define("research", {
 			onEmpty: function(container) {
 				container.innerHTML="<div class='secondary-text error-message'>No results found.</div>"
 			},
+			onError: function(container) {
+				container.innerHTML="<div class='secondary-text error-message'>An error occured</div>"
+			},
 			appReferName: "scratchpad",
 			onHeadingClick: function(e) {
 				_.show(e.target.innerHTML);
