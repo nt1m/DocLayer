@@ -489,16 +489,16 @@ scratchpad.modules.define("editortooltip", {
 
 			//keyboard shortcuts
 	
-		scratchpad.keybindings.addBinding(98, function() {
+		scratchpad.keybindings.addBinding("mod+b", function() {
 			document.execCommand("bold", false);
 		});
-		scratchpad.keybindings.addBinding(105, function() {
+		scratchpad.keybindings.addBinding("mod+i", function() {
 			document.execCommand("italic", false);
 		});
-		scratchpad.keybindings.addBinding(117, function() {
+		scratchpad.keybindings.addBinding("mod+u", function() {
 			document.execCommand("underline", false);
 		});
-		scratchpad.keybindings.addBinding(107, function() {
+		scratchpad.keybindings.addBinding("mod+k", function() {
 						toggleUrlInput();
 						optionsNode.className = "options url-mode";
 		});

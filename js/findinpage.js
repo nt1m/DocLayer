@@ -54,7 +54,7 @@ scratchpad.modules.define("findinpage", {
 		$("#findinpage-button").click(this.startsearch);
 		this.findinpageinput.blur(this.endsearch);
 		this.findinpageinput.keyup(this.highlightmatches);
-		scratchpad.keybindings.addBinding(102, function() {
+		scratchpad.keybindings.addBinding("mod+f", function() {
 			_.startsearch();
 		})
 	}
