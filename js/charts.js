@@ -42,7 +42,7 @@ scratchpad.modules.define("charts", {
 		});
 	},
 	ondialogopen: function() {
-		var input = "<div class='chartplaceholder'> </div>"; //add a placeholder to mark the cursor position
+		var input = "<iframe sandbox='allow-scripts allow-same-origin' class='chartplaceholder'> </iframe>"; //add a placeholder to mark the cursor position
 		scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function() {
@@ -56,8 +56,8 @@ scratchpad.modules.define("charts", {
 		var chartdata = "<table class='fm-" + selectedchart + "'>" + tabledata + "</table>";
 		var placeholder = $(".chartplaceholder");
 		var scripts = this.getFMScriptSource(selectedchart);
-		placeholder.html(chartdata + scripts);
-		placeholder.removeClass("chartplaceholder").addClass("extend-block").addClass("chart-extend-block").attr("contenteditable", "false").attr("data-table", tabledata); 
+		placeholder.attr("srcdoc", chartdata + scripts);
+		placeholder.removeClass("chartplaceholder").addClass("extend-block").addClass("chart-extend-block").attr("data-table", tabledata); 
 		scratchpad.ui.dialogs.hide($(this.dialogEl));
 	},
 	init: function() {

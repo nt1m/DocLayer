@@ -2,13 +2,14 @@
 	display: block;
 }
 
-.map-extend-block, .embed-extend-block { /* these use iframes */
+.map-extend-block, .embed-extend-block, .chart-extend-block { /* these use iframes */
 	height: 300px;
 	border: 0;
 }
 
-.embed-extend-block {
-	height: 400px;
+.embed-extend-block, .chart-extend-block { /* things that need to be larger */
+	height: 485px;
+	max-height: 85vh;
 }
 .extend-block {
 	width: 50%;
@@ -34,6 +35,6 @@
 	backgroud-color: #FFF;
 }
 
-.mapplaceholder, .videoplaceholder, .embedplaceholder {
+.mapplaceholder, .videoplaceholder, .embedplaceholder, .chartplaceholder {
 	display: none;
 }
