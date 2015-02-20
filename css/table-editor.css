@@ -1,0 +1,70 @@
+.table-editor {
+	height: 400px;
+	width: 400px;
+  position: relative;
+  white-space: nowrap;
+	margin-top: 1em;
+}
+
+table {
+    display: inline-block;
+    width: calc(100% - 25px);
+    height: calc(100% - 25px);
+    overflow: auto;
+    font-size: 90%;
+    border-collapse:collapse
+}
+
+td {
+    border-right: 1px rgba(0, 0, 0, 0.12) solid;
+    display: inline-block;
+    padding: 0.5em;
+    width: 85px;
+    height: 2.1em;
+    text-align: center;
+    overflow: auto;
+    outline: 0;
+}
+td:focus {
+    width: auto;
+    min-width: 85px;
+    background: #FFF;
+    position: absolute;
+    border: 2px solid #64b5f6;
+    padding: calc(0.5em - 2px);
+}
+
+thead td {
+	font-weight: 600;
+}
+
+td:focus + td {
+    margin-left: 85px;
+}
+
+tr {
+    border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
+    display: block;
+}
+
+.add-button {
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    background: #f5f5f5;
+    padding: 0.35em;
+    vertical-align: top;
+    cursor: pointer;
+}
+.add-button:hover {
+    background: #eeeeee;
+}
+.add-column {
+    height: 100%;
+    width: 25px;
+    display: inline-block;
+}
+
+.add-row {
+    margin-top: -25px;
+}

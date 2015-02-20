@@ -41,13 +41,12 @@ embeds from other websites to the document (more in the future). A quick
 	
 	<div noprint id="start-menu-container">	
 		<div class="start-menu">
-				<a class="small fab" id="heading-insert" title="Heading 1">h1</a>
-				<a class="small fab" id="subheading-insert" title="Heading 2">h2</a>
 				<a class="small fab" id="divider-insert" title="Divider"><i class="icon-view-headline"></i></a>
 				<a class="small fab color-white bg-blue-500" id="image-insert" title="Image"><i class="icon-image"></i></a>
 				<a class="small fab color-white bg-green-500" id="map-insert" title="Map"><i class="icon-map"></i></a>
 				<a class="small fab color-white bg-grey-800" id="video-insert" title="Video"><i class="icon-video"></i></a>
 				<a class="small fab color-white bg-pink-500" id="embed-insert" title="Embed">&lt;&gt;</a>
+				<a class="small fab color-white bg-orange-500" id="chart-insert" title="Chart"><i class="icon-chart"></i></a>
 		</div>
 
 		<button class="fab bg-red-500 color-white start-button">
@@ -101,7 +100,39 @@ embeds from other websites to the document (more in the future). A quick
 		</div>
 	</div>
 
-	<div noprint class="deletion-button small fab color-red-500"><i class="icon-close"></i></div>
+	<div noprint class="dialog chart-dialog large-dialog" hidden>
+		<span class="dialog-title">Add a Chart</span>
+		<div class="dialog-content">
+			<div class="chart-type-chooser">
+			 <div> choose a chart type</div>
+			<div class="radio"> <input autoselect type="radio" id="pie" name="charts"/> <label for="pie"></label> </div> Pie
+			<div class="radio"> <input type="radio" id="doughnut" name="charts"/> <label for="doughnut"></label> </div> Doughnut
+			<div class="radio"> <input type="radio" id="line" name="charts"/> <label for="line"></label> </div> Line
+			</div>
+<div class="table-editor">
+<table class="table">
+<thead class="table-head-region">
+<tr>
+<td contenteditable="true" spellcheck="false"></td>
+<td contenteditable="" spellcheck="false"></td>
+</tr>
+</thead>
+<tbody><tr>
+<td contenteditable="true" spellcheck="false"></td>
+<td contenteditable="" spellcheck="false"></td></tr></tbody>
+</table>
+<div class="add-button add-column">+</div>
+<div class="add-button add-row">+</div>			
+		</div>
+			
+		</div>
+		<div class="dialog-footer">
+			<button id="embed-cancel-button" class="button dialog-cancel">Cancel</button>
+			<button id="embed-okay-button" class="button color-blue-500 dialog-confirm">Add Chart</button>
+		</div>
+	</div>
+
+	<div noprint class="deletion-button small fab color-red-500" title="Remove"><i class="icon-close"></i></div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="lib/mousetrap.js"></script>
@@ -110,6 +141,7 @@ embeds from other websites to the document (more in the future). A quick
 	<script async src="lib/infocards.js"></script>
 	<link rel="stylesheet" href="css/menu.css"/>
 	<link rel="stylesheet" href="css/cards.css"/>
+	<link rel="stylesheet" href="css/table-editor.css"/>
 	<script src="lib/offline/offline.min.js"></script>
 	<link rel="stylesheet" href="lib/offline/offline-theme-default.css"/>
 	<link rel="stylesheet" href="lib/offline/offline-language-english.css"/>

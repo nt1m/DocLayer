@@ -32,6 +32,11 @@
 	top: calc(50% - 75px);
 	left: calc(50% - 150px);
 }
+.large-dialog {
+		position: fixed;
+	top: calc(50% - 300px);
+	left: calc(50% - 225px);
+}
 .map-dialog {
 	position: fixed;
 	top: calc(50% - 100px);
@@ -51,4 +56,11 @@
 .video-url-chooser, .embed-url-chooser {
 	width: 100%;
 	margin-top: 0.8em;
+}
+
+.chart-type-chooser {
+	line-height: 1.75em;
+}
+.chart-type-chooser .radio {
+	padding: 0 0.66em;
 }
