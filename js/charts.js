@@ -15,6 +15,9 @@ scratchpad.modules.define("charts", {
 			case "column-bar":
 				 return '<link rel="stylesheet" href="http://factmint.io/column-bar.css"><script src="http://factmint.io/column-bar.js"></script>';
 				break;
+			case "scatter":
+				 return '<link rel="stylesheet" href="http://factmint.io/scatter.css"><script src="http://factmint.io/scatter.js"></script>';
+				break;
 			case "table":
 				 return '';
 				break;
