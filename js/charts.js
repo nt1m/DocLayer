@@ -18,8 +18,11 @@ scratchpad.modules.define("charts", {
 			case "scatter":
 				 return '<link rel="stylesheet" href="http://factmint.io/scatter.css"><script src="http://factmint.io/scatter.js"></script>';
 				break;
+			case "bubble":
+				 return '<link rel="stylesheet" href="http://factmint.io/bubble.css"><script src="http://factmint.io/bubble.js"></script>';
+				break;
 			case "table":
-				 return '';
+				 return '<style>table {font-family:sans-serif;}th,td {padding:0.66em}</style><link rel="stylesheet" href="http://factmint.io/fallback-table.css">';
 				break;
 		}
 	},
@@ -54,7 +57,7 @@ scratchpad.modules.define("charts", {
 		}
 	},
 	insertChart: function() {
-		var tabledata = $(".table").html();
+		var tabledata = $(".table").html().replace(/contenteditable/g, 'data-previous-contenteditable-state');;
 		var selectedchart = $('input:radio[name=charts]:checked').attr("id");
 		var chartdata = "<table class='fm-" + selectedchart + "'>" + tabledata + "</table>";
 		var placeholder = $(".chartplaceholder");
