@@ -59,7 +59,7 @@
 }
 
 .chart-type-chooser {
-	line-height: 1.75em;
+	margin: 1em 0;
 }
 .chart-type-chooser .radio {
 	padding: 0 0.66em;
