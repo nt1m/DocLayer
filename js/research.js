@@ -46,7 +46,7 @@ scratchpad.modules.define("research", {
 		$(document.body).on("click", function() {
 			$(".research-insert-button").hide();
 		});
-		scratchpad.keybindings.addBinding("mod+s", function() {
+		scratchpad.keybindings.addBinding("mod+option+shift+i", function() {
 			scratchpad.research.show(window.getSelection());
 		});
 		scratchpad.keybindings.addBinding("esc", function() {

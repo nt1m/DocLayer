@@ -502,6 +502,19 @@ scratchpad.modules.define("editortooltip", {
 						toggleUrlInput();
 						optionsNode.className = "options url-mode";
 		});
+		scratchpad.keybindings.addBinding("option+shift+5", function() {
+			document.execCommand("strikeThrough", false);
+		});
+		scratchpad.keybindings.addBinding("mod+option+1", function() {
+			toggleFormatBlock("h1");
+		});
+		scratchpad.keybindings.addBinding("mod+option+2", function() {
+			toggleFormatBlock("h2");
+		});
+		scratchpad.keybindings.addBinding("mod+option+3", function() {
+			toggleFormatBlock("h3");
+		});
+
 	}
 
 													});
