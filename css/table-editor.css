@@ -15,7 +15,7 @@ table {
     border-collapse:collapse;
 }
 
-td {
+td, th {
 		display: flex;
     border-right: 1px rgba(0, 0, 0, 0.12) solid;
     border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
@@ -28,12 +28,12 @@ td {
 		flex: 1;
 		flex-flow: row column;
 }
-td:focus {
+td:focus, th:focus {
     border: 2px solid #64b5f6;
     padding: calc(0.5em - 2px);
 }
 
-thead td {
+thead th {
 	font-weight: 600;
 }
 

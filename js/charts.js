@@ -35,7 +35,9 @@ scratchpad.modules.define("charts", {
 
 		$(".add-column").click(function() {
 			var template = "<td contenteditable  spellcheck='false'></td>"
-			$(".table tr").append(template);
+			var htemplate = "<th contenteditable  spellcheck='false'></th>"
+			$(".table tbody tr").append(template);
+			$(".table thead tr").append(htemplate);
 			columns++;
 		});
 	},
