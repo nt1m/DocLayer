@@ -2,7 +2,7 @@ scratchpad.modules.define("maps", {
 	dialogEl: $(".map-dialog"),
 	launchButton: $("#map-insert"),
 	ondialogopen: function() {
-			var input = "<iframe class='mapplaceholder'/>"; //add a placeholder to mark the cursor position
+			var input = "<iframe sandbox='allow-scripts' class='mapplaceholder'/>"; //add a placeholder to mark the cursor position
 				scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function() {
