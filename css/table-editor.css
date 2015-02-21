@@ -75,3 +75,17 @@ thead, tbody {
 tbody {
 	height: 340px;
 }
+
+/* dark theme */
+
+.dark-theme tr, .dark-theme th, .dark-theme td {
+	border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark-theme .add-button {
+	background: #333;
+}
+
+.dark-theme .add-button:hover {
+	background: #222;
+}
