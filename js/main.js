@@ -24,6 +24,7 @@ var scratchpad = {
 		});
 		var modulesToLoad = ["editor", "ui", "images", "maps", "videos", "embeds", "findinpage", "research", "charts" ];
 		$(window).load(function() {
+			$(".splashscreen").hide();
 			modulesToLoad.forEach(function(value) {
 				scratchpad.modules.load(value);
 			});

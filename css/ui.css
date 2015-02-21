@@ -81,3 +81,76 @@ body.has-toolbar {
 	margin: 10px;
 	display: none;
 }
+
+.splashscreen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 9999;
+}
+
+/* the logo */
+
+@keyframes pulse {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+.logo-card {
+    width: 350px;
+    height: 475px;
+    border-radius: 35px;
+    font-size: 13em;
+    color: #FFF;
+    text-align: center;
+    margin: auto;
+    position: relative;
+		top: calc(50% - 240px);
+		animation: pulse 1.25s infinite;
+}
+
+.logo-icon {
+    margin: 35px;
+    font-size: 14em;
+}
+
+.corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-bottom-left-radius: 20px;
+}
+.folded-corner {
+   content:"";
+   position:absolute;
+   top:0px;
+   right:0px;
+   border-style:solid;
+   border-width:45px;
+   border-color: #FFF #FFF #4DB6AC #4DB6AC;
+   -webkit-border-bottom-left-radius:10px;
+   -moz-border-radius:0 0 0 10px;
+   border-radius:0 0 0 10px;
+}
+.logo-card:after {
+  content: "";
+  position: absolute;
+  top: 90px;
+  right: 0;
+  border-width: 0 83px 60px 0;
+  border-style: solid;
+  border-color: transparent #00796b;
+}
+
+.icon-book {
+    padding-top: 130px;
+    display: inline-block;
+}
