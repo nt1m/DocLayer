@@ -105,16 +105,16 @@ body.has-toolbar {
 	}
 }
 .logo-card {
-    width: 350px;
-    height: 475px;
-    border-radius: 35px;
-    font-size: 13em;
+    width: 295px;
+    height: 400px;
+    border-radius: 30px;
+    font-size: 10em;
     color: #FFF;
     text-align: center;
     margin: auto;
     position: relative;
 		top: calc(50% - 240px);
-		animation: pulse 1.25s infinite;
+		animation: pulse 1.75s infinite;
 }
 
 .logo-icon {
@@ -134,7 +134,7 @@ body.has-toolbar {
    top:0px;
    right:0px;
    border-style:solid;
-   border-width:45px;
+   border-width:40px;
    border-color: #FFF #FFF #4DB6AC #4DB6AC;
    -webkit-border-bottom-left-radius:10px;
    -moz-border-radius:0 0 0 10px;
@@ -143,14 +143,14 @@ body.has-toolbar {
 .logo-card:after {
   content: "";
   position: absolute;
-  top: 90px;
+  top: 80px;
   right: 0;
-  border-width: 0 83px 60px 0;
+  border-width: 0 75px 60px 0;
   border-style: solid;
   border-color: transparent #00796b;
 }
 
 .logo-card .icon-book {
-    padding-top: 130px;
+    padding-top: 115px;
     display: inline-block;
 }
