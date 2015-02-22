@@ -2,10 +2,9 @@ scratchpad.modules.define("research", {
 	getImages: function(query) {
 			var imageSearch;
 		     function searchComplete() {
+          var contentDiv = document.querySelector(".images-results");
           contentDiv.innerHTML = '';
         if (imageSearch.results && imageSearch.results.length > 0) {
-
-          var contentDiv = document.querySelector(".images-results");
 
           var results = imageSearch.results;
           for (var i = 0; i < results.length; i++) {
