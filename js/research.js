@@ -1,4 +1,41 @@
 scratchpad.modules.define("research", {
+	getImages: function(query) {
+			var imageSearch;
+		     function searchComplete() {
+
+        if (imageSearch.results && imageSearch.results.length > 0) {
+
+          var contentDiv = document.querySelector(".images-results");
+          contentDiv.innerHTML = '';
+
+          var results = imageSearch.results;
+          for (var i = 0; i < results.length; i++) {
+            var result = results[i];
+            var imgContainer = document.createElement('div');
+            var title = document.createElement('div');
+            imgContainer.classList.add("gimage-result-container");
+						title.classList.add("gimage-result-title");
+            title.innerHTML = result.titleNoFormatting;
+            var newImg = document.createElement('img');
+						//a lot of the images don't exist any more, get rid of them
+						newImg.onerror = function(e) {
+																					e.target.parentNode.remove();
+																				}
+            newImg.src=result.url;
+            imgContainer.appendChild(title);
+            imgContainer.appendChild(newImg);
+
+            contentDiv.appendChild(imgContainer);
+          }
+
+        }
+      }
+
+		imageSearch = new google.search.ImageSearch();
+    imageSearch.setSearchCompleteCallback(this, searchComplete, null);
+    imageSearch.execute(query);
+
+	},
 	show: function(data) {
 		var _ = this;
 		$(".infocard-content").html("");
@@ -21,12 +58,14 @@ scratchpad.modules.define("research", {
 			}
 			});
 			$(".infocard-shell").show();
+			this.getImages(data);
 	},
 	generateImage: function(input) {
 		var imagetemplate = "<img class='extend-block image-extend-block small' src='" + input + "'/>"
 		scratchpad.caret.pasteHtmlAtCaret(imagetemplate, false);
 	},
 	imageInsertFlow: function(e) {
+		if(!e.target.hasAttribute("noinsert")) {
 		var _ = this;
 		var position = $(e.target).offset();
 		var shellposition = $(".infocard-shell").offset();
@@ -37,6 +76,7 @@ scratchpad.modules.define("research", {
 		$(".research-insert-button").on("mousedown", function() {
 			_.generateImage(e.target.src);
 		});
+		}
 	},
 	init: function() {
 		var _ = this;

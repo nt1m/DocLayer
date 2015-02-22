@@ -141,3 +141,50 @@ display: inline-block;
 background-image: url("../css/ddg_logo.svg");
 background-size: 2em auto;
 }
+
+.images-results {
+	width: 100%;
+	height: 200px;
+	overflow: auto;
+	overflow-y: hidden;
+	white-space: nowrap;
+}
+
+.images-results img {
+	height: 100%;
+	width: auto;
+}
+
+.images-results * {
+	display: inline;
+}
+
+.gimage-result-container {
+	position: relative;
+}
+.gimage-result-title {
+	display: block;
+	position: absolute;
+	bottom: -150px;
+	left: 0;
+	width: 100%;
+	max-width: 100%;
+	padding: 0.66em;
+	transition: .2s;
+	white-space: normal;
+}
+
+.gimage-result-container:hover .gimage-result-title {
+	bottom: 0;
+}
+
+#googleimages-branding img {
+	height: 35px;
+	width: auto;
+	vertical-align: middle;
+}
+
+#googleimages-branding {
+	padding: 0.66em;
+	text-align: right;
+}

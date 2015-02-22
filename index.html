@@ -35,6 +35,8 @@
         <button onclick="$('.infocard-shell').hide()" class="icon-button"><i class="icon-close"></i></button>
         <span class="toolbar-label">Research</span>
     </div>
+		<div class="images-results"></div>
+		<div id="googleimages-branding">Powered by <img noinsert alt="Google" src="css/google-logo.png"/></div>
 		<div class="infocard-content"></div>
 	</div>
 
@@ -157,4 +159,8 @@ embeds from other websites to the document (more in the future). A quick
 	<link rel="stylesheet" href="lib/offline/offline-language-english.css"/>
 	<!-- offline doesn't check if there is no requests - do this manually -->
 	<script>setInterval(Offline.check, 5000);</script>
+  <script src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+  	google.load("search", "1");
+	</script>
 </html>
