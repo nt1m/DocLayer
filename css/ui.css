@@ -1,3 +1,54 @@
+/* global styles, editor elements */
+
+body, html {
+	min-width: 100%;
+	min-height: 100%;
+	overflow: auto;
+}
+
+* {
+	-webkit-overflow-scrolling: touch;
+	-webkit-font-smoothing: antialiased;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+
+.themeable {
+	background-color: #FFF;
+	border-color: #FFF;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.dark-theme .themeable {
+	background-color: #333;
+	border-color: #333;
+	color: rgba(255, 255, 255, 0.87);
+}
+
+.theme-main-color {
+	background-color: #009688;
+	border-color: #009688;
+	color: #fff;
+}
+
+.theme-accent-color {
+	background-color: #e91e63;
+	border-color: #e91e63;
+	color: #fff;
+}
+
+/* the editor */
+
+#document-editor {
+	width: 100%;
+	min-height: 80vh;
+	text-align: left;
+	padding: calc(2% + 10px);
+	padding-top: calc(0.5% + 25px);
+}
+
 /* navbr styles */
 
 .editor-toolbar {
@@ -139,6 +190,10 @@ body.has-toolbar {
    -webkit-border-bottom-left-radius:10px;
    -moz-border-radius:0 0 0 10px;
    border-radius:0 0 0 10px;
+}
+
+.dark-theme .folded-corner {
+   border-color: #333 #333 #4DB6AC #4DB6AC;
 }
 .logo-card:after {
   content: "";

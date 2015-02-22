@@ -2,14 +2,14 @@ scratchpad.modules.define("ui", {
 	dialogs: {
 		overlayEl: $(".dialog-overlay"),
 		show: function(dialog) {
-			this.overlayEl.fadeIn();
-			dialog.fadeIn();
+			this.overlayEl[0].hidden = false
+			dialog[0].hidden = false;
 			dialog.find(".text-input").val("");
 			dialog.trigger("dialog-shown");
 		},
 		hide: function(dialog) {
-			this.overlayEl.fadeOut();
-			dialog.fadeOut();
+			this.overlayEl[0].hidden = true;
+			dialog[0].hidden = true;
 			dialog.trigger("dialog-hidden");
 		},
 		init: function() {

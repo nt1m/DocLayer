@@ -13,6 +13,7 @@ scratchpad.modules.define("research", {
             var title = document.createElement('div');
             imgContainer.classList.add("gimage-result-container");
 						title.classList.add("gimage-result-title");
+						title.classList.add("themeable");
             title.innerHTML = result.titleNoFormatting;
             var newImg = document.createElement('img');
 						//a lot of the images don't exist any more, get rid of them
@@ -53,6 +54,9 @@ scratchpad.modules.define("research", {
 				} else { //headers that will just show the same results when clicked
 					window.open("https://duckduckgo.com/?q=" + encodeURIComponent(e.target.innerHTML),'_blank');
 				}
+			},
+			classNames: {
+										"category-item": "themeable",
 			}
 			});
 			$(".infocard-shell").show();

@@ -1,3 +1,7 @@
+.g-body * { /* grande.js doesn't like box-sizing, we need to turn it off */
+	box-sizing: content-box;
+}
+
 @-webkit-keyframes pop-upwards {
 	0% {
 		-webkit-transform:matrix(0.97,0,0,1,0,12);
@@ -131,7 +135,6 @@
 }
 
 .options {
-	background-color: inherit;
 	box-shadow: 0 0 5px rgba(50, 50, 50, 0.7);
 	position: absolute;
 	border-radius: 5px;
@@ -190,7 +193,7 @@
 
 .options:before {
 	content: "";
-	border-top: 5px solid purple; /* this doesn't actually get used */
+	border-top: 5px solid;
 	border-top-color: inherit;
 	border-bottom: 5px solid transparent;
 	border-right: 5px solid transparent;

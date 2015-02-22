@@ -130,6 +130,7 @@
 	width: 100%;
 	z-index: 999999;
 	padding: 0.33em;
+	background: rgba(255, 255, 255, 0.5);
 }
 
 .InfoCard-credit-link::before {

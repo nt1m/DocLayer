@@ -48,7 +48,7 @@ scratchpad.modules.define("charts", {
 		});
 	},
 	ondialogopen: function() {
-		var input = "<iframe sandbox='allow-scripts' class='chartplaceholder'> </iframe>"; //add a placeholder to mark the cursor position
+		var input = "<iframe sandbox='allow-scripts allow-same-origin' class='chartplaceholder'> </iframe>"; //add a placeholder to mark the cursor position
 		scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function() {

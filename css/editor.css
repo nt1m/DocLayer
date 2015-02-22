@@ -1,43 +1,4 @@
-/* global styles */
-
-body, html {
-	min-width: 100%;
-	min-height: 100%;
-	overflow: auto;
-	border-color: #FFF; /* for grande menu arrow */
-}
-
-body.dark-theme {
-	border-color: #333; /* for grande menu arrow */
-}
-* {
-	-webkit-overflow-scrolling: touch;
-	-webkit-font-smoothing: antialiased;
-	padding: 0;
-	margin: 0;
-	border: 0;
-	box-sizing: border-box;
-	background-color: inherit;
-	border-color: inherit;
-}
-
-.g-body * { /* grande.js doesn't like box-sizing, we need to turn it off */
-	box-sizing: content-box;
-}
-
-/* the editor shell */
-
-.page {
-	width: 100%;
-	min-height: 100%;
-	text-align: left;
-	padding: calc(2% + 10px);
-	padding-top: calc(0.5% + 25px);
-	z-index: -1;
-	overflow: auto;
-}
-
-/* bugfixes for the editor */
+/* text styling for the contenteditable region */
 
 hr {
 	display:none; /* hide divider lines - they don't work correctly */

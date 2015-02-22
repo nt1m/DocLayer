@@ -11,7 +11,7 @@
 	<meta charset="utf-8">
 </head>
 <body class="editor has-toolbar">
-	<div class="splashscreen">
+	<div class="splashscreen themeable">
 		<div class="logo-card bg-teal-500"><i class="icon-book"></i>
     <div class="corner">
     <div class="folded-corner"></div>
@@ -30,8 +30,8 @@
 		</span>
 	</div>
 
-	<div noprint class="infocard-shell" hidden>
-    <div class="toolbar bg-red-400 color-white">
+	<div noprint class="infocard-shell themeable" hidden>
+    <div class="toolbar theme-accent-color">
         <button onclick="$('.infocard-shell').hide()" class="icon-button"><i class="icon-close"></i></button>
         <span class="toolbar-label">Research</span>
     </div>
@@ -40,7 +40,7 @@
 		<div class="infocard-content"></div>
 	</div>
 
-		<article contenteditable="true" class="page mousetrap" id="document-editor">
+		<article contenteditable="true" class="mousetrap" id="document-editor">
 <h1>Welcome to Scratchpad!</h1><h2>the minimalist document editor</h2><p><br></p><p>Scratchpad is a new kind of document editor. The goals of scratchpad are to<br></p><ul><li>help you focus on writing</li><li>make it really easy and fast to take notes</li><li>make it easy to extend the editor with extra features</li><li>work on any device</li><li>easily add interactive features to documents</li></ul><p>You can also add quotes to documents. They look best if they are at least two lines long in length.</p><p>Scratchpad uses <a href="https://github.com/nt1m/material-framework/">material-framework</a> for its design, and has text editing features based on <a href="https://github.com/mduvall/grande.js">grande.js</a>. You can add <b>bold</b> text, <i>italics</i>, and <a href="https://github.com/PalmerAL/scratchpad">links</a>. type a * character or a number and a period on a new line to start a list. Select text to format it or turn it into a heading.</p><p><br></p><h2>dividers</h2><p><br></p><p>I'm above a divider<div class="extend-block fullwidth divider"></div></p><p>I'm below a divider<br></p><h2>Interactive components</h2><p><br></p><p>To
  add a component to your document, hover over the plus button in the 
 bottom right corner. You can add maps, images, dividers, videos, and 
@@ -53,12 +53,12 @@ embeds from other websites to the document (more in the future). A quick
 				<a class="small fab" id="divider-insert" title="Divider"><i class="icon-view-headline"></i></a>
 				<a class="small fab color-white bg-blue-500" id="image-insert" title="Image"><i class="icon-image"></i></a>
 				<a class="small fab color-white bg-green-500" id="map-insert" title="Map"><i class="icon-map"></i></a>
-				<a class="small fab color-white bg-grey-800" id="video-insert" title="Video"><i class="icon-video"></i></a>
+				<a class="small fab color-white bg-grey-800" id="video-insert" title="Video"><i class="icon-videocam"></i></a>
 				<a class="small fab color-white bg-pink-500" id="embed-insert" title="Embed">&lt;&gt;</a>
 				<a class="small fab color-white bg-orange-500" id="chart-insert" title="Chart"><i class="icon-chart"></i></a>
 		</div>
 
-		<button class="fab bg-red-500 color-white start-button">
+		<button class="fab theme-accent-color start-button">
 				<i class="icon-add"></i>
 		</button>
 	</div>
@@ -152,7 +152,7 @@ embeds from other websites to the document (more in the future). A quick
 	<script async src="lib/highlight.js"></script>
 	<script async src="lib/infocards.js"></script>
 	<link rel="stylesheet" href="css/menu.css"/>
-	<link rel="stylesheet" href="css/cards.css"/>
+	<link rel="stylesheet" href="css/research.css"/>
 	<link rel="stylesheet" href="css/table-editor.css"/>
 	<script src="lib/offline/offline.min.js"></script>
 	<link rel="stylesheet" href="lib/offline/offline-theme-default.css"/>

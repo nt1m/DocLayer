@@ -37,9 +37,9 @@ scratchpad.modules.define("editortooltip", {
 
 	function attachToolbarTemplate() {
 		var div = document.createElement("div"),
-				toolbarTemplate = "<div class='options'> \
+				toolbarTemplate = "<div class='options themeable'> \
 					<span class='no-overflow'> \
-						<span class='ui-inputs'> \
+						<span class='ui-inputs themeable'> \
 							<div class='category'>\
 							<button title='Bold' class='bold'>B</button> \
 							<button title='Italic' class='italic'>i</button> \
