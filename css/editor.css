@@ -37,12 +37,12 @@ h1, h2, h3 {
 }
 
 [starred]::before {
-	content: '\e818';
-	font-family: "google-icons";
-	color: #F44336;
-	font-size: 1.2em;
+	content: '\e95a';
+	font-family: "material-design-icons";
+	color: #e91e63;
+	font-size: 1em;
 	margin: 0.5em;
-	margin-left: -1.7em;
+	margin-left: -1.5em;
 }
 
 /* override defaults */
@@ -53,4 +53,18 @@ p[align=center] {
 
 p[align=right] {
 	text-align: right;
+}
+
+p:before {
+	content: '\e95a';
+	font-family: "material-design-icons";
+	color: transparent;
+	font-size: 1em;
+	margin: 0.5em;
+	margin-left: -1.5em;
+	cursor: pointer;
+}
+
+p:hover:not([starred]):before {
+	color: #777;
 }

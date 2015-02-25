@@ -22,6 +22,16 @@ scratchpad.modules.define("editor", {
 	hideDeletion: function() {
 		this.deletionButton.hide();
 	},
+	starParagraph: function(e) {
+		var target = $(e.target);
+		if(e.pageX < target.offset().left) {
+			if(target.attr("starred")) {
+				target.removeAttr("starred");
+			} else {
+				target.attr("starred", "true");
+			}
+		}
+	},
 	init: function() {
 		var _ = this;
 		$("#divider-insert").on("mousedown", function() {
@@ -33,5 +43,8 @@ scratchpad.modules.define("editor", {
 		$("#document-editor").on("click", function() {
 			_.hideDeletion();
 		});
+		$("#document-editor").on("click", "p", function(e) {
+			_.starParagraph(e);
+		})
 	}
 });
