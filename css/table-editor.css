@@ -16,9 +16,9 @@ table {
 }
 
 td, th {
-	/* two below properties aren't needed, and they cause weird bugs in webkit */
-	/*display: -webkit-flex;
-	display: flex; */
+	/* below property isn't needed, and it causes weird bugs in webkit */
+	/*display: -webkit-flex; */
+	display: flex;
 	border-right: 1px rgba(0, 0, 0, 0.12) solid;
 	border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
 	padding: 0.5em;
