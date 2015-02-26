@@ -34,6 +34,7 @@ ul, ol {
 /* special header styles */
 h1, h2, h3 {
 	clear: both; /* correct layout with blocks longer than the text */
+	position: static; /* we don't want the default sticky positioning - it looks weird on iOS */
 }
 
 /* override defaults */
