@@ -36,15 +36,6 @@ h1, h2, h3 {
 	clear: both; /* correct layout with blocks longer than the text */
 }
 
-[starred]::before {
-	content: '\e95a';
-	font-family: "material-design-icons";
-	color: #e91e63;
-	font-size: 1em;
-	margin: 0.5em;
-	margin-left: -1.5em;
-}
-
 /* override defaults */
 
 p[align=center] {
@@ -55,16 +46,23 @@ p[align=right] {
 	text-align: right;
 }
 
+/* paragraph stars */
+
 p:before {
 	content: '\e95a';
 	font-family: "material-design-icons";
 	color: transparent;
 	font-size: 1em;
-	margin: 0.5em;
-	margin-left: -1.5em;
+	padding: 0.5em 0.5em 0.5em;
+	margin-left: -2em;
 	cursor: pointer;
+	transition: .1s;
 }
 
 p:hover:not([starred]):before {
 	color: #777;
+}
+
+[starred]::before {
+	color: #e91e63;
 }
