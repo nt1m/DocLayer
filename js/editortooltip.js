@@ -43,8 +43,8 @@ scratchpad.modules.define("editortooltip", {
 							<div class='category'>\
 							<button title='Bold' class='bold'>B</button> \
 							<button title='Italic' class='italic'>i</button> \
-							<button title='Underline' class='underline'><i class='icon-format-underline'></i></button> \
-							<button title='Strikethrough' class='strikethrough'><i class='icon-format-strikethrough'></i></button> \
+							<button title='Underline' class='underline'><i class='icon-underline'></i></button> \
+							<button title='Strikethrough' class='strikethrough'><i class='icon-strikethrough'></i></button> \
 							</div> \
 							<div class='category'>\
 							<button title='Heading 1' class='header1'>h1</button> \
