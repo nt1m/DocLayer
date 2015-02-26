@@ -7,30 +7,34 @@
 }
 
 table {
-    display: inline-block;
-    width: calc(100% - 25px);
-    height: calc(100% - 25px);
-    overflow: auto;
-    font-size: 90%;
-    border-collapse:collapse;
+	display: inline-block;
+	width: calc(100% - 25px);
+	height: calc(100% - 25px);
+	overflow: auto;
+	font-size: 90%;
+	border-collapse:collapse;
 }
 
 td, th {
-		display: flex;
-    border-right: 1px rgba(0, 0, 0, 0.12) solid;
-    border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
-    padding: 0.5em;
-    min-width: 90px;
-    min-height: 2.1em;
-    text-align: center;
-    overflow: auto;
-    outline: 0;
-		flex: 1;
-		flex-flow: row column;
+	/* two below properties aren't needed, and they cause weird bugs in webkit */
+	/*display: -webkit-flex;
+	display: flex; */
+	border-right: 1px rgba(0, 0, 0, 0.12) solid;
+	border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
+	padding: 0.5em;
+	min-width: 90px;
+	min-height: 2.1em;
+	text-align: center;
+	overflow: auto;
+	outline: 0;
+	-webkit-flex: 1;
+	flex: 1;
+	-webkit-flex-flow: row column;
+	flex-flow: row column;
 }
 td:focus, th:focus {
-    border: 2px solid #64b5f6;
-    padding: calc(0.5em - 2px);
+	border: 2px solid #64b5f6;
+	padding: calc(0.5em - 2px);
 }
 
 thead th {
@@ -38,36 +42,41 @@ thead th {
 }
 
 tr {
-    display: flex;
-		min-width: 375px;
-		flex-flow: row column;
-		flex: 1;
+	display: -webkit-flex;
+	display: flex;
+	min-width: 375px;
+	-webkit-flex-flow: row column;
+	flex-flow: row column;
+	-webkit-flex: 1;
+	flex: 1;
 }
 
 .add-button {
-    width: 100%;
-    height: 25px;
-    text-align: center;
-    background: #f5f5f5;
-    padding: 0.35em;
-    vertical-align: top;
-    cursor: pointer;
+	width: 100%;
+	height: 25px;
+	text-align: center;
+	background: #f5f5f5;
+	padding: 0.35em;
+	vertical-align: top;
+	cursor: pointer;
 }
 .add-button:hover {
-    background: #eeeeee;
+	background: #eeeeee;
 }
 .add-column {
-    height: 100%;
-    width: 25px;
-    display: inline-block;
+	height: 100%;
+	width: 25px;
+	display: inline-block;
 }
 
 .add-row {
-    margin-top: -25px;
+	margin-top: -25px;
 }
 
 thead, tbody {
+	display: -webkit-flex;
 	display: flex;
+	-webkit-flex-direction: column;
 	flex-direction: column;
 }
 
