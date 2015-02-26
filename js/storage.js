@@ -15,6 +15,7 @@ scratchpad.modules.define("storage", {
 		if(this.get() != html) {
 			this.saveData(html);
 		}
+		return localStorage.getItem("saved-document");
 	},
 	init: function() {
 	this.editor.html(this.get());
