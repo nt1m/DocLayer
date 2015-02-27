@@ -90,6 +90,9 @@ scratchpad.modules.define("research", {
 		$(document.body).on("click", function() {
 			$(".research-insert-button").hide();
 		});
+		$("#research-close-button").on("click", function() {
+			$('.infocard-shell').hide();
+		})
 		scratchpad.keybindings.addBinding("mod+option+shift+i", function() {
 			scratchpad.research.show(window.getSelection());
 		});

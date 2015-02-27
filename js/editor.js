@@ -1,5 +1,4 @@
 scratchpad.modules.define("editor", {
-	deletionButton: $(".deletion-button"),
 	insertItem: function(item) {
 		switch(item) {
 			case "divider":
@@ -34,6 +33,8 @@ scratchpad.modules.define("editor", {
 	},
 	init: function() {
 		var _ = this;
+		$(document.body).append('<div noprint class="deletion-button small fab color-red-500" title="Remove"><i class="icon-delete"></i></div>'); //add the deletion button
+		this.deletionButton = $(".deletion-button");
 		$("#divider-insert").on("mousedown", function() {
 			_.insertItem("divider");
 		});
