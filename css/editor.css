@@ -49,7 +49,7 @@ p[align=right] {
 
 /* paragraph stars */
 
-p:before {
+#document-editor *:before {
 	content: '\e95a';
 	font-family: "material-design-icons";
 	color: transparent;
@@ -60,10 +60,10 @@ p:before {
 	transition: .1s;
 }
 
-p:hover:not([starred]):before {
+#document-editor *:hover:not([starred]):before {
 	color: #777;
 }
 
-[starred]::before {
+#document-editor *[starred]::before {
 	color: #e91e63;
 }

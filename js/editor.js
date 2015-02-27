@@ -21,7 +21,7 @@ scratchpad.modules.define("editor", {
 	hideDeletion: function() {
 		this.deletionButton.hide();
 	},
-	starParagraph: function(e) {
+	starItem: function(e) {
 		var target = $(e.target);
 		if(e.pageX < target.offset().left) {
 			if(target.attr("starred")) {
@@ -44,8 +44,8 @@ scratchpad.modules.define("editor", {
 		$("#document-editor").on("click", function() {
 			_.hideDeletion();
 		});
-		$("#document-editor").on("click", "p", function(e) {
-			_.starParagraph(e);
+		$("#document-editor").on("click", function(e) {
+			_.starItem(e);
 		})
 	}
 });
