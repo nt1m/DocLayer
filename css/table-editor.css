@@ -19,8 +19,8 @@ td, th {
 	/* below property isn't needed, and it causes weird bugs in webkit */
 	/*display: -webkit-flex; */
 	display: flex;
-	border-right: 1px rgba(0, 0, 0, 0.12) solid;
-	border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
+	border-right: 1px rgba(0, 0, 0, 0.1) solid;
+	border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
 	padding: 0.5em;
 	min-width: 90px;
 	min-height: 2.1em;
@@ -88,7 +88,7 @@ tbody {
 /* dark theme */
 
 .dark-theme tr, .dark-theme th, .dark-theme td {
-	border-color: rgba(255, 255, 255, 0.12);
+	border-color: rgba(255, 255, 255, 0.2);
 }
 
 .dark-theme .add-button {
