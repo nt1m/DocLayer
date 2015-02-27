@@ -12,6 +12,15 @@
 	font-weight: 300;
 }
 
+@keyframes fadein {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .promo {
 	width: 40%;
 	position: absolute;
@@ -20,6 +29,7 @@
 	text-align: center;
 	color: #FFF;
 	font-size: 1.2em;
+	animation: fadein 2s;
 }
 
 .promo > h2 {
