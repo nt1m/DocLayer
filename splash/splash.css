@@ -1,0 +1,149 @@
+.hero {
+	height: 70vh;
+	min-height: 225px;
+	padding: 0.5em 4em;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	background: #009688;
+}
+
+.promo > h1 {
+	font-weight: 300;
+}
+
+.promo {
+	width: 40%;
+	position: absolute;
+	bottom: 40%;
+	left: 0%;
+	text-align: center;
+	color: #FFF;
+	font-size: 1.2em;
+}
+
+.promo > h2 {
+	color: #FFF;
+}
+
+.promo > h1 {
+	margin: 0;
+}
+@keyframes slide-upwards {
+	0% {
+		bottom: -100%;
+	}
+	100% {
+		bottom: 0;
+	}
+}
+
+@keyframes slide-up-small {
+	0% {
+		bottom: -100%;
+	}
+	100% {
+		bottom: -30%;
+	}
+}
+.sidefloat-image {
+	width: 50%;
+	max-width: 1300px;
+	display: inline-block;
+	overflow: hidden;
+	position: absolute;
+	right: 7%;
+	bottom: 0;
+	animation: slide-upwards 1.5s;
+	max-height: 80%;
+}
+
+.sidefloat-image img {
+	width: 100%;
+}
+
+img[display="large"] {
+	display: block;
+}
+
+img[display="medium"], img[display="small"] {
+	display: none;
+}
+
+@media all and (max-width: 1800px) {
+	img[display="medium"] {
+	display: block;
+}
+
+img[display="large"], img[display="small"] {
+	display: none;
+}
+}
+
+@media all and (max-width: 1000px) {
+	.sidefloat-image {
+		bottom: -30%;
+		left: 27%;
+		animation: slide-up-small 1.5s;
+	}
+	.promo {
+		bottom: 50%;
+		width: 90%;
+		left: 5%;
+	}
+	.hero {
+		height: 50vh;
+	}
+}
+
+@media all and (max-width: 750px) {
+	.sidefloat-image {
+		display: none;
+	}
+	.promo {
+		bottom: 25%;
+	}
+}
+
+/* icon promo */
+
+.section-title {
+	font-weight: 300;
+	text-align: center;
+	font-size: 1.5em;
+	margin: 0.5em 0;
+	position: static;
+}
+
+.iconblock-container {
+	display: block;
+	width: 100%;
+	max-width: 1300px;
+	margin: auto;
+	text-align: center;
+}
+
+.iconblock {
+	display: inline-block;
+	width: 250px;
+	margin: 2em;
+	vertical-align: top;
+}
+
+.iconblock > i {
+	font-size: 4em;
+	padding: 0.5em;
+	margin: 0.25em 0;
+	border-radius: 50%;
+	border: 1px rgba(0, 0, 0, 0.12) solid;
+}
+
+.iconblock .label {
+	display: block;
+	padding: 0.5em 0;
+	font-size: 1.2em;
+}
+
+.description {
+	font-weight: 300;
+}
