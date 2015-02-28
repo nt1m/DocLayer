@@ -1,0 +1,46 @@
+.doclist > li {
+	max-width: 1300px;
+	margin: auto;
+	opacity: 1;
+	transition: 0.2s;
+}
+
+.doclist > li[hidden="hidden"] {
+	opacity: 0;
+}
+]
+
+.list-header {
+	border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
+	background-color: white;
+	z-index: 99999;
+}
+
+#document-create-button {
+	position: fixed;
+	bottom: 1.5em;
+	right: 1.5em;
+}
+
+#search-input {
+	width: 0px;
+	padding: 0;
+	transition: .2s;
+	border-color: #fff;
+}
+
+.find-in-page #search-input {
+	display: inline-block;
+	vertical-align: middle;
+	width: 200px;
+}
+
+.error {
+	display: block;
+	text-align: center;
+	margin: 1.5em;
+}
+
+#search-no-matches {
+	display: none;
+}
