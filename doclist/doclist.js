@@ -88,9 +88,11 @@ function highlightmatches() {
 }
 
 function hidesearch() {
+	setTimeout(function() { //give the user time to click on a search result
 	$(document.body).removeClass("find-in-page");
 	$(".doclist li").show();
 	$("#search-no-matches").hide();
+		}, 750);
 }
 
 $("#search-button").click(showsearch);
