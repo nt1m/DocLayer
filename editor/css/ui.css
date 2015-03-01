@@ -82,7 +82,7 @@ body.has-toolbar {
 	position: absolute;
 	right: 0;
 	background-color: inherit;
-	padding-left: 1em;
+	padding: 0 1rem;
 }
 #findinpage-input {
 	vertical-align: middle;
