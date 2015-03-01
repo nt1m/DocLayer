@@ -16,3 +16,9 @@ In the future:
  - dropbox integration
  - more interactive components
  - a more powerful find in page (regex, find+replace)
+
+# How to use
+
+Create a new dropbox app at https://www.dropbox.com/developers/apps/. 
+Replace DROPBOX_APP_KEY with your new app's app key. 
+Upload the app to a server and add the url to the OAuth redirects list in the dropbox app console
