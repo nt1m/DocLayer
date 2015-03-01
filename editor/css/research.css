@@ -2,10 +2,11 @@
 	width: 40%;
 	min-width: 200px;
 	max-width: 550px;
-	height: calc(100% - 50px);
+	height: calc(100% - 66px);
 	overflow: auto;
 	position: fixed;
 	right: 0;
+	bottom: 0;
 	z-index: 99;
 	transition: .15s all;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26),
