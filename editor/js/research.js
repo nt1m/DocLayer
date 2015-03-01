@@ -57,7 +57,8 @@ scratchpad.modules.define("research", {
 			},
 			classNames: {
 										"category-item": "themeable",
-			}
+			},
+			protocol: "https"
 			});
 			$(".infocard-shell").show();
 			this.getImages(data);
