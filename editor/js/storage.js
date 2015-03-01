@@ -49,7 +49,7 @@ if (client.isAuthenticated()) {
 			var currentDocument = documentTable.insert({
 				title: "Untitled Document",
 				content: "",
-				abstract: "",
+				abstract: "&nbsp;",
 				created: new Date(),
 				modified: new Date()
 			});
