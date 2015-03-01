@@ -46,6 +46,9 @@ scratchpad.modules.define("editor", {
 		});
 		$("#document-editor").on("click", function(e) {
 			_.starItem(e);
-		})
+		});
+		scratchpad.keybindings.addBinding("tab", function() {
+			document.execCommand("indent", false);
+		});
 	}
 });
