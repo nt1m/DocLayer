@@ -24,7 +24,7 @@
 .promo {
 	width: 40%;
 	position: absolute;
-	bottom: 40%;
+	bottom: 30%;
 	left: 0%;
 	text-align: center;
 	color: #FFF;
@@ -39,6 +39,7 @@
 .promo > h1 {
 	margin: 0;
 }
+
 @keyframes slide-upwards {
 	0% {
 		bottom: -100%;
@@ -56,6 +57,25 @@
 		bottom: -30%;
 	}
 }
+
+@-webkit-keyframes slide-upwards {
+	0% {
+		bottom: -100%;
+	}
+	100% {
+		bottom: 0;
+	}
+}
+
+@-webkit-keyframes slide-up-small {
+	0% {
+		bottom: -100%;
+	}
+	100% {
+		bottom: -30%;
+	}
+}
+
 .sidefloat-image {
 	width: 50%;
 	max-width: 1300px;
@@ -64,6 +84,7 @@
 	position: absolute;
 	right: 7%;
 	bottom: 0;
+	-webkit-animation: slide-upwards 1.5s;
 	animation: slide-upwards 1.5s;
 	max-height: 80%;
 }
@@ -90,10 +111,11 @@ img[display="large"], img[display="small"] {
 }
 }
 
-@media all and (max-width: 1000px) {
+@media all and (max-width: 1150px) {
 	.sidefloat-image {
 		bottom: -30%;
 		left: 27%;
+		-webkit-animation: slide-up-small 1.5s;
 		animation: slide-up-small 1.5s;
 	}
 	.promo {
