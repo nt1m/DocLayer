@@ -9,7 +9,11 @@ function getAbstract(html) { //get a text string representative of the document
 	var re = new RegExp(brTemplate, 'g');
 	removed = removed.replace(re, '');
 	var abstract = removed.substring(0, 150); //the length of the abstract to return
-	return abstract;
+	if(abstract) {
+		return abstract;
+	} else {
+		return "";
+	}
 }
 
 var document_id = window.location.hash.replace("#", "");
