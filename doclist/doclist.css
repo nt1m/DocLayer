@@ -1,3 +1,7 @@
+.doclist {
+	margin-top: 0.66em;
+}
+
 .doclist > li {
 	max-width: 1300px;
 	margin: auto;
@@ -5,11 +9,6 @@
 	transition: 0.2s;
 	cursor: pointer;
 }
-
-.doclist > li[hidden="hidden"] {
-	opacity: 0;
-}
-]
 
 .list-header {
 	border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
@@ -28,11 +27,11 @@
 	padding: 0;
 	transition: .2s;
 	border-color: #fff;
+	vertical-align: middle;
 }
 
 .find-in-page #search-input {
 	display: inline-block;
-	vertical-align: middle;
 	width: 200px;
 }
 
