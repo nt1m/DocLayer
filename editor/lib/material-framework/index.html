@@ -9,7 +9,7 @@
 	<meta charset="utf-8"/>
 </head>
 <body>
-<div class="sidemenu sidebar responsive" id="navigation-sidemenu">
+<div class="sidemenu sidebar responsive" id="navigation-sidemenu" hidden>
 	<div class="sidemenu-hero">
 		<img class="sidemenu-hero-image" src="demo-files/sidemenu-hero.jpg">
 		<h1 class="title serif">Material Framework</h1>
@@ -54,19 +54,39 @@
 		<h2>What is this ?</h2>
 		<p>Material Framework is a simple responsive CSS framework made by <a href="http://github.com/nt1m">Tim Nguyen</a> that allows you to integrate <a href="http://google.com/design/spec">Material Design</a> in any web page or web app.</p>
 		<p>© Copyright 2014-2015 - Tim Nguyen</p>
-		<h2>How do I use it ?</h2>
-		<p>Just import material.css on any page you need. Start navigating the documentation by opening the menu !</p>
 		<h2>Where do I get it ?</h2>
 		<p>You can find it on Github. Grab it now before your internet gets slow :)</p>
 		<a href="https://github.com/nt1m/material-framework/" class="button raised color-black" target="_blank"><i class="icon-visibility"></i>View on Github</a>
 		<a href="https://github.com/nt1m/material-framework/archive/master.zip" target="_blank" class="button raised bg-blue-500 color-white" download="material-framework.zip"><i class="icon-file-download"></i>Download</a>
+		<h2>Setup</h2>
+		<p>Just import material.css if you only need the styles. If you need the JS, you'll also need to import material.js first, then you'll need to initialize the Material object. Luckily, that can be done using a simple line of code :</p>
+		<code class="prettyprint">
+// This will initialize all Material modules
+var md = new Material();
+		</code>
+		<p>Or if you only need specific modules :</p>
+		<code class="prettyprint">
+// This will initialize only the Responsive and SideMenu modules
+var md = new Material({modules: ["Responsive", "SideMenu"]});
+		</code>
+		<p>You can also specify options :</p>
+		<code class="prettyprint">
+var md = new Material({
+	options: {
+		FancyHeader: {
+			header: document.querySelector(".toolbar"),
+			scrollTarget: document.querySelector(".main-content")
+		}
+	}
+});
+		</code>
 	</div>
 	<div class="section">
 		<h1>Showcase</h1>
 		<p>Cool apps made using the framework :</p>
 		<ul>
 			<li><a href="http://palmeral.github.io/scratchpad/" target="_blank">Scratchpad</a> by <a href="http://github.com/PalmerAL">PalmerAL</a></li>
-			<li><a href="http://simoborto.altervista.org/app/download/" target="_blank">YouTube downloader</a> by <a href="http://simoborto.deviantart.com">Simoborto</a></li>
+			<li><a href="http://simoborto.altervista.org/app/download/" target="_blank">YouTube downloader</a> by <a href="http://simobortolo.deviantart.com">Simobortolo</a></li>
 		</ul>
 		<p>Feel free to <a href="http://ntim.altervista.org/contact">reach me</a> if you wish to have your app featured.</p>
 	</div>
@@ -76,7 +96,7 @@
 		<h1>Themes</h1>
 		<p>Two themes are available : the dark theme and the light theme.</p>
 		<p>To apply the dark theme, use the <code class="prettyprint">dark-theme</code> class.</p>
-		<p>Helpers are also available in <code class="prettyprint">material.js</code></p>.
+		<p>Helpers are also available in <code class="prettyprint">material.js</code>.</p>
 		<code class="prettyprint">Theme.toggle(element)</code>
 		<p>This toggles between light and dark theme. <code class="prettyprint">element</code> corresponds to the DOM element that will have it's theme toggled. If no element is specified, this defaults to <code class="prettyprint">document.body</code>.</p>
 		<code class="prettyprint">Theme.setTheme(theme, element)</code>
@@ -86,8 +106,8 @@
 		<h1>Colors</h1>
 		<p>This framework provides access to all material design colors. Here's how you can use them :</p>
 		<p>Class names are composed like this :
-		<code class="pretty-print">type</code>-<code class="pretty-print">shade</code>-<code class="pretty-print">color</code><br/>
-		<code class="pretty-print">type</code> corresponds to one of the 4 different types (<code class="prettyprint">bg</code>, <code class="prettyprint">color</code></li>, <code class="prettyprint">fill</code> or <code class="prettyprint">stroke</code>) depending on your needs, <code class="pretty-print">shade</code> corresponds to number specified in the palette below (500 for example) and <code class="pretty-print">color</code> corresponds to the color name (red for example).</p>
+		<code class="pretty-print">type</code>-<code class="pretty-print">color</code>-<code class="pretty-print">shade</code><br/>
+		<code class="pretty-print">type</code> corresponds to one of the 4 different types (<code class="prettyprint">bg</code>, <code class="prettyprint">color</code></li>, <code class="prettyprint">fill</code> or <code class="prettyprint">stroke</code>) depending on your needs, <code class="pretty-print">color</code> corresponds to the color name (red for example), and <code class="pretty-print">shade</code> corresponds to number specified in the palette below (500 for example).</p>
 		<p>Note that you can also use multiple classes together.</p>
 
 		<div class="divider"></div>
@@ -548,7 +568,7 @@
 &lt;button class="button raised bg-blue-500 color-white" ripple="none">No ripple&lt;/button>
 &lt;div style="width: 100px;height: 100px;padding: 10px;" ripple="circle">Circular ripple&lt;/div>
 	</code>
-	<p class="bold">Or... using class names :</p>
+	<p>Or... using class names :</p>
 	<code class="prettyprint">
 &lt;button class="button raised bg-blue-500 color-white no-ripple">No ripple&lt;/button>
 &lt;div class="ripple circle" style="width: 100px;height: 100px;padding: 10px;">Circular ripple&lt;/div>
@@ -1785,7 +1805,7 @@ Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
 	</div>
 	<div class="section">
 		<h1>Dialogs</h1>
-		<p>Tip : include <code class="prettyprint">material.js</code> for quick helper functions</p>
+		<p>Tip : initialize the <code class="prettyprint">Dialog</code> module for quick helper functions</p>
 		<button class="button color-pink-500" onclick="Dialog.show(document.querySelector('#dialog-demo'))">Open dialog</button>
 		<div class="divider"></div>
 		<h2>Helpers</h2>
@@ -1895,7 +1915,7 @@ Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
 		
 	<div class="section">
 		<h1>Sidemenus</h1>
-		<p>Tip : include <code class="prettyprint">material.js</code> to get quick helper functions.</p>
+		<p>Tip : initialize the <code class="prettyprint">SideMenu</code> module to get quick helper functions.</p>
 		<p>Add the additional <code class="prettyprint">sidebar</code> class if you want the sidemenu to persists on desktops (like the one on this page).</p>
 		<button id="sidemenu-button" class="button color-blue-500" onclick="SideMenu.toggle(document.querySelector('#sidemenu-demo'));">Click to see the sidemenu</button>
 		<div class="divider"></div>
