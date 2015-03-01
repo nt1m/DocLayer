@@ -49,7 +49,7 @@ p[align=right] {
 
 /* paragraph stars */
 
-#document-editor *:before {
+#document-editor p:before, #document-editor h1:before, #document-editor h2:before, #document-editor h3:before, #document-editor br:before {
 	content: '\e95a';
 	font-family: "material-design-icons";
 	color: transparent;
@@ -58,6 +58,18 @@ p[align=right] {
 	margin-left: -2em;
 	cursor: pointer;
 	transition: .1s;
+	/* reset any styles on parent element */
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+	display: inline-block;
+	text-decoration: none;
+	width: 1em;
+	height: 1em;
+	text-align: center;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1em;
 }
 
 #document-editor *:hover:not([starred]):before {

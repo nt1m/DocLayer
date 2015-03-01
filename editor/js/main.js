@@ -18,7 +18,7 @@ var scratchpad = {
 		var starttime = Date.now(); // start performance logging
 
 		//DO NOT remove core moduels
-		var core = ["keybindings", "caret", "editortooltip", "darktheme", "storage"]; //the darktheme is core to reduce the white flash before loading
+		var core = ["keybindings", "caret", "editortooltip", "darktheme"]; //the darktheme is core to reduce the white flash before loading
 		core.forEach(function(value) {
 			scratchpad.modules.load(value);
 		});

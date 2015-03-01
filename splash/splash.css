@@ -125,7 +125,7 @@ img[display="large"], img[display="small"] {
 	position: static;
 }
 
-.iconblock-container {
+.block-container {
 	display: block;
 	width: 100%;
 	max-width: 1300px;
@@ -156,4 +156,10 @@ img[display="large"], img[display="small"] {
 
 .description {
 	font-weight: 300;
+}
+
+body .signin-button:not(.raised) {
+	background: #3277E3 !important;
+	color: #FFF !important;
+	margin: 1em;
 }

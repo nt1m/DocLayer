@@ -155,6 +155,19 @@ body.has-toolbar {
 		opacity: 0;
 	}
 }
+
+@-webkit-keyframes pulse {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
 .logo-card {
     width: 295px;
     height: 400px;
@@ -166,6 +179,7 @@ body.has-toolbar {
     position: relative;
 		top: calc(50% - 240px);
 		animation: pulse 1.75s infinite;
+		-webkit-animation: pulse 1.75s infinite;
 }
 
 .logo-icon {

@@ -3,6 +3,7 @@
 	margin: auto;
 	opacity: 1;
 	transition: 0.2s;
+	cursor: pointer;
 }
 
 .doclist > li[hidden="hidden"] {

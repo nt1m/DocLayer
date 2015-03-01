@@ -4,25 +4,25 @@ scratchpad.modules.define("charts", {
 	getFMScriptSource: function(type) {
 				switch(type) {
 			case "pie":
-				 return '<link rel="stylesheet" href="http://factmint.io/pie.css"/><script src="http://factmint.io/pie.js"></script>';
+				 return '<link rel="stylesheet" href="https://factmint.io/pie.css"/><script src="https://factmint.io/pie.js"></script>';
 				break;
 			case "doughnut":
-				 return '<link rel="stylesheet" href="http://factmint.io/doughnut.css"/><script src="http://factmint.io/doughnut.js"></script>';
+				 return '<link rel="stylesheet" href="https://factmint.io/doughnut.css"/><script src="https://factmint.io/doughnut.js"></script>';
 				break;
 			case "line":
-				 return '<link rel="stylesheet" href="http://factmint.io/line.css"/><script src="http://factmint.io/line.js"></script>';
+				 return '<link rel="stylesheet" href="https://factmint.io/line.css"/><script src="https://factmint.io/line.js"></script>';
 				break;
 			case "column-bar":
-				 return '<link rel="stylesheet" href="http://factmint.io/column-bar.css"><script src="http://factmint.io/column-bar.js"></script>';
+				 return '<link rel="stylesheet" href="https://factmint.io/column-bar.css"><script src="https://factmint.io/column-bar.js"></script>';
 				break;
 			case "scatter":
-				 return '<link rel="stylesheet" href="http://factmint.io/scatter.css"><script src="http://factmint.io/scatter.js"></script>';
+				 return '<link rel="stylesheet" href="https://factmint.io/scatter.css"><script src="https://factmint.io/scatter.js"></script>';
 				break;
 			case "bubble":
-				 return '<link rel="stylesheet" href="http://factmint.io/bubble.css"><script src="http://factmint.io/bubble.js"></script>';
+				 return '<link rel="stylesheet" href="https://factmint.io/bubble.css"><script src="https://factmint.io/bubble.js"></script>';
 				break;
 			case "table":
-				 return '<style>table {font-family:sans-serif;}th,td {padding:0.66em}</style><link rel="stylesheet" href="http://factmint.io/fallback-table.css">';
+				 return '<style>table {font-family:sans-serif;}th,td {padding:0.66em}</style><link rel="stylesheet" href="https://factmint.io/fallback-table.css">';
 				break;
 		}
 	},
