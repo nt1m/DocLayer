@@ -49,6 +49,14 @@ body, html {
 	padding-top: calc(0.5% + 30px);
 }
 
+
+.dark-theme #document-editor *::selection {
+  background: #222;
+}
+.dark-theme #document-editor *::-moz-selection {
+  background: #222;
+}
+
 /* navbr styles */
 
 .editor-toolbar {
@@ -103,7 +111,7 @@ body.has-toolbar {
 	position: absolute;
 	right: 0;
 	top: 15%;
-	background-color: #FFF;
+	background-color: #f4f4f4;
 	background-clip: padding-box;
 	padding-left: 0.66em;
 }

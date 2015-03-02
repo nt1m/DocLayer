@@ -174,7 +174,7 @@
 	vertical-align: top;
 }
 
-.options.url-mode input{
+.options.url-mode input {
 	width: 155px;
 	background: transparent;
 	color: currentColor;
@@ -189,6 +189,8 @@
 	margin: 0px;
 	border: 0px;
 	width: 0px;
+	font-family: RobotoDraft, Roboto, Arial, sans-serif;
+	font-size: 0.8125em;
 }
 
 .options:before {

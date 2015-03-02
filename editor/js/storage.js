@@ -59,6 +59,7 @@ if (client.isAuthenticated()) {
 		}
 
 		var savedContent = currentDocument.get("content");
+		var savedTitle = currentDocument.get("title");
 
 		$(".doc-name").val(currentDocument.get("title"));
 
@@ -66,7 +67,7 @@ if (client.isAuthenticated()) {
 
 		setInterval(function () {
 
-			if ($("#document-editor").html() != savedContent) {
+			if ($("#document-editor").html() != savedContent || $(".doc-name").val() != savedTitle) {
 
 				if ($(".doc-name").val() != "") {
 					var docTitle = $(".doc-name").val();
@@ -75,12 +76,13 @@ if (client.isAuthenticated()) {
 				}
 				console.log("syncing to dropbox");
 				
-				
+				savedContent = $("#document-editor").html(); //in order for recordsChanged to work correctly, these need to update before the actual records
+				savedTitle = $(".doc-name").val();
+
 				currentDocument.set('title', docTitle);
 				currentDocument.set("content", $("#document-editor").html());
 				currentDocument.set("modified", new Date());
 				currentDocument.set("abstract", getAbstract($("#document-editor").html()));
-				savedContent = $("#document-editor").html();
 			} //end if savedcontent
 		}, 4000);
 	});
