@@ -179,29 +179,29 @@ body.has-toolbar {
 }
 
 .logo-card {
-    width: 295px;
-    height: 400px;
-    border-radius: 30px;
-    font-size: 10em;
+    width: 265px;
+    height: 360px;
+    border-radius: 27px;
+    font-size: 9em;
     color: #FFF;
     text-align: center;
     margin: auto;
     position: relative;
-		top: calc(50% - 240px);
+		top: calc(50% - 216px);
 		animation: pulse 1.75s infinite;
 		-webkit-animation: pulse 1.75s infinite;
 }
 
 .logo-icon {
-    margin: 35px;
-    font-size: 14em;
+    margin: 32px;
+    font-size: 13em;
 }
 
 .corner {
     position: absolute;
     top: 0;
     right: 0;
-    border-bottom-left-radius: 20px;
+    border-bottom-left-radius: 18px;
 }
 .folded-corner {
    content:"";
@@ -209,11 +209,11 @@ body.has-toolbar {
    top:0px;
    right:0px;
    border-style:solid;
-   border-width:40px;
+   border-width:36px;
    border-color: #FFF #FFF #4DB6AC #4DB6AC;
-   -webkit-border-bottom-left-radius:10px;
-   -moz-border-radius:0 0 0 10px;
-   border-radius:0 0 0 10px;
+   -webkit-border-bottom-left-radius:9px;
+   -moz-border-radius:0 0 0 9px;
+   border-radius:0 0 0 9px;
 }
 
 .dark-theme .folded-corner {
@@ -222,14 +222,14 @@ body.has-toolbar {
 .logo-card:after {
   content: "";
   position: absolute;
-  top: 80px;
+  top: 72px;
   right: 0;
-  border-width: 0 75px 60px 0;
+  border-width: 0 68px 54px 0;
   border-style: solid;
   border-color: transparent #00796b;
 }
 
 .logo-card .icon-book {
-    padding-top: 115px;
+    padding-top: 104px;
     display: inline-block;
 }

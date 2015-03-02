@@ -50,6 +50,7 @@ if (client.isAuthenticated()) {
 				id: value.getId()
 			});
 		});
+		$(".splashscreen").hide();
 	});
 
 
