@@ -1,14 +1,10 @@
 function getAbstract(html) { //get a text string representative of the document
 	var removed = $("<span>" + html + "</span>").remove("div").remove("iframe").remove("script"); //strip out the interactive stuff - we just want a text string
-	removed.children().each(function() { //flatten the dom into something usable
-														 $(this)[0].insertAdjacentHTML("beforebegin", " " + $(this).html() + " ");
-															$(this).remove();
-														});
-	removed = removed.html();
+	removed = removed[0].textContent;
 	var brTemplate = '<br>';
 	var re = new RegExp(brTemplate, 'g');
 	removed = removed.replace(re, '');
-	var abstract = removed.substring(0, 150); //the length of the abstract to return
+	var abstract = removed.substring(0, 175); //the length of the abstract to return
 	if(abstract) {
 		return abstract;
 	} else {
