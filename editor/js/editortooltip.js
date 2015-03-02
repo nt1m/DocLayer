@@ -345,7 +345,7 @@ scratchpad.modules.define("editortooltip", {
 
 					case "a":
 						toggleUrlInput();
-						optionsNode.className = "options url-mode";
+						optionsNode.className = "options themeable url-mode";
 						return;
 					case "research":
 						scratchpad.research.show(window.getSelection());
@@ -361,7 +361,7 @@ scratchpad.modules.define("editortooltip", {
 	function triggerUrlBlur(event) {
 		var url = urlInput.value;
 
-		optionsNode.className = "options";
+		optionsNode.className = "options themeable";
 		window.getSelection().addRange(previouslySelectedText);
 
 		document.execCommand("unlink", false);
@@ -500,7 +500,7 @@ scratchpad.modules.define("editortooltip", {
 		});
 		scratchpad.keybindings.addBinding("mod+k", function() {
 						toggleUrlInput();
-						optionsNode.className = "options url-mode";
+						optionsNode.className = "options themeable url-mode";
 		});
 		scratchpad.keybindings.addBinding("option+shift+5", function() {
 			document.execCommand("strikeThrough", false);
