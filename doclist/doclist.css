@@ -3,7 +3,6 @@
 }
 
 .doclist > li {
-	max-width: 1300px;
 	margin: auto;
 	opacity: 1;
 	transition: 0.2s;
