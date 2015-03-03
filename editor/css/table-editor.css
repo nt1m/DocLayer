@@ -14,7 +14,7 @@
 table {
 	display: inline-block;
 	width: 100%;
-	height: 100%;
+	height: auto;
 	overflow: auto;
 	font-size: 90%;
 	border-collapse:collapse;
@@ -24,8 +24,7 @@ td, th {
 	/* below property isn't needed, and it causes weird bugs in webkit */
 	/*display: -webkit-flex; */
 	display: flex;
-	border-right: 1px rgba(0, 0, 0, 0.1) solid;
-	border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+	border: 1px rgba(0, 0, 0, 0.1) solid;
 	padding: 0.5em;
 	min-width: 90px;
 	min-height: 2.1em;
@@ -36,15 +35,15 @@ td, th {
 	flex: 1;
 	-webkit-flex-flow: row column;
 	flex-flow: row column;
+	margin-top: -1px;
+	margin-left: -1px;
 }
 td:focus, th:focus {
-	border: 1px solid #e91e63;
-	padding: calc(0.5em - 2px);
+	border-color: #e91e63 ;
 }
 
 thead th {
 	font-weight: 500;
-	co
 }
 
 tr {
@@ -71,7 +70,7 @@ tr {
 .add-row {
 	position: absolute;
 	bottom: 0;
-	left: 45%
+	left: 47%
 }
 
 .add-column {
