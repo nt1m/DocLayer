@@ -26,5 +26,7 @@ scratchpad.modules.define("ui", {
 	},
 	init: function() {
 		this.dialogs.init();
+		//make ripples work in ios
+		document.addEventListener("touchstart", function() {}, false);
 	}
 });

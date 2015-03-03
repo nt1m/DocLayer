@@ -1,3 +1,5 @@
+//a modified version of https://github.com/mduvall/grande.js
+
 scratchpad.modules.define("editortooltip", {
 	init: function() {
 	
