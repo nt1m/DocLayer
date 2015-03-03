@@ -90,6 +90,17 @@ if (client.isAuthenticated()) {
 				return "Your changes have not been saved yet. Are you sure you want to leave?"
 			}
 		}
+		
+		datastore.recordsChanged.addListener(function (event) {
+				setTimeout(function() { //there's a lag in how fast the api updates - adjust for that
+					if(currentDocument.get("content") != savedContent || currentDocument.get("title") != savedTitle) { //make sure this was a remote change
+						$(".doc-name").val(currentDocument.get("title"));
+						$("#document-editor").html(currentDocument.get("content"));
+						savedContent = $("#document-editor").html();
+						savedTitle = $(".doc-name").val();
+					}
+				}, 3000); //end settimeout
+		});
 	});
 
 
