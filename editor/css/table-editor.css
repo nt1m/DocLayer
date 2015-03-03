@@ -6,8 +6,8 @@
 .table-editor {
 	height: 100%;
 	width: 70%;
-  position: relative;
-  white-space: nowrap;
+	position: relative;
+	white-space: nowrap;
 	float: right;
 }
 
@@ -35,7 +35,12 @@ td, th {
 	flex: 1;
 	-webkit-flex-flow: row column;
 	flex-flow: row column;
+}
+tbody tr  {
 	margin-top: -1px;
+}
+tr > th:not(:first-child),
+tr > td:not(:first-child) {
 	margin-left: -1px;
 }
 td:focus, th:focus {
@@ -57,14 +62,15 @@ tr {
 }
 
 .add-button {
-	width: 2em;
-	height: 2em;
+	width: 2rem;
+	height: 2rem;
+	font-size: 1.5rem;
 	text-align: center;
 	background: #bdbdbd;
 	vertical-align: top;
 	cursor: pointer;
 	display: inline-block;
-	padding: 0.35em;
+	padding: 0.1rem;
 }
 
 .add-row {
