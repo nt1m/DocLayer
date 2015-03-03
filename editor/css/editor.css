@@ -61,9 +61,9 @@ p[align=right] {
 	content: '\e95a';
 	font-family: "material-design-icons";
 	color: transparent;
-	font-size: 1em;
-	padding: 0.5em 0.5em 0.5em;
-	margin-left: -2em;
+	font-size: 1rem;
+	padding: 0.5rem 0.5rem 0.5rem;
+	margin-left: -2rem;
 	cursor: pointer;
 	transition: .1s;
 	/* reset any styles on parent element */
@@ -72,12 +72,13 @@ p[align=right] {
 	speak: none;
 	display: inline-block;
 	text-decoration: none;
-	width: 1em;
-	height: 1em;
+	width: 1rem;
+	height: 1rem;
 	text-align: center;
 	font-variant: normal;
 	text-transform: none;
-	line-height: 1em;
+	line-height: 1rem;
+	vertical-align: middle;
 }
 
 #document-editor *:hover:not([starred]):before {
