@@ -38,3 +38,7 @@
 .mapplaceholder, .videoplaceholder, .embedplaceholder, .chartplaceholder {
 	display: none;
 }
+
+.chart-extend-block {
+	background: rgba(255, 255, 255, 0.7) !important;
+}
