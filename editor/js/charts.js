@@ -57,7 +57,7 @@ scratchpad.modules.define("charts", {
 		}
 	},
 	insertChart: function() {
-		var tabledata = $(".table").html().replace(/contenteditable/g, 'data-previous-contenteditable-state');;
+		var tabledata = $(".table").html().replace(/contenteditable/g, 'data-previous-contenteditable-state');
 		var selectedchart = $('input:radio[name=charts]:checked').attr("id");
 		var chartdata = "<table class='fm-" + selectedchart + "'>" + tabledata + "</table>";
 		var placeholder = $(".chartplaceholder");
