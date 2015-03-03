@@ -60,9 +60,8 @@ if (client.isAuthenticated()) {
 		$(".doc-name").val(currentDocument.get("title"));
 
 		$("#document-editor").html(currentDocument.get("content"));
-
-		setInterval(function () {
-
+		
+		function saveDocument() {
 			if ($("#document-editor").html() != savedContent || $(".doc-name").val() != savedTitle) {
 
 				if ($(".doc-name").val() != "") {
@@ -79,8 +78,18 @@ if (client.isAuthenticated()) {
 				currentDocument.set("content", $("#document-editor").html());
 				currentDocument.set("modified", new Date());
 				currentDocument.set("abstract", getAbstract($("#document-editor").html()));
-			} //end if savedcontent
-		}, 4000);
+				return true;
+			} else {//end if savedcontent
+				return null;
+			}
+		}
+
+		setInterval(saveDocument, 4000);
+		window.onbeforeunload = function() {
+			if(saveDocument()) {
+				return "Your changes have not been saved yet. Are you sure you want to leave?"
+			}
+		}
 	});
 
 
