@@ -10,6 +10,16 @@
 	overflow: hidden;
 }
 
+/* Icon animation */
+#start-menu-container .start-button i {
+	transition: all 0.3s;
+}
+
+#start-menu-container:hover .start-button i {
+	transform: rotate(225deg) scale(1.15)
+}
+
+/* Start menu */
 .start-menu {
 	width: 3.25em;
 	z-index: 9999999;
@@ -33,7 +43,7 @@
 	left: calc(50% - 150px);
 }
 .large-dialog {
-		position: fixed;
+	position: fixed;
 	top: calc(50% - 300px);
 	left: calc(50% - 325px);
 }
