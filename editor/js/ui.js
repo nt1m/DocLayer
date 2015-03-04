@@ -14,11 +14,11 @@ scratchpad.modules.define("ui", {
 		},
 		init: function() {
 			$(".dialog-confirm").on("click", function() {
-				var dialog = $(this).parent().parent(".dialog");
+				var dialog = $(this).parent().parent().parent(".dialog");
 				dialog.trigger("dialog-confirm");
 			});
 			$(".dialog-cancel").on("click", function() {
-				var dialog = $(this).parent().parent(".dialog");
+				var dialog = $(this).parent().parent().parent(".dialog");
 				dialog.trigger("dialog-cancel");
 				scratchpad.ui.dialogs.hide(dialog);
 			});
