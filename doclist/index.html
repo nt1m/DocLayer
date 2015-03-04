@@ -35,6 +35,19 @@
 	
 	<button id="document-create-button" class="fab bg-pink-500 color-white"><i class="icon-create"></i></button>
 	
+	<div class="dialog-overlay" hidden></div>
+	 <div id="confirm-delete-dialog" class="dialog" hidden> 
+		 <h1 class="dialog-title">Delete this document?</h1> 
+		 <div class="dialog-content"> You can't undo this.
+		 </div> 
+		 <div class="dialog-footer"> 
+			 <span class="float-right"> 
+				 <button id="delete-cancel" class="button dialog-close">Cancel</button> 
+				 <button id="delete-confirm" class="button dialog-confirm">Delete</button> 
+			 </span> 
+		 </div> 
+	</div>
+	
 	<script src="doclist.js"></script>
 </body>
 </html>

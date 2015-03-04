@@ -1,5 +1,5 @@
 function addItem(data) {
-	$(".doclist").prepend("<li ripple id='" + data.id + "'><i class='icon-drive-file item-action'></i><span class='item-text'>" + data.title + "<span class='secondary-text'>" + data.description + "</span></span><i class='icon-open-in-browser item-action'></i></li>");
+	$(".doclist").prepend("<li ripple id='" + data.id + "'><i class='icon-drive-file item-action'></i><span class='item-text'>" + data.title + "<span class='secondary-text'>" + data.description + "</span></span><i class='icon-open-in-browser item-action'></i><i title='Delete this document' class='icon-delete item-action item-delete'></i></li>");
 }
 
 //switch the user to the appropriate page
@@ -30,14 +30,7 @@ if (client.isAuthenticated()) {
 			console.log('Error opening default datastore: ' + error);
 		}
 
-		// Now you have a datastore. The next few examples can be included here.
-
 		var documentTable = datastore.getTable('documents');
-		/*	var newDocument = documentTable.insert({
-	title: 'Example document',
-	content: "<span>document content</span>",
-	created: new Date()
-}); */
 
 		var documents = documentTable.query();
 		if (documents.length < 1) {
@@ -51,6 +44,31 @@ if (client.isAuthenticated()) {
 			});
 		});
 		$(".splashscreen").hide();
+
+		//these go here because they need to access the datastore directly
+		$(".doclist").on("mousedown", ".item-delete", function (e) {
+			$(e.target).parent().addClass("deletion-candidate");
+			$(".dialog-overlay")[0].hidden = false;
+			$("#confirm-delete-dialog")[0].hidden = false;
+		});
+
+		$("#delete-cancel").on("click", function () {
+			$(".deletion-candidate").removeClass("deletion-candidate");
+			$(".dialog-overlay")[0].hidden = true;
+			$("#confirm-delete-dialog")[0].hidden = true;
+		});
+
+		$("#delete-confirm").on("click", function () {
+			var document_id = $(".deletion-candidate").attr("id");
+			var documentDelete = documentTable.get(document_id);
+			documentDelete.deleteRecord();
+
+			$(".deletion-candidate").remove();
+			$(".dialog-overlay")[0].hidden = true;
+			$("#confirm-delete-dialog")[0].hidden = true;
+		});
+
+
 	});
 
 
@@ -60,8 +78,10 @@ if (client.isAuthenticated()) {
 
 
 $(".doclist").on("click", "li", function (e) {
-	var id = $(this).attr("id");
-	window.location = "https://standaert.net/scratchpad/editor/index.html#" + id;
+	if (e.target.className.indexOf("item-delete") < 0) { //this wasn't the delete button - that has a seperate event handler
+		var id = $(this).attr("id");
+		window.location = "https://standaert.net/scratchpad/editor/index.html#" + id;
+	}
 });
 
 function showsearch() {
@@ -89,11 +109,11 @@ function highlightmatches() {
 }
 
 function hidesearch() {
-	setTimeout(function() { //give the user time to click on a search result
-	$(document.body).removeClass("find-in-page");
-	$(".doclist li").show();
-	$("#search-no-matches").hide();
-		}, 750);
+	setTimeout(function () { //give the user time to click on a search result
+		$(document.body).removeClass("find-in-page");
+		$(".doclist li").show();
+		$("#search-no-matches").hide();
+	}, 750);
 }
 
 $("#search-button").click(showsearch);
