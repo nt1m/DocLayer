@@ -221,3 +221,6 @@
 	text-align: center;
 	padding: 0px 6px;
 }
+.dark-theme .options button:not(.color-accent-color) {
+	color: rgba(255, 255, 255, 0.87);
+}
