@@ -279,11 +279,11 @@ scratchpad.modules.define("editortooltip", {
 		textProp = getTextProp(sel.anchorNode);
 		subject = sel.anchorNode[textProp];
 
-		if (subject.match(/^[-*]\s/) && sel.anchorNode.parentNode.nodeName !== "LI") {
+		if (subject.match(/^\s?[-*]\s/) && sel.anchorNode.parentNode.nodeName !== "LI") {
 			insertedNode = insertListOnSelection(sel, textProp, "ul");
 		}
 
-		if (subject.match(/^1\.\s/) && sel.anchorNode.parentNode.nodeName !== "LI") {
+		if (subject.match(/^\s?1\.\s/) && sel.anchorNode.parentNode.nodeName !== "LI") {
 			insertedNode = insertListOnSelection(sel, textProp, "ol");
 		}
 
