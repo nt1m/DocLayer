@@ -39,6 +39,10 @@ body, html {
 	color: #fff;
 }
 
+.color-accent-color {
+	color: #e91e63;
+}
+
 /* the editor */
 
 #document-editor {

@@ -163,7 +163,7 @@ scratchpad.modules.define("editortooltip", {
 
 				if (reTag.test(className)) {
 					if (hasParentWithTag(focusNode, tag)) {
-						node.className = tagClass + " active";
+						node.className = tagClass + " color-accent-color";
 					} else {
 						node.className = tagClass;
 					}
