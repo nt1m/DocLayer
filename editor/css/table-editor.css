@@ -120,6 +120,10 @@ tbody {
 	float: left;
 }
 
+.chart-type-chooser .radio {
+	padding: 0 0.66em;
+}
+
 .chart-type-chooser > .item {
 	margin: 1em 0;
 }
