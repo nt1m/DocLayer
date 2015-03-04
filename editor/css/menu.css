@@ -16,7 +16,8 @@
 }
 
 #start-menu-container:hover .start-button i {
-	transform: rotate(225deg) scale(1.15)
+	-webkit-transform:  rotate(225deg) scale(1.15);
+	transform: rotate(225deg) scale(1.15);
 }
 
 /* Start menu */
@@ -32,6 +33,7 @@
 }
 
 #start-menu-container:not(:hover) .start-menu > a {
+	-webkit-transform: translateY(500%);
 	transform: translateY(500%);
 	opacity: 0;
 	visibility: collapse;
