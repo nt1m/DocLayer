@@ -56,6 +56,8 @@ if (client.isAuthenticated()) {
 
 		var savedContent = currentDocument.get("content");
 		var savedTitle = currentDocument.get("title");
+		
+		document.title = savedTitle + " | " + document.title;
 
 		$(".doc-name").val(currentDocument.get("title"));
 
