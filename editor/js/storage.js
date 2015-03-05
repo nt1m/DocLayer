@@ -49,6 +49,8 @@ if (client.isAuthenticated()) {
 				created: new Date(),
 				modified: new Date()
 			});
+			
+			window.location.hash = currentDocument.getId(); //if someone reloads the page, the hash should not still be "new"
 
 		} else {
 			var currentDocument = documentTable.get(document_id);
