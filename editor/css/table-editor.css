@@ -108,11 +108,11 @@
 
 /* dark theme */
 
-.table-editor .dark-theme .add-button {
+.dark-theme .table-editor .add-button {
 	background: #222;
 }
 
-.table-editor .dark-theme .add-button:hover {
+.dark-theme .table-editor .add-button:hover {
 	background: #111;
 }
 
