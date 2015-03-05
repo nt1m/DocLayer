@@ -58,9 +58,7 @@ scratchpad.modules.define("charts", {
 		scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function() {
-		if($(".chartplaceholder").html() == "") {
 			$(".chartplaceholder").remove();
-		}
 	},
 	insertChart: function() {
 		var tabledata = $(".table").html().replace(/contenteditable/g, 'data-previous-contenteditable-state');

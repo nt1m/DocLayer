@@ -1,3 +1,5 @@
+document.addEventListener("touchstart", function() {}, false); //ios ripple
+
 function addItem(data) {
 	$(".doclist").prepend("<li ripple id='" + data.id + "'><i class='icon-drive-file item-action'></i><span class='item-text'>" + data.title + "<span class='secondary-text'>" + data.description + "</span></span><i class='icon-open-in-browser item-action'></i><i title='Delete this document' class='icon-delete item-action item-delete'></i></li>");
 }

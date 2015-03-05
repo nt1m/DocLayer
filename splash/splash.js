@@ -1,3 +1,5 @@
+document.addEventListener("touchstart", function() {}, false); //ios ripple
+
 var client = new Dropbox.Client({key: "DROPBOX_APP_KEY"});
 
 // Try to finish OAuth authorization.
