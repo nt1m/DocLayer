@@ -237,3 +237,12 @@ body.has-toolbar {
     padding-top: 104px;
     display: inline-block;
 }
+
+.floating-message {
+	position: fixed;
+	top: 5%;
+	left: 50%;
+	z-index: 99999;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}

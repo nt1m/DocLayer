@@ -127,3 +127,28 @@ tbody {
 .chart-type-chooser > .item {
 	margin: 1em 0;
 }
+
+.chart-tabs {
+	width: 70%;
+	float: right;
+	cursor: pointer;
+}
+
+.chart-preview-field {
+	width: 70%;
+	height: 100%;
+	float: right;
+}
+
+.chart-preview-field {
+	display: none;
+}
+
+.chart-dialog.preview-mode .table-editor {
+	display: none;
+}
+
+.chart-dialog.preview-mode .chart-preview-field {
+	display: block;
+	min-height: 60vh;
+}

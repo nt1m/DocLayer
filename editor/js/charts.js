@@ -26,6 +26,12 @@ scratchpad.modules.define("charts", {
 				break;
 		}
 	},
+	renderChart: function(tabledata, type, el) {
+		var chartdata = "<table class='fm-" + type + "'>" + tabledata + "</table>";
+		var scripts = this.getFMScriptSource(type);
+		el.attr("srcdoc", chartdata + scripts);
+		el.removeClass("chartplaceholder").addClass("extend-block").addClass("chart-extend-block").attr("data-table", tabledata); 
+	},
 	editTable: function(el) {
 		var table = el;
     var columns = table.rows[0].cells.length;
@@ -59,20 +65,36 @@ scratchpad.modules.define("charts", {
 	insertChart: function() {
 		var tabledata = $(".table").html().replace(/contenteditable/g, 'data-previous-contenteditable-state');
 		var selectedchart = $('input:radio[name=charts]:checked').attr("id");
-		var chartdata = "<table class='fm-" + selectedchart + "'>" + tabledata + "</table>";
 		var placeholder = $(".chartplaceholder");
-		var scripts = this.getFMScriptSource(selectedchart);
-		placeholder.attr("srcdoc", chartdata + scripts);
-		placeholder.removeClass("chartplaceholder").addClass("extend-block").addClass("chart-extend-block").attr("data-table", tabledata); 
+		this.renderChart(tabledata, selectedchart, placeholder);
 		scratchpad.ui.dialogs.hide($(this.dialogEl));
+	},
+	switchToMode: function(mode) {
+		if(mode == "edit") {
+			this.dialogEl.addClass("edit-mode").removeClass("preview-mode");
+			$("#chart-edit").addClass("selected");
+			$("#chart-preview").removeClass("selected");
+		} else if (mode == "preview") {
+			this.dialogEl.addClass("preview-mode").removeClass("edit-mode");
+			$("#chart-preview").addClass("selected");
+			$("#chart-edit").removeClass("selected");
+			this.renderChart($(".table").html().replace(/contenteditable/g, 'data-previous-contenteditable-state'), $('input:radio[name=charts]:checked').attr("id"), $(".chart-preview-field"));
+		}
 	},
 	init: function() {
 		var _ = this;
 		this.insertChart = this.insertChart.bind(this);
+		this.switchToMode = this.switchToMode.bind(this);
 		this.editTable($(".table")[0]);
 		this.launchButton.on("mousedown", function() {
 			scratchpad.ui.dialogs.show(_.dialogEl);
 		});
+		$("#chart-preview").on("click", function() {
+			_.switchToMode("preview");
+		});
+		$("#chart-edit").on("click", function() {
+			_.switchToMode("edit");
+		})
 		this.dialogEl.on("dialog-shown", this.ondialogopen);
 		this.dialogEl.on("dialog-cancel", this.ondialogcancel);
 		this.dialogEl.on("dialog-confirm", this.insertChart);
