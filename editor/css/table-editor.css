@@ -5,22 +5,25 @@
 
 .table-editor {
 	height: 100%;
+	max-height: calc(100vh - 230px);
 	width: 70%;
 	position: relative;
 	white-space: nowrap;
 	float: right;
 }
 
-table {
+.table-editor table {
 	display: inline-block;
 	width: 100%;
 	height: auto;
+	max-height: calc(100vh - 230px);
 	overflow: auto;
 	font-size: 90%;
 	border-collapse:collapse;
+	max-height: calc(100vh - 230px);
 }
 
-td, th {
+.table-editor td, th {
 	/* below property isn't needed, and it causes weird bugs in webkit */
 	/*display: -webkit-flex; */
 	display: flex;
@@ -36,22 +39,22 @@ td, th {
 	-webkit-flex-flow: row column;
 	flex-flow: row column;
 }
-tbody tr  {
+.table-editor tbody tr  {
 	margin-top: -1px;
 }
-tr > th:not(:first-child),
-tr > td:not(:first-child) {
+.table-editor tr > th:not(:first-child),
+.table-editor tr > td:not(:first-child) {
 	margin-left: -1px;
 }
-td:focus, th:focus {
+.table-editor td:focus, th:focus {
 	border-color: #e91e63 ;
 }
 
-thead th {
+.table-editor thead th {
 	font-weight: 500;
 }
 
-tr {
+.table-editor tr {
 	display: -webkit-flex;
 	display: flex;
 	min-width: 375px;
@@ -61,7 +64,7 @@ tr {
 	flex: 1;
 }
 
-.add-button {
+.table-editor .add-button {
 	width: 2rem;
 	height: 2rem;
 	font-size: 1.5rem;
@@ -73,44 +76,43 @@ tr {
 	padding: 0.1rem;
 }
 
-.add-row {
+.table-editor .add-row {
 	position: absolute;
 	bottom: 0;
 	left: 47%
 }
 
-.add-column {
+.table-editor .add-column {
 	bottom: 50%;
 	right: 0;
 	position: absolute;
 }
-.add-button:hover {
+.table-editor .add-button:hover {
 	background: #9e9e9e;
 }
 
-.add-row {
+.table-editor .add-row {
 	margin-top: -25px;
 }
 
-thead, tbody {
+.table-editor thead, tbody {
 	display: -webkit-flex;
 	display: flex;
 	-webkit-flex-direction: column;
 	flex-direction: column;
 }
 
-
-tbody {
+.table-editor tbody {
 	height: 340px;
 }
 
 /* dark theme */
 
-.dark-theme .add-button {
+.table-editor .dark-theme .add-button {
 	background: #222;
 }
 
-.dark-theme .add-button:hover {
+.table-editor .dark-theme .add-button:hover {
 	background: #111;
 }
 
@@ -151,4 +153,29 @@ tbody {
 .chart-dialog.preview-mode .chart-preview-field {
 	display: block;
 	min-height: 60vh;
+}
+
+@media all and (max-width: 650px) { /* chart dialog for small screens */
+	.chart-dialog {
+		width: 100vw;
+		min-height: 100vh;
+	}
+	.chart-type-chooser {
+		width: 100%;
+		height: auto;
+		overflow: auto;
+		white-space: nowrap;
+	}
+	.chart-type-chooser > .item {
+		display: inline-block;
+		margin: 0.5em 0.2em;
+	}
+	.table-editor {
+		width: 100%;
+		float: initial;
+	}
+	.chart-tabs {
+		width: 100%;
+		float: initial;
+	}
 }
