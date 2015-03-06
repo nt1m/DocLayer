@@ -16,27 +16,40 @@
 }
 
 #start-menu-container:hover .start-button i {
-	-webkit-transform:  rotate(225deg) scale(1.15);
+	-webkit-transform: rotate(225deg) scale(1.15);
 	transform: rotate(225deg) scale(1.15);
 }
 
-/* Start menu */
 .start-menu {
 	width: 3.25em;
 	z-index: 9999999;
-	margin-bottom: 0.2em 0.15em;
+	padding-bottom: 0.5em;
 }
 
 .start-menu > a {
-	margin: 0.2em; /* margin around the menu items */
+	margin: 0.5em 0.3em;
 	transition: all .3s;
 }
 
-#start-menu-container:not(:hover) .start-menu > a {
-	-webkit-transform: translateY(500%);
-	transform: translateY(500%);
+@media (max-height: 520px) {
+	.start-menu {
+		padding-bottom: 0.25em;
+	}
+	.start-menu > a{
+		margin: 0.25em 0.3em;
+	}
+}
+#start-menu-container .start-menu > a {
+	pointer-events: none;
 	opacity: 0;
-	visibility: collapse;
+	transform: translateY(300%) scale(0.25) rotate(360deg);
+	transition: all 200ms cubic-bezier(0.25, 0.25, 0, 1) 0s;
+}
+
+#start-menu-container:hover .start-menu > a {
+	pointer-events: auto;
+	opacity: 1;
+	transform: scale(1) rotate(360deg);
 }
 
 .small-dialog {
