@@ -79,7 +79,7 @@ if (client.isAuthenticated()) {
 				savedTitle = $(".doc-name").val();
 
 				if(savedContent.length > 99000) {
-					$(document.body).prepend('<div class="toast floating-message document-too-long theme-accent-color"><label class="toast-label">This document is too long. Changes you make to it may not be saved.</label></div>');
+					$(document.body).prepend('<div class="toast floating-message document-too-long"><label class="toast-label">This document is too long. Changes you make to it may not be saved.</label></div>');
 				} else {
 					$(".floating-message.document-too-long").remove();
 				}
