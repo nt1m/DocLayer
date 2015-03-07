@@ -92,7 +92,10 @@ scratchpad.modules.define("charts", {
 		});
 		$("#chart-edit").on("click", function() {
 			_.switchToMode("edit");
-		})
+		});
+		$(".chart-type-chooser").on("click", ".item", function() { //update the chart in case the user is in preview mode
+			_.renderChart($(".table").html().replace(/contenteditable/g, 'data-previous-contenteditable-state'), $('input:radio[name=charts]:checked').attr("id"), $(".chart-preview-field"));
+		});
 		this.dialogEl.on("dialog-shown", this.ondialogopen);
 		this.dialogEl.on("dialog-cancel", this.ondialogcancel);
 		this.dialogEl.on("dialog-confirm", this.insertChart);
