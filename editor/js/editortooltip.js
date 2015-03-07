@@ -28,7 +28,8 @@ scratchpad.modules.define("editortooltip", {
 				"rightalign": "justifyRight",
 				"a": "url",
 				"blockquote": "quote",
-				"research": "research"
+				"research": "research",
+				"comment": "comment"
 			};
 		
 		
@@ -61,6 +62,7 @@ scratchpad.modules.define("editortooltip", {
 							<button title='Quote' class='quote'><i class='icon-quote'></i></button> \
 							<button title='Link' class='url'><i class='icon icon-link'></i></button> \
 							<button title='Research' class='research'><i class='icon icon-book'></i></button> \
+							<button title='Add Comment' class='comment'><i class='icon icon-message'></i></button> \
 							<input class='url-input' type='text' placeholder='Paste or type a link'/> \
 						</span> \
 					</span> \
@@ -352,7 +354,9 @@ scratchpad.modules.define("editortooltip", {
 					case "research":
 						scratchpad.research.show(window.getSelection());
 						return;
-
+					case "comment":
+						scratchpad.comments.add();
+						return;
 				}
 			}
 		}

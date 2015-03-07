@@ -9,8 +9,14 @@ scratchpad.modules.define("editor", {
 	},
 	showDeletion: function(item) {
 		var button = this.deletionButton;
-		var offset = item.offset();
-		button.css({top: offset.top, left: offset.left});
+		if(item.hasClass("inline")) {
+			var offset = item.offset();
+			var itemwidth = item.width();
+		} else {
+			var offset = item.offset();
+			var itemwidth = 0;
+		}
+		button.css({top: offset.top, left: offset.left + itemwidth});
 		button.show();
 		button.off();
 		button.on("click", function() {

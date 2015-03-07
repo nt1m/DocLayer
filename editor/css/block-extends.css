@@ -16,6 +16,13 @@
 	float: right;
 	margin: 1.2em;
 }
+
+.extend-block.inline {
+	display: inline-block;
+	width: auto;
+	float: initial;
+}
+
 .extend-block.fullwidth {
 	width: 100%;
 	float: none;
