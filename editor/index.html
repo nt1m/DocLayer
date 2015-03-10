@@ -155,6 +155,28 @@
 		</div>
 	</div>
 
+	<div noprint class="dialog image-edit-dialog large-dialog" hidden>
+		<span class="dialog-title">Edit image</span>
+		<div class="dialog-content">
+			<button class="button color-accent-color" id="sliders-reset">Reset</button>
+			<div class="controls">
+				<div class="item"><label>Brightness:</label> <input id="image-brightness" class="slider" value="1" min="0" max="2" step="0.1" type="range"></div>
+				<div class="item"><label>Contrast:</label> <input id="image-contrast" class="slider" value="100" min="0" max="200" type="range"></div>
+				<div class="item"><label>Blur:</label> <input id="image-blur" class="slider" value="0" min="0" max="20" type="range"></div>
+				<div class="item"><label>Grayscale: </label><input id="image-grayscale" class="slider" value="0" min="0" max="100" type="range"></div>
+				<div class="item"><label>Saturation:</label> <input id="image-saturation" class="slider" value="100" min="0" max="200" type="range"></div>
+				<div class="item"><label>Opacity:</label> <input id="image-opacity" class="slider" value="100" min="0" max="100" type="range"></div>
+			</div>
+			<img id="image-editor-preview" alt="A preview of the current image, with your edits applied"/>
+		</div>
+		<div class="dialog-footer">
+			<span class="float-right">
+				<button id="image-edit-cancel-button" class="button dialog-cancel color-accent-color">Cancel</button>
+				<button id="image-edit-okay-button" class="button dialog-confirm color-accent-color">Save</button>
+			</span>
+		</div>
+	</div>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="lib/mousetrap.js"></script>
 	<script src="js/storage.js"></script>

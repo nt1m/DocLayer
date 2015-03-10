@@ -22,7 +22,7 @@ var scratchpad = {
 		core.forEach(function(value) {
 			scratchpad.modules.load(value);
 		});
-		var modulesToLoad = ["editor", "ui", "images", "maps", "videos", "embeds", "findinpage", "research", "charts", "comments" ];
+		var modulesToLoad = ["editor", "ui", "images", "maps", "videos", "embeds", "findinpage", "research", "charts", "comments", "image-editor" ];
 		$(window).load(function() {
 			$(".splashscreen").hide();
 			modulesToLoad.forEach(function(value) {
