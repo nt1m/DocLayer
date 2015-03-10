@@ -40,6 +40,7 @@ scratchpad.modules.define("imageEditor", {
 		this.sliders.saturation[0].value = editTarget.attr("data-saturation");
 		this.sliders.opacity[0].value = editTarget.attr("data-opacity");
 		this.previewPane.attr("src", editTarget.attr("src"));
+		this.updatePreview();
 	},
 	saveImageEdits: function() {
 		var editTarget = this.selectedItem;
