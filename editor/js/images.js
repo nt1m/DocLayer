@@ -16,7 +16,7 @@ scratchpad.modules.define("images", {
 
 		var placeholder = $(".imageplaceholder");
 		placeholder.attr("src", newimage);
-		placeholder.removeClass("imageplaceholder").addClass("extend-block").addClass("img-extend-block"); //use the placeholder to add an image
+		placeholder.removeClass("imageplaceholder").addClass("extend-block").addClass("image-extend-block"); //use the placeholder to add an image
 		scratchpad.ui.dialogs.hide($(this));
 	},
 	init: function() {
