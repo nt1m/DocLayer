@@ -194,10 +194,13 @@ body.has-toolbar {
     color: #FFF;
     text-align: center;
     margin: auto;
-    position: relative;
-		top: calc(50% - 216px);
+}
+
+.splashscreen.loading .logo-card {
 		animation: pulse 1.75s infinite;
 		-webkit-animation: pulse 1.75s infinite;
+    position: relative;
+		top: calc(50% - 216px);
 }
 
 .logo-icon {
@@ -249,4 +252,36 @@ body.has-toolbar {
 	z-index: 99999;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
+}
+
+
+.splashscreen.error > .logo-card {
+	margin: 8% 0 0 8%;
+}
+.splashscreen.error > .error-info{
+	float: right;
+	margin: 15% 25% 0 0;
+}
+
+.splashscreen.error > .error-info h2 {
+	line-height: 2em;
+}
+
+@media all and (max-width: 1000px) {
+	.splashscreen.error > .logo-card {
+		display: none;
+	}
+	.splashscreen.error > .error-info {
+		margin: 0;
+		float: initial;
+		margin: 50vh 15vw;
+		transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+	}
+}
+
+
+.splashscreen.error .error-info > * {
+	padding-top: 0.5em;
+	display: block;
 }

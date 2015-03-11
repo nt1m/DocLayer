@@ -24,7 +24,7 @@ client.authenticate({
 	interactive: false
 }, function (error) {
 	if (error) {
-		alert('Authentication error: ' + error);
+		scratchpad.ui.errors.create({error: 'Authentication error: ' + error, action: "please log in to Dropbox and try again"});
 	}
 });
 
@@ -34,7 +34,7 @@ if (client.isAuthenticated()) {
 	var datastoreManager = client.getDatastoreManager();
 	datastoreManager.openDefaultDatastore(function (error, datastore) {
 		if (error) {
-			alert('Error opening default datastore: ' + error);
+			scratchpad.ui.errors.create({error: "Error opening datastore: " + error, action: "Please try again in a few minutes."});
 		}
 
 		var documentTable = datastore.getTable('documents');
@@ -56,6 +56,11 @@ if (client.isAuthenticated()) {
 			var currentDocument = documentTable.get(document_id);
 		}
 
+		if(!currentDocument) { //the document doesn't exist
+			setTimeout(function() { //bad way of waiting until scratchpad.ui is loaded. need to change this
+			scratchpad.ui.errors.create({error: "Document does not exist.", action: "This document does not exist, or you do not have permission to view it."});
+				}, 3000);
+		}
 		var savedContent = currentDocument.get("content");
 		var savedTitle = currentDocument.get("title");
 		
