@@ -35,8 +35,11 @@ p > code {
 
 /* Header toolbar tweaks */
 #switch-container {
-	margin-top: 8px;
+	margin-top: 14px;
 	margin-right: 100px;
+}
+.phone #switch-container {
+	margin-top: 8px;
 }
 #external-fab-container {
 	position: absolute;
@@ -130,10 +133,6 @@ code .com {
 #card-demo .card {
 	margin-bottom: 100px;
 	height: 100px;
-}
-#typography {
-	max-height: 330px;
-	overflow: auto;
 }
 
 /* Add spacing around items */
