@@ -42,6 +42,7 @@
 #start-menu-container .start-menu > a {
 	pointer-events: none;
 	opacity: 0;
+	-webkit-transform: translateY(300%) scale(0.25) rotate(360deg);
 	transform: translateY(300%) scale(0.25) rotate(360deg);
 	transition: all 200ms cubic-bezier(0.25, 0.25, 0, 1) 0s;
 }
@@ -49,6 +50,7 @@
 #start-menu-container:hover .start-menu > a {
 	pointer-events: auto;
 	opacity: 1;
+	-webkit-transform: scale(1) rotate(360deg);
 	transform: scale(1) rotate(360deg);
 }
 
