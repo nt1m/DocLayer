@@ -19,11 +19,12 @@ scratchpad.modules.define("research", {
 				var newImg = document.createElement('img');
 				// a lot of the images don't exist any more, get rid of them
 				newImg.onerror = function(e) {
-					newImg.src = result.url;
-					imgContainer.appendChild(title);
-					imgContainer.appendChild(newImg);
-					contentDiv.appendChild(imgContainer);
+					newImg.remove();
 				}
+				newImg.src = result.url;
+				imgContainer.appendChild(title);
+				imgContainer.appendChild(newImg);
+				contentDiv.appendChild(imgContainer);
 			}
 		}
 		imageSearch = new google.search.ImageSearch();
