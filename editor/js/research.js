@@ -18,7 +18,7 @@ scratchpad.modules.define("research", {
 				title.innerHTML = result.titleNoFormatting;
 				var newImg = document.createElement('img');
 				// a lot of the images don't exist any more, get rid of them
-				newImg.onerror = function(e) {																}
+				newImg.onerror = function(e) {
 					newImg.src = result.url;
 					imgContainer.appendChild(title);
 					imgContainer.appendChild(newImg);
