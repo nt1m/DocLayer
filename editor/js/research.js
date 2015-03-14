@@ -1,39 +1,34 @@
 scratchpad.modules.define("research", {
 	getImages: function(query) {
-			var imageSearch;
-		     function searchComplete() {
-          var contentDiv = document.querySelector(".images-results");
-          contentDiv.innerHTML = '';
-        if (imageSearch.results && imageSearch.results.length > 0) {
-
-          var results = imageSearch.results;
-          for (var i = 0; i < results.length; i++) {
-            var result = results[i];
-            var imgContainer = document.createElement('div');
-            var title = document.createElement('div');
-            imgContainer.classList.add("gimage-result-container");
-						title.classList.add("gimage-result-title");
-						title.classList.add("themeable");
-            title.innerHTML = result.titleNoFormatting;
-            var newImg = document.createElement('img');
-						//a lot of the images don't exist any more, get rid of them
-						newImg.onerror = function(e) {
-																					e.target.parentNode.remove();
-																				}
-            newImg.src=result.url;
-            imgContainer.appendChild(title);
-            imgContainer.appendChild(newImg);
-
-            contentDiv.appendChild(imgContainer);
-          }
-
-        }
-      }
-
+		var imageSearch;
+		function searchComplete() {
+			var contentDiv = document.querySelector(".images-results");
+			contentDiv.innerHTML = '';
+			if (!imageSearch.results && imageSearch.results.length < 0) {
+				return;	
+			}
+			var results = imageSearch.results;
+			for (var i = 0; i < results.length; i++) {
+				var result = results[i];
+				var imgContainer = document.createElement('div');
+				var title = document.createElement('div');
+				imgContainer.classList.add("gimage-result-container");
+				title.classList.add("gimage-result-title");
+				title.classList.add("themeable");
+				title.innerHTML = result.titleNoFormatting;
+				var newImg = document.createElement('img');
+				// a lot of the images don't exist any more, get rid of them
+				newImg.onerror = function(e) {																}
+					newImg.src = result.url;
+					imgContainer.appendChild(title);
+					imgContainer.appendChild(newImg);
+					contentDiv.appendChild(imgContainer);
+				}
+			}
+		}
 		imageSearch = new google.search.ImageSearch();
-    imageSearch.setSearchCompleteCallback(this, searchComplete, null);
-    imageSearch.execute(query);
-
+		imageSearch.setSearchCompleteCallback(this, searchComplete, null);
+		imageSearch.execute(query);
 	},
 	show: function(data) {
 		var _ = this;
@@ -50,25 +45,28 @@ scratchpad.modules.define("research", {
 			appReferName: "scratchpad",
 			onHeadingClick: function(e) {
 				if (e.target.tagName == "H2") { //category names for meanings
-				_.show(e.target.innerHTML);
+					_.show(e.target.innerHTML);
 				} else { //headers that will just show the same results when clicked
 					window.open("https://duckduckgo.com/?q=" + encodeURIComponent(e.target.innerHTML),'_blank');
 				}
 			},
+			horizontalScrolling: ".InfoCard-tabs",
 			classNames: {
-										"category-item": "themeable",
+				"category-item": "themeable",
 			},
-			protocol: "https"
-			});
-			$(".infocard-shell").show();
-			this.getImages(data);
+			protocol: window.location.protocol.replace(":","")
+		});
+		$(".infocard-shell").show();
+		this.getImages(data);
 	},
 	generateImage: function(input) {
 		var imagetemplate = "<img class='extend-block image-extend-block small' src='" + input + "'/>"
 		scratchpad.caret.pasteHtmlAtCaret(imagetemplate, false);
 	},
 	imageInsertFlow: function(e) {
-		if(!e.target.hasAttribute("noinsert")) {
+		if(e.target.hasAttribute("noinsert")) {
+			return;
+		}
 		var _ = this;
 		var position = $(e.target).offset();
 		var shellposition = $(".infocard-shell").offset();
@@ -79,7 +77,6 @@ scratchpad.modules.define("research", {
 		$(".research-insert-button").on("mousedown", function() {
 			_.generateImage(e.target.src);
 		});
-		}
 	},
 	init: function() {
 		var _ = this;
