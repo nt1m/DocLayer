@@ -1,5 +1,3 @@
-document.addEventListener("touchstart", function() {}, false); //ios ripple
-
 function addItem(data) {
 	$(".doclist").prepend("<li ripple id='" + data.id + "'><i class='icon-drive-file item-action'></i><span class='item-text'>" + data.title + "<span class='secondary-text'>" + data.description + "</span></span><i class='icon-open-in-browser item-action'></i><i title='Delete this document' class='icon-delete item-action item-delete'></i></li>");
 }
@@ -15,7 +13,7 @@ client.authenticate({
 	interactive: false
 }, function (error) {
 	if (error) {
-		console.log('Authentication error: ' + error);
+		createError({error: 'Authentication error: ' + error, action: "please log in to Dropbox and try again"});
 	}
 });
 
@@ -29,7 +27,7 @@ if (client.isAuthenticated()) {
 	var datastoreManager = client.getDatastoreManager();
 	datastoreManager.openDefaultDatastore(function (error, datastore) {
 		if (error) {
-			console.log('Error opening default datastore: ' + error);
+			createError({error: "Error opening datastore: " + error, action: "Please try again in a few minutes."});
 		}
 
 		var documentTable = datastore.getTable('documents');
@@ -45,7 +43,7 @@ if (client.isAuthenticated()) {
 				id: value.getId()
 			});
 		});
-		$(".splashscreen").hide();
+		$(".splashscreen.loading").hide();
 
 		//these go here because they need to access the datastore directly
 		$(".doclist").on("mousedown", ".item-delete", function (e) {
