@@ -53,7 +53,12 @@ if (client.isAuthenticated()) {
 			window.location.hash = currentDocument.getId(); //if someone reloads the page, the hash should not still be "new"
 
 		} else {
+			try {
 			var currentDocument = documentTable.get(document_id);
+			}
+			catch(e) {
+			createError({error: "Document does not exist.", action: "This document does not exist, or you do not have permission to view it."});
+			}
 		}
 
 		if(!currentDocument) { //the document doesn't exist
