@@ -6,6 +6,7 @@
 	text-align: left;
 	padding: calc(2% + 10px);
 	padding-top: calc(0.5% + 30px);
+	padding-bottom: 4rem; /* add enough padding that the menu button can't cover up text */
 }
 
 
