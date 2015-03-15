@@ -170,8 +170,11 @@ body, html {
 	}
 }
 
-
 .splashscreen.error .error-info > * {
 	padding-top: 0.5em;
 	display: block;
+}
+
+.dialog {
+	min-width: 260px;
 }

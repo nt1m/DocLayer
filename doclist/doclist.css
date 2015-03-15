@@ -1,0 +1,54 @@
+.doclist {
+	margin-top: 0.66em;
+}
+
+.doclist > li {
+	margin: auto;
+	opacity: 1;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+.list-header {
+	border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
+	background-color: white;
+	z-index: 99999;
+}
+
+#document-create-button {
+	position: fixed;
+	bottom: 1.5rem;
+	right: 1.5rem;
+}
+
+#search-input {
+	width: 0px;
+	padding: 0;
+	transition: .2s;
+	border-color: #fff;
+	vertical-align: middle;
+}
+
+.find-in-page #search-input {
+	display: inline-block;
+	width: 200px;
+}
+
+.error {
+	display: block;
+	text-align: center;
+	margin: 1.5em;
+}
+
+#search-no-matches {
+	display: none;
+}
+
+@media all and (max-width: 500px) {
+	.find-in-page .toolbar-label {
+		display: none;
+	}
+	.find-in-page #search-input {
+		width: 170px;
+	}
+}

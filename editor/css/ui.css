@@ -43,6 +43,7 @@ body.has-toolbar {
 }
 .doc-name:not(:focus) {
 	border: 0;
+	text-overflow: ellipsis; /* this causes weird issues if it is applied while the input is focused */
 }
 /* find in page */
 
@@ -50,7 +51,7 @@ body.has-toolbar {
 	position: absolute;
 	right: 0;
 	background-color: inherit;
-	padding: 0 1rem;
+	padding-right: 1rem;
 }
 #findinpage-input {
 	vertical-align: middle;
