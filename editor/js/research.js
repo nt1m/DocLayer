@@ -2,30 +2,28 @@ scratchpad.modules.define("research", {
 	getImages: function(query) {
 		var imageSearch;
 		function searchComplete() {
-			var contentDiv = document.querySelector(".images-results");
-			contentDiv.innerHTML = '';
+			var contentDiv = $(".images-results");
+			contentDiv.html("");
 			if (!imageSearch.results && imageSearch.results.length < 0) {
 				return;	
 			}
 			var results = imageSearch.results;
-			for (var i = 0; i < results.length; i++) {
-				var result = results[i];
-				var imgContainer = document.createElement('div');
-				var title = document.createElement('div');
-				imgContainer.classList.add("gimage-result-container");
-				title.classList.add("gimage-result-title");
-				title.classList.add("themeable");
-				title.innerHTML = result.titleNoFormatting;
-				var newImg = document.createElement('img');
+			results.forEach(function(value) {
+				var imgContainer = $("<div>");
+				var title = $("<div>");
+				imgContainer.addClass("gimage-result-container");
+				title.addClass("gimage-result-title themeable");
+				title.html(value.titleNoFormatting);
+				var newImg = $("<img>");
 				// a lot of the images don't exist any more, get rid of them
-				newImg.onerror = function(e) {
-					newImg.remove();
-				}
-				newImg.src = result.url;
-				imgContainer.appendChild(title);
-				imgContainer.appendChild(newImg);
-				contentDiv.appendChild(imgContainer);
-			}
+				newImg.on("error", function(e) {
+					newImg.parent().remove(); //remove the container for images that don't exist
+				});
+				newImg.attr("src", value.url);
+				imgContainer.append(title);
+				imgContainer.append(newImg);
+				contentDiv.append(imgContainer);
+			});
 		}
 		imageSearch = new google.search.ImageSearch();
 		imageSearch.setSearchCompleteCallback(this, searchComplete, null);
@@ -36,7 +34,7 @@ scratchpad.modules.define("research", {
 		$(".infocard-content").html("");
 		var infocard = new InfoCard({
 			query: data,
-			container: document.querySelector(".infocard-content"),
+			container: $(".infocard-content")[0],
 			onEmpty: function(container) {
 				container.innerHTML="<div class='secondary-text error-message'>No results found.</div>"
 			},

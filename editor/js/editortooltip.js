@@ -4,7 +4,7 @@ scratchpad.modules.define("editortooltip", {
 	init: function() {
 	
 	var EDGE = -999,
-			editableNodes = document.querySelectorAll("#document-editor"),
+			editableNodes = $("#document-editor"),
 			editNode = editableNodes[0], // TODO: cross el support for imageUpload
 			isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
 			options = {
@@ -74,13 +74,13 @@ scratchpad.modules.define("editortooltip", {
 		div.className = "text-menu hide";
 		div.innerHTML = toolbarTemplate;
 
-		if (document.querySelectorAll(".text-menu").length === 0) {
+		if ($(".text-menu").length === 0) {
 			toolbarContainer.appendChild(div);
 		}
 
-		textMenu = document.querySelectorAll(".text-menu")[0];
-		optionsNode = document.querySelectorAll(".text-menu .options")[0];
-		urlInput = document.querySelectorAll(".text-menu .url-input")[0];
+		textMenu = $(".text-menu")[0];
+		optionsNode = $(".text-menu .options")[0];
+		urlInput = $(".text-menu .url-input")[0];
 	}
 
 	function bindTextSelectionEvents() {
@@ -123,7 +123,7 @@ scratchpad.modules.define("editortooltip", {
 	}
 
 	function iterateTextMenuButtons(callback) {
-		var textMenuButtons = document.querySelectorAll(".text-menu button"),
+		var textMenuButtons = $(".text-menu button"),
 				i,
 				len,
 				node,
