@@ -10,7 +10,10 @@ scratchpad.modules.define("imageEditor", {
 	imageDialog: $(".image-edit-dialog"),
 	previewPane: $("#image-editor-preview"),
 	renderImage: function(options, el) {
-		el.css("filter", "blur(" + options.blur + "px) brightness(" + options.brightness + ") contrast(" + options.contrast + "%) grayscale(" + options.grayscale + "%)  saturate(" + options.saturation + "%) opacity(" + options.opacity + "%)");
+		var filter = "blur(" + options.blur + "px) brightness(" + options.brightness + ") contrast(" + options.contrast + "%) grayscale(" + options.grayscale + "%)  saturate(" + options.saturation + "%) opacity(" + options.opacity + "%)"
+		el.css("filter", filter);
+		el.css("-webkit-filter", filter); //same thing, but for webkit
+
 		el.attr("data-blur", options.blur);
 		el.attr("data-brightness", options.brightness);
 		el.attr("data-contrast", options.contrast);

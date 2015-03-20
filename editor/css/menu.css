@@ -54,15 +54,9 @@
 	transform: scale(1) rotate(360deg);
 }
 
-.small-dialog {
+.dialog.small-dialog, .dialog.large-dialog {
 	position: fixed;
-	top: calc(50% - 75px);
-	left: calc(50% - 150px);
-}
-.large-dialog {
-	position: fixed;
-	top: calc(50% - 300px);
-	left: calc(50% - 325px);
+	max-height: none; /*see https://github.com/nt1m/material-framework/issues/168 */
 }
 .map-dialog {
 	position: fixed;
