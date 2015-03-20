@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1>Spellcheck.js: a lightweight, pattern based spellchecker</h1>
+<h2>What's different?</h2>
+<p>While most spellcheckers use a large dictionary of every word in English, spellcheck.js uses a small list of common words that it extends by making predictions based on common English spelling rules. This makes it much smaller than other spellcheckers (under 3k minified and gzipped).</p>
+	
+	
+<h2>How to use</h2>
+	
+	<p>notes: <br>
+	
+	 - this only works correctly with single-word inputs - don't try to input multiple words. <br>
+	 - the getSuggestions() and getBestReplacement() assume the word is misspelled, so run checkSpelling() first.</p>
+
+<h3>checkSpelling(word)</h3>
+	
+	<p>Check to see if a word is spelled correctly. Returns true or false</p>
+	
+<h3>getBestReplacement(word)</h3>
+	
+	<p>Get the best possible replacement for a misspelled word.  Returns an object with <code>{value, diff}</code>, where value is the best possible replacement and diff is a number (can be infinite, but 0 is an exact match and 1 or higher is completely different).</p>
+	
+<h3>getSuggestions(word)</h3>
+	
+	<p>Returns an array of possible suggestions for the given word</p>
+	<style>
+	
+		body {
+			font-family: sans-serif;
+		}
+		* {
+			line-height: 1.2em;
+		}
+	#output:before {
+    content: "best suggestion: ";
+}
+
+#suggestions:before {
+    content: "suggestions: ";
+}
+
+#correct:before {
+    content: "this word is spelled correctly: ";
+}
+	
+	</style>
+<h3>Demo</h3>
+	Type a misspelled word:
+	
+<input type="text" id="input"/>
+<br>
+<br>
+<div id="correct"></div>
+<div id="output"></div>
+<div id="suggestions"></div>
+	
+	<script src="spellcheck.js"></script>
+<script src="demo.js"></script>
+</body>
+</html>

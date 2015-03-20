@@ -13,11 +13,11 @@ scratchpad.modules.define("ui", {
 			dialog.trigger("dialog-hidden");
 		},
 		init: function() {
-			$(".dialog-confirm").on("click", function() {
+			$(document.body).on("click", ".dialog-confirm", function() {
 				var dialog = $(this).parent().parent().parent(".dialog");
 				dialog.trigger("dialog-confirm");
 			});
-			$(".dialog-cancel").on("click", function() {
+			$(document.body).on("click", ".dialog-cancel",  function() {
 				var dialog = $(this).parent().parent().parent(".dialog");
 				dialog.trigger("dialog-cancel");
 				scratchpad.ui.dialogs.hide(dialog);

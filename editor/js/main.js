@@ -9,6 +9,9 @@ var scratchpad = {
 		},
 		define: function(name, code) {
 			scratchpad[name] = code;
+			if(scratchpad[name].hasOwnProperty("html")) {
+				$(document.body).append(scratchpad[name].html);
+			}
 			if(scratchpad[name].hasOwnProperty("init")) {
 				scratchpad[name].init();
 			}
@@ -22,7 +25,7 @@ var scratchpad = {
 		core.forEach(function(value) {
 			scratchpad.modules.load(value);
 		});
-		var modulesToLoad = ["editor", "ui", "images", "maps", "videos", "embeds", "findinpage", "research", "charts", "comments", "image-editor" ];
+		var modulesToLoad = ["editor", "ui", "images", "maps", "videos", "embeds", "findinpage", "research", "charts", "comments", "image-editor", "spellcheck" ];
 		$(window).load(function() {
 			$(".splashscreen.loading").hide();
 			modulesToLoad.forEach(function(value) {

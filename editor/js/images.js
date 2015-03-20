@@ -1,5 +1,18 @@
 scratchpad.modules.define("images", {
-	dialogEl: $(".image-dialog"),
+	html: ' \
+		<div noprint class="dialog image-dialog small-dialog" hidden>\
+		<span class="dialog-title">Choose an image</span>\
+		<div class="dialog-content">\
+			<input type="text" class="image-url-chooser text-input" placeholder="Paste a URL here"/>\
+		</div>\
+		<div class="dialog-footer">\
+			<span class="float-right">\
+				<button id="imagechooser-cancel-button" class="button dialog-cancel color-accent-color">Cancel</button>\
+				<button id="imagechooser-okay-button" class="button color-blue-500 dialog-confirm color-accent-color">Choose image</button>\
+			</span>\
+		</div>\
+	</div>\
+	',
 	launchButton: $("#image-insert"),
 	ondialogopen: function() {
 		var input = "<img class='imageplaceholder'/>"; //add a placeholder to mark the cursor position
@@ -21,6 +34,7 @@ scratchpad.modules.define("images", {
 	},
 	init: function() {
 		var _ = this;
+		this.dialogEl = $(".image-dialog");
 		this.launchButton.on("mousedown", function() {
 			scratchpad.ui.dialogs.show(_.dialogEl);
 		});

@@ -1,5 +1,47 @@
 scratchpad.modules.define("charts", {
-	dialogEl: $(".chart-dialog"),
+	html: '\
+		<div noprint class="dialog chart-dialog large-dialog" hidden>\
+		<span class="dialog-title">Add a Chart</span>\
+		<div class="dialog-content">\
+			<div class="chart-type-chooser">\
+			<div class="item"> <div class="radio"> <input autoselect="" id="pie" name="charts" checked="" type="radio"> <label for="pie"></label> </div> Pie </div>\
+			<div class="item"><div class="radio"> <input id="doughnut" name="charts" type="radio"> <label for="doughnut"></label> </div> Doughnut</div>\
+			<div class="item"><div class="radio"> <input id="line" name="charts" type="radio"> <label for="line"></label> </div> Line</div>\
+			<div class="item"><div class="radio"> <input id="scatter" name="charts" type="radio"> <label for="scatter"></label> </div> Scatter</div>\
+			<div class="item"><div class="radio"> <input id="column-bar" name="charts" type="radio"> <label for="column-bar"></label> </div> Bar</div>\
+			<div class="item"><div class="radio"> <input id="bubble" name="charts" type="radio"> <label for="bubble"></label> </div> Bubble</div>\
+			<div class="item"><div class="radio"> <input id="table" name="charts" type="radio"> <label for="table"></label> </div> Table</div>\
+			</div>\
+\
+ <ul class="tabs chart-tabs"> \
+	 <li ripple class="selected" id="chart-edit">edit</a></li> \
+	 <li ripple id="chart-preview">preview</li> \
+		</ul>\
+<div class="table-editor">\
+<table class="table">\
+<thead class="table-head-region">\
+<tr>\
+<th contenteditable="true" spellcheck="false"></th>\
+<th contenteditable="" spellcheck="false"></th>\
+</tr>\
+</thead>\
+<tbody><tr>\
+<td contenteditable="true" spellcheck="false"></td>\
+<td contenteditable="" spellcheck="false"></td></tr></tbody>\
+</table>\
+<div class="add-button add-column">+</div>\
+<div class="add-button add-row">+</div>\
+		</div>\
+	<iframe class="chart-preview-field"></iframe>\
+		</div>\
+		<div class="dialog-footer">\
+			<span class="float-right">\
+				<button id="charts-cancel-button" class="button dialog-cancel color-accent-color">Cancel</button>\
+				<button id="charts-okay-button" class="button dialog-confirm color-accent-color">Add Chart</button>\
+			</span>\
+		</div>\
+	</div>\
+	',
 	launchButton: $("#chart-insert"),
 	getFMScriptSource: function(type) {
 				switch(type) {
@@ -81,6 +123,7 @@ scratchpad.modules.define("charts", {
 	},
 	init: function() {
 		var _ = this;
+		this.dialogEl = $(".chart-dialog");
 		this.insertChart = this.insertChart.bind(this);
 		this.switchToMode = this.switchToMode.bind(this);
 		this.editTable($(".table")[0]);
