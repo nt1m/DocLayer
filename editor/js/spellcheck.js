@@ -40,24 +40,20 @@ scratchpad.modules.define("spellcheck", {
 			top: offset.top + 20 + "px",
 			left: offset.left + "px",
 		});
-		suggestionList.forEach(function (value) {
+		suggestionList.reverse().forEach(function (value) { //spellcheck.js returns words in an array that is generally sorted from least relavent to most relevant, but we want to display the most relevant suggestions at the top of the list, so we reverse the array before looping through it.
 			var item = $('<li ripple><a>' + value + '</a></li>');
 			item.children().on("click", function () {
-				_.autocorrect(el, $(this).html());
+				_.replaceSpelling(el, $(this).html());
 				$(".spellcheck-menu").hide();
 			});
 			item.appendTo(menu);
 		});
 		menu.appendTo(document.body);
 	},
-	autocorrect: function (el, replacement) { //replace the misspelling with the correct form
+	replaceSpelling: function (el, replacement) { //replace the misspelling with the correct form
 		var span = $(el);
 		var word = span.html();
-		if (!replacement) {
-			span.html(getBestReplacement(word).value);
-		} else {
-			span.html(replacement);
-		}
+		span.html(replacement);
 		span.contents().unwrap();
 	},
 	regrade: function (el) { //recheck all the misspellings to see if they have been changed and are now spelled correctly
@@ -80,9 +76,7 @@ scratchpad.modules.define("spellcheck", {
 				_.correct();
 			}
 		});
-		this.editor.on("click", ".misspelling", function (e) {
-			_.autocorrect(e.target);
-		});
+
 		this.editor.on("keyup", function () {
 			if ($(document.getSelection().anchorNode.parentNode).hasClass("misspelling")) {
 				_.regrade();

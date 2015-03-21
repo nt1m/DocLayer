@@ -124,16 +124,6 @@ p[align=right] {
 	cursor: pointer;
 }
 
-@keyframes error-fade {
-	from {
-		color: inherit;
-	}
-	to {
-		color: #e91e63;
-	}
-}
 .misspelling {
-	cursor: pointer;
-	animation: error-fade 1s;
-	color: #e91e63;
+	border-bottom: 2px #e91e63 dotted;
 }
