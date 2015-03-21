@@ -147,6 +147,7 @@ var commonMisspellings = [
 	["kk", "k"],
 	["ww", "w"],
 	["xx", "x"],
+	["pld", "pelled"],
 ]
 
 	function getLinguisticMatch(word) {
@@ -198,7 +199,7 @@ var commonMisspellings = [
 		});
 		var patternMatch = getLinguisticMatch(word);
 		var tempdiff = sift4(word.toUpperCase(), patternMatch.toUpperCase());
-		if ((tempdiff / patternMatch.length <= 0.3 || (tempdiff / patternMatch.length <= 0.5 && suggestionList.length < 4)) && patternMatch != word) {
+		if (tempdiff / patternMatch.length <= 0.5 && patternMatch != word) {
 			diff = tempdiff / patternMatch.length;
 			suggestionList.push(patternMatch);
 		}

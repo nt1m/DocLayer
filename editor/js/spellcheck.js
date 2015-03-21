@@ -37,7 +37,7 @@ scratchpad.modules.define("spellcheck", {
 		var menu = $(' <ul class="menu spellcheck-menu"> </ul>');
 		menu.css({
 			position: "absolute",
-			top: offset.top + 20 + "px",
+			top: offset.top + 25 + "px",
 			left: offset.left + "px",
 		});
 		suggestionList.reverse().forEach(function (value) { //spellcheck.js returns words in an array that is generally sorted from least relavent to most relevant, but we want to display the most relevant suggestions at the top of the list, so we reverse the array before looping through it.
