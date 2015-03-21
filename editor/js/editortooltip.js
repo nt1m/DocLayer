@@ -457,8 +457,8 @@ scratchpad.modules.define("editortooltip", {
 				clientRectBounds,
 				target = e.target || e.srcElement;
 
-		// The selected text is not editable
-		if (!target.isContentEditable) {
+		// Editor is not focused, so the selected text is not in the editor, so the menu should not show
+		if (!$("#document-editor").is(":focus")) {
 			reloadMenuState();
 			return;
 		}
