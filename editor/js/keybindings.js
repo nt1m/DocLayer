@@ -12,12 +12,9 @@
 
 scratchpad.modules.define("keybindings", {
 addBinding: function(keyset, eventFunction) {
-Mousetrap.bind(keyset, function(e) {
-    eventFunction();
+	Mousetrap.bind(keyset, function(e) {
+		eventFunction();
     return false;
-});
-},
-	init: function() {
-		console.log("initialized keyboard shortcuts module");
-	}
+	});
+}
 });

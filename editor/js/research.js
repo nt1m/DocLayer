@@ -1,4 +1,15 @@
 scratchpad.modules.define("research", {
+	html: '\
+		<div noprint class="infocard-shell themeable" hidden>\
+    <div class="toolbar theme-accent-color">\
+        <button id="research-close-button" class="icon-button"><i class="icon-close"></i></button>\
+        <span class="toolbar-label">Research</span>\
+    </div>\
+		<div class="images-results"></div>\
+		<div id="googleimages-branding">Powered by <img noinsert alt="Google" src="css/google-logo.png"/></div>\
+		<div class="infocard-content"></div>\
+	</div>\
+	',
 	getImages: function(query) {
 		var imageSearch;
 		function searchComplete() {
@@ -55,7 +66,7 @@ scratchpad.modules.define("research", {
 			},
 			protocol: window.location.protocol.replace(":","")
 		});
-		$(".infocard-shell").show();
+		this.panel.show();
 		this.getImages(data);
 	},
 	generateImage: function(input) {
@@ -68,33 +79,35 @@ scratchpad.modules.define("research", {
 		}
 		var _ = this;
 		var position = $(e.target).offset();
-		var shellposition = $(".infocard-shell").offset();
-		var scroll = $(".infocard-shell").scrollTop();
-		$(".research-insert-button").css({left: position.left - shellposition.left, top: position.top - shellposition.top + scroll });
-		$(".research-insert-button").show();
-		$(".research-insert-button").off();
-		$(".research-insert-button").on("mousedown", function() {
+		var shellposition = this.panel.offset();
+		var scroll = this.panel.scrollTop();
+		this.insertButton.css({left: position.left - shellposition.left, top: position.top - shellposition.top + scroll });
+		this.insertButton.show();
+		this.insertButton.off();
+		this.insertButton.on("mousedown", function() {
 			_.generateImage(e.target.src);
 		});
 	},
 	init: function() {
 		var _ = this;
+		this.panel = $(".infocard-shell");
 		this.imageInsertFlow = this.imageInsertFlow.bind(this);
-		$(".infocard-shell").append('<div noprint hidden class="research-insert-button small fab color-green-500" title="Add image to document"><i class="icon-add"></i></div>');
-		$(".infocard-shell").on("mouseover", "img", function(e) {
+		this.panel.append('<div noprint hidden class="research-insert-button small fab color-green-500" title="Add image to document"><i class="icon-add"></i></div>');
+		this.insertButton = $(".research-insert-button");
+		this.panel.on("mouseover", "img", function(e) {
 			_.imageInsertFlow(e);
 		});
 		$(document.body).on("click", function() {
-			$(".research-insert-button").hide();
+			_.insertButton.hide();
 		});
 		$("#research-close-button").on("click", function() {
-			$('.infocard-shell').hide();
+			_.panel.hide();
 		})
 		scratchpad.keybindings.addBinding("mod+option+shift+i", function() {
 			scratchpad.research.show(window.getSelection());
 		});
 		scratchpad.keybindings.addBinding("esc", function() {
-			$(".infocard-shell").hide();
+			_.panel.hide();
 		});
 	}
 });

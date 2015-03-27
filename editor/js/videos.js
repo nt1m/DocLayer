@@ -1,5 +1,17 @@
 scratchpad.modules.define("videos", {
-	dialogEl: $(".video-dialog"),
+	html: '\
+		<div noprint class="dialog video-dialog small-dialog" hidden>\
+		<span class="dialog-title">Choose a video</span>\
+		<div class="dialog-content">\
+			<input type="text" class="video-url-chooser text-input" placeholder="Paste a URL here"/>\
+		</div>\
+		<div class="dialog-footer">\
+			<span class="float-right">\
+				<button id="video-cancel-button" class="button dialog-cancel color-accent-color">Cancel</button>\
+				<button id="video-okay-button" class="button dialog-confirm color-accent-color">Choose video</button>\
+			</span>\
+		</div>\
+	</div>',
 	launchButton: $("#video-insert"),
 	ondialogopen: function() {
 		var input = "<video controls class='videoplaceholder'/>"; //add a placeholder to mark the cursor position
@@ -37,6 +49,7 @@ scratchpad.modules.define("videos", {
 	},
 	init: function() {
 		var _ = this;
+		this.dialogEl = $(".video-dialog");
 		this.launchButton.on("mousedown", function() {
 			scratchpad.ui.dialogs.show(_.dialogEl);
 		});
