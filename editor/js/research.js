@@ -49,7 +49,7 @@ scratchpad.modules.define("research", {
 					window.open("https://duckduckgo.com/?q=" + encodeURIComponent(e.target.innerHTML),'_blank');
 				}
 			},
-			horizontalScrolling: ".InfoCard-tabs",
+			horizontalScrolling: false, /* makes osx trackpad scrolling not work */
 			classNames: {
 				"category-item": "themeable",
 			},

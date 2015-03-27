@@ -13,7 +13,10 @@ client.authenticate({
 	interactive: false
 }, function (error) {
 	if (error) {
-		createError({error: 'Authentication error: ' + error, action: "please log in to Dropbox and try again"});
+		createError({
+			error: 'Authentication error: ' + error,
+			action: "please log in to Dropbox and try again"
+		});
 	}
 });
 
@@ -27,7 +30,10 @@ if (client.isAuthenticated()) {
 	var datastoreManager = client.getDatastoreManager();
 	datastoreManager.openDefaultDatastore(function (error, datastore) {
 		if (error) {
-			createError({error: "Error opening datastore: " + error, action: "Please try again in a few minutes."});
+			createError({
+				error: "Error opening datastore: " + error,
+				action: "Please try again in a few minutes."
+			});
 		}
 
 		var documentTable = datastore.getTable('documents');
@@ -115,6 +121,12 @@ function hidesearch() {
 		$("#search-no-matches").hide();
 	}, 750);
 }
+
+$(document.body).on("keydown", function () {
+	if (document.activeElement.id != "search-input") { //if we're not in the search box and a key is entered, show the search box
+		showsearch();
+	}
+});
 
 $("#search-button").click(showsearch);
 

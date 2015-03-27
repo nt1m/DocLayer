@@ -6,11 +6,12 @@ scratchpad.modules.define("imageEditor", {
 		grayscale: $("#image-grayscale"),
 		saturation: $("#image-saturation"),
 		opacity: $("#image-opacity"),
+		invert: $("#image-invert"),
 	},
 	imageDialog: $(".image-edit-dialog"),
 	previewPane: $("#image-editor-preview"),
 	renderImage: function(options, el) {
-		var filter = "blur(" + options.blur + "px) brightness(" + options.brightness + ") contrast(" + options.contrast + "%) grayscale(" + options.grayscale + "%)  saturate(" + options.saturation + "%) opacity(" + options.opacity + "%)"
+		var filter = "blur(" + options.blur + "px) brightness(" + options.brightness + ") contrast(" + options.contrast + "%) grayscale(" + options.grayscale + "%)  saturate(" + options.saturation + "%) opacity(" + options.opacity + "%) invert(" + options.invert + "%)"
 		el.css("filter", filter);
 		el.css("-webkit-filter", filter); //same thing, but for webkit
 
@@ -20,6 +21,7 @@ scratchpad.modules.define("imageEditor", {
 		el.attr("data-grayscale", options.grayscale);
 		el.attr("data-saturation", options.saturation);
 		el.attr("data-opacity", options.opacity);
+		el.attr("data-invert", options.invert);
 	},
 	resetSliders: function() {
 		this.sliders.blur[0].value = 0;
@@ -28,6 +30,7 @@ scratchpad.modules.define("imageEditor", {
 		this.sliders.grayscale[0].value = 0;
 		this.sliders.saturation[0].value = 100;
 		this.sliders.opacity[0].value = 100;
+		this.sliders.invert[0].value = 0;
 		this.updatePreview();
 	},
 	editImage: function(item) {
@@ -42,6 +45,7 @@ scratchpad.modules.define("imageEditor", {
 		this.sliders.grayscale[0].value = editTarget.attr("data-grayscale");
 		this.sliders.saturation[0].value = editTarget.attr("data-saturation");
 		this.sliders.opacity[0].value = editTarget.attr("data-opacity");
+		this.sliders.invert[0].value = editTarget.attr("data-invert");
 		this.previewPane.attr("src", editTarget.attr("src"));
 		this.updatePreview();
 	},
@@ -55,6 +59,7 @@ scratchpad.modules.define("imageEditor", {
 			grayscale: this.sliders.grayscale.val(),
 			saturation: this.sliders.saturation.val(),
 			opacity: this.sliders.opacity.val(),
+			invert: this.sliders.invert.val(),
 		}, editTarget);
 		scratchpad.ui.dialogs.hide(this.imageDialog);
 	},
@@ -66,6 +71,7 @@ scratchpad.modules.define("imageEditor", {
 			grayscale: this.sliders.grayscale.val(),
 			saturation: this.sliders.saturation.val(),
 			opacity: this.sliders.opacity.val(),
+			invert: this.sliders.invert.val(),
 		}, this.previewPane);
 	},
 	cancelImageEdit: function() {

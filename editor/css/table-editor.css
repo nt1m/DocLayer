@@ -8,7 +8,6 @@
 	max-height: calc(100vh - 230px);
 	width: 70%;
 	position: relative;
-	white-space: nowrap;
 	float: right;
 }
 

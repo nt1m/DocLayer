@@ -79,6 +79,7 @@ p[align=right] {
 	text-transform: none;
 	line-height: 1rem;
 	vertical-align: middle;
+	float: left; /* this should always be on the left, regarless of how the text is aligned */
 }
 
 #document-editor *:hover:not([starred]):before {

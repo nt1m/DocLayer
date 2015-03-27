@@ -2,7 +2,7 @@
 
 #document-editor {
 	width: 100%;
-	min-height: 80vh;
+	min-height: 100vh;
 	text-align: left;
 	padding: calc(2% + 10px);
 	padding-top: calc(0.5% + 30px);

@@ -54,7 +54,7 @@ scratchpad.modules.define("editor", {
 			_.starItem(e);
 		});
 		scratchpad.keybindings.addBinding("tab", function() {
-			document.execCommand("indent", false);
+			document.execCommand("insertHTML", false, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"); //TODO make this use real tabs (would require wrapping the editor in a <pre> block)
 		});
 	}
 });
