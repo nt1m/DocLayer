@@ -45,7 +45,7 @@ if (client.isAuthenticated()) {
 
 		documentTable.setResolutionRule('content', 'sum');
 
-		if (document_id == "new") {
+		if (!document_id) {
 			var currentDocument = documentTable.insert({
 				title: "Untitled Document",
 				content: "",

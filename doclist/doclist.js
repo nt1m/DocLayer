@@ -135,7 +135,7 @@ $("#search-input").keyup(highlightmatches);
 $("#search-input").blur(hidesearch);
 
 $("#document-create-button").on("click", function () {
-	window.location = "https://standaert.net/scratchpad/editor/index.html#new";
+	window.location = "https://standaert.net/scratchpad/editor";
 });
 
 $(".signout-button").on("click", function () {
