@@ -12,7 +12,6 @@ scratchpad.modules.define("videos", {
 			</span>\
 		</div>\
 	</div>',
-	launchButton: $("#video-insert"),
 	ondialogopen: function() {
 		var input = "<video controls class='videoplaceholder'/>"; //add a placeholder to mark the cursor position
 				scratchpad.caret.pasteHtmlAtCaret(input, false);
@@ -50,9 +49,17 @@ scratchpad.modules.define("videos", {
 	init: function() {
 		var _ = this;
 		this.dialogEl = $(".video-dialog");
-		this.launchButton.on("mousedown", function() {
+
+		scratchpad.menu.addItem({
+			color: "white",
+			background: "grey-800",
+			name: "video",
+			icon: "icon-videocam",
+			fn: function() {
 			scratchpad.ui.dialogs.show(_.dialogEl);
+			}
 		});
+
 		this.dialogEl.on("dialog-shown", this.ondialogopen);
 		this.dialogEl.on("dialog-cancel", this.ondialogcancel);
 		this.dialogEl.on("dialog-confirm", this.insertvideofromdialog)

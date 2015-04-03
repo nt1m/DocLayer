@@ -37,9 +37,17 @@ scratchpad.modules.define("editor", {
 		var _ = this;
 		$(document.body).append('<div noprint class="deletion-button small fab color-red-500" title="Remove"><i class="icon-delete"></i></div>'); //add the deletion button
 		this.deletionButton = $(".deletion-button");
-		$("#divider-insert").on("mousedown", function() {
+
+		scratchpad.menu.addItem({
+			color: "black",
+			background: "white",
+			name: "divider",
+			icon: "icon-border-horizontal",
+			fn: function() {
 			_.insertItem("divider");
+			}
 		});
+
 		$("#document-editor").on( "mouseover", ".extend-block", function() {
 			_.showDeletion($(this));
 		});

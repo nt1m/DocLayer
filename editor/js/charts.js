@@ -47,7 +47,6 @@ scratchpad.modules.define("charts", {
 		</div>\
 	</div>\
 	',
-	launchButton: $("#chart-insert"),
 	getFMScriptSource: function(type) {
 				switch(type) {
 			case "pie":
@@ -165,10 +164,16 @@ scratchpad.modules.define("charts", {
 		this.showEditButton = this.showEditButton.bind(this);
 	
 		this.editTable($(".table")[0]);
-
-		this.launchButton.on("mousedown", function() {
-			_.editExisting = false; //this creates a new chart, so change the editExisting to reflect that
-			scratchpad.ui.dialogs.show(_.dialogEl);
+		
+		scratchpad.menu.addItem({
+			color: "white",
+			background: "orange-500",
+			name: "chart",
+			icon: "icon-chart",
+			fn: function() {
+				_.editExisting = false; //this creates a new chart, so change the editExisting to reflect that
+				scratchpad.ui.dialogs.show(_.dialogEl);
+			}
 		});
 
 		//chart edit button

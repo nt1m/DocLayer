@@ -25,11 +25,11 @@ var scratchpad = {
 		var starttime = Date.now(); // start performance logging
 
 		//DO NOT remove core moduels
-		var core = ["editor", "ui", "keybindings", "caret", "editortooltip", "darktheme"]; //the darktheme is core to reduce the white flash before loading
+		var core = ["keybindings", "ui", "caret", "editortooltip", "darktheme"]; //the darktheme is core to reduce the white flash before loading
 		core.forEach(function(value) {
 			scratchpad.modules.load(value);
 		});
-		var modulesToLoad = ["menu", "images", "maps", "videos", "embeds", "findinpage", "research", "charts", "comments", "imageEditor", "spellcheck" ];
+		var modulesToLoad = ["menu", "editor", "images", "maps", "videos", "embeds", "findinpage", "research", "charts", "comments", "imageEditor", "spellcheck" ];
 		$(window).load(function() {
 			$(".splashscreen.loading").hide();
 			modulesToLoad.forEach(function(value) {

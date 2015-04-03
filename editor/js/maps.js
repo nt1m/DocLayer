@@ -14,7 +14,6 @@ scratchpad.modules.define("maps", {
 		</div>\
 	</div>\
 	',
-	launchButton: $("#map-insert"),
 	ondialogopen: function() {
 			var input = "<iframe sandbox='allow-scripts' class='mapplaceholder'/>"; //add a placeholder to mark the cursor position
 				scratchpad.caret.pasteHtmlAtCaret(input, false);
@@ -49,9 +48,17 @@ scratchpad.modules.define("maps", {
 		var _ = this;
 		this.insertmapfromdialog = this.insertmapfromdialog.bind(this);
 		this.dialogEl = $(".map-dialog");
-		this.launchButton.on("mousedown", function() {
-			scratchpad.ui.dialogs.show(_.dialogEl);
+		
+		scratchpad.menu.addItem({
+			color: "white",
+			background: "green-500",
+			name: "map",
+			icon: "icon-map",
+			fn: function() {
+				scratchpad.ui.dialogs.show(_.dialogEl);
+			}
 		});
+		
 		this.dialogEl.on("dialog-shown", this.ondialogopen);
 		this.dialogEl.on("dialog-cancel", this.ondialogcancel);
 		this.dialogEl.on("dialog-confirm", this.insertmapfromdialog)
