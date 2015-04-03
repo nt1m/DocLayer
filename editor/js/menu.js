@@ -1,0 +1,3 @@
+scratchpad.modules.define("menu", {
+	
+});

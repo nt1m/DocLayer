@@ -1,0 +1,33 @@
+.navbar-to-right {
+	position: absolute;
+	right: 0;
+	background-color: inherit;
+	padding-right: 1rem;
+}
+#findinpage-input {
+	vertical-align: middle;
+	/* width of this is set in findinpage.js */
+}
+
+#findinpage-input.no-matches {
+	color: #f44336;
+	border-color: #f44336;
+}
+.findinpage {
+	position: relative;
+	vertical-align: middle;
+}
+
+.findinpage-count {
+	position: absolute;
+	right: 0;
+	top: 15%;
+	background-color: #f4f4f4;
+	background-clip: padding-box;
+	padding-left: 0.66em;
+}
+.dark-theme .findinpage-count {
+	background-color: #555;
+}
+.highlight { background-color: #fdd835 !important}
+.dark-theme .highlight { color: #000 !important}

@@ -11,10 +11,11 @@
 		*/
 
 scratchpad.modules.define("keybindings", {
-addBinding: function(keyset, eventFunction) {
-	Mousetrap.bind(keyset, function(e) {
-		eventFunction();
-    return false;
-	});
-}
+	css: false,
+	addBinding: function(keyset, eventFunction) {
+		Mousetrap.bind(keyset, function(e) {
+			eventFunction();
+			return false;
+		});
+	}
 });

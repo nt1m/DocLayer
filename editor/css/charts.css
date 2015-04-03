@@ -1,3 +1,18 @@
+/* the block itself */
+
+.chart-extend-block {
+	height: 485px;
+	max-height: 85vh;
+	border: 0;
+	background: rgba(255, 255, 255, 0.7) !important;
+}
+
+.chartplaceholder {
+	display: none;
+}
+
+/* the dialog */
+
 .chart-dialog {
 	width: 80%;
 	max-width: 800px;

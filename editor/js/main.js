@@ -12,6 +12,10 @@ var scratchpad = {
 			if(scratchpad[name].hasOwnProperty("html")) {
 				$(document.body).append(scratchpad[name].html);
 			}
+			if(scratchpad[name].css != false) { //this is loaded at define because it needs to access the css property of the module
+				var stylesheet = $("<link>").attr("rel", "stylesheet").attr("href", "css/" + name + ".css");
+				stylesheet.appendTo("body");
+			}
 			if(scratchpad[name].hasOwnProperty("init")) {
 				scratchpad[name].init();
 			}
@@ -21,11 +25,11 @@ var scratchpad = {
 		var starttime = Date.now(); // start performance logging
 
 		//DO NOT remove core moduels
-		var core = ["keybindings", "caret", "editortooltip", "darktheme"]; //the darktheme is core to reduce the white flash before loading
+		var core = ["editor", "ui", "keybindings", "caret", "editortooltip", "darktheme"]; //the darktheme is core to reduce the white flash before loading
 		core.forEach(function(value) {
 			scratchpad.modules.load(value);
 		});
-		var modulesToLoad = ["editor", "ui", "images", "maps", "videos", "embeds", "findinpage", "research", "charts", "comments", "image-editor", "spellcheck" ];
+		var modulesToLoad = ["menu", "images", "maps", "videos", "embeds", "findinpage", "research", "charts", "comments", "imageEditor", "spellcheck" ];
 		$(window).load(function() {
 			$(".splashscreen.loading").hide();
 			modulesToLoad.forEach(function(value) {

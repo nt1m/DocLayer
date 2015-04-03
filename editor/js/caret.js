@@ -1,6 +1,7 @@
 //caret pasting api
 
 scratchpad.modules.define("caret", {
+	css: false,
 	editor: $("#document-editor"),
 	pasteHtmlAtCaret: function (html, selectPastedContent) {
 		var origHTML = this.editor.html();

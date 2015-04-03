@@ -70,7 +70,7 @@ scratchpad.modules.define("research", {
 		this.getImages(data);
 	},
 	generateImage: function(input) {
-		var imagetemplate = "<img class='extend-block image-extend-block small' src='" + input + "'/>"
+		var imagetemplate = "<img class='extend-block image-extend-block' src='" + input + "'/>"
 		scratchpad.caret.pasteHtmlAtCaret(imagetemplate, false);
 	},
 	imageInsertFlow: function(e) {

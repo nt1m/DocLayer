@@ -1,0 +1,16 @@
+.embed-extend-block {
+	height: 485px;
+	max-height: 85vh;
+	border: 0;
+}
+
+.embedplaceholder {
+	display: none;
+}
+
+/* input for the dialog */
+
+.embed-url-chooser {
+	width: 100%;
+	margin-top: 0.8em;
+}

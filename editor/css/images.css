@@ -1,0 +1,12 @@
+.image-extend-block {
+	display: block;
+	width: auto; /* prevent scaling images up */
+	max-width: 50%;
+}
+
+/* input for the dialog */
+
+.image-url-chooser {
+	width: 100%;
+	margin-top: 0.8em;
+}

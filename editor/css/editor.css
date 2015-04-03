@@ -1,17 +1,5 @@
 /* text styling for the contenteditable region */
 
-hr {
-	display:none; /* hide divider lines - they don't work correctly */
-}
-
-.text-menu {
-	z-index: 99999999; /* the menu always floats on top */
-}
-
-article[contenteditable] * {
-	background-color: inherit; /* make subheaders work correctly */
-}
-
 article[contenteditable] h2 {
 	z-index: 0; /* override material-framework */
 }
@@ -23,7 +11,7 @@ blockquote {
 @media all and (max-width:600px) {
 	blockquote {
 		width:100%;
-		float: none; /* show the whole quote */
+		float: initial; /* show the whole quote */
 	}
 }
 ul, ol {
@@ -90,41 +78,18 @@ p[align=right] {
 	color: #e91e63;
 }
 
-#document-editor comment:before{
-	display:inline-block;
-	content:"";
-	width:0.75rem;
-	height:0.75rem;
-	background:rgba(253,216,53,0.5);
-	border-radius:50%;
-	border:1px rgba(253,216,53,0.8) solid;
-	margin:0.5rem;
-	vertical-align:middle;
+/* blocks - there isn't really a good place to put this */
+
+.extend-block {
+	width: 50%;
+	float: right;
+	margin: 1.2em;
 }
 
-#document-editor comment{
-	max-width:2em;
-	white-space:nowrap;
-	overflow:hidden;
-	vertical-align:middle;
-	transition:.2s;
-	display: inline-block;
-	padding: 0 0.2em;
-}
-
-#document-editor comment:hover,#document-editor comment:focus{
-	max-width:none;
-	background-color:rgba(253,216,53,0.2);
-}
-
-#document-editor comment:hover:after {
-	content: '\e85b';
-	font-family: material-design-icons;
-	vertical-align: middle;
-	padding: 0.6em;
-	cursor: pointer;
-}
-
-.misspelling {
-	border-bottom: 2px #e91e63 dotted;
+@media all and (max-width: 750px) {
+	.extend-block {
+		width:100% !important;
+		margin-left: 0;
+		margin-right: 0;
+	}
 }

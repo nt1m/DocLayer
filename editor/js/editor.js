@@ -2,21 +2,17 @@ scratchpad.modules.define("editor", {
 	insertItem: function(item) {
 		switch(item) {
 			case "divider":
-				var input = "<hr class='extend-block fullwidth divider'></hr>";
+				var input = "<hr class='divider'></hr>";
 				break;
 		}
 		scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
 	showDeletion: function(item) {
 		var button = this.deletionButton;
-		if(item.hasClass("inline")) {
-			var offset = item.offset();
-			var itemwidth = item.width();
-		} else {
-			var offset = item.offset();
-			var itemwidth = 0;
-		}
-		button.css({top: offset.top, left: offset.left + itemwidth});
+		var offset = item.offset();
+		var itemwidth = item.width();
+
+		button.css({top: offset.top, left: offset.left});
 		button.show();
 		button.off();
 		button.on("click", function() {

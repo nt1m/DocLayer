@@ -1,0 +1,34 @@
+#document-editor comment:before{
+	display:inline-block;
+	content:"";
+	width:0.75rem;
+	height:0.75rem;
+	background:rgba(253,216,53,0.5);
+	border-radius:50%;
+	border:1px rgba(253,216,53,0.8) solid;
+	margin:0.5rem;
+	vertical-align:middle;
+}
+
+#document-editor comment{
+	max-width:2em;
+	white-space:nowrap;
+	overflow:hidden;
+	vertical-align:middle;
+	transition:.2s;
+	display: inline-block;
+	padding: 0 0.2em;
+}
+
+#document-editor comment:hover,#document-editor comment:focus{
+	max-width:none;
+	background-color:rgba(253,216,53,0.2);
+}
+
+#document-editor comment:hover:after {
+	content: '\e85b';
+	font-family: material-design-icons;
+	vertical-align: middle;
+	padding: 0.6em;
+	cursor: pointer;
+}

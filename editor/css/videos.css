@@ -1,0 +1,10 @@
+.videoplaceholder {
+	display: none;
+}
+
+/* input for the dialog */
+
+.video-url-chooser {
+	width: 100%;
+	margin-top: 0.8em;
+}

@@ -1,0 +1,22 @@
+.map-extend-block { 
+	height: 400px;
+	max-height: 60vh;
+	border: 0;
+}
+
+.mapplaceholder {
+	display: none;
+}
+
+/* the dialog */
+
+.map-dialog {
+	position: fixed;
+	top: calc(50% - 100px);
+	left: calc(50% - 200px);
+}
+
+.map-lat-chooser, .map-long-chooser {
+	width: 100%;
+	margin-top: 0.8em;
+}
