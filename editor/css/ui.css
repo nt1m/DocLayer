@@ -4,32 +4,35 @@
 	width: 100%;
 	min-height: 100vh;
 	text-align: left;
-	padding: calc(2% + 10px);
+	padding: calc(1.5% + 20px);
 	padding-top: calc(0.5% + 30px);
-	padding-bottom: 4rem; /* add enough padding that the menu button can't cover up text */
+	padding-bottom: 4rem;
+	/* add enough padding that the menu button can't cover up text */
 }
-
 
 .dark-theme #document-editor *::selection {
-  background: #222;
-}
-.dark-theme #document-editor *::-moz-selection {
-  background: #222;
+	background: #222;
 }
 
+.dark-theme #document-editor *::-moz-selection {
+	background: #222;
+}
 /* navbr styles */
 
 .editor-toolbar {
 	background-color: #f4f4f4;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 	color: #444;
-	box-shadow: none; /* override framework */
+	box-shadow: none;
+	/* override framework */
+	
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 99;
 }
+
 .dark-theme .editor-toolbar {
 	background-color: #555;
 	color: #F5F5F5;
@@ -43,11 +46,12 @@ body.has-toolbar {
 	vertical-align: middle;
 	width: 50%;
 }
+
 .doc-name:not(:focus) {
 	border: 0;
-	text-overflow: ellipsis; /* this causes weird issues if it is applied while the input is focused */
+	text-overflow: ellipsis;
+	/* this causes weird issues if it is applied while the input is focused */
 }
-
 /* printing */
 
 @media print {
@@ -55,16 +59,17 @@ body.has-toolbar {
 		display: none !important;
 	}
 	.offline-ui {
-		display: none !important; /* we can't add a noprint to this */
+		display: none !important;
+		/* we can't add a noprint to this */
 	}
 	.page-container {
 		height: auto;
 	}
 }
-
 /* buttons */
 
-.deletion-button, .edit-button {
+.deletion-button,
+.edit-button {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -75,4 +80,3 @@ body.has-toolbar {
 .edit-button {
 	margin-left: -2.1em;
 }
-
