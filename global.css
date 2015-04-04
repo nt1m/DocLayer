@@ -1,6 +1,7 @@
-body, html {
-	min-width: 100%;
-	min-height: 100%;
+body,
+html {
+	min-width: 100vw;
+	min-height: 100vh;
 	overflow: auto;
 }
 
@@ -49,7 +50,6 @@ body, html {
 	width: 100%;
 	z-index: 9999;
 }
-
 /* splashscreens, the logo */
 
 @keyframes pulse {
@@ -77,62 +77,64 @@ body, html {
 }
 
 .logo-card {
-    width: 265px;
-    height: 360px;
-    border-radius: 27px;
-    font-size: 9em;
-    color: #FFF;
-    text-align: center;
-    margin: auto;
+	width: 265px;
+	height: 360px;
+	border-radius: 27px;
+	font-size: 9em;
+	color: #FFF;
+	text-align: center;
+	margin: auto;
 }
 
 .splashscreen.loading .logo-card {
-		animation: pulse 1.75s infinite;
-		-webkit-animation: pulse 1.75s infinite;
-    position: relative;
-		top: calc(50% - 216px);
+	animation: pulse 1.75s infinite;
+	-webkit-animation: pulse 1.75s infinite;
+	position: relative;
+	top: calc(50% - 216px);
 }
 
 .logo-icon {
-    margin: 32px;
-    font-size: 13em;
+	margin: 32px;
+	font-size: 13em;
 }
 
 .corner {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-bottom-left-radius: 18px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-bottom-left-radius: 18px;
 }
+
 .folded-corner {
-   content:"";
-   position:absolute;
-   top:0px;
-   right:0px;
-   border-style:solid;
-   border-width:36px;
-   border-color: #FFF #FFF #4DB6AC #4DB6AC;
-   -webkit-border-bottom-left-radius:9px;
-   -moz-border-radius:0 0 0 9px;
-   border-radius:0 0 0 9px;
+	content: "";
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	border-style: solid;
+	border-width: 36px;
+	border-color: #FFF #FFF #4DB6AC #4DB6AC;
+	-webkit-border-bottom-left-radius: 9px;
+	-moz-border-radius: 0 0 0 9px;
+	border-radius: 0 0 0 9px;
 }
 
 .dark-theme .folded-corner {
-   border-color: #333 #333 #4DB6AC #4DB6AC;
+	border-color: #333 #333 #4DB6AC #4DB6AC;
 }
+
 .logo-card:after {
-  content: "";
-  position: absolute;
-  top: 72px;
-  right: 0;
-  border-width: 0 68px 54px 0;
-  border-style: solid;
-  border-color: transparent #00796b;
+	content: "";
+	position: absolute;
+	top: 72px;
+	right: 0;
+	border-width: 0 68px 54px 0;
+	border-style: solid;
+	border-color: transparent #00796b;
 }
 
 .logo-card .icon-book {
-    padding-top: 104px;
-    display: inline-block;
+	padding-top: 104px;
+	display: inline-block;
 }
 
 .floating-message {
@@ -144,11 +146,11 @@ body, html {
 	transform: translateX(-50%);
 }
 
-
 .splashscreen.error > .logo-card {
 	margin: 8% 0 0 8%;
 }
-.splashscreen.error > .error-info{
+
+.splashscreen.error > .error-info {
 	float: right;
 	margin: 15% 25% 0 0;
 }
