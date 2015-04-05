@@ -1,33 +1,69 @@
-.navbar-to-right {
-	position: absolute;
-	right: 0;
-	background-color: inherit;
-	padding-right: 1rem;
-}
-#findinpage-input {
+.findinpage-to-right {
+	float: right;
 	vertical-align: middle;
-	/* width of this is set in findinpage.js */
+	background-color: inherit;
 }
 
-#findinpage-input.no-matches {
+#findinpage-inputs {
+	display: inline-block;
+	transition: .2s;
+	width: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	vertical-align: text-bottom;
+}
+
+.findinpage-input-area {
+	position: relative;
+	margin: 0 0.5em;
+	width: 50%;
+	display: inline-block;
+}
+
+body.find-in-page #findinpage-inputs {
+	width: 30vw;
+	max-width: 500px;
+}
+
+.findinpage-input {
+	width: 100%;
+	padding: 0;
+	vertical-align: bottom;
+}
+
+.findinpage-input.no-matches {
 	color: #f44336;
 	border-color: #f44336;
-}
-.findinpage {
-	position: relative;
-	vertical-align: middle;
 }
 
 .findinpage-count {
 	position: absolute;
 	right: 0;
-	top: 15%;
+	top: 0;
 	background-color: #f4f4f4;
 	background-clip: padding-box;
 	padding-left: 0.66em;
 }
+
 .dark-theme .findinpage-count {
 	background-color: #555;
 }
-.highlight { background-color: #fdd835 !important}
-.dark-theme .highlight { color: #000 !important}
+
+.highlight {
+	background-color: #fdd835 !important
+}
+
+.dark-theme .highlight {
+	color: #000 !important
+}
+/* doclist */
+
+@media all and (max-width: 900px) {
+	body.find-in-page .docs-name {
+		display: none;
+	}
+	body.find-in-page #findinpage-inputs {
+		width: calc(95vw - 125px);
+		max-width: none;
+	}
+}

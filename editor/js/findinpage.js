@@ -1,61 +1,86 @@
-//basic find in page feature
-
-/*
-
-TODO:
--fuzzy search?
--replace/replace all
-
-*/
 scratchpad.modules.define("findinpage", {
-	findinpagecontainer: $(".findinpage"),
-	findinpageinput: $("#findinpage-input"),
-	editor: $("#document-editor"),
-	findinpagecount: $(".findinpage-count"),
+	/* this needs to be appended to the navbar, not the body, so it needs a custom insert */
+	customhtml: '\
+			<span class="findinpage-to-right">\
+				<span id="findinpage-inputs">\
+					<span class="findinpage-input-area">\
+						<input title="Enter text to find" type="text" id="find-input" class="text-input findinpage-input" placeholder="Find something..."/>\
+						<span class="findinpage-count"></span>\
+					</span>\
+					<span class="findinpage-input-area">\
+						<input title="Replace text" type="text" id="replace-input" class="text-input findinpage-input" placeholder="Replace with..."/>\
+					</span>\
+				</span>\
+				<button title="Search for text in the document" class="icon-button" id="findinpage-button"><i class="icon-search"></i></button>\
+			</span>\
+	',
 
-	startsearch: function() {
+	startsearch: function () {
 		this.findinpagecount.html("");
-		this.findinpageinput.val("");
-			this.findinpageinput.removeClass("no-matches");
-		this.findinpagecontainer.show().css("width", "0px").animate({width: "200px"}, 70);
-		this.findinpageinput.focus();
-		if(window.location.hash != "#debug") {
-			this.editor.attr("contenteditable", "false"); //temp fix for firefox bug
-			}
+		this.inputs.find.val("");
+		this.inputs.replace.val("");
+		this.inputs.find.removeClass("no-matches");
+		$(document.body).addClass("find-in-page");
+		this.inputs.find.focus();
+		this.editor.attr("contenteditable", "false"); //temp fix for firefox bug
 	},
 
-	endsearch: function() {
-		this.findinpagecontainer.hide().css("width", "0px");
+	endsearch: function () {
+		$(document.body).removeClass("find-in-page");
 		this.editor.removeHighlight();
 		this.editor.attr("contenteditable", "true"); //temp fix for firefox bug
+		this.editor.get(0).focus(); //the jquery focus method doesn't work on contenteditable, so the native method must be used instead
 	},
 
-	highlightmatches: function() {
+	highlightmatches: function () {
 		this.editor.removeHighlight();
-		this.editor.highlight(this.findinpageinput.val());
+		this.editor.highlight(this.inputs.find.val());
 		var matches = $(".highlight").length
 		this.findinpagecount.html(matches);
-		if(matches == 0 && this.findinpageinput.val() != "") {
-			this.findinpageinput.addClass("no-matches")
+		if (matches == 0 && this.inputs.find.val() != "") {
+			this.inputs.find.addClass("no-matches")
 		} else {
-			this.findinpageinput.removeClass("no-matches");
+			this.inputs.find.removeClass("no-matches");
 		}
 	},
+	replace: function () {
+		this.highlightmatches();
+		$(".highlight").text(this.inputs.replace.val());
+		this.editor.removeHighlight();
+		this.endsearch();
+	},
 
-	init: function() {
+	init: function () {
 		var _ = this;
+		$(".editor-toolbar").append(this.customhtml);
+
+		//cache elements
+		this.button = $("#findinpage-button");
+		this.findinpagecontainer = $(".findinpage");
+		this.inputs = {};
+		this.inputs.find = $("#find-input");
+		this.inputs.replace = $("#replace-input");
+		this.editor = $("#document-editor");
+		this.findinpagecount = $(".findinpage-count");
+
 		// Bind functions
 		this.startsearch = this.startsearch.bind(this);
 		this.endsearch = this.endsearch.bind(this);
 		this.highlightmatches = this.highlightmatches.bind(this);
+		this.replace = this.replace.bind(this);
 
 		// Event listeners
-		this.findinpagecontainer.hide();
-		$("#findinpage-button").click(this.startsearch);
-		this.findinpageinput.blur(this.endsearch);
-		this.findinpageinput.keyup(this.highlightmatches);
-		scratchpad.keybindings.addBinding("mod+f", function() {
+
+		this.button.click(this.startsearch);
+		this.editor.click(this.endsearch);
+		this.inputs.find.keyup(this.highlightmatches);
+		this.inputs.replace.keyup(function (e) {
+			if (e.keyCode == 13) {
+				_.replace();
+			}
+		});
+		scratchpad.keybindings.addBinding("mod+f", function () {
 			_.startsearch();
-		})
+		});
 	}
 });
