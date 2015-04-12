@@ -1,4 +1,4 @@
-.map-extend-block { 
+.map-extend-block {
 	height: 400px;
 	max-height: 60vh;
 	border: 0;
@@ -7,16 +7,25 @@
 .mapplaceholder {
 	display: none;
 }
-
 /* the dialog */
 
 .map-dialog {
 	position: fixed;
 	top: calc(50% - 100px);
 	left: calc(50% - 200px);
+	width: 60vw;
+	min-width: 320px;
+	max-width: 600px;
+	height: 60vh;
+	min-height: 425px;
+	max-height: 850px;
 }
 
-.map-lat-chooser, .map-long-chooser {
+#map-search {
 	width: 100%;
-	margin-top: 0.8em;
+	margin: 0.6em 0;
+}
+
+.map-dialog #map-results li {
+	cursor: pointer;
 }
