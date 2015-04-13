@@ -12,8 +12,9 @@ scratchpad.modules.define("charts", {
 			<div class="item"> <div class="radio"> <input autoselect="" id="pie" name="charts" checked="" type="radio"> <label for="pie"></label> </div> Pie </div>\
 			<div class="item"><div class="radio"> <input id="doughnut" name="charts" type="radio"> <label for="doughnut"></label> </div> Doughnut</div>\
 			<div class="item"><div class="radio"> <input id="line" name="charts" type="radio"> <label for="line"></label> </div> Line</div>\
-			<div class="item"><div class="radio"> <input id="scatter" name="charts" type="radio"> <label for="scatter"></label> </div> Scatter</div>\
+			<div class="item"><div class="radio"> <input id="stacked-area" name="charts" type="radio"> <label for="stacked-area"></label> </div> Stacked Area</div>\
 			<div class="item"><div class="radio"> <input id="column-bar" name="charts" type="radio"> <label for="column-bar"></label> </div> Bar</div>\
+			<div class="item"><div class="radio"> <input id="scatter" name="charts" type="radio"> <label for="scatter"></label> </div> Scatter</div>\
 			<div class="item"><div class="radio"> <input id="bubble" name="charts" type="radio"> <label for="bubble"></label> </div> Bubble</div>\
 			<div class="item"><div class="radio"> <input id="table" name="charts" type="radio"> <label for="table"></label> </div> Table</div>\
 			</div>\
@@ -66,6 +67,9 @@ scratchpad.modules.define("charts", {
 			break;
 		case "bubble":
 			return '<link rel="stylesheet" href="https://factmint.io/bubble.css"><script src="https://factmint.io/bubble.js"></script>';
+			break;
+		case "stacked-area":
+			return '<link rel="stylesheet" href="https://factmint.io/stacked-area.css"><script src="https://factmint.io/stacked-area.js"></script>';
 			break;
 		case "table":
 			return '<style>table {font-family:sans-serif;}th,td {padding:0.66em}</style><link rel="stylesheet" href="https://factmint.io/fallback-table.css">';
