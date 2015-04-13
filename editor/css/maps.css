@@ -26,6 +26,19 @@
 	margin: 0.6em 0;
 }
 
+.map-dialog #map-results {
+	min-height: 32vh;
+	/* the attribution should stick near the bottom */
+}
+
 .map-dialog #map-results li {
 	cursor: pointer;
+}
+
+.map-dialog .dialog-content > .secondary-text,
+.map-dialog .dialog-content > #map-results > .secondary-text {
+	/* this applies to the attribution and the no results/error messages, but not the text blocks in the list items */
+	
+	display: block;
+	margin: 1em 1.5em;
 }
