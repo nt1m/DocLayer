@@ -37,7 +37,6 @@ scratchpad.modules.define("editor", {
 		}
 	},
 	init: function () {
-		$("#document-editor").get(0).focus(); //autofocus the editor
 		var _ = this;
 		$(document.body).append('<div noprint class="deletion-button small fab color-red-500" title="Remove"><i class="icon-delete"></i></div>'); //add the deletion button
 		this.deletionButton = $(".deletion-button");
