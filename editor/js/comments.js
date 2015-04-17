@@ -1,21 +1,28 @@
 scratchpad.modules.define("comments", {
 	template: "<span contenteditable='false'><comment contenteditable>comment</comment></span>", //span needed to get :focus to work correctly
-	add: function(message) {
+	add: function () {
 		scratchpad.caret.pasteHtmlAfterCaret(this.template);
 	},
-	delete: function(e) {
+	delete: function (e) {
 		var rightedge = $(e.target).offset().left + $(e.target).width();
-		if(e.pageX > rightedge - 32) {
+		if (e.pageX > rightedge - 32) {
 			$(e.target).parent().remove();
 		}
 	},
-	init: function() {
+	init: function () {
 		var _ = this;
-		$("#document-editor").on("click", "comment", function(e) {
+
+		scratchpad.editortooltip.createButton({
+			name: "Comment",
+			content: "<i class='icon-comment'></i>",
+			section: "comment",
+			fn: function () {
+				_.add();
+			},
+		});
+
+		$("#document-editor").on("click", "comment", function (e) {
 			_.delete(e);
 		});
 	}
 });
-
-
-

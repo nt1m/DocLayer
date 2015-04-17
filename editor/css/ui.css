@@ -32,6 +32,11 @@
 	width: 100%;
 	z-index: 99;
 }
+/* fixed positioning is really buggy on ios */
+
+.mobilesafari .editor-toolbar {
+	position: absolute;
+}
 
 .dark-theme .editor-toolbar {
 	background-color: #555;
@@ -58,13 +63,6 @@ body.has-toolbar {
 	[noprint] {
 		display: none !important;
 	}
-	.offline-ui {
-		display: none !important;
-		/* we can't add a noprint to this */
-	}
-	.page-container {
-		height: auto;
-	}
 }
 /* buttons */
 
@@ -79,4 +77,13 @@ body.has-toolbar {
 
 .edit-button {
 	margin-left: -2.1em;
+}
+/* webkit really doesn't like max heights on dialogs for some reason - it collapses the dialog content when you do. however, there still needs to be some max-height, so the max-height is applied to the content instead (which works) */
+
+.dialog {
+	max-height: none !important;
+}
+
+.dialog-content {
+	max-height: 70vh;
 }

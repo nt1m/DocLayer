@@ -1,6 +1,6 @@
 .infocard-shell {
 	width: 40%;
-	min-width: 200px;
+	min-width: 320px;
 	max-width: 550px;
 	height: calc(100% - 65px);
 	overflow: auto;
@@ -9,19 +9,16 @@
 	bottom: 0;
 	z-index: 99;
 	transition: .15s all;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26),
-							0 2px 10px 0 rgba(0, 0, 0, 0.16);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
 }
 
 .infocard-shell * {
 	max-width: 100%;
 }
-
 /* categories */
 
 .InfoCard-category > li {
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26),
-	            0 2px 10px 0 rgba(0, 0, 0, 0.16);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
 	height: 1%;
 	overflow: auto;
 	margin: 1em 0;
@@ -37,25 +34,27 @@
 .InfoCard-category > li > h2 {
 	padding: 0 1em;
 	float: left;
-	cursor: pointer; /* these are clickable - they take you to wikipedia article summaries */
+	cursor: pointer;
+	/* these are clickable - they take you to wikipedia article summaries */
 }
 
 .InfoCard-category > li > p {
 	clear: left;
 	padding: 0.5em 1em;
 }
-
 /* tabs */
 
 .InfoCard-tabs {
-		padding: 0px;
-		margin: 0px;
-		width: 100%;
-		overflow: auto;
-		white-space: nowrap;
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	overflow: auto;
+	white-space: nowrap;
 }
 
-.InfoCard-selected { /* selected tab */
+.InfoCard-selected {
+	/* selected tab */
+	
 	border-bottom: 2px solid currentcolor;
 }
 
@@ -67,13 +66,11 @@
 	margin: 0px;
 	padding: 0px 1em;
 	white-space: nowrap;
-	font-size: 0.875em
-	font-weight: 500;
+	font-size: 0.875em font-weight: 500;
 	text-transform: uppercase;
 	text-align: center;
 	cursor: pointer;
 }
-
 /* wikipedia article summaries */
 
 .InfoCard-link-icon {
@@ -84,8 +81,10 @@
 	padding: 1em;
 	margin-top: -1em;
 }
+
 .InfoCard-type-a .InfoCard-image-container {
-	display: none; /* the images show up in the image search results anyway */
+	display: none;
+	/* the images show up in the image search results anyway */
 }
 
 .InfoCard-entity {
@@ -103,7 +102,6 @@
 .InfoCard-links {
 	margin-top: 1em;
 }
-
 /* lists for wikipedia articles */
 
 .InfoCard-list > li {
@@ -113,12 +111,12 @@
 	list-style: none;
 }
 
-.InfoCard-list > li > label, .InfoCard-list > li > span {
+.InfoCard-list > li > label,
+.InfoCard-list > li > span {
 	width: 50%;
 	display: inline-block;
 	vertical-align: top;
 }
-
 /* shrink font sizes for smaller screens */
 
 @media all and (max-width: 700px) {
@@ -126,7 +124,6 @@
 		font-size: 0.9em;
 	}
 }
-
 /* errors */
 
 .infocard-shell .error-message {
@@ -134,7 +131,6 @@
 	text-align: center;
 	margin-top: 20px;
 }
-
 /* image insert button */
 
 .research-insert-button {
@@ -145,7 +141,6 @@
 	margin: 10px;
 	display: none;
 }
-
 /* color circles */
 
 .InfoCard-color-display {
@@ -153,7 +148,9 @@
 	height: 150px;
 	border-radius: 50%;
 	margin-bottom: 15px;
-	border: 3px solid rgba(0, 0, 0, 0.1); /* make sure the color stands out from the background */
+	border: 3px solid rgba(0, 0, 0, 0.1);
+	/* make sure the color stands out from the background */
+	
 	float: left;
 	margin: 2em;
 }
@@ -166,14 +163,17 @@
 	padding: 2em 3em;
 }
 
-a.tx-clr--dk2, .separator { /* hide the links to tineye */
+a.tx-clr--dk2,
+.separator {
+	/* hide the links to tineye */
+	
 	display: none;
 }
 
 .zci--color-codes .column2 {
-	display: none; /* there isn't a good way to display this, so hide it */
+	display: none;
+	/* there isn't a good way to display this, so hide it */
 }
-
 /* duckduckgo credit link */
 
 .InfoCard-credit-link {
@@ -182,19 +182,18 @@ a.tx-clr--dk2, .separator { /* hide the links to tineye */
 	width: 100%;
 	z-index: 999999;
 	padding: 0.33em;
-	background: rgba(255, 255, 255, 0.5);
+	background: rgba(255, 255, 255, 0.75);
 }
 
 .InfoCard-credit-link::before {
-content: "";
-width: 2em;
-height: 1.4em;
-vertical-align: middle;
-display: inline-block;
-background-image: url("../css/ddg_logo.svg");
-background-size: 2em auto;
+	content: "";
+	width: 2em;
+	height: 1.4em;
+	vertical-align: middle;
+	display: inline-block;
+	background-image: url("../css/ddg_logo.svg");
+	background-size: 2em auto;
 }
-
 /* google images results */
 
 .images-results {
@@ -217,6 +216,7 @@ background-size: 2em auto;
 .gimage-result-container {
 	position: relative;
 }
+
 .gimage-result-title {
 	display: block;
 	position: absolute;

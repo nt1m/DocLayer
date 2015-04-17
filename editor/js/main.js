@@ -1,4 +1,6 @@
 var scratchpad = {
+	ismobilesafari: (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false),
+	editor: $("#document-editor"),
 	modules: {
 		load: function (name) {
 			var scriptEl = $("<script async>").attr("src", "js/" + name + ".js");
@@ -22,6 +24,11 @@ var scratchpad = {
 		}
 	},
 	init: function () {
+
+		if (scratchpad.ismobilesafari) {
+			$(document.body).addClass("mobilesafari");
+		}
+
 		var starttime = Date.now(); // start performance logging
 
 		//DO NOT remove core moduels

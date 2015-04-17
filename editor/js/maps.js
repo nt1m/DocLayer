@@ -3,10 +3,10 @@ scratchpad.modules.define("maps", {
 		<div noprint class="dialog map-dialog" hidden>\
 		<span class="dialog-title">Choose map location</span>\
 		<div class="dialog-content">\
-			<input type="search" id="map-search" class="text-input" placeholder="Enter an address"/>\
+			<input type="text" id="map-search" class="text-input" placeholder="Enter an address"/>\
 			<ul id="map-results" class="list">\
 			</ul>\
-		<span class="secondary-text">Data, imagery and map information provided by MapQuest, <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> and contributors, <a href="http://wiki.openstreetmap.org/wiki/Legal_FAQ#3a._I_would_like_to_use_OpenStreetMap_maps._How_should_I_credit_you.3F">ODbL </a></span>\
+		<span class="secondary-text">Data provided by MapQuest, <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> and contributors, <a href="http://wiki.openstreetmap.org/wiki/Legal_FAQ#3a._I_would_like_to_use_OpenStreetMap_maps._How_should_I_credit_you.3F">ODbL </a></span>\
 		</div>\
 		<div class="dialog-footer">\
 			<span class="float-right">\

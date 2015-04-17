@@ -1,526 +1,217 @@
-//a modified version of https://github.com/mduvall/grande.js
-
 scratchpad.modules.define("editortooltip", {
-	init: function() {
-	
-	var EDGE = -999,
-			editableNodes = $("#document-editor"),
-			editNode = editableNodes[0], // TODO: cross el support for imageUpload
-			isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
-			options = {
-				animate: true
-			},
-			textMenu,
-			optionsNode,
-			urlInput,
-			previouslySelectedText,
-
-			tagClassMap = {
-				"b": "bold",
-				"i": "italic",
-				"ins": "underline",
-				"del": "strikethrough",
-				"h1": "header1",
-				"h2": "header2",
-				"h3": "header3",
-				"leftalign": "justifyLeft",
-				"centeralign": "justifyCenter",
-				"rightalign": "justifyRight",
-				"a": "url",
-				"blockquote": "quote",
-				"research": "research",
-				"comment": "comment"
-			};
-		
-		
-							attachToolbarTemplate();
-					bindTextSelectionEvents();
-					bindTextStylingEvents();
-		
-
-	function attachToolbarTemplate() {
-		var div = document.createElement("div"),
-				toolbarTemplate = "<div class='options themeable'> \
-					<span class='no-overflow'> \
-						<span class='ui-inputs themeable'> \
-							<div class='category'>\
-							<button title='Bold' class='bold'>B</button> \
-							<button title='Italic' class='italic'>i</button> \
-							<button title='Underline' class='underline'><i class='icon-underline'></i></button> \
-							<button title='Strikethrough' class='strikethrough'><i class='icon-strikethrough'></i></button> \
-							</div> \
-							<div class='category'>\
-							<button title='Heading 1' class='header1'>h1</button> \
-							<button title='Heading 2' class='header2'>h2</button> \
-							<button title='Heading 3' class='header3'>h3</button> \
-							</div> \
-							<div class='category'>\
-							<button title='Left Align' class='justifyLeft'><i class='icon-align-left'></i></button> \
-							<button title='Center Align' class='justifyCenter'><i class='icon-align-center'></i></button> \
-							<button title='Right Align' class='justifyRight'><i class='icon-align-right'></i></button> \
-							</div> \
-							<button title='Quote' class='quote'><i class='icon-quote'></i></button> \
-							<button title='Link' class='url'><i class='icon icon-link'></i></button> \
-							<button title='Research' class='research'><i class='icon icon-book'></i></button> \
-							<button title='Add Comment' class='comment'><i class='icon icon-message'></i></button> \
-							<input class='url-input' type='text' placeholder='Paste or type a link'/> \
-						</span> \
-					</span> \
-				</div>",
-				toolbarContainer = document.createElement("div");
-		toolbarContainer.className = "g-body";
-		document.body.appendChild(toolbarContainer);
-
-		div.className = "text-menu hide";
-		div.innerHTML = toolbarTemplate;
-
-		if ($(".text-menu").length === 0) {
-			toolbarContainer.appendChild(div);
+	html: '<div noprint id="editortooltip-menu" class="themeable"></div>',
+	editor: $("#document-editor"),
+	getCommonSelectionNode: function () { //this returns the common selection node, but doesn't include text ranges
+		var sel = window.getSelection().getRangeAt(0);
+		var el = sel.commonAncestorContainer;
+		if (el.nodeType == 3) { //if the common node is a text node, the node should actually be the parent of the text node
+			el = el.parentNode;
 		}
+		return el;
+	},
+	createButton: function (options) {
+		var _ = this;
 
-		textMenu = $(".text-menu")[0];
-		optionsNode = $(".text-menu .options")[0];
-		urlInput = $(".text-menu .url-input")[0];
-	}
+		//create the button
+		var btn = $("<div ripple>");
+		btn.html(options.content);
+		btn.attr("title", options.name);
 
-	function bindTextSelectionEvents() {
-		var i,
-				len,
-				node;
+		//if the section doesn't exist yet, create a new one
 
-		// Trigger on both mousedown and mouseup so that the click on the menu
-		// feels more instantaneously active
-		document.onmousedown = triggerTextSelection;
-		document.onmouseup = function(event) {
-			setTimeout(function() {
-				triggerTextSelection(event);
-			}, 1);
-		};
-
-		document.onkeydown = preprocessKeyDown;
-
-		document.onkeyup = function(event){
-			var sel = window.getSelection();
-
-			// FF will return sel.anchorNode to be the parentNode when the triggered keyCode is 13
-			if (sel.anchorNode && sel.anchorNode.nodeName !== "ARTICLE") {
-				triggerNodeAnalysis(event);
-
-				if (sel.isCollapsed) {
-					triggerTextParse(event);
-				}
-			}
-		};
-
-		// Handle window resize events
-		window.onresize = triggerTextSelection;
-
-		urlInput.onblur = triggerUrlBlur;
-		urlInput.onkeydown = triggerUrlSet;
-
-			node = editableNodes[0];
-			node.onmousedown = node.onkeyup = node.onmouseup = triggerTextSelection;
-	}
-
-	function iterateTextMenuButtons(callback) {
-		var textMenuButtons = $(".text-menu button"),
-				i,
-				len,
-				node,
-				fnCallback = function(n) {
-					callback(n);
-				};
-
-		for (i = 0, len = textMenuButtons.length; i < len; i++) {
-			node = textMenuButtons[i];
-
-			fnCallback(node);
+		if (!this.menu.find("#section-" + options.section)[0]) {
+			$("<div>").addClass("menu-group").attr("id", "editortooltip-section-" + options.section).appendTo(this.menu);
 		}
-	}
+		btn.appendTo("#editortooltip-section-" + options.section);
 
-	function bindTextStylingEvents() {
-		iterateTextMenuButtons(function(node) {
-			node.onmousedown = function(event) {
-				triggerTextStyling(node);
-			};
+		//bind events - mouseup is used because focus is stolen by the time click occurs
+		btn.on("mousedown", function (e) {
+			options.fn(e);
+			_.editor.trigger("selectionchange"); //the function might have changed the text position, so the menu bounds need to be updated
 		});
-	}
+	},
+	toggleMenu: function () {
 
-	function getFocusNode() {
-		return window.getSelection().focusNode;
-	}
+		var _ = this;
+		var range = window.getSelection().getRangeAt(0); //sometimes webkit throws an error this for unknown reasons - it doesn't seem to harm anything though
 
-	function reloadMenuState() {
-		var className,
-				focusNode = getFocusNode(),
-				tagClass,
-				reTag;
+		if (!range.collapsed && _.editor.is(":focus")) { //if there is actually some selected text
 
-		iterateTextMenuButtons(function(node) {
-			className = node.className;
+			//show the menu
+			_.menu.removeAttr("hidden");
 
-			for (var tag in tagClassMap) {
-				tagClass = tagClassMap[tag];
-				reTag = new RegExp(tagClass);
+			//move the menu to the correct position
+			var bounds = range.getBoundingClientRect();
+			_.menu.css({
+				top: bounds.top - _.menu.height() - 15 + "px",
+				left: bounds.left + (bounds.width / 2.75) + "px",
+			});
 
-				if (reTag.test(className)) {
-					if (hasParentWithTag(focusNode, tag)) {
-						node.className = tagClass + " color-accent-color";
-					} else {
-						node.className = tagClass;
-					}
-
-					break;
-				}
-			}
-		});
-	}
-
-	function preprocessKeyDown(event) {
-		var sel = window.getSelection(),
-				parentParagraph = getParentWithTag(sel.anchorNode, "p"),
-				p,
-				isHr;
-
-		if (event.keyCode === 13 && parentParagraph) {
-			prevSibling = parentParagraph.previousSibling;
-			isHr = prevSibling && prevSibling.nodeName === "HR" &&
-				!parentParagraph.textContent.length;
-
-			// Stop enters from creating another <p> after a <hr> on enter
-			if (isHr) {
-				event.preventDefault();
-			}
-		}
-	}
-
-	function triggerNodeAnalysis(event) {
-		var sel = window.getSelection(),
-				anchorNode,
-				parentParagraph;
-
-		if (event.keyCode === 13) {
-
-			// Enters should replace it's parent <div> with a <p>
-			if (sel.anchorNode.nodeName === "DIV") {
-				toggleFormatBlock("p");
-			}
-
-			parentParagraph = getParentWithTag(sel.anchorNode, "p");
-		
-	//for scratchpad, inserting hr is disabled because two line breaks have otehr purposes
-
-		 /* if (parentParagraph) {
-				insertHorizontalRule(parentParagraph);
-			} */
-		}
-	}
-
-	function insertHorizontalRule(parentParagraph) {
-		var prevSibling,
-				prevPrevSibling,
-				hr;
-
-		prevSibling = parentParagraph.previousSibling;
-		prevPrevSibling = prevSibling;
-
-		while (prevPrevSibling) {
-			if (prevPrevSibling.nodeType != Node.TEXT_NODE) {
-				break;
-			}
-
-			prevPrevSibling = prevPrevSibling.previousSibling;
-		}
-
-		if (prevSibling.nodeName === "P" && !prevSibling.textContent.length && prevPrevSibling.nodeName !== "HR") {
-			hr = document.createElement("hr");
-			hr.contentEditable = false;
-			parentParagraph.parentNode.replaceChild(hr, prevSibling);
-		}
-	}
-
-	function getTextProp(el) {
-		var textProp;
-
-		if (el.nodeType === Node.TEXT_NODE) {
-			textProp = "data";
-		} else if (isFirefox) {
-			textProp = "textContent";
 		} else {
-			textProp = "innerText";
+			_.menu.attr("hidden", "true");
 		}
+	},
+	init: function () {
+		var _ = this;
+		this.createButton = this.createButton.bind(this);
+		this.toggleMenu = this.toggleMenu.bind(this);
 
-		return textProp;
-	}
+		this.menu = $("#editortooltip-menu");
 
-	function insertListOnSelection(sel, textProp, listType) {
-		var execListCommand = listType === "ol" ? "insertOrderedList" : "insertUnorderedList",
-				nodeOffset = listType === "ol" ? 3 : 2;
+		//this is a fake selectionchange event, since the real one doesn't work in firefox
 
-		document.execCommand(execListCommand);
-		sel.anchorNode[textProp] = sel.anchorNode[textProp].substring(nodeOffset);
-
-		return getParentWithTag(sel.anchorNode, listType);
-	}
-
-	function triggerTextParse(event) {
-		var sel = window.getSelection(),
-				textProp,
-				subject,
-				insertedNode,
-				unwrap,
-				node,
-				parent,
-				range;
-
-		// FF will return sel.anchorNode to be the parentNode when the triggered keyCode is 13
-		if (!sel.isCollapsed || !sel.anchorNode || sel.anchorNode.nodeName === "ARTICLE") {
-			return;
-		}
-
-		textProp = getTextProp(sel.anchorNode);
-		subject = sel.anchorNode[textProp];
-
-		if (subject.match(/^\s?[-*]\s/) && sel.anchorNode.parentNode.nodeName !== "LI") {
-			insertedNode = insertListOnSelection(sel, textProp, "ul");
-		}
-
-		if (subject.match(/^\s?1\.\s/) && sel.anchorNode.parentNode.nodeName !== "LI") {
-			insertedNode = insertListOnSelection(sel, textProp, "ol");
-		}
-
-		unwrap = insertedNode &&
-						["ul", "ol"].indexOf(insertedNode.nodeName.toLocaleLowerCase()) >= 0 &&
-						["p", "div"].indexOf(insertedNode.parentNode.nodeName.toLocaleLowerCase()) >= 0;
-
-		if (unwrap) {
-			node = sel.anchorNode;
-			parent = insertedNode.parentNode;
-			parent.parentNode.insertBefore(insertedNode, parent);
-			parent.parentNode.removeChild(parent);
-			moveCursorToBeginningOfSelection(sel, node);
-		}
-	}
-
-	function moveCursorToBeginningOfSelection(selection, node) {
-		range = document.createRange();
-		range.setStart(node, 0);
-		range.setEnd(node, 0);
-		selection.removeAllRanges();
-		selection.addRange(range);
-	}
-
-	function triggerTextStyling(node) {
-		var className = node.className,
-				sel = window.getSelection(),
-				selNode = sel.anchorNode,
-				tagClass,
-				reTag;
-
-		for (var tag in tagClassMap) {
-			tagClass = tagClassMap[tag];
-			reTag = new RegExp(tagClass);
-
-			if (reTag.test(className)) {
-				switch(tag) {
-					case "b":
-						if (selNode && !hasParentWithTag(selNode, "h1") && !hasParentWithTag(selNode, "h2")) {
-							document.execCommand(tagClass, false);
-						}
-						return;
-					case "i":
-					case "del":
-					case "ins":
-						document.execCommand(tagClass, false);
-						return;
-
-					case "h1":
-					case "h2":
-					case "h3":
-					case "blockquote":
-						toggleFormatBlock(tag);
-						return;
-
-					case "leftalign":
-					case "centeralign":
-					case "rightalign":
-						document.execCommand(tagClass, false);
-						return;
-
-					case "a":
-						toggleUrlInput();
-						optionsNode.className = "options themeable url-mode";
-						return;
-					case "research":
-						scratchpad.research.show(window.getSelection());
-						return;
-					case "comment":
-						scratchpad.comments.add();
-						return;
-				}
+		var sel = "";
+		setInterval(function () {
+			var range = window.getSelection().getRangeAt(0);
+			var newsel = JSON.stringify(range.startContainer.textContent.split("").splice(range.startOffset, range.endOffset));
+			if (newsel != sel) {
+				_.editor.trigger("selectionchange");
+				sel = newsel;
 			}
-		}
-
-		triggerTextSelection();
-	}
-
-	function triggerUrlBlur(event) {
-		var url = urlInput.value;
-
-		optionsNode.className = "options themeable";
-		window.getSelection().addRange(previouslySelectedText);
-
-		document.execCommand("unlink", false);
-
-		if (url === "") {
-			return false;
-		}
-
-		if (!url.match("^(http://|https://|mailto:)")) {
-			url = "http://" + url;
-		}
-
-		document.execCommand("createLink", false, url);
-
-		urlInput.value = "";
-	}
-
-	function triggerUrlSet(event) {
-		if (event.keyCode === 13) {
-			event.preventDefault();
-			event.stopPropagation();
-
-			urlInput.blur();
-		}
-	}
-
-	function toggleFormatBlock(tag) {
-		if (hasParentWithTag(getFocusNode(), tag)) {
-			document.execCommand("formatBlock", false, "p");
-			document.execCommand("outdent");
-		} else {
-			document.execCommand("formatBlock", false, tag);
-		}
-	}
-
-	function toggleUrlInput() {
-		setTimeout(function() {
-			var url = getParentHref(getFocusNode());
-
-			if (typeof url !== "undefined") {
-				urlInput.value = url;
-			} else {
-				document.execCommand("createLink", false, "/");
-			}
-
-			previouslySelectedText = window.getSelection().getRangeAt(0);
-
-			urlInput.focus();
 		}, 150);
-	}
 
-	function getParent(node, condition, returnCallback) {
-		if (node === null) {
-			return;
-		}
+		this.editor.on("selectionchange", _.toggleMenu);
 
-		while (node.parentNode) {
-			if (condition(node)) {
-				return returnCallback(node);
-			}
+		//formatting default butons
 
-			node = node.parentNode;
-		}
-	}
+		this.createButton({
+			name: "Italics",
+			content: "<i class='icon-italics'></i>",
+			section: "format",
+			fn: function () {
+				document.execCommand("italic", false);
+			},
+		});
+		this.createButton({
+			name: "Bold",
+			content: "<i class='icon-bold'></i>",
+			section: "format",
+			fn: function () {
+				document.execCommand("bold", false);
+			},
+		});
+		this.createButton({
+			name: "Underline",
+			content: "<i class='icon-underline'></i>",
+			section: "format",
+			fn: function () {
+				document.execCommand("underline", false);
+			},
+		});
+		this.createButton({
+			name: "Strikethrough",
+			content: "<i class='icon-strikethrough'></i>",
+			section: "format",
+			fn: function () {
+				document.execCommand("strikeThrough", false);
+			},
+		});
 
-	function getParentWithTag(node, nodeType) {
-		var checkNodeType = function(node) { return node.nodeName.toLowerCase() === nodeType; },
-				returnNode = function(node) { return node; };
+		//heading default buttons
 
-		return getParent(node, checkNodeType, returnNode);
-	}
+		this.createButton({
+			name: "Heading 1",
+			content: "h1",
+			section: "headings",
+			fn: function () {
+				if (_.getCommonSelectionNode().tagName != "H1") {
+					document.execCommand("formatBlock", false, "H1");
+				} else {
+					document.execCommand("formatBlock", false, "P");
+				}
+			},
+		});
+		this.createButton({
+			name: "Heading 2",
+			content: "h2",
+			section: "headings",
+			fn: function () {
+				if (_.getCommonSelectionNode().tagName != "H2") {
+					document.execCommand("formatBlock", false, "H2");
+				} else {
+					document.execCommand("formatBlock", false, "P");
+				}
+			},
+		});
+		this.createButton({
+			name: "Heading 3",
+			content: "h3",
+			section: "headings",
+			fn: function () {
+				if (_.getCommonSelectionNode().tagName != "H3") {
+					document.execCommand("formatBlock", false, "H3");
+				} else {
+					document.execCommand("formatBlock", false, "P");
+				}
+			},
+		});
 
-	function hasParentWithTag(node, nodeType) {
-		return !!getParentWithTag(node, nodeType);
-	}
+		//alignment default buttons
 
-	function getParentHref(node) {
-		var checkHref = function(node) { return typeof node.href !== "undefined"; },
-				returnHref = function(node) { return node.href; };
+		this.createButton({
+			name: "Align Left",
+			content: "<i class='icon-align-left'></i>",
+			section: "align",
+			fn: function () {
+				document.execCommand("justifyLeft", false);
+			},
+		});
+		this.createButton({
+			name: "Align Center",
+			content: "<i class='icon-align-center'></i>",
+			section: "align",
+			fn: function () {
+				document.execCommand("justifyCenter", false);
+			},
+		});
+		this.createButton({
+			name: "Align Right",
+			content: "<i class='icon-align-right'></i>",
+			section: "align",
+			fn: function () {
+				document.execCommand("justifyRight", false);
+			},
+		});
 
-		return getParent(node, checkHref, returnHref);
-	}
+		//quote button
 
-	function triggerTextSelection(e) {
-		var selectedText = window.getSelection(),
-				range,
-				clientRectBounds,
-				target = e.target || e.srcElement;
+		this.createButton({
+			name: "Quote",
+			content: "<i class='icon-quote'></i>",
+			section: "quote",
+			fn: function () {
+				if (_.getCommonSelectionNode().tagName != "BLOCKQUOTE") {
+					document.execCommand("formatBlock", false, "BLOCKQUOTE");
+				} else {
+					document.execCommand("formatBlock", false, "P");
+				}
+			},
+		});
 
-		// Editor is not focused, so the selected text is not in the editor, so the menu should not show
-		if (!$("#document-editor").is(":focus")) {
-			reloadMenuState();
-			return;
-		}
+		//keyboard shortcuts
 
-		// The selected text is collapsed, push the menu out of the way
-		if (selectedText.isCollapsed) {
-			setTextMenuPosition(EDGE, EDGE);
-			textMenu.className = "text-menu hide";
-		} else {
-			range = selectedText.getRangeAt(0);
-			clientRectBounds = range.getBoundingClientRect();
-
-			// Every time we show the menu, reload the state
-			reloadMenuState();
-			setTextMenuPosition(
-				clientRectBounds.top - 5 + window.pageYOffset,
-				(clientRectBounds.left + clientRectBounds.right) / 2
-			);
-		}
-	}
-
-	function setTextMenuPosition(top, left) {
-		textMenu.style.top = top + "px";
-		textMenu.style.left = left + "px";
-
-		if (options.animate) {
-			if (top === EDGE) {
-				textMenu.className = "text-menu hide";
-			} else {
-				textMenu.className = "text-menu active";
-			}
-		}
-	}
-
-			//keyboard shortcuts
-	
-		scratchpad.keybindings.addBinding("mod+b", function() {
+		scratchpad.keybindings.addBinding("mod+b", function () {
 			document.execCommand("bold", false);
 		});
-		scratchpad.keybindings.addBinding("mod+i", function() {
+		scratchpad.keybindings.addBinding("mod+i", function () {
 			document.execCommand("italic", false);
 		});
-		scratchpad.keybindings.addBinding("mod+u", function() {
+		scratchpad.keybindings.addBinding("mod+u", function () {
 			document.execCommand("underline", false);
 		});
-		scratchpad.keybindings.addBinding("mod+k", function() {
-						toggleUrlInput();
-						optionsNode.className = "options themeable url-mode";
-		});
-		scratchpad.keybindings.addBinding("option+shift+5", function() {
+		scratchpad.keybindings.addBinding("option+shift+5", function () {
 			document.execCommand("strikeThrough", false);
 		});
-		scratchpad.keybindings.addBinding("mod+option+1", function() {
+		scratchpad.keybindings.addBinding("mod+option+1", function () {
 			toggleFormatBlock("h1");
 		});
-		scratchpad.keybindings.addBinding("mod+option+2", function() {
+		scratchpad.keybindings.addBinding("mod+option+2", function () {
 			toggleFormatBlock("h2");
 		});
-		scratchpad.keybindings.addBinding("mod+option+3", function() {
+		scratchpad.keybindings.addBinding("mod+option+3", function () {
 			toggleFormatBlock("h3");
 		});
 
 	}
 
-													});
+});

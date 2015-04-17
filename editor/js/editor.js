@@ -51,7 +51,7 @@ scratchpad.modules.define("editor", {
 			}
 		});
 
-		$("#document-editor").on("mouseover", ".extend-block", function () {
+		$("#document-editor").on("mouseover touchstart", ".extend-block", function () {
 			_.showDeletion($(this));
 		});
 		$("#document-editor").on("click", function () {
