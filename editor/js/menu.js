@@ -3,12 +3,12 @@ scratchpad.modules.define("menu", {
 		<div noprint id="start-menu-container">\
 			<div class="start-menu">\
 			</div>\
-			<button class="fab theme-accent-color start-button">\
+			<button title="Add a new item" class="fab theme-accent-color start-button">\
 				<i class="icon-add"></i>\
 			</button>\
 	</div>\
 	',
-	addItem: function(options) {
+	addItem: function (options) {
 		var button = $("<a>");
 		button.addClass("fab").addClass("small");
 		button.addClass("color-" + options.color).addClass("bg-" + options.background);
@@ -20,7 +20,7 @@ scratchpad.modules.define("menu", {
 		icon.appendTo(button);
 		button.appendTo(this.menu);
 	},
-	init: function() {
+	init: function () {
 		this.menu = $(".start-menu");
 	}
 });

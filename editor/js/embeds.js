@@ -3,7 +3,7 @@ scratchpad.modules.define("embeds", {
 		<div noprint class="dialog embed-dialog small-dialog" hidden>\
 		<span class="dialog-title">Choose a URL to embed</span>\
 		<div class="dialog-content">\
-			<input type="text" class="embed-url-chooser text-input" placeholder="Paste a URL here"/>\
+			<input title="Choose a URL to embed" type="text" class="embed-url-chooser text-input" placeholder="Paste a URL here"/>\
 		</div>\
 		<div class="dialog-footer">\
 			<span class="float-right">\
@@ -13,28 +13,28 @@ scratchpad.modules.define("embeds", {
 		</div>\
 	</div>\
 	',
-	ondialogopen: function() {
+	ondialogopen: function () {
 		var input = "<iframe allowfullscreen sandbox='allow-forms allow-same-origin allow-scripts' class='embedplaceholder'/>"; //add a placeholder to mark the cursor position (also add some sandbox attributes)
-				scratchpad.caret.pasteHtmlAtCaret(input, false);
+		scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
-	ondialogcancel: function() {
+	ondialogcancel: function () {
 		$(".embedplaceholder").remove();
 	},
-	insertembedfromdialog: function() {
+	insertembedfromdialog: function () {
 		var embed = $(".embed-url-chooser").val();
-		if(embed.indexOf("<iframe") > -1) { //if the user accidently pasted in the whole iframe
+		if (embed.indexOf("<iframe") > -1) { //if the user accidently pasted in the whole iframe
 			embed = $(embed).attr("src");
 		}
 		if (!embed.match("^(http://|https://)")) {
-				embed = "https://" + embed; //auto-https may cause issues for some websites, but is needed to prevent mixed content from being blocked
-			}
+			embed = "https://" + embed; //auto-https may cause issues for some websites, but is needed to prevent mixed content from being blocked
+		}
 
 		var placeholder = $(".embedplaceholder");
 		placeholder.attr("src", embed);
 		placeholder.removeClass("embedplaceholder").addClass("extend-block").addClass("embed-extend-block"); //use the placeholder to add an image
 		scratchpad.ui.dialogs.hide($(this));
 	},
-	init: function() {
+	init: function () {
 		var _ = this;
 		this.dialogEl = $(".embed-dialog");
 
@@ -43,8 +43,8 @@ scratchpad.modules.define("embeds", {
 			background: "pink-500",
 			name: "embed",
 			icon: "icon-drive-code",
-			fn: function() {
-			scratchpad.ui.dialogs.show(_.dialogEl);
+			fn: function () {
+				scratchpad.ui.dialogs.show(_.dialogEl);
 			}
 		});
 

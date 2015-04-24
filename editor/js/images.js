@@ -3,7 +3,7 @@ scratchpad.modules.define("images", {
 		<div noprint class="dialog image-dialog small-dialog" hidden>\
 		<span class="dialog-title">Choose an image</span>\
 		<div class="dialog-content">\
-			<input type="text" class="image-url-chooser text-input" placeholder="Paste a URL here"/>\
+			<input title="Choose an image source" type="text" class="image-url-chooser text-input" placeholder="Paste a URL here"/>\
 		</div>\
 		<div class="dialog-footer">\
 			<span class="float-right">\
@@ -13,17 +13,17 @@ scratchpad.modules.define("images", {
 		</div>\
 	</div>\
 	',
-	ondialogopen: function() {
+	ondialogopen: function () {
 		var input = "<img class='imageplaceholder'/>"; //add a placeholder to mark the cursor position
-				scratchpad.caret.pasteHtmlAtCaret(input, false);
+		scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
-	ondialogcancel: function() {
+	ondialogcancel: function () {
 		$(".imageplaceholder").remove();
 	},
-	insertimagefromdialog: function() {
+	insertimagefromdialog: function () {
 		var newimage = $(".image-url-chooser").val();
 		if (!newimage.match("^(http://|https://|mailto:)")) {
-				newimage = "http://" + newimage;
+			newimage = "http://" + newimage;
 		}
 
 		var placeholder = $(".imageplaceholder");
@@ -31,16 +31,16 @@ scratchpad.modules.define("images", {
 		placeholder.removeClass("imageplaceholder").addClass("extend-block").addClass("image-extend-block"); //use the placeholder to add an image
 		scratchpad.ui.dialogs.hide($(this));
 	},
-	init: function() {
+	init: function () {
 		var _ = this;
 		this.dialogEl = $(".image-dialog");
-		
+
 		scratchpad.menu.addItem({
 			color: "white",
 			background: "blue-500",
 			name: "image",
 			icon: "icon-image",
-			fn: function() {
+			fn: function () {
 				scratchpad.ui.dialogs.show(_.dialogEl);
 			}
 		});
