@@ -5,45 +5,37 @@ scratchpad.modules.define("research", {
         <button id="research-close-button" class="icon-button"><i class="icon-close"></i></button>\
         <span class="toolbar-label">Research</span>\
     </div>\
-		<div class="images-results"></div>\
-		<div id="googleimages-branding">Powered by <img noinsert alt="Google" src="css/google-logo.png"/></div>\
 		<div class="infocard-content"></div>\
+		<div id="research-images-results"></div>\
+		<a id="commons-credit-link" target="_blank" href="http://commons.wikimedia.org/wiki/Main_Page">Images from Wikimedia Commons </a>\
 	</div>\
 	',
 	getImages: function (query) {
-		var imageSearch;
+		var _ = this;
+		$.getJSON("https://commons.wikimedia.org/w/api.php?action=query&list=allimages&format=json&continue=&callback=?", {
+			"aifrom": query
+		}, function (data) {
+			_.imagespanel.html(""); //clear any previous results
 
-		function searchComplete() {
-			var contentDiv = $(".images-results");
-			contentDiv.html("");
-			if (!imageSearch.results && imageSearch.results.length < 0) {
-				return;
-			}
-			var results = imageSearch.results;
-			results.forEach(function (value) {
-				var imgContainer = $("<div>");
-				var title = $("<div>");
-				imgContainer.addClass("gimage-result-container");
-				title.addClass("gimage-result-title themeable");
-				title.html(value.titleNoFormatting);
-				var newImg = $("<img>");
-				// a lot of the images don't exist any more, get rid of them
-				newImg.on("error", function (e) {
-					newImg.parent().remove(); //remove the container for images that don't exist
-				});
-				newImg.attr("src", value.url);
-				imgContainer.append(title);
-				imgContainer.append(newImg);
-				contentDiv.append(imgContainer);
+			var resultset = data.query.allimages;
+
+			resultset.forEach(function (result) {
+				var title = result.title.replace("File:", "").replace(".JPG", "").replace(".JPEG", "").replace(".PNG", "").replace(".SVG", "").replace(".jpg", "").replace(".jpeg", "").replace(".png", "").replace(".svg", ""); //replace file endings to generate a readable title
+
+				var box = $("<div>").addClass("image-result");
+				var image = $("<img>").attr("src", result.url);
+				var titlebox = $("<div>").text(title).addClass("image-title");
+				image.appendTo(box);
+				titlebox.appendTo(box);
+				box.appendTo(_.imagespanel);
 			});
-		}
-		imageSearch = new google.search.ImageSearch();
-		imageSearch.setSearchCompleteCallback(this, searchComplete, null);
-		imageSearch.execute(query);
+		});
 	},
 	show: function (data) {
 		var _ = this;
+		_.panel[0].scrollTop = 0; //sometimes firefox uses a previous scroll position and scrolls down at the start, but we always want to start at the top
 		$(".infocard-content").html("");
+
 		var infocard = new InfoCard({
 			query: data,
 			container: $(".infocard-content")[0],
@@ -71,10 +63,6 @@ scratchpad.modules.define("research", {
 		this.panel.show();
 		this.getImages(data);
 	},
-	generateImage: function (input) {
-		var imagetemplate = "<img class='extend-block image-extend-block' src='" + input + "'/>"
-		scratchpad.caret.pasteHtmlAtCaret(imagetemplate, false);
-	},
 	imageInsertFlow: function (e) {
 		if (e.target.hasAttribute("noinsert")) {
 			return;
@@ -90,14 +78,16 @@ scratchpad.modules.define("research", {
 		this.insertButton.show();
 		this.insertButton.off();
 		this.insertButton.on("mousedown", function () {
-			_.generateImage(e.target.src);
+			scratchpad.caret.pasteHtmlAtCaret("<img class='extend-block image-extend-block' src='" + e.target.src + "'/>", false);
 		});
 	},
 	init: function () {
 		var _ = this;
 
 		this.panel = $(".infocard-shell");
+		this.imagespanel = $("#research-images-results");
 		this.imageInsertFlow = this.imageInsertFlow.bind(this);
+		this.getImages = this.getImages.bind(this);
 		this.panel.append('<div noprint hidden class="research-insert-button small fab color-green-500" title="Add image to document"><i class="icon-add"></i></div>');
 		this.insertButton = $(".research-insert-button");
 
@@ -117,7 +107,7 @@ scratchpad.modules.define("research", {
 			content: "<i class='icon-book'></i>",
 			section: "research",
 			fn: function () {
-				_.show(window.getSelection());
+				_.show(window.getSelection().toString()); //convert the selection object to a string
 			},
 		});
 
