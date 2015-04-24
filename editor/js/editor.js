@@ -7,7 +7,17 @@ scratchpad.modules.define("editor", {
 		}
 		scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
+	destroyUndoable: function (element) { //destroys an element using execCommand so that it is undoable. from http://stackoverflow.com/a/29759439/4603285
+		var el = element[0];
+		var range = document.createRange();
+		range.selectNode(el);
+		var sel = window.getSelection();
+		sel.removeAllRanges();
+		sel.addRange(range);
+		document.execCommand("delete", false, null);
+	},
 	showDeletion: function (item) {
+		var _ = this;
 		var button = this.deletionButton;
 		var offset = item.offset();
 		var itemwidth = item.width();
@@ -19,7 +29,7 @@ scratchpad.modules.define("editor", {
 		button.show();
 		button.off();
 		button.on("click", function () {
-			item.remove();
+			_.destroyUndoable(item);
 			button.hide();
 		});
 	},
