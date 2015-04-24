@@ -30,6 +30,7 @@ scratchpad.modules.define("contentimport", {
 		boxset.find("meta").remove(); //these are useless
 		boxset.find("style").remove(); //these are useless
 		boxset.find("link").remove(); //these are useless
+		boxset.find("h2 > b, h3 > b").contents().unwrap(); //subheadings are normally bolded, but we don't want then like that
 		var htmlstring = boxset[0].innerHTML;
 		document.execCommand("insertHTML", false, htmlstring);
 	},
