@@ -116,7 +116,7 @@ var commonMisspellings = [
 	["btion", "ption"],
 	["bsion", "ption"],
 	["hng", "hang"],
-	["xt", "ext"],
+	[" xt", " ext"],
 	["bd", "bad"],
 	["abud", "abd"],
 	["ubud", "ubd"],
