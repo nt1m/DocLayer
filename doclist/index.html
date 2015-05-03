@@ -28,6 +28,7 @@
 		</button>
 		<span class="toolbar-label">My documents</span>
 		<span class="float-right"> 
+			<button class="icon-button" id="mode-switch-button"><i class="icon-view-module"></i></button>
 		 <input title="Search for documents" id="search-input" type="text" class="text-input"/>
 		 <button title="Search for documents" id="search-button" class="icon-button"><i class="icon-search"></i></button> 
 	 </span>
@@ -42,8 +43,8 @@
 	<button title="Create a new document" id="document-create-button" class="fab theme-accent-color"><i class="icon-create"></i>
 	</button>
 
-	<div class="dialog-overlay" hidden></div>
-	<div id="confirm-delete-dialog" class="dialog" hidden>
+	<div class="dialog-overlay" hidden aria-hidden="true"></div>
+	<div id="confirm-delete-dialog" class="dialog" hidden aria-hidden="true">
 		<h1 class="dialog-title">Delete this document?</h1>
 		<div class="dialog-content"> You can't undo this.
 		</div>
@@ -55,7 +56,9 @@
 		</div>
 	</div>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
 	<script src="doclist.js"></script>
+	<script src="doclist-search.js"></script>
 </body>
 
 </html>
