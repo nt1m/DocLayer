@@ -25,7 +25,7 @@ function deleteItem(e) {
 function addItem(data) {
 	if (mode == "grid") {
 		doclist.addClass("grid-list");
-		var card = $("<div ripple class='tile document-tile document-item'>");
+		var card = $("<div ripple='circle' class='tile document-tile document-item'>");
 		card.on("click", function () {
 			goToDocument(data.id);
 		});
