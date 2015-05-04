@@ -46,23 +46,6 @@ scratchpad.modules.define("editor", {
 			}
 		}
 	},
-	doesNeedListInsert: function () {
-		var node = window.getSelection().focusNode;
-		var text = node.textContent.replace(/\s/g, "");
-		if (text[0] == "*" || text[0] == "-") {
-			node.textContent = ""; //clear the list text that was entered
-			//this is a really terrible way of getting around a firefox bug where NS_ERROR_FAILURE: occurs, or the list is suddenly deleted for no reason
-			document.execCommand("insertHTML", false, "<ul><li id='listfocus'></li></ul>");
-			$("#listfocus").removeAttr("id").get(0).focus();
-		}
-		//same thing, but for ordered lists
-		if (text.indexOf("1.") == 0) {
-			node.textContent = ""; //clear the list text that was entered
-			//this is a really terrible way of getting around a firefox bug where NS_ERROR_FAILURE: occurs, or the list is suddenly deleted for no reason
-			document.execCommand("insertHTML", false, "<ol><li id='listfocus'></li></ol>");
-			$("#listfocus").removeAttr("id").get(0).focus();
-		}
-	},
 	init: function () {
 		var _ = this;
 		$(document.body).append('<div noprint class="deletion-button small fab color-red-500" title="Remove"><i class="icon-delete"></i></div>'); //add the deletion button
@@ -86,9 +69,6 @@ scratchpad.modules.define("editor", {
 		});
 		$("#document-editor").on("click", function (e) {
 			_.starItem(e);
-		});
-		$("#document-editor").on("keyup", function () {
-			_.doesNeedListInsert();
 		});
 		scratchpad.keybindings.addBinding("tab", function () {
 			document.execCommand("insertHTML", false, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"); //TODO make this use real tabs (would require wrapping the editor in a <pre> block)

@@ -1,38 +1,30 @@
 /* text styling for the contenteditable region */
 
 article[contenteditable] h2 {
-	z-index: 0;
-	/* override material-framework */
+	z-index: 0; /* override material-framework */
 }
-
+	
 blockquote {
 	margin: 1.5em;
 }
 
-@media all and (max-width: 600px) {
+@media all and (max-width:600px) {
 	blockquote {
-		width: 100%;
-		float: initial;
-		/* show the whole quote */
+		width:100%;
+		float: initial; /* show the whole quote */
 	}
 }
-
-ul,
-ol {
+ul, ol {
 	margin: 1.5em;
 	line-height: 1.5em;
 }
-/* special header styles */
 
-h1,
-h2,
-h3 {
-	clear: both;
-	/* correct layout with blocks longer than the text */
-	
-	position: static;
-	/* we don't want the default sticky positioning - it looks weird on iOS */
+/* special header styles */
+h1, h2, h3 {
+	clear: both; /* correct layout with blocks longer than the text */
+	position: static; /* we don't want the default sticky positioning - it looks weird on iOS */
 }
+
 /* override defaults */
 
 #document-editor {
@@ -50,15 +42,10 @@ p[align=center] {
 p[align=right] {
 	text-align: right;
 }
+
 /* paragraph stars */
 
-#document-editor p:before,
-#document-editor h1:before,
-#document-editor h2:before,
-#document-editor h3:before,
-#document-editor br:before,
-#document-editor div:before,
-#document-editor li:before {
+#document-editor p:before, #document-editor h1:before, #document-editor h2:before, #document-editor h3:before, #document-editor br:before {
 	content: '\e95a';
 	font-family: "material-design-icons";
 	color: transparent;
@@ -68,7 +55,6 @@ p[align=right] {
 	cursor: pointer;
 	transition: .1s;
 	/* reset any styles on parent element */
-	
 	font-style: normal;
 	font-weight: normal;
 	speak: none;
@@ -81,13 +67,7 @@ p[align=right] {
 	text-transform: none;
 	line-height: 1rem;
 	vertical-align: middle;
-	float: left;
-	/* this should always be on the left, regarless of how the text is aligned */
-}
-/* since these have the item numbers or bullets to the left of them, they need to have more negative margin in order to end up in the left gutter */
-
-#document-editor li:before {
-	margin-left: -3.65rem;
+	float: left; /* this should always be on the left, regarless of how the text is aligned */
 }
 
 #document-editor *:hover:not([starred]):before {
@@ -97,6 +77,7 @@ p[align=right] {
 #document-editor *[starred]::before {
 	color: #e91e63;
 }
+
 /* blocks - there isn't really a good place to put this */
 
 .extend-block {
@@ -107,7 +88,7 @@ p[align=right] {
 
 @media all and (max-width: 750px) {
 	.extend-block {
-		width: 100% !important;
+		width:100% !important;
 		margin-left: 0;
 		margin-right: 0;
 	}
