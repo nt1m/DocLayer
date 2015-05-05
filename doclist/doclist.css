@@ -34,12 +34,15 @@
 	display: none;
 }
 
-@media all and (max-width: 500px) {
-	.find-in-page .toolbar-label {
+@media all and (max-width: 575px) {
+	.toolbar-label {
 		display: none;
 	}
 	.find-in-page #search-input {
 		width: 170px;
+	}
+	.find-in-page #mode-switch-button {
+		display: none;
 	}
 }
 /* cancel out the text-align:center applied to the doclist */
