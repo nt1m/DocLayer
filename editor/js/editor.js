@@ -77,6 +77,10 @@ scratchpad.modules.define("editor", {
 				_.insertItem("divider");
 			}
 		});
+		
+		scratchpad.keybindings.addBinding("mod+enter", function() {
+			_.insertItem("divider");
+		});
 
 		$("#document-editor").on("mouseover touchstart", ".extend-block", function () {
 			_.showDeletion($(this));

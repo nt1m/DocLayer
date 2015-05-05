@@ -33,6 +33,11 @@ h3 {
 	position: static;
 	/* we don't want the default sticky positioning - it looks weird on iOS */
 }
+
+#document-editor .divider {
+	margin: 1em 0;
+}
+
 /* override defaults */
 
 #document-editor {
