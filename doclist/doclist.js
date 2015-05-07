@@ -175,11 +175,11 @@ $(".signout-button").on("click", function () {
 mode_switcher.on("click", function () {
 	if (mode == "list") {
 		mode = "grid";
-		mode_switcher.html('<i class="icon-view-headline"></i>');
+		mode_switcher.html('<i class="icon-view-list"></i>').attr("title", "Switch to list view");
 		createDoclist();
 	} else {
 		mode = "list";
-		mode_switcher.html('<i class="icon-view-module"></i>');
+		mode_switcher.html('<i class="icon-view-module"></i>').attr("title", "Switch to grid view");
 		createDoclist();
 	}
 });
