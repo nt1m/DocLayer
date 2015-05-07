@@ -1,18 +1,8 @@
 .doclist {
 	margin-top: 0.66em;
-}
-
-.doclist > li {
-	margin: auto;
-	opacity: 1;
-	transition: 0.2s;
-	cursor: pointer;
-}
-
-.list-header {
-	border-bottom: 1px rgba(0, 0, 0, 0.12) solid;
-	background-color: white;
-	z-index: 99999;
+	/* center the grid tiles (only in grid view) */
+	
+	text-align: center;
 }
 
 #document-create-button {
@@ -44,11 +34,40 @@
 	display: none;
 }
 
-@media all and (max-width: 500px) {
-	.find-in-page .toolbar-label {
+@media all and (max-width: 575px) {
+	.toolbar-label {
 		display: none;
 	}
 	.find-in-page #search-input {
 		width: 170px;
 	}
+	.find-in-page #mode-switch-button {
+		display: none;
+	}
+}
+/* cancel out the text-align:center applied to the doclist */
+
+.document-item {
+	text-align: left;
+	cursor: pointer;
+}
+
+.document-tile {
+	width: 32% !important;
+	max-width: 18em !important;
+	min-width: 15em !important;
+}
+
+.document-tile .tile-background {
+	background-size: cover;
+	background-position: center;
+	height: 14em !important;
+}
+/* fallback if there is no image */
+
+.document-tile .tile-background.no-background {
+	background-image: url(document-icon.svg);
+	background-size: auto;
+	background-repeat: no-repeat;
+	background-color: #333;
 }

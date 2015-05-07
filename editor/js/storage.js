@@ -9,6 +9,13 @@ function getAbstract(html) { //get a text string representative of the document
 	}
 }
 
+function getPosterImage(html) {
+	var content = $("<span>" + html + "</span>");
+	var images = content.find("img");
+	var posterImage = $(images[0]).attr("src");
+	return posterImage;
+};
+
 var document_id = window.location.hash.replace("#", "");
 var baseWindowTitle = document.title;
 
@@ -50,8 +57,9 @@ if (client.isAuthenticated()) {
 				title: "Untitled Document",
 				content: "",
 				abstract: "&nbsp;",
+				posterImage: "default",
 				created: new Date(),
-				modified: new Date()
+				modified: new Date(),
 			});
 
 			window.location.hash = currentDocument.getId(); //if someone reloads the page, the hash should not still be "new"
@@ -105,6 +113,7 @@ if (client.isAuthenticated()) {
 				currentDocument.set("content", $("#document-editor").html());
 				currentDocument.set("modified", new Date());
 				currentDocument.set("abstract", getAbstract($("#document-editor").html()));
+				currentDocument.set("posterImage", getPosterImage($("#document-editor").html()));
 				return true;
 			} else { //end if savedcontent
 				return null;
