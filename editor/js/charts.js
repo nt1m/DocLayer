@@ -79,6 +79,7 @@ scratchpad.modules.define("charts", {
 	renderChart: function (tabledata, type, el) {
 		var chartdata = "<table class='fm-" + type + "'>" + tabledata + "</table>";
 		var scripts = this.getFMScriptSource(type);
+		el.attr("sandbox", "allow-scripts");
 		el.attr("srcdoc", chartdata + scripts);
 		el.removeClass("chartplaceholder").addClass("extend-block").addClass("chart-extend-block").attr("data-table", tabledata);
 	},
@@ -105,7 +106,7 @@ scratchpad.modules.define("charts", {
 	},
 	ondialogopen: function () {
 		if (!this.editExisting) { //if a new chart is being created, add a placeholder
-			var input = "<iframe sandbox='allow-scripts' class='chartplaceholder'> </iframe>"; //add a placeholder to mark the cursor position
+			var input = "<iframe class='chartplaceholder'> </iframe>"; //add a placeholder to mark the cursor position
 			scratchpad.caret.pasteHtmlAtCaret(input, false);
 			$(".chart-dialog .action").html(this.strings.create); //switch the strings
 		} else {

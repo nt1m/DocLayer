@@ -9,9 +9,9 @@ scratchpad.modules.define("contentimport", {
 			content = data.getData('text/plain');
 		}
 		var boxset = $("<div>" + content + "</div>");
-		boxset.find("span").each(function () { //remove google docs formatting spans
+		boxset.find("span").each(function () { //remove google docs formatting spans and replace with correct tags
 			var $this = $(this);
-			var style = $this.attr("style");
+			var style = $this.attr("style").replace(/\s/g, "");
 			var contents = $this.contents();
 			contents.unwrap(); //remove the old span
 			if (style.indexOf("font-weight:bold") > -1) {
@@ -23,10 +23,42 @@ scratchpad.modules.define("contentimport", {
 			if (style.indexOf("text-decoration:underline") > -1) {
 				contents.wrap("<u>");
 			}
+			if (style.indexOf("line-through") > -1) {
+				contents.wrap("<strike>");
+			}
+		});
+
+		boxset.find("p").each(function () { //paragraph alignment
+			var $this = $(this);
+			var style = $this.attr("style").replace(/\s/g, "");
+			if (style.indexOf("text-align:center") > -1) {
+				$this.attr("align", "center");
+			}
+			if (style.indexOf("text-align:right") > -1) {
+				$this.attr("align", "right");
+			}
 		});
 		boxset.find("*").removeAttr("style").removeAttr("id").removeAttr("class"); //remove gogle docs inline styles and docs-internal-guid's
-		boxset.find("img").addClass("extend-block").addClass("img-extend-block").removeAttr("width").removeAttr("height");
-		boxset.find("table").remove(); //these aren't supported correctly
+		boxset.find("img").addClass("extend-block").addClass("image-extend-block").removeAttr("width").removeAttr("height");
+
+		boxset.find("li > p").contents().unwrap(); //this causes issues with starring items
+
+		//create tables using the charts, if the module is loaded
+
+		if (scratchpad.charts) {
+			boxset.find("table colgroup").remove(); //these are useless
+			boxset.find("table td *").contents().unwrap(); //remove formatting that won't work
+			boxset.find("table td").attr("data-previous-contenteditable-state", "true"); //hack to get the chart editor to work correctly with imported tables
+			//convert the tables
+			boxset.find("table").each(function () {
+				var tabledata = $(this).html();
+				var chartbox = $("<iframe/>");
+				scratchpad.charts.renderChart(tabledata, "table", chartbox);
+				$(this).replaceWith(chartbox);
+			});
+		} else { //we don't have a way to add tables
+			boxset.find("table").remove();
+		}
 		boxset.find("meta").remove(); //these are useless
 		boxset.find("style").remove(); //these are useless
 		boxset.find("link").remove(); //these are useless
