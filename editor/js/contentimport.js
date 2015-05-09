@@ -11,34 +11,41 @@ scratchpad.modules.define("contentimport", {
 		var boxset = $("<div>" + content + "</div>");
 		boxset.find("span").each(function () { //remove google docs formatting spans and replace with correct tags
 			var $this = $(this);
-			var style = $this.attr("style").replace(/\s/g, "");
+			var style = $this.attr("style")
 			var contents = $this.contents();
 			contents.unwrap(); //remove the old span
-			if (style.indexOf("font-weight:bold") > -1) {
-				contents.wrap("<b>");
-			}
-			if (style.indexOf("font-style:italic") > -1) {
-				contents.wrap("<i>");
-			}
-			if (style.indexOf("text-decoration:underline") > -1) {
-				contents.wrap("<u>");
-			}
-			if (style.indexOf("line-through") > -1) {
-				contents.wrap("<strike>");
+			if (style) {
+				style = style.replace(/\s/g, "");
+				if (style.indexOf("font-weight:bold") > -1) {
+					contents.wrap("<b>");
+				}
+				if (style.indexOf("font-style:italic") > -1) {
+					contents.wrap("<i>");
+				}
+				if (style.indexOf("text-decoration:underline") > -1) {
+					contents.wrap("<u>");
+				}
+				if (style.indexOf("line-through") > -1) {
+					contents.wrap("<strike>");
+				}
 			}
 		});
 
 		boxset.find("p").each(function () { //paragraph alignment
 			var $this = $(this);
-			var style = $this.attr("style").replace(/\s/g, "");
-			if (style.indexOf("text-align:center") > -1) {
-				$this.attr("align", "center");
+			var style = $this.attr("style");
+			if (style) {
+				style = style.replace(/\s/g, "");
+				if (style.indexOf("text-align:center") > -1) {
+					$this.attr("align", "center");
+				}
+				if (style.indexOf("text-align:right") > -1) {
+					$this.attr("align", "right");
+				}
 			}
-			if (style.indexOf("text-align:right") > -1) {
-				$this.attr("align", "right");
-			}
+
 		});
-		boxset.find("*").removeAttr("style").removeAttr("id").removeAttr("class"); //remove gogle docs inline styles and docs-internal-guid's
+		boxset.find("*").removeAttr("style").removeAttr("id"); //remove gogle docs inline styles and docs-internal-guid's
 		boxset.find("img").addClass("extend-block").addClass("image-extend-block").removeAttr("width").removeAttr("height");
 
 		boxset.find("li > p").contents().unwrap(); //this causes issues with starring items
