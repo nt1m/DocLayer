@@ -80,7 +80,7 @@ if (client.isAuthenticated()) {
 			metadata[document_id] = {
 				title: "Untitled Document",
 				abstract: "",
-				posterImage: "default",
+				posterImage: "",
 				created: (new Date).getTime(),
 				modified: (new Date).getTime(),
 			}
