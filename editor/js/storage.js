@@ -81,8 +81,8 @@ if (client.isAuthenticated()) {
 				title: "Untitled Document",
 				abstract: "",
 				posterImage: "",
-				created: (new Date).getTime(),
-				modified: (new Date).getTime(),
+				created: currentTime,
+				modified: currentTime,
 			}
 
 			window.cachedDocument = {
