@@ -10,7 +10,7 @@ var deletion_dialog = $("#confirm-delete-dialog");
 var mode_switcher = $("#mode-switch-button");
 
 function goToDocument(id) {
-	window.location = "https://standaert.net/scratchpad/editor/#" + id;
+	window.location = config.basepath + "editor/#" + id;
 }
 
 function deleteItem(e) {
@@ -73,14 +73,14 @@ function addItem(data) {
 
 		item.on("click", function () {
 			goToDocument(data.id);
-		})
+		});
 		item.prependTo(doclist);
 	}
 }
 
 
 var client = new Dropbox.Client({
-	key: "DROPBOX_APP_KEY"
+	key: config.dropbox
 });
 
 // Try to finish OAuth authorization.
@@ -93,45 +93,53 @@ client.authenticate({
 			action: "please log in to Dropbox and try again"
 		});
 	}
-});
 
-if (client.isAuthenticated()) {
+	if (client.isAuthenticated()) {
 
 
-	//retrieve the document data
-
-	var datastoreManager = client.getDatastoreManager();
-	datastoreManager.openDefaultDatastore(function (error, datastore) {
-		if (error) {
-			createError({
-				error: "Error opening datastore: " + error,
-				action: "Please try again in a few minutes."
-			});
-		}
-
-		var documentTable = datastore.getTable('documents');
+		//retrieve the document data
 
 		window.createDoclist = function () {
-			doclist.html(""); //clear any previous document listings
-			var documents = documentTable.query();
 
-			if (documents.length < 1 || window_hash == "simulate_onboard") {
-				doclist.append('<span id="no-documents" class="error secondary-text">You don\'t have any documents yet - when you do, they\'ll show up here.</span>');
-			}
+			client.readFile("/metadata/metadata.json", function (error, data) {
+				if (error && error.status != Dropbox.ApiError.NOT_FOUND) {
+					createError({
+						error: "Error loading documents: " + error,
+						action: "Please try again in a few minutes."
+					});
+					return;
+				}
 
-			documents.forEach(function (value) {
-				addItem({
-					title: value.get('title'),
-					description: value.get('abstract'),
-					id: value.getId(),
-					image: value.get("posterImage"),
-					createdAt: value.get("created"),
-				});
+				if (error && error.status == Dropbox.ApiError.NOT_FOUND) { //there isn't a metadata file yet - create one
+					client.writeFile("/metadata/metadata.json", "{}", function (error, stat) {
+						createError({
+							error: "Error initializing documents: " + error,
+							action: "Please try again in a few minutes."
+						});
+					});
+				}
+
+				doclist.html(""); //clear any previous document listings
+				var documents = JSON.parse(data);
+				for (var document in documents) {
+					addItem({
+						title: documents[document].title,
+						description: documents[document].abstract,
+						id: document,
+						image: documents[document].posterImage,
+						createdAt: documents[document].created,
+					});
+				}
+
+				$(".splashscreen.loading").hide();
+
+				if ($.isEmptyObject(documents) || window_hash == "simulate_onboard") {
+					doclist.append('<span id="no-documents" class="error secondary-text">You don\'t have any documents yet - when you do, they\'ll show up here.</span>');
+				}
 			});
 		}
 
 		createDoclist();
-		$(".splashscreen.loading").hide();
 
 		$("#delete-cancel").on("click", function () {
 			$(".deletion-candidate").removeClass("deletion-candidate");
@@ -143,32 +151,46 @@ if (client.isAuthenticated()) {
 
 		$("#delete-confirm").on("click", function () {
 			var document_id = $(".deletion-candidate").attr("id");
-			var documentDelete = documentTable.get(document_id);
-			documentDelete.deleteRecord();
 
-			$(".deletion-candidate").remove();
-			dialog_overlay[0].hidden = true;
-			dialog_overlay.attr("aria-hidden", "true");
-			deletion_dialog[0].hidden = true;
-			deletion_dialog.attr("aria-hidden", "true");
+			client.readFile("/metadata/metadata.json", function (error, data) { //we can't use a cached version because documents might have been added on other devices, and we don't want to accidently remove documents from metadata
+				if (error) {
+					return ({
+						error: "Error accessing metadata while attempting to delete document: " + error,
+						action: "Please try again in a few minutes."
+					});
+				}
+
+				var documents = JSON.parse(data);
+				delete documents[document_id];
+				client.writeFile("/metadata/metadata.json", JSON.stringify(documents));
+
+			});
+
+			client.delete("/documents/" + document_id + ".html", function () {
+				$(".deletion-candidate").remove();
+				dialog_overlay[0].hidden = true;
+				dialog_overlay.attr("aria-hidden", "true");
+				deletion_dialog[0].hidden = true;
+				deletion_dialog.attr("aria-hidden", "true");
+			});
+
 		});
 
 
-	});
+	} else {
+		window.location = config.basepath;
+	}
 
-
-} else {
-	window.location = "https://standaert.net/scratchpad";
-}
+});
 
 
 $("#document-create-button").on("click", function () {
-	window.location = "https://standaert.net/scratchpad/editor";
+	window.location = config.basepath + "editor";
 });
 
 $(".signout-button").on("click", function () {
 	client.signOut({}, function () {
-		window.location = "https://standaert.net/scratchpad";
+		window.location = config.basepath;
 	});
 });
 

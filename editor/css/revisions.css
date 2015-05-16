@@ -1,0 +1,20 @@
+.item-restore-button {
+	cursor: pointer;
+}
+/* there isn't room for this at small screen sizes */
+
+@media all and (max-width: 525px) {
+	#revisions-panel-button {
+		display: none;
+	}
+}
+/* there isn't room for this, so we make it disappear with a transition instead */
+
+#revisions-panel-button {
+	transition: 0.2s width;
+}
+
+.find-in-page #revisions-panel-button {
+	width: 0;
+	overflow: hidden;
+}

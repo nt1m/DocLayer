@@ -87,3 +87,27 @@ body.has-toolbar {
 .dialog-content {
 	max-height: 70vh;
 }
+/* sidebars */
+
+.sidebar {
+	width: 50%;
+	min-width: 320px;
+	max-width: 550px;
+	height: calc(100% - 65px);
+	overflow: auto;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	z-index: 99;
+	transition: .15s all;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+}
+
+.sidebar .toolbar {
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+	/* mobile safari wants this for some reason */
+	
+	z-index: 999;
+}

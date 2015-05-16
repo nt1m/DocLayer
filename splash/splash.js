@@ -1,18 +1,27 @@
-document.addEventListener("touchstart", function() {}, false); //ios ripple
+document.addEventListener("touchstart", function () {}, false); //ios ripple
 
-var client = new Dropbox.Client({key: "DROPBOX_APP_KEY"});
-
-// Try to finish OAuth authorization.
-client.authenticate({interactive: false}, function (error) {
-    if (error) {
-        console.log('Authentication error: ' + error);
-    }
+var client = new Dropbox.Client({
+	key: config.dropbox,
 });
 
-if (client.isAuthenticated()) {
-    window.location = "https://standaert.net/scratchpad/doclist";
-}
-
-$(".signin-button").on("click", function() {
-	client.authenticate();
+// Try to use cached credentials.
+client.authenticate({
+	interactive: false
+}, function (error, client) {
+	if (error) {
+		return handleError(error);
+	}
+	if (client.isAuthenticated()) {
+		window.location = config.basepath + "doclist";
+	} else {
+		$(".signin-button").on("click", function () {
+			// The user will have to click an 'Authorize' button.
+			client.authenticate(function (error, client) {
+				if (error) {
+					return handleError(error);
+				}
+				window.location = config.basepath + "doclist";
+			});
+		});
+	}
 });
