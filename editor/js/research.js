@@ -1,8 +1,8 @@
 scratchpad.modules.define("research", {
 	html: '\
-		<div noprint class="infocard-shell themeable" hidden>\
-    <div class="toolbar theme-accent-color">\
-        <button id="research-close-button" class="icon-button"><i class="icon-close"></i></button>\
+		<div noprint class="sidebar infocard-shell themeable" hidden>\
+    <div class="toolbar theme-main-color">\
+        <button class="icon-button panel-close"><i class="icon-close"></i></button>\
         <span class="toolbar-label">Research</span>\
     </div>\
 		<div class="infocard-content"></div>\
@@ -60,7 +60,7 @@ scratchpad.modules.define("research", {
 			},
 			protocol: window.location.protocol.replace(":", "")
 		});
-		this.panel.show();
+		scratchpad.ui.sidebars.show(this.panel);
 		this.getImages(data);
 	},
 	imageInsertFlow: function (e) {
@@ -98,9 +98,6 @@ scratchpad.modules.define("research", {
 		$(document.body).on("click", function () {
 			_.insertButton.hide();
 		});
-		$("#research-close-button").on("click", function () {
-			_.panel.hide();
-		});
 
 		scratchpad.editortooltip.createButton({
 			name: "Research",
@@ -115,7 +112,7 @@ scratchpad.modules.define("research", {
 			scratchpad.research.show(window.getSelection());
 		});
 		scratchpad.keybindings.addBinding("esc", function () {
-			_.panel.hide();
+			scratchpad.ui.sidebars.hide();
 		});
 	}
 });
