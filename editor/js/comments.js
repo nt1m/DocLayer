@@ -1,3 +1,5 @@
+/* this is disabled by default */
+
 scratchpad.modules.define("comments", {
 	template: "<span contenteditable='false'><comment contenteditable>comment</comment></span>", //span needed to get :focus to work correctly
 	add: function () {

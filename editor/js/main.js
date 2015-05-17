@@ -36,7 +36,7 @@ var scratchpad = {
 		core.forEach(function (value) {
 			scratchpad.modules.load(value);
 		});
-		var modulesToLoad = ["menu", "editor", "images", "maps", "videos", "embeds", "revisions", "findinpage", "research", "charts", "comments", "imageEditor", "spellcheck", "contentimport"];
+		var modulesToLoad = ["menu", "editor", "images", "maps", "videos", "embeds", "revisions", "findinpage", "research", "charts", "imageEditor", "spellcheck", "contentimport"];
 		$(window).load(function () {
 			$(".splashscreen.loading").hide();
 			modulesToLoad.forEach(function (value) {
