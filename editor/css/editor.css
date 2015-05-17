@@ -102,6 +102,22 @@ p[align=right] {
 #document-editor *[starred]::before {
 	color: #e91e63;
 }
+
+/* custom lines through text - similar to http://alistapart.com/article/customunderlines */
+
+#document-editor u, #document-editor strike {
+    text-decoration: none;
+    background-image: linear-gradient(to bottom, transparent 80%, currentColor 0%);
+    background-size: 1px 3px;
+    background-position: 0px 0.95em;
+    background-repeat: repeat-x;
+}
+
+#document-editor strike {
+    background-position: 0px 0.5em;
+}
+
+
 /* blocks - there isn't really a good place to put this */
 
 .extend-block {
