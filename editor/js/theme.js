@@ -1,4 +1,4 @@
-scratchpad.modules.define("darktheme", {
+var theme_module = {
 	css: false,
 	checktheme: function () {
 		var d = new Date();
@@ -20,8 +20,14 @@ scratchpad.modules.define("darktheme", {
 		this.interval = setInterval(this.checktheme, 30000);
 	},
 	init: function () {
-		var _ = this;
 		this.checktheme();
 		this.interval = setInterval(this.checktheme, 30000);
 	}
-});
+}
+
+if(window.scratchpad && window.scratchpad.modules) {
+	scratchpad.modules.define("theme", theme_module);
+} else {
+	window.theme = theme_module;
+	theme.init();
+}
