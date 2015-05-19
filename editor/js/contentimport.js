@@ -5,9 +5,8 @@ scratchpad.modules.define("contentimport", {
 	import: function (e) {
 		var data = e.originalEvent.clipboardData;
 		var content = data.getData('text/html');
-		if (!content) { //there is no html data, try to get as plaintext instead
-			content = data.getData('text/plain');
-		}
+		
+		if(content) { //we have content, so it has html formatting. Convert it to scratchpad format
 		var boxset = $("<div>" + content + "</div>");
 		boxset.find("span").each(function () { //remove google docs formatting spans and replace with correct tags
 			var $this = $(this);
@@ -70,8 +69,13 @@ scratchpad.modules.define("contentimport", {
 		boxset.find("style").remove(); //these are useless
 		boxset.find("link").remove(); //these are useless
 		boxset.find("h2 > b, h3 > b").contents().unwrap(); //subheadings are normally bolded, but we don't want then like that
-		var htmlstring = boxset[0].innerHTML;
-		document.execCommand("insertHTML", false, htmlstring);
+		var importeddata = boxset[0].innerHTML;
+		document.execCommand("insertHTML", false, importeddata);
+
+		} else { //the content isn't html, use plaintext instead
+			importeddata = data.getData('text/plain');
+			document.execCommand("insertText", false, importeddata);
+		}
 	},
 	init: function () {
 		var _ = this;
