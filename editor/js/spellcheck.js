@@ -1,6 +1,6 @@
 scratchpad.modules.define("spellcheck", {
 	editor: $("#document-editor"),
-	html: "<script src='lib/spellcheck.js/spellcheck.js'></script>",
+	html: "<script src='../lib/spellcheck.js/spellcheck.js'></script>",
 	replace: function (from, to) { //http://stackoverflow.com/questions/29067342/inline-autocorrect-with-contenteditable/29067657#29067657
 		var sel = document.getSelection(),
 			nd = sel.anchorNode,

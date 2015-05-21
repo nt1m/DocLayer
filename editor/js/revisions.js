@@ -1,6 +1,6 @@
 scratchpad.modules.define("revisions", {
 	html: '\
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>\
+	<script src="../lib/moment.js/moment.min.js"></script>\
 		<div noprint id="revisions-shell" class="sidebar themeable" hidden>\
     <div class="toolbar theme-main-color">\
         <button class="icon-button panel-close"><i class="icon-close"></i></button>\
