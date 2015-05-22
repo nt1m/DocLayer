@@ -28,7 +28,7 @@
 /* tabs */
 
 .InfoCard-tabs {
-	padding: 0 1.5em;
+	padding: 0 0.5em;
 	margin: 0px;
 	width: 100%;
 	overflow: auto;
@@ -59,8 +59,8 @@
 .infocard-shell #research-images-results .image-result,
 .InfoCard-category > li {
 	display: block;
-	width: 90%;
-	margin: 5%;
+	width: 85%;
+	margin: 5% 7.5%;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
 	list-style: none;
 	/* make floats work correctly */
@@ -98,9 +98,13 @@
 }
 
 .InfoCard-links {
-	margin-top: 1em;
+	display: none;
 }
 /* lists for wikipedia articles */
+
+.InfoCard-list {
+	margin: 1.5em 0.5em;
+}
 
 .InfoCard-list > li {
 	width: 100%;
@@ -187,9 +191,19 @@ a.tx-clr--dk2,
 .InfoCard-credit-link,
 #commons-credit-link {
 	display: block;
-	padding: 1em;
 	width: 90%;
-	margin: 5%;
+	padding: 1em 0;
+}
+/* these need to line up with cards */
+
+.InfoCard-type-d .InfoCard-credit-link,
+#commons-credit-link {
+	padding: 0 2.5em;
+}
+/* this needs padding under it, since it's the last item in the panel */
+
+#commons-credit-link {
+	padding-bottom: 1em;
 }
 
 .InfoCard-credit-link::before {
@@ -208,5 +222,5 @@ a.tx-clr--dk2,
 }
 
 .infocard-shell #research-images-results .image-result .image-title {
-	padding: 1em .33em;
+	padding: 1em;
 }
