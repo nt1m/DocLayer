@@ -1,32 +1,32 @@
 /* text styling for the contenteditable region */
 
-article[contenteditable] h2 {
+#document-editor h2 {
 	z-index: 0;
 	/* override material-framework */
 }
 
-blockquote {
+#document-editor blockquote {
 	margin: 1.5em;
 }
 
 @media all and (max-width: 600px) {
-	blockquote {
+	#document-editor blockquote {
 		width: 100%;
 		float: initial;
 		/* show the whole quote */
 	}
 }
 
-ul,
-ol {
+#document-editor ul,
+#document-editor ol {
 	margin: 1.5em;
 	line-height: 1.5em;
 }
 /* special header styles */
 
-h1,
-h2,
-h3 {
+#document-editor h1,
+#document-editor h2,
+#document-editor h3 {
 	clear: both;
 	/* correct layout with blocks longer than the text */
 	
@@ -37,7 +37,6 @@ h3 {
 #document-editor .divider {
 	margin: 1em 0;
 }
-
 /* override defaults */
 
 #document-editor {
@@ -102,22 +101,20 @@ p[align=right] {
 #document-editor *[starred]::before {
 	color: #e91e63;
 }
-
 /* custom lines through text - similar to http://alistapart.com/article/customunderlines */
 
-#document-editor u, #document-editor strike {
-    text-decoration: none;
-    background-image: linear-gradient(to bottom, transparent 80%, currentColor 0%);
-    background-size: 1px 3px;
-    background-position: 0px 0.95em;
-    background-repeat: repeat-x;
+#document-editor u,
+#document-editor strike {
+	text-decoration: none;
+	background-image: linear-gradient(to bottom, transparent 80%, currentColor 0%);
+	background-size: 1px 3px;
+	background-position: 0px 0.95em;
+	background-repeat: repeat-x;
 }
 
 #document-editor strike {
-    background-position: 0px 0.5em;
+	background-position: 0px 0.5em;
 }
-
-
 /* blocks - there isn't really a good place to put this */
 
 .extend-block {
