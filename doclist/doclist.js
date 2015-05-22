@@ -1,13 +1,18 @@
 var window_hash = window.location.hash.replace("#", "");
-var mode = "list";
-if (window_hash == "grid") {
-	mode = "grid";
-}
+var mode;
 
 var doclist = $(".doclist");
 var dialog_overlay = $(".dialog-overlay");
 var deletion_dialog = $("#confirm-delete-dialog");
 var mode_switcher = $("#mode-switch-button");
+
+function changeSwitcherIcon() {
+	if (mode == "list") {
+		mode_switcher.html('<i class="icon-view-module"></i>').attr("title", "Switch to grid view");
+	} else {
+		mode_switcher.html('<i class="icon-view-list"></i>').attr("title", "Switch to list view");
+	}
+}
 
 function goToDocument(id) {
 	window.location = config.basepath + "editor/#" + id;
@@ -139,7 +144,15 @@ client.authenticate({
 			});
 		}
 
-		createDoclist();
+		getPref("doclist.mode", function (value) {
+			if (value == "grid") {
+				mode = "grid";
+			} else {
+				mode = "list";
+			}
+			createDoclist();
+			changeSwitcherIcon();
+		})
 
 		$("#delete-cancel").on("click", function () {
 			$(".deletion-candidate").removeClass("deletion-candidate");
@@ -197,11 +210,13 @@ $(".signout-button").on("click", function () {
 mode_switcher.on("click", function () {
 	if (mode == "list") {
 		mode = "grid";
-		mode_switcher.html('<i class="icon-view-list"></i>').attr("title", "Switch to list view");
+		setPref("doclist.mode", "grid");
 		createDoclist();
+		changeSwitcherIcon();
 	} else {
 		mode = "list";
-		mode_switcher.html('<i class="icon-view-module"></i>').attr("title", "Switch to grid view");
+		setPref("doclist.mode", "list");
 		createDoclist();
+		changeSwitcherIcon();
 	}
 });
