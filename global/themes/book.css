@@ -1,0 +1,56 @@
+/* global */
+
+.toolbar {
+	background-color: inherit !important;
+	padding: 0.75em 5%;
+	color: inherit;
+	border-color: rgba(0, 0, 0, 0.10);
+	box-shadow: none;
+}
+
+.text-input {
+	border-color: #333;
+}
+
+.dialog-overlay {
+	background: rgba(255, 255, 255, 0.5) !important;
+}
+/* specific to editor */
+
+.editor-toolbar {
+	position: absolute;
+}
+
+#document-editor {
+	padding: 45px calc(3.5% + 35px);
+}
+
+#start-menu-container .fab {
+	background: #fff;
+	color: #000;
+}
+
+.sidebar {
+	top: 0px;
+	height: 100%;
+}
+
+.sidebar > .toolbar {
+	background: #F4f4f4;
+	color: #000;
+	border-bottom: 1px solid #ededed;
+}
+
+.extend-block {
+	margin: 2em;
+}
+/* specific to doclist */
+
+.document-tile .tile-background.no-background {
+	background: #eee;
+}
+
+.doclist {
+	width: 90%;
+	margin: auto;
+}
