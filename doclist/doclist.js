@@ -117,10 +117,12 @@ client.authenticate({
 
 				if (error && error.status == Dropbox.ApiError.NOT_FOUND) { //there isn't a metadata file yet - create one
 					client.writeFile("/metadata/metadata.json", "{}", function (error, stat) {
-						createError({
-							error: "Error initializing documents: " + error,
-							action: "Please try again in a few minutes."
-						});
+						if (error) {
+							createError({
+								error: "Error initializing documents: " + error,
+								action: "Please try again in a few minutes."
+							});
+						}
 					});
 				}
 
