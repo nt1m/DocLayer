@@ -1,4 +1,4 @@
-var theme_module = {
+scratchpad.modules.define("theme", {
 	css: false,
 	checktheme: function () {
 		var d = new Date();
@@ -45,11 +45,4 @@ var theme_module = {
 			}
 		});
 	}
-}
-
-if (window.scratchpad && window.scratchpad.modules) {
-	scratchpad.modules.define("theme", theme_module);
-} else {
-	window.theme = theme_module;
-	theme.init();
-}
+});
