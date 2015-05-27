@@ -28,7 +28,7 @@ function highlightmatches(e) {
 function hidesearch() {
 	setTimeout(function () { //give the user time to click on a search result
 		$(document.body).removeClass("find-in-page");
-		$(".documnt-item").show();
+		$(".document-item").show();
 		$("#search-no-matches").hide();
 	}, 750);
 }
