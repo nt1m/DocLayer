@@ -169,10 +169,7 @@ client.authenticate({
 
 			client.readFile("/metadata/metadata.json", function (error, data) { //we can't use a cached version because documents might have been added on other devices, and we don't want to accidently remove documents from metadata
 				if (error) {
-					return ({
-						error: "Error accessing metadata while attempting to delete document: " + error,
-						action: "Please try again in a few minutes."
-					});
+					return createToast("Error deleting document.");
 				}
 
 				var documents = JSON.parse(data);
@@ -181,12 +178,17 @@ client.authenticate({
 
 			});
 
-			client.delete("/documents/" + document_id + ".html", function () {
-				$(".deletion-candidate").remove();
+			client.delete("/documents/" + document_id + ".html", function (error, data) {
 				dialog_overlay[0].hidden = true;
 				dialog_overlay.attr("aria-hidden", "true");
 				deletion_dialog[0].hidden = true;
 				deletion_dialog.attr("aria-hidden", "true");
+
+				if (error) {
+					return createToast("Error deleting document.");
+				}
+				$(".deletion-candidate").remove();
+
 			});
 
 		});
