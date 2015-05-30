@@ -1,3 +1,5 @@
+/* this is disabled by default */
+
 scratchpad.modules.define("videos", {
 	html: '\
 		<div noprint class="dialog video-dialog small-dialog" hidden>\
@@ -12,41 +14,41 @@ scratchpad.modules.define("videos", {
 			</span>\
 		</div>\
 	</div>',
-	ondialogopen: function() {
+	ondialogopen: function () {
 		var input = "<video controls class='videoplaceholder'/>"; //add a placeholder to mark the cursor position
-				scratchpad.caret.pasteHtmlAtCaret(input, false);
+		scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
-	ondialogcancel: function() {
+	ondialogcancel: function () {
 		$(".videoplaceholder").remove();
 	},
-	insertvideofromdialog: function() {
+	insertvideofromdialog: function () {
 
 		//add prefixes when needed
 		var video = $(".video-url-chooser").val();
 		if (!video.match("^(http://|https://)")) {
-				video = "http://" + video;
-			}
+			video = "http://" + video;
+		}
 
 		//detect the video type
-		if (video.indexOf("webm") > 0 ) {
+		if (video.indexOf("webm") > 0) {
 			var type = "video/webm"
 			var codecs = "vp8,vorbis"
 		} else if (video.indexOf("ogv") > 0) {
 			var type = "video/ogg"
 			var codecs = "theora,vorbis"
-		} else if (video.indexOf("mp4") > 0 ) {
+		} else if (video.indexOf("mp4") > 0) {
 			var type = "video/mp4"
 			var codecs = "" //there isn't really a standard codec for this
 		}
 
 		//insert the video
 		var placeholder = $(".videoplaceholder");
-		var source = "<source type='" + type + "' codecs='" + codecs + "' src='" +	video + "'></source>";
+		var source = "<source type='" + type + "' codecs='" + codecs + "' src='" + video + "'></source>";
 		placeholder.html(source);
 		placeholder.removeClass("videoplaceholder").addClass("extend-block").addClass("video-extend-block"); //use the placeholder to add a video
 		scratchpad.ui.dialogs.hide($(this));
 	},
-	init: function() {
+	init: function () {
 		var _ = this;
 		this.dialogEl = $(".video-dialog");
 
@@ -55,8 +57,8 @@ scratchpad.modules.define("videos", {
 			background: "grey-800",
 			name: "video",
 			icon: "icon-videocam",
-			fn: function() {
-			scratchpad.ui.dialogs.show(_.dialogEl);
+			fn: function () {
+				scratchpad.ui.dialogs.show(_.dialogEl);
 			}
 		});
 

@@ -6,7 +6,9 @@ core.forEach(function (value) {
 	scratchpad.modules.load("editor/js/" + value + ".js");
 });
 
-var modulesToLoad = ["menu", "editor", "images", "maps", "videos", "embeds", "revisions", "findinpage", "research", "charts", "imageEditor", "spellcheck", "contentimport"];
+//there are some disabled modules that aren't included - videos and comments
+
+var modulesToLoad = ["menu", "editor", "images", "maps", "embeds", "revisions", "findinpage", "research", "charts", "imageEditor", "spellcheck", "contentimport"];
 $(window).load(function () {
 	$(".splashscreen.loading").hide();
 	modulesToLoad.forEach(function (value) {
