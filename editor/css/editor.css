@@ -36,6 +36,9 @@
 
 #document-editor .divider {
 	margin: 1em 0;
+	/* make dividers work with floated elements */
+	
+	clear: both;
 }
 /* override defaults */
 
