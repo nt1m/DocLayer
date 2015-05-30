@@ -1,6 +1,13 @@
 scratchpad.modules.define("editortooltip", {
 	html: '<div noprint id="editortooltip-menu" class="themeable"></div>',
 	editor: $("#document-editor"),
+	toggleFormatBlock: function (tag1, tag2) {
+		if (this.getCommonSelectionNode().tagName != tag1) {
+			document.execCommand("formatBlock", false, tag1);
+		} else {
+			document.execCommand("formatBlock", false, tag2);
+		}
+	},
 	getCommonSelectionNode: function () { //this returns the common selection node, but doesn't include text ranges
 		var sel = window.getSelection().getRangeAt(0);
 		var el = sel.commonAncestorContainer;
@@ -55,19 +62,14 @@ scratchpad.modules.define("editortooltip", {
 		var _ = this;
 		this.createButton = this.createButton.bind(this);
 		this.toggleMenu = this.toggleMenu.bind(this);
+		this.toggleFormatBlock = this.toggleFormatBlock.bind(this);
 
 		this.menu = $("#editortooltip-menu");
 
-		//this is a fake selectionchange event, since the real one doesn't work in firefox
+		//at intervals, update the menu to match a possible selection change
 
-		var sel = "";
 		setInterval(function () {
-			var range = window.getSelection().getRangeAt(0);
-			var newsel = JSON.stringify(range.startContainer.textContent.split("").splice(range.startOffset, range.endOffset));
-			if (newsel != sel) {
-				_.editor.trigger("selectionchange");
-				sel = newsel;
-			}
+			_.toggleMenu();
 		}, 150);
 
 		this.editor.on("selectionchange", _.toggleMenu);
@@ -114,11 +116,7 @@ scratchpad.modules.define("editortooltip", {
 			content: "h1",
 			section: "headings",
 			fn: function () {
-				if (_.getCommonSelectionNode().tagName != "H1") {
-					document.execCommand("formatBlock", false, "H1");
-				} else {
-					document.execCommand("formatBlock", false, "P");
-				}
+				_.toggleFormatBlock("H1", "P");
 			},
 		});
 		this.createButton({
@@ -126,11 +124,7 @@ scratchpad.modules.define("editortooltip", {
 			content: "h2",
 			section: "headings",
 			fn: function () {
-				if (_.getCommonSelectionNode().tagName != "H2") {
-					document.execCommand("formatBlock", false, "H2");
-				} else {
-					document.execCommand("formatBlock", false, "P");
-				}
+				_.toggleFormatBlock("H2", "P");
 			},
 		});
 		this.createButton({
@@ -138,11 +132,7 @@ scratchpad.modules.define("editortooltip", {
 			content: "h3",
 			section: "headings",
 			fn: function () {
-				if (_.getCommonSelectionNode().tagName != "H3") {
-					document.execCommand("formatBlock", false, "H3");
-				} else {
-					document.execCommand("formatBlock", false, "P");
-				}
+				_.toggleFormatBlock("H3", "P");
 			},
 		});
 
@@ -180,11 +170,7 @@ scratchpad.modules.define("editortooltip", {
 			content: "<i class='icon-quote'></i>",
 			section: "quote",
 			fn: function () {
-				if (_.getCommonSelectionNode().tagName != "BLOCKQUOTE") {
-					document.execCommand("formatBlock", false, "BLOCKQUOTE");
-				} else {
-					document.execCommand("formatBlock", false, "P");
-				}
+				_.toggleFormatBlock("BLOCKQUOTE", "P");
 			},
 		});
 
@@ -203,13 +189,13 @@ scratchpad.modules.define("editortooltip", {
 			document.execCommand("strikeThrough", false);
 		});
 		scratchpad.keybindings.addBinding("mod+option+1", function () {
-			toggleFormatBlock("h1");
+			_.toggleFormatBlock("H1", "P");
 		});
 		scratchpad.keybindings.addBinding("mod+option+2", function () {
-			toggleFormatBlock("h2");
+			_.toggleFormatBlock("H2", "P");
 		});
 		scratchpad.keybindings.addBinding("mod+option+3", function () {
-			toggleFormatBlock("h3");
+			_.toggleFormatBlock("H3", "P");
 		});
 
 	}
