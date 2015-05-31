@@ -123,7 +123,7 @@ scratchpad.modules.define("spellcheck", {
 			}
 		});
 
-		this.editor.on("contextmenu", ".misspelling", function (e) { //show a misspelling menu
+		this.editor.on("contextmenu touchend", ".misspelling", function (e) { //show a misspelling menu
 			e.preventDefault();
 			_.showMenu($(e.target));
 		});
