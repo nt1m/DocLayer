@@ -1,10 +1,5 @@
 /* text styling for the contenteditable region */
 
-#document-editor h2 {
-	z-index: 0;
-	/* override material-framework */
-}
-
 #document-editor blockquote {
 	margin: 1.5em;
 }
@@ -12,8 +7,9 @@
 @media all and (max-width: 600px) {
 	#document-editor blockquote {
 		width: 100%;
-		float: initial;
 		/* show the whole quote */
+		
+		float: initial;
 	}
 }
 
@@ -27,11 +23,12 @@
 #document-editor h1,
 #document-editor h2,
 #document-editor h3 {
-	clear: both;
 	/* correct layout with blocks longer than the text */
 	
-	position: static;
+	clear: both;
 	/* we don't want the default sticky positioning - it looks weird on iOS */
+	
+	position: static;
 }
 
 #document-editor .divider {
@@ -48,6 +45,10 @@
 
 p {
 	font-size: 1em;
+}
+
+#document-editor h2 {
+	z-index: 0;
 }
 
 p[align=center] {
@@ -88,8 +89,9 @@ p[align=right] {
 	text-transform: none;
 	line-height: 1rem;
 	vertical-align: middle;
-	float: left;
 	/* this should always be on the left, regarless of how the text is aligned */
+	
+	float: left;
 }
 /* since these have the item numbers or bullets to the left of them, they need to have more negative margin in order to end up in the left gutter */
 
