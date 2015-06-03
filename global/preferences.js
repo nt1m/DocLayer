@@ -7,7 +7,8 @@ client.authenticate({
 }, function (error) {
 	if (error) {
 		createError({
-			error: 'Authentication error: ' + error,
+			error: 'Authentication error',
+			api_response: error,
 			action: "please log in to Dropbox and try again"
 		});
 	}

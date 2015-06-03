@@ -94,7 +94,8 @@ client.authenticate({
 }, function (error) {
 	if (error) {
 		createError({
-			error: 'Authentication error: ' + error,
+			error: 'Authentication error',
+			api_response: error,
 			action: "please log in to Dropbox and try again"
 		});
 	}
@@ -109,7 +110,8 @@ client.authenticate({
 			client.readFile("/metadata/metadata.json", function (error, data) {
 				if (error && error.status != Dropbox.ApiError.NOT_FOUND) {
 					createError({
-						error: "Error loading documents: " + error,
+						error: "Error loading documents",
+						api_response: error,
 						action: "Please try again in a few minutes."
 					});
 					return;
@@ -119,7 +121,8 @@ client.authenticate({
 					client.writeFile("/metadata/metadata.json", "{}", function (error, stat) {
 						if (error) {
 							createError({
-								error: "Error initializing documents: " + error,
+								error: "Error initializing documents",
+								api_response: error,
 								action: "Please try again in a few minutes."
 							});
 						}
