@@ -18,8 +18,10 @@ function getPref(prefName, callback) {
 	if (!window.preferences) { //there aren't cached preferences
 		client.readFile("/userdata/preferences.json",
 			function (error, data) {
-				if (error) { //this assumes the error is that there is no preferences file
+				if (error && error.status == Dropbox.ApiError.NOT_FOUND) { //there is no preferences file
 					client.writeFile("/userdata/preferences.json", "{}");
+					window.preferences = {};
+				} else if (error) { //we couldn't load the perferences. Use the defaults instead
 					window.preferences = {};
 				} else {
 					window.preferences = JSON.parse(data);
