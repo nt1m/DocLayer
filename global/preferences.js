@@ -14,21 +14,27 @@ client.authenticate({
 	}
 });
 
+client.readFile("/userdata/preferences.json",
+	function (error, data) {
+		if (error && error.status == Dropbox.ApiError.NOT_FOUND) { //there is no preferences file
+			client.writeFile("/userdata/preferences.json", "{}");
+			window.preferences = {};
+		} else if (error) { //we couldn't load the perferences. Use the defaults instead
+			window.preferences = {};
+		} else {
+			window.preferences = JSON.parse(data);
+		}
+		$(document).trigger("prefsload");
+	});
+
+
 function getPref(prefName, callback) {
 	if (!window.preferences) { //there aren't cached preferences
-		client.readFile("/userdata/preferences.json",
-			function (error, data) {
-				if (error && error.status == Dropbox.ApiError.NOT_FOUND) { //there is no preferences file
-					client.writeFile("/userdata/preferences.json", "{}");
-					window.preferences = {};
-				} else if (error) { //we couldn't load the perferences. Use the defaults instead
-					window.preferences = {};
-				} else {
-					window.preferences = JSON.parse(data);
-				}
 
-				callback(window.preferences[prefName]);
-			});
+		$(document).on("prefsload", function () {
+			callback(window.preferences[prefName]);
+		});
+
 	} else { //there are cached preferences
 		callback(window.preferences[prefName]);
 	}
