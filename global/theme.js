@@ -45,14 +45,41 @@ scratchpad.modules.define("theme", {
 		var _ = this;
 		this.checktheme = this.checktheme.bind(this);
 		this.switchToTheme = this.switchToTheme.bind(this);
-		this.checktheme();
-		this.enableThemeSwitching();
+
+		getPref("theme.autoswitch", function (autoswitch) {
+			if (autoswitch != false) {
+				_.enableThemeSwitching();
+			}
+		});
 
 		getPref("theme", function (theme) {
 			if (theme) { //the pref has a value
 				_.switchToTheme(theme);
 				_.selectedTheme = theme;
 			}
+		});
+
+		if (definePref) { //we're in the preferences view
+			definePref({
+				category: "Theme",
+				description: "Theme",
+				pref: "theme",
+				values: ["default", "dark", "book"],
+				defaultValue: "default",
+			});
+			definePref({
+				category: "Theme",
+				description: "Automatically switch to the dark theme at night",
+				pref: "theme.autoswitch",
+				values: [true, false],
+				defaultValue: true,
+			});
+		}
+		$(document).on("prefschange", function () {
+			getPref("theme", function (theme) {
+				_.switchToTheme(theme);
+				_.selectedTheme = theme;
+			});
 		});
 	}
 });

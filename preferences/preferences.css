@@ -1,0 +1,36 @@
+.toolbar {
+	position: -webkit-sticky;
+	position: sticky;
+}
+
+.preferences-container {
+	padding: 1.5em;
+	min-height: 100vh;
+}
+
+.preferences-container > .card {
+	padding: 1em;
+	margin: 1em auto;
+	max-width: 800px;
+}
+
+.preferences-container > h1 {
+	max-width: 800px;
+	margin: auto;
+}
+
+.preferences-container > .card .switch {
+	padding: 0 0.75em;
+}
+
+.preference-container {
+	overflow: hidden;
+}
+
+.preference-container {
+	padding: 0.5em;
+}
+
+.preferences-container > .card .button {
+	margin-top: -0.25em;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Preferences | Scratchpad</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="../lib/material-framework/css/material.css" />
+	<link rel="stylesheet" href="../global/global.css" />
+	<link rel="stylesheet" href="preferences.css" />
+	<script src="../global/global.js"></script>
+	<script src="../config.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
+	<script src="../global/preferences.js"></script>
+</head>
+
+<body>
+
+	<div class="splashscreen loading themeable">
+		<div class="logo-card theme-main-color"><i class="icon-book"></i>
+			<div class="corner">
+				<div class="folded-corner"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="toolbar theme-main-color">
+		<button title="Back to Documents" class="icon-button" onclick="window.location = config.basepath + 'doclist'"><i class="icon-arrow-back"></i>
+		</button>
+		<span class="toolbar-label">Preferences</span>
+	</div>
+
+
+	<!-- start preferences -->
+
+	<div class="card-container preferences-container">
+
+	</div>
+
+	<script src="../global/modules.js"></script>
+	<script src="preferences.js"></script>
+</body>
+
+</html>
