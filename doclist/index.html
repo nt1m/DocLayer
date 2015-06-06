@@ -26,7 +26,7 @@
 	</div>
 
 	<div class="toolbar theme-main-color">
-		<button title="Sign out" class="icon-button signout-button"><i class="icon-exit-to-app"></i>
+		<button title="View menu" class="icon-button menu-button"><i class="icon-menu"></i>
 		</button>
 		<span class="toolbar-label">My documents</span>
 		<span class="float-right"> 
@@ -35,6 +35,26 @@
 		 <button title="Search for documents" id="search-button" class="icon-button"><i class="icon-search"></i></button> 
 	 </span>
 	</div>
+
+	<!-- sidemenu -->
+
+	<div id="user-menu" class="sidemenu" hidden aria-hidden="true">
+		<div class="sidemenu-hero">
+			<div class="sidemenu-hero-image theme-main-color" style="height: 150px"></div>
+			<span class="title" id="userdata-name"></span>
+			<span class="text" id="userdata-email"></span>
+		</div>
+		<ul class="menu">
+			<li ripple><a title="Preferences" onclick="window.location = config.basepath + 'preferences'"><i class="icon-settings"></i>Preferences</a>
+			</li>
+			<li ripple><a title="Sign out" class="signout-button"><i class="icon-exit-to-app"></i>Sign Out</a>
+			</li>
+			<li class="divider"></li>
+			<li ripple><a title="Give feedback" href="https://github.com/palmeral/scratchpad/issues/new?title=[user%20feedback]"><i class="icon-message"></i>Feedback</a>
+			</li>
+		</ul>
+	</div>
+
 
 	<!-- start document list -->
 	<ul class="list doclist">
@@ -62,6 +82,7 @@
 	<script src="../global/modules.js"></script>
 	<script src="doclist.js"></script>
 	<script src="doclist-search.js"></script>
+	<script src="doclist-sidemenu.js"></script>
 </body>
 
 </html>

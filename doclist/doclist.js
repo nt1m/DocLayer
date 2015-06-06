@@ -208,12 +208,6 @@ $("#document-create-button").on("click", function () {
 	window.location = config.basepath + "editor";
 });
 
-$(".signout-button").on("click", function () {
-	client.signOut({}, function () {
-		window.location = config.basepath;
-	});
-});
-
 mode_switcher.on("click", function () {
 	if (mode == "list") {
 		mode = "grid";

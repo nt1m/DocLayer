@@ -71,3 +71,9 @@
 	background-repeat: no-repeat;
 	background-color: #333;
 }
+/* sidemenu */
+/* this is due to a bug in material-framework */
+
+.sidemenu {
+	z-index: 1001;
+}
