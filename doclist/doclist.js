@@ -127,6 +127,7 @@ client.authenticate({
 							});
 						}
 					});
+					data = "{}"; //we need something to parse
 				}
 
 				doclist.html(""); //clear any previous document listings
