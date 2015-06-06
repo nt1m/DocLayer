@@ -4,7 +4,7 @@ var editregion = $("#document-editor");
 function getAbstract(html) { //get a text string representative of the document
 	var removed = $("<span>" + html + "</span>").remove("div").remove("iframe").remove("script"); //strip out the interactive stuff - we just want a text string
 	removed = removed[0].textContent;
-	var abstract = removed.substring(0, 175); //the length of the abstract to return
+	var abstract = removed.substring(0, 300); //the length of the abstract to return
 	if (abstract) {
 		return abstract;
 	} else {
