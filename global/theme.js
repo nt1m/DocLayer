@@ -59,7 +59,7 @@ scratchpad.modules.define("theme", {
 			}
 		});
 
-		if (definePref) { //we're in the preferences view
+		if (window.definePref) { //we're in the preferences view
 			definePref({
 				category: "Theme",
 				description: "Theme",
