@@ -1,10 +1,3 @@
-var switch_template = '\
-			<div class="switch float-right">\
-				<input type="checkbox" id="%switch-id%" />\
-				<label for="%switch-id%"></label>\
-			</div>\
-	';
-
 
 var prefs_container = $(".preferences-container");
 var inputs_generated = 0;
@@ -13,9 +6,15 @@ var canDestroyMenu;
 
 function getSwitch() {
 	inputs_generated++;
-	var html = switch_template;
-	html = html.replace(/%switch-id%/g, inputs_generated);
-	return $(html);
+	var switch_html = '\
+			<div class="switch float-right">\
+				<input type="checkbox" id="%switch-id%" />\
+				<label for="%switch-id%"></label>\
+			</div>\
+	';
+
+	switch_html = switch_html.replace(/%switch-id%/g, inputs_generated);
+	return $(switch_html);
 }
 
 function definePref(options) {
