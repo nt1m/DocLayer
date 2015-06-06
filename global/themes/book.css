@@ -15,6 +15,14 @@
 .dialog-overlay {
 	background: rgba(255, 255, 255, 0.5) !important;
 }
+
+.card-container {
+	background: #fff !important;
+}
+
+.card-container > .card {
+	box-shadow: unset;
+}
 /* specific to editor */
 
 .editor-toolbar {
@@ -53,4 +61,20 @@
 .doclist {
 	width: 90%;
 	margin: auto;
+}
+/* specific to preferences */
+
+.preferences-container > h1,
+.preferences-container > .card {
+	max-width: none !important;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.preference-container {
+	padding: 0.4em 0;
+}
+
+.preferences-container > .card {
+	padding: 0.3em 0;
 }
