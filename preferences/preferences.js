@@ -51,7 +51,7 @@ function definePref(options) {
 				$(document).trigger("prefschange");
 			});
 
-			prefInput.appendTo(pref_container);
+			prefInput.prependTo(pref_container);
 
 		} else { //generic preferences view
 			var button = $("<button class='button float-right'>");
@@ -95,7 +95,7 @@ function definePref(options) {
 				}, 50);
 			});
 
-			button.appendTo(pref_container);
+			button.prependTo(pref_container);
 		}
 		pref_container.appendTo(group_container);
 
