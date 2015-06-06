@@ -46,7 +46,11 @@ scratchpad.modules.define("editor", {
 			}
 		}
 	},
+	shouldInsertLists: true,
 	doesNeedListInsert: function () {
+		if (!this.shouldInsertLists) { //we shouldn't do anything
+			return;
+		}
 		var node = window.getSelection().focusNode;
 		var text = node.textContent.replace(/\s/g, "");
 		if (text[0] == "*" || text[0] == "-") {
@@ -65,6 +69,25 @@ scratchpad.modules.define("editor", {
 	},
 	init: function () {
 		var _ = this;
+		this.doesNeedListInsert = this.doesNeedListInsert.bind(this);
+
+		if (window.definePref) {
+			definePref({
+				category: "Editing",
+				description: "Automatically insert lists",
+				pref: "editor.lists.autoinsert",
+				values: [true, false],
+				defaultValue: true,
+			});
+			return; //we aren't in the editor, don't try to run editor setup
+		}
+
+		getPref("editor.lists.autoinsert", function (value) {
+			if (value == false) {
+				_.shouldInsertLists = false;
+			}
+		});
+
 		$(document.body).append('<div noprint class="deletion-button small fab color-red-500" title="Remove"><i class="icon-delete"></i></div>'); //add the deletion button
 		this.deletionButton = $(".deletion-button");
 
@@ -77,8 +100,8 @@ scratchpad.modules.define("editor", {
 				_.insertItem("divider");
 			}
 		});
-		
-		scratchpad.keybindings.addBinding("mod+enter", function() {
+
+		scratchpad.keybindings.addBinding("mod+enter", function () {
 			_.insertItem("divider");
 		});
 

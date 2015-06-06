@@ -1,3 +1,6 @@
+config.preference_modules.forEach(function (value) {
+	scratchpad.modules.load(value);
+});
 
 var prefs_container = $(".preferences-container");
 var inputs_generated = 0;
