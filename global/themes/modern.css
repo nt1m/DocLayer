@@ -1,0 +1,119 @@
+/* theme */
+
+.theme-main-color,
+.theme-accent-color {
+	background-color: #1e88e5;
+	border-color: #1e88e5;
+	color: #fff;
+}
+
+.color-accent-color {
+	color: #1e88e5;
+}
+/* global */
+
+.toolbar {
+	background-color: inherit!important;
+	padding: 0.75em 5%;
+	color: inherit;
+	border-color: rgba(0, 0, 0, 0.10);
+	box-shadow: none;
+}
+
+.text-input {
+	border-color: #2196f3;
+}
+
+.dialog-overlay {
+	background: rgba(255, 255, 255, 0.5)!important;
+}
+
+.card-container {
+	background: #fff!important;
+}
+
+.card-container>.card {
+	box-shadow: unset;
+}
+/* specific to the editor */
+
+.fab:not(.small) {
+	color: #fff;
+}
+
+.editor-toolbar {
+	position: absolute;
+}
+
+#document-editor {
+	padding: 45px calc(3.5% + 35px);
+}
+
+.sidebar {
+	top: 0px;
+	height: 100%;
+}
+
+.sidebar>.toolbar {
+	background: #1e88e5 !important;
+	color: #fff;
+	border-bottom: 1px solid #ededed;
+}
+
+.extend-block {
+	margin: 2em;
+}
+/* editor research panel - THIS IS LIKELY TO BREAK */
+
+.InfoCard-card:not(.InfoCard-type-d),
+.infocard-shell #research-images-results .image-result,
+.InfoCard-category > li {
+	box-shadow: unset !important;
+	width: 100% !important;
+	margin: 0 !important;
+}
+
+.InfoCard-category > li > img {
+	margin-right: 1em;
+}
+
+.InfoCard-card:not(.InfoCard-type-d):before,
+.InfoCard-category > li:before {
+	content: "";
+	width: 100%;
+	height: 1px;
+	background: #e0e0e0;
+	display: block;
+	margin: 1em 0;
+}
+
+.InfoCard-credit-link,
+#commons-credit-link {
+	padding: 1em !important;
+}
+/* doclist */
+
+.document-tile .tile-background.no-background {
+	background: #eee;
+}
+
+.doclist {
+	width: 90%;
+	margin: auto;
+}
+/* preferences */
+
+.preferences-container>h1,
+.preferences-container>.card {
+	max-width: none!important;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.preference-container {
+	padding: 0.4em 0;
+}
+
+.preferences-container>.card {
+	padding: 0.3em 0;
+}
