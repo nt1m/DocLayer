@@ -33,9 +33,6 @@ scratchpad.modules.define("editor", {
 			button.hide();
 		});
 	},
-	hideDeletion: function () {
-		this.deletionButton.hide();
-	},
 	starItem: function (e) {
 		var target = $(e.target);
 		if (e.pageX < target.offset().left) {
@@ -108,9 +105,12 @@ scratchpad.modules.define("editor", {
 		$("#document-editor").on("mouseover touchstart", ".extend-block", function () {
 			_.showDeletion($(this));
 		});
-		$("#document-editor").on("click", function () {
-			_.hideDeletion();
+
+		//hide all block modifier buttons
+		scratchpad.editor.on("click", function () {
+			$(".edit-button, .deletion-button").hide();
 		});
+
 		$("#document-editor").on("click", function (e) {
 			_.starItem(e);
 		});

@@ -10,7 +10,7 @@ scratchpad.modules.define("imageEditor", {
 	},
 	imageDialog: $(".image-edit-dialog"),
 	previewPane: $("#image-editor-preview"),
-	renderImage: function(options, el) {
+	renderImage: function (options, el) {
 		var filter = "blur(" + options.blur + "px) brightness(" + options.brightness + ") contrast(" + options.contrast + "%) grayscale(" + options.grayscale + "%)  saturate(" + options.saturation + "%) opacity(" + options.opacity + "%) invert(" + options.invert + "%)"
 		el.css("filter", filter);
 		el.css("-webkit-filter", filter); //same thing, but for webkit
@@ -23,7 +23,7 @@ scratchpad.modules.define("imageEditor", {
 		el.attr("data-opacity", options.opacity);
 		el.attr("data-invert", options.invert);
 	},
-	resetSliders: function() {
+	resetSliders: function () {
 		this.sliders.blur[0].value = 0;
 		this.sliders.brightness[0].value = 1;
 		this.sliders.contrast[0].value = 100;
@@ -33,11 +33,11 @@ scratchpad.modules.define("imageEditor", {
 		this.sliders.invert[0].value = 0;
 		this.updatePreview();
 	},
-	editImage: function(item) {
+	editImage: function (item) {
 		this.selectedItem = item;
 		scratchpad.ui.dialogs.show(this.imageDialog);
 	},
-	startImageEditing: function() {
+	startImageEditing: function () {
 		var editTarget = this.selectedItem;
 		this.sliders.blur[0].value = editTarget.attr("data-blur");
 		this.sliders.brightness[0].value = editTarget.attr("data-brightness");
@@ -49,7 +49,7 @@ scratchpad.modules.define("imageEditor", {
 		this.previewPane.attr("src", editTarget.attr("src"));
 		this.updatePreview();
 	},
-	saveImageEdits: function() {
+	saveImageEdits: function () {
 		var editTarget = this.selectedItem;
 		this.selectedItem = null;
 		this.renderImage({
@@ -63,7 +63,7 @@ scratchpad.modules.define("imageEditor", {
 		}, editTarget);
 		scratchpad.ui.dialogs.hide(this.imageDialog);
 	},
-	updatePreview: function() {
+	updatePreview: function () {
 		this.renderImage({
 			brightness: this.sliders.brightness.val(),
 			contrast: this.sliders.contrast.val(),
@@ -74,26 +74,26 @@ scratchpad.modules.define("imageEditor", {
 			invert: this.sliders.invert.val(),
 		}, this.previewPane);
 	},
-	cancelImageEdit: function() {
+	cancelImageEdit: function () {
 		this.selectedItem = null;
 	},
-	showEditButton: function(item) {
+	showEditButton: function (item) {
 		var _ = this;
 		var button = this.editButton;
 		var offset = item.offset();
 		var itemwidth = item.width();
-		button.css({top: offset.top, left: offset.left + itemwidth});
-			button.show();
-			button.off();
-			button.on("click", function() {
-				_.editImage(item);
-				button.hide();
-			});	
+		button.css({
+			top: offset.top,
+			left: offset.left + itemwidth
+		});
+		button.show();
+		button.off();
+		button.on("click", function () {
+			_.editImage(item);
+			button.hide();
+		});
 	},
-	hideEdit: function() {
-		this.editButton.hide();
-	},
-	init: function() {
+	init: function () {
 		var _ = this;
 		this.resetSliders = this.resetSliders.bind(this);
 		this.editImage = this.editImage.bind(this);
@@ -103,19 +103,17 @@ scratchpad.modules.define("imageEditor", {
 		this.updatePreview = this.updatePreview.bind(this);
 		$(document.body).append('<div noprint class="image-edit-button edit-button small fab color-green-500" title="Edit"><i class="icon-create"></i></div>'); //add the deletion button
 		this.editButton = $(".image-edit-button");
-		$("#document-editor").on( "mouseover", ".extend-block.image-extend-block", function() {
+		$("#document-editor").on("mouseover", ".extend-block.image-extend-block", function () {
 			_.showEditButton($(this));
 		});
 		this.imageDialog.on("dialog-shown", this.startImageEditing);
 		this.imageDialog.on("dialog-cancel", this.cancelImageEdit);
 		this.imageDialog.on("dialog-confirm", this.saveImageEdits);
-		$("#document-editor").on("click", function() {
-			_.hideEdit();
-		});
-		$("#sliders-reset").on("click", function() {
+
+		$("#sliders-reset").on("click", function () {
 			_.resetSliders();
 		});
-		$(".image-edit-dialog .controls input").on("change", function() {
+		$(".image-edit-dialog .controls input").on("change", function () {
 			_.updatePreview();
 		});
 	}

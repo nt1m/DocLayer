@@ -29,13 +29,33 @@ scratchpad.modules.define("embeds", {
 			embed = "https://" + embed; //auto-https may cause issues for some websites, but is needed to prevent mixed content from being blocked
 		}
 
+		embed = embed.replace("http://", "https://"); //in order to prevent mixed content blocking, we need to load everything as https. This may cause some websites to not work correctly.
+
+
 		var placeholder = $(".embedplaceholder");
 		placeholder.attr("src", embed);
 		placeholder.removeClass("embedplaceholder").addClass("extend-block").addClass("embed-extend-block"); //use the placeholder to add an image
 		scratchpad.ui.dialogs.hide($(this));
 	},
+	showOpenButton: function (item) {
+		var _ = this;
+		var button = this.openButton;
+		var offset = item.offset();
+		var itemwidth = item.width();
+		button.css({
+			top: offset.top,
+			left: offset.left + itemwidth
+		});
+		button.show();
+		button.off();
+		button.on("click", function () {
+			window.open(item.attr("src"), '_blank');
+			button.hide();
+		});
+	},
 	init: function () {
 		var _ = this;
+		this.showOpenButton = this.showOpenButton.bind(this);
 		this.dialogEl = $(".embed-dialog");
 
 		scratchpad.menu.addItem({
@@ -50,6 +70,12 @@ scratchpad.modules.define("embeds", {
 
 		this.dialogEl.on("dialog-shown", this.ondialogopen);
 		this.dialogEl.on("dialog-cancel", this.ondialogcancel);
-		this.dialogEl.on("dialog-confirm", this.insertembedfromdialog)
+		this.dialogEl.on("dialog-confirm", this.insertembedfromdialog);
+
+		$(document.body).append('<div noprint class="embed-open-button edit-button small fab color-black" title="Open in new tab"><i class="icon-open-in-browser"></i></div>'); //add the open in new tab button
+		this.openButton = $(".embed-open-button");
+		$("#document-editor").on("mouseover", ".extend-block.embed-extend-block", function () {
+			_.showOpenButton($(this));
+		});
 	}
 });
