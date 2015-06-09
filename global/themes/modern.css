@@ -13,15 +13,19 @@
 /* global */
 
 .toolbar {
-	background-color: inherit!important;
+	background-color: #1e88e5;
 	padding: 0.75em 5%;
-	color: inherit;
+	color: #fff;
 	border-color: rgba(0, 0, 0, 0.10);
 	box-shadow: none;
 }
 
 .text-input {
 	border-color: #2196f3;
+}
+
+.toolbar .text-input {
+	border-color: #fff !important;
 }
 
 .dialog-overlay {
@@ -55,7 +59,7 @@
 }
 
 .sidebar>.toolbar {
-	background: #1e88e5 !important;
+	background: #1976d2 !important;
 	color: #fff;
 	border-bottom: 1px solid #ededed;
 }
@@ -77,8 +81,7 @@
 	margin-right: 1em;
 }
 
-.InfoCard-card:not(.InfoCard-type-d):before,
-.InfoCard-category > li:before {
+.InfoCard-category > li + li:before {
 	content: "";
 	width: 100%;
 	height: 1px;
@@ -90,6 +93,12 @@
 .InfoCard-credit-link,
 #commons-credit-link {
 	padding: 1em !important;
+}
+/* charts */
+
+.table-editor td:focus,
+th:focus {
+	border-color: #1e88e5 !important;
 }
 /* doclist */
 
