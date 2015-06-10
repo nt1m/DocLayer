@@ -64,7 +64,7 @@ scratchpad.modules.define("theme", {
 				category: "Theme",
 				description: "Theme",
 				pref: "theme",
-				values: ["default", "dark", "book"],
+				values: ["default", "dark", "modern", "book"],
 				defaultValue: "default",
 			});
 			definePref({
