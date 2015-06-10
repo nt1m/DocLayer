@@ -93,7 +93,7 @@ scratchpad.modules.define("charts", {
 			for (var i = 0; i < columns; i++) {
 				rowinnerhtml += rowtemplate
 			}
-			$(".table").append("<tr>" + rowinnerhtml + "</tr>");
+			$("<tr>").html(rowinnerhtml).appendTo(".table").get(0).focus();
 		});
 
 		$(".add-column").click(function () {
@@ -102,6 +102,14 @@ scratchpad.modules.define("charts", {
 			$(".table tbody tr").append(template);
 			$(".table thead tr").append(htemplate);
 			columns++;
+			$(".table thead tr > th").last().get(0).focus(); //focus the heading for the new row we created
+		});
+
+		$(".table").on("keydown", "td", function (e) {
+			var $this = $(this);
+			if (e.keyCode == 9 && !$this.next()[0] && !$this.parent().next()[0]) { //if the tab key was pressed, and this is the last cell in the row, and this is the last row in the table, we should add a new row
+				$(".add-row").trigger("click");
+			}
 		});
 	},
 	ondialogopen: function () {
