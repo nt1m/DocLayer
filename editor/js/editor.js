@@ -107,7 +107,7 @@ scratchpad.modules.define("editor", {
 		});
 
 		//hide all block modifier buttons
-		scratchpad.editor.on("click", function () {
+		scratchpad.editregion.on("click", function () {
 			$(".edit-button, .deletion-button").hide();
 		});
 

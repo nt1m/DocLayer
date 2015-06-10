@@ -1,4 +1,4 @@
-scratchpad.editor = $("#document-editor");
+scratchpad.editregion = $("#document-editor");
 
 //DO NOT remove core moduels
 var core = ["keybindings", "ui", "caret", "editortooltip"];
