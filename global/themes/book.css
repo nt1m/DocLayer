@@ -21,7 +21,7 @@
 }
 
 .card-container > .card {
-	box-shadow: unset;
+	box-shadow: none;
 }
 /* specific to editor */
 

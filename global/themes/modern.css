@@ -37,7 +37,7 @@
 }
 
 .card-container>.card {
-	box-shadow: unset;
+	box-shadow: none;
 }
 /* specific to the editor */
 
@@ -72,7 +72,7 @@
 .InfoCard-card:not(.InfoCard-type-d),
 .infocard-shell #research-images-results .image-result,
 .InfoCard-category > li {
-	box-shadow: unset !important;
+	box-shadow: none !important;
 	width: 100% !important;
 	margin: 0 !important;
 }
