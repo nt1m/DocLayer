@@ -1,0 +1,22 @@
+.drawing-extend-block {
+	display: block;
+	width: auto;
+	max-width: 50%;
+}
+/* drawings are transparent, so we need to compensate for that */
+
+#drawing-editor-canvas,
+.drawing-extend-block {
+	background: rgba(255, 255, 255, 0.7);
+}
+
+#drawing-editor-canvas {
+	margin-top: 1em;
+}
+
+@media all and (max-width: 330px) {
+	.drawing-dialog {
+		width: 100vw;
+		height: 100vh;
+	}
+}

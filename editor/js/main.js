@@ -8,7 +8,7 @@ core.forEach(function (value) {
 
 //there are some disabled modules that aren't included - videos and comments
 
-var modulesToLoad = ["menu", "editor", "images", "maps", "embeds", "revisions", "findinpage", "research", "charts", "imageEditor", "spellcheck", "contentimport"];
+var modulesToLoad = ["menu", "editor", "images", "maps", "embeds", "revisions", "findinpage", "research", "charts", "imageEditor", "spellcheck", "contentimport", "drawings"];
 $(window).load(function () {
 	$(".splashscreen.loading").hide();
 	modulesToLoad.forEach(function (value) {
