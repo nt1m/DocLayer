@@ -50,6 +50,14 @@ scratchpad.modules.define("maps", {
 		case "car":
 			icon = "icon-directions-car";
 			break;
+		case "pedestrian":
+		case "footway":
+			icon = "icon-directions-walk";
+			break;
+		case "cycleway":
+		case "bicycle":
+			icon = "icon-directions-bike";
+			break;
 		case "parking":
 			icon = "icon-parking";
 			break;
@@ -68,10 +76,12 @@ scratchpad.modules.define("maps", {
 			break;
 		case "deli":
 		case "restaurant":
+			icon = "icon-restaurant";
+			break;
 		case "supermarket":
 		case "grocery":
 		case "greengrocer":
-			icon = "icon-restaurant";
+			icon = "icon-shopping-cart";
 			break;
 		case "cafe":
 			icon = "icon-cafe";
@@ -106,6 +116,36 @@ scratchpad.modules.define("maps", {
 			break;
 		case "computer":
 			icon = "icon-laptop";
+			break;
+		case "city":
+			icon = "icon-location-city";
+			break;
+		case "hotel":
+			icon = "icon-hotel";
+			break;
+		case "school":
+		case "university":
+			icon = "icon-school";
+			break;
+		case "hospital":
+			icon = "icon-hospital";
+			break;
+		case "post_office":
+		case "post_box":
+			icon = "icon-mail";
+			break;
+		case "newspaper":
+		case "newsagent":
+			icon = "icon-news";
+			break;
+		case "atm":
+			icon = "icon-atm";
+			break;
+		case "attraction": //this is kind of abstract. A better icon here would be nice
+			icon = "icon-explore";
+			break;
+		case "information":
+			icon = "icon-live-help";
 			break;
 		default:
 			icon = "icon-place";
@@ -156,7 +196,7 @@ scratchpad.modules.define("maps", {
 						_.insertMap(r.lat, r.lon);
 					});
 				});
-				if (results.length == 0) {
+				if (searchterm && results.length == 0) {
 					_.resultsList.append("<span class='secondary-text'>No results found.</span")
 				}
 			})
