@@ -131,6 +131,7 @@ p[align=right] {
 @media all and (max-width: 750px) {
 	.extend-block {
 		width: 100% !important;
+		max-width: 100% !important;
 		margin-left: 0;
 		margin-right: 0;
 	}
