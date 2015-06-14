@@ -5,6 +5,7 @@ scratchpad.modules.define("drawings", {
 		<span class="dialog-title">Create drawing</span>\
 		<div class="dialog-content">\
 			<canvas id="drawing-editor-canvas" width="250" height="250"></canvas>\
+			<div id="drawing-editor-colors"></div>\
 		</div>\
 		<div class="dialog-footer">\
 			<span class="float-right">\
@@ -14,10 +15,11 @@ scratchpad.modules.define("drawings", {
 		</div>\
 	</div>\
 	',
+	colors: ["#000000", "#ffffff", "#f44336", "#e91e63", "#9c27b0", "#2196f3", "#4caf50", "#ff5722", "#607d8b"],
 	ondialogopen: function () {
 		//resize canvas to window
 		this.canvas.attr("width", Math.max($(window).width() * 0.6, 260));
-		this.canvas.attr("height", Math.max($(window).height() * 0.6, 320));
+		this.canvas.attr("height", Math.max($(window).height() * 0.6, 295));
 
 		this.signaturePad.clear(); //empty the canvas
 
@@ -71,6 +73,8 @@ scratchpad.modules.define("drawings", {
 	init: function () {
 		var _ = this;
 		this.dialogEl = $(".drawing-dialog");
+		this.colorPicker = $("#drawing-editor-colors");
+
 		this.insertdrawingfromdialog = this.insertdrawingfromdialog.bind(this);
 		this.ondialogopen = this.ondialogopen.bind(this);
 		this.showEditButton = this.showEditButton.bind(this);
@@ -90,12 +94,21 @@ scratchpad.modules.define("drawings", {
 		this.dialogEl.on("dialog-confirm", this.insertdrawingfromdialog);
 
 		this.canvas = $("#drawing-editor-canvas");
-		this.signaturePad = new SignaturePad(this.canvas[0]);
+		this.signaturePad = new SignaturePad(this.canvas[0], {
+			minWidth: 0.7,
+			maxWidth: 2,
+		});
 
 		$(document.body).append('<div noprint class="drawing-edit-button edit-button small fab color-green-500" title="Edit"><i class="icon-create"></i></div>'); //add the edit button
 		this.editButton = $(".drawing-edit-button");
 		$("#document-editor").on("mouseover", ".extend-block.drawing-extend-block", function () {
 			_.showEditButton($(this));
+		});
+
+		this.colors.forEach(function (color) {
+			$("<div ripple>").css("background-color", color).appendTo(_.colorPicker).on("click", function () {
+				_.signaturePad.penColor = $(this).css("background-color");
+			});
 		});
 	}
 });
