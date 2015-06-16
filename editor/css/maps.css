@@ -1,6 +1,6 @@
 .map-extend-block {
-	height: 450px;
-	max-height: 60vh;
+	height: 500px;
+	max-height: calc(100vh - 120px);
 	border: 0;
 }
 

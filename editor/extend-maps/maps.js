@@ -3,14 +3,18 @@
 var hash = window.location.hash.replace("#", "");
 var coords = hash.split(",");
 var lat = coords[0]
-var lon = coords[1]
+var lon = coords[1];
+
+var mapillary_popup = $(".mapillary-image-viewer");
+var mapillary_renderer = $("#mapillary-image");
+var mapillary_close_button = $(".mapillary-quit");
 
 var tabs = {
 	satellite: $("[mode=satellite]"),
 	map: $("[mode=regular]"),
 }
 
-var map = L.map('map-main').setView([lat, lon], 13);
+var map = L.map('map-main').setView([lat, lon], 14);
 var mapLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
 	maxZoom: 18,
 	subdomains: '1234',
@@ -43,4 +47,49 @@ tabs.satellite.on("click", function () {
 	map.removeLayer(mapLayer);
 	tabs.satellite.addClass("selected");
 	tabs.map.removeClass("selected");
-})
+});
+
+
+map.on("click", function (e) {
+	console.log(e);
+	var lat = e.latlng.lat;
+	var lon = e.latlng.lng;
+	var maxDistance = (19 - map.getZoom()) * 12 + 15;
+	console.log("distance is", maxDistance);
+	$.ajax({
+			url: "https://api.mapillary.com/v1/im/close",
+			data: {
+				lat: lat,
+				lon: lon,
+				distance: maxDistance,
+				limit: 3,
+			}
+		})
+		.done(function (data) {
+			console.log(data);
+			if (data.length > 0) {
+				var image = data[0];
+				var imagelat = image.lat;
+				var imagelon = image.lon;
+				var src = "https://d1cuyjsrcm0gby.cloudfront.net/" + image.key + "/thumb-640.jpg";
+				var image = $("<img>").attr("src", src)[0].outerHTML;
+				var popup = L.popup({
+						className: "mapillary-popup",
+					})
+					.setLatLng([imagelat, imagelon])
+					.setContent(image + "<div class='popup-infotext'>Imagery by <a target='_blank' href='http://mapillary.com'>Mapillary</a></div>")
+					.openOn(map);
+			} else {
+				createToast("No ground imagery available for this location.");
+			}
+
+		});
+});
+
+mapillary_close_button.on("click", function () {
+	mapillary_popup.attr("hidden", "true");
+});
+
+function enableMapillaryLayer() { //show where there are mapillary images. Not accessible through the UI, but useful for debugging.
+	L.tileLayer("http://{s}.tiles.mapillary.com/{z}/{x}/{y}").addTo(map);
+}

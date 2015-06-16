@@ -21,7 +21,7 @@ scratchpad.modules.define("maps", {
 		timeout: 10000
 	},
 	ondialogopen: function () {
-		var input = "<iframe sandbox='allow-scripts' class='mapplaceholder'/>"; //add a placeholder to mark the cursor position
+		var input = "<iframe sandbox='allow-scripts allow-popups' class='mapplaceholder'/>"; //add a placeholder to mark the cursor position
 		scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function () {
