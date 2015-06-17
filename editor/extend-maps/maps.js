@@ -62,7 +62,7 @@ map.on("click", function (e) {
 				lat: lat,
 				lon: lon,
 				distance: maxDistance,
-				limit: 3,
+				limit: 1,
 			}
 		})
 		.done(function (data) {
