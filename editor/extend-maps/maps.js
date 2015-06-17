@@ -72,13 +72,18 @@ map.on("click", function (e) {
 				var imagelat = image.lat;
 				var imagelon = image.lon;
 				var src = "https://d1cuyjsrcm0gby.cloudfront.net/" + image.key + "/thumb-640.jpg";
-				var image = $("<img>").attr("src", src)[0].outerHTML;
+				var image = $("<img class='mapillary-image-thumb'>").attr("src", src)[0].outerHTML;
 				var popup = L.popup({
 						className: "mapillary-popup",
 					})
 					.setLatLng([imagelat, imagelon])
 					.setContent(image + "<div class='popup-infotext'>Imagery by <a target='_blank' href='http://mapillary.com'>Mapillary</a></div>")
 					.openOn(map);
+
+				//recalculate the size of the popup when the image loads
+				$(".mapillary-image-thumb").on("load", function () {
+					popup.update();
+				});
 			} else {
 				createToast("No ground imagery available for this location.");
 			}
