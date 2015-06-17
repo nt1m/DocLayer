@@ -8,6 +8,7 @@
 	display: none;
 }
 /* the dialog */
+/* note: a lot of this sizing is repeated in maps.js due to a bug in mobile safari. When updating this css, make sure to update what is in maps.js as well. */
 
 .map-dialog {
 	position: fixed;

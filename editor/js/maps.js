@@ -21,6 +21,16 @@ scratchpad.modules.define("maps", {
 		timeout: 10000
 	},
 	ondialogopen: function () {
+
+		//workaround for a mobile safari bug in which the dialog gets bigger every time it is opened, eventually leading to the dialog going off the screen.
+		if (scratchpad.ismobilesafari || scratchpad.maps.debugsafari == true) {
+			var height = $(window).height() * 0.6;
+			height = Math.max(320, height);
+			height = Math.min(850, height);
+
+			$(".map-dialog").css("height", height + "px");
+		}
+
 		var input = "<iframe sandbox='allow-scripts allow-popups' class='mapplaceholder'/>"; //add a placeholder to mark the cursor position
 		scratchpad.caret.pasteHtmlAtCaret(input, false);
 	},
