@@ -7,7 +7,7 @@
 <body>
 	<h1>Spellcheck.js: a javascript spellchecker</h1>
 	<h2>What is it?</h2>
-	<p>Spellcheck.js is a javascript spellchecker that allows for checking if a word is spelled correctly, and finding the best replacement for a misspelled word. It uses <a href="https://github.com/adambom/dictionary">Webster's 1913 dictionary</a>, a <a href="https://github.com/jedp/porter-stemmer">Porter-stemmer</a>, a list of common misspellings, and some regex. For finding replacements for a word, it uses the <a href="http://siderite.blogspot.com/2014/11/super-fast-and-accurate-string-distance.html">Sift4 string-distance algorithm</a>.
+	<p>Spellcheck.js is a javascript spellchecker that allows for checking if a word is spelled correctly, and finding the best replacement for a misspelled word. It uses <a href="http://wordlist.aspell.net/">the SCOWL word list</a>, a list of common misspellings, and some regex. For finding replacements for a word, it uses the <a href="http://siderite.blogspot.com/2014/11/super-fast-and-accurate-string-distance.html">Sift4 string-distance algorithm</a>.
 	</p>
 
 
@@ -55,6 +55,10 @@
 	<br>
 	<div id="correct"></div>
 	<div id="output"></div>
+
+	<h3>Test multiple words</h3>
+	<textarea id="speller-ta-input"></textarea>
+	<div id="speller-ta-output"></div>
 
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="spellcheck.js"></script>
