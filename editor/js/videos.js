@@ -2,7 +2,7 @@
 
 scratchpad.modules.define("videos", {
 	html: '\
-		<div noprint class="dialog video-dialog small-dialog" hidden>\
+		<div noprint class="dialog video-dialog url-input-dialog" hidden>\
 		<span class="dialog-title">Choose a video</span>\
 		<div class="dialog-content">\
 			<input type="text" class="video-url-chooser text-input" placeholder="Paste a URL here"/>\

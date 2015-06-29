@@ -1,6 +1,6 @@
 scratchpad.modules.define("images", {
 	html: ' \
-		<div noprint class="dialog image-dialog small-dialog" hidden>\
+		<div noprint class="dialog image-dialog url-input-dialog" hidden>\
 		<span class="dialog-title">Choose an image</span>\
 		<div class="dialog-content">\
 			<input title="Choose an image source" type="text" class="image-url-chooser text-input" placeholder="Paste a URL here"/>\

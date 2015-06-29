@@ -1,6 +1,6 @@
 scratchpad.modules.define("embeds", {
 	html: '\
-		<div noprint class="dialog embed-dialog small-dialog" hidden>\
+		<div noprint class="dialog embed-dialog url-input-dialog" hidden>\
 		<span class="dialog-title">Choose a URL to embed</span>\
 		<div class="dialog-content">\
 			<input title="Choose a URL to embed" type="text" class="embed-url-chooser text-input" placeholder="Paste a URL here"/>\

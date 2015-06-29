@@ -87,6 +87,13 @@ body.has-toolbar {
 .dialog-content {
 	max-height: 70vh;
 }
+/* dialogs with just an input box need special styling */
+
+.url-input-dialog {
+	width: 60vw;
+	min-width: 300px;
+	max-width: 600px;
+}
 /* sidebars */
 
 .sidebar {
