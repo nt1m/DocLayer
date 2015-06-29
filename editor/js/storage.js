@@ -69,6 +69,7 @@ if (client.isAuthenticated()) {
 				window.cachedDocument = {
 					title: metadata[document_id].title,
 					content: editregion.html(),
+					lastUpdated: currentTime,
 				}
 			});
 
@@ -91,6 +92,7 @@ if (client.isAuthenticated()) {
 			window.cachedDocument = {
 				title: "Untitled Document",
 				content: "",
+				lastUpdated: currentTime,
 			}
 
 			client.writeFile("/documents/" + document_id + ".html", "", function (error, stat) {}); //create a new file
@@ -121,6 +123,7 @@ if (client.isAuthenticated()) {
 					window.cachedDocument = {
 						title: metadata[document_id].title,
 						content: editregion.html(),
+						lastUpdated: (new Date).getTime(),
 					}
 
 
@@ -142,23 +145,25 @@ if (client.isAuthenticated()) {
 		}
 
 		window.refreshIfNeeded = function () {
-			client.readFile("/documents/" + document_id + ".html", function (error, data) {
-				if (error) {
-					return createToast("An error occured.");
-				}
-				if (window.cachedDocument.content != data) { //only refresh if the document has changed
-					window.cachedDocument.content = data; //update cached
-					editregion.html(data);
-					client.readFile("/metadata/metadata.json", function (error, data) { //also update metadata
-						if (error) { //we don't want to parse the metadata if an error occured
-							return createToast("An error occured.");
-						}
-						window.metadata = JSON.parse(data);
-						document.title = metadata[document_id].title + " | " + baseWindowTitle;
-						titleinput.val(metadata[document_id].title);
-					});
-				}
-			});
+			if ((new Date).getTime() - window.cachedDocument.lastUpdated > 5000) { //sometimes, if the document was saved just before running refreshIfNeeded, the document will revert to a previous state. To avoid this, we only refresh when we haven't saved anything in the past few seconds.
+				client.readFile("/documents/" + document_id + ".html", function (error, data) {
+					if (error) {
+						return createToast("An error occured.");
+					}
+					if (window.cachedDocument.content != data) { //only refresh if the document has changed
+						window.cachedDocument.content = data; //update cached
+						editregion.html(data);
+						client.readFile("/metadata/metadata.json", function (error, data) { //also update metadata
+							if (error) { //we don't want to parse the metadata if an error occured
+								return createToast("An error occured.");
+							}
+							window.metadata = JSON.parse(data);
+							document.title = metadata[document_id].title + " | " + baseWindowTitle;
+							titleinput.val(metadata[document_id].title);
+						});
+					}
+				});
+			}
 		}
 
 		setInterval(refreshIfNeeded, 17500);
