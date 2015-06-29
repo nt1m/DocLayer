@@ -166,7 +166,7 @@ scratchpad.modules.define("maps", {
 	insertMap: function (lat, lon) {
 
 		var placeholder = $(".mapplaceholder");
-		placeholder.attr("src", "extend-maps/map.html#" + lat + "," + lon);
+		placeholder.attr("src", config.basepath + "editor/extend-maps/map.html#" + lat + "," + lon);
 		placeholder.removeClass("mapplaceholder").addClass("extend-block").addClass("map-extend-block"); //use the placeholder to add a map
 		scratchpad.ui.dialogs.hide(this.dialogEl);
 	},

@@ -44,7 +44,7 @@
 }
 
 p {
-	font-size: 1em;
+	font-size: 1em !important;
 }
 
 #document-editor h2 {
@@ -135,4 +135,11 @@ p[align=right] {
 		margin-left: 0;
 		margin-right: 0;
 	}
+}
+/* some defaults for iframes, in case the module css isn't loaded (such as in the viewer) */
+
+iframe.extend-block {
+	height: 500px;
+	max-height: calc(100vh - 120px);
+	border: 0;
 }
