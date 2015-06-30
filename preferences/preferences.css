@@ -31,6 +31,6 @@
 	padding: 0.5em;
 }
 
-.preferences-container > .card .button {
-	margin-top: -0.25em;
+.preferences-container > .card .dropdown-menu {
+	margin-top: -0.65em;
 }

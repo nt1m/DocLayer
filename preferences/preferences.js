@@ -1,11 +1,13 @@
+if (!client.isAuthenticated()) {
+	window.location = config.basepath;
+}
+
 config.preference_modules.forEach(function (value) {
 	scratchpad.modules.load(value);
 });
 
 var prefs_container = $(".preferences-container");
 var inputs_generated = 0;
-
-var canDestroyMenu;
 
 function getSwitch() {
 	inputs_generated++;
@@ -54,48 +56,20 @@ function definePref(options) {
 			prefInput.prependTo(pref_container);
 
 		} else { //generic preferences view
-			var button = $("<button class='button float-right'>");
+			var dropdown = $("<select class='dropdown-menu float-right'>");
 
-			if (options.currentValue) {
-				button.text(options.currentValue);
-			} else {
-				button.text(options.defaultValue);
-			}
-
-			button.on("click", function () {
-
-				canDestroyMenu = false;
-				$(".preference-menu").remove(); //remove any previous menus
-				//generate the menu
-				var offset = button.offset();
-				var height = button[0].getBoundingClientRect().height; //jQuery reports the height as incorrect for some reason
-				var menu = $(' <ul class="menu preference-menu"> </ul>');
-				menu.css({
-					position: "absolute",
-					top: (offset.top + height + 5) + "px",
-					left: offset.left + "px",
-				});
-
-				//add the menu items
-				options.values.forEach(function (value) {
-					var item = $('<li ripple><a>' + value + '</a></li>');
-					item.children().on("click", function () {
-						setPref(options.pref, $(this).text());
-						button.text($(this).text());
-						$(document).trigger("prefschange");
-					});
-					item.appendTo(menu);
-				});
-
-				//add the menu
-				menu.appendTo(document.body);
-
-				setTimeout(function () {
-					canDestroyMenu = true;
-				}, 50);
+			options.values.forEach(function (option) {
+				$("<option>").text(option).appendTo(dropdown);
 			});
 
-			button.prependTo(pref_container);
+			dropdown.val(options.currentValue || options.defaultValue);
+
+			dropdown.on("change", function () {
+				setPref(options.pref, dropdown.val());
+				$(document).trigger("prefschange");
+			})
+
+			dropdown.prependTo(pref_container);
 		}
 		pref_container.appendTo(group_container);
 
@@ -103,10 +77,3 @@ function definePref(options) {
 
 	});
 }
-
-$(document.body).on("click", function () {
-	if (canDestroyMenu) {
-		console.log("destroying menu");
-		$(".preference-menu").remove();
-	}
-});
