@@ -35,12 +35,29 @@ scratchpad.modules.define("findinpage", {
 	highlightmatches: function () {
 		scratchpad.editregion.removeHighlight();
 		scratchpad.editregion.highlight(this.inputs.find.val());
+		var highlights = $(".highlight");
 		var matches = highlights.length
 		this.findinpagecount.html(matches);
 		if (matches == 0 && this.inputs.find.val() != "") {
 			this.inputs.find.addClass("no-matches")
 		} else {
 			this.inputs.find.removeClass("no-matches");
+		}
+		//scroll to the closest match
+		var $window = $(window);
+		var closestEl;
+		var distance = 99999999999;
+		var windowscroll = $window.scrollTop();
+		highlights.each(function () {
+			var $this = $(this);
+			var newdistance = Math.abs($this.position().top - windowscroll);
+			if (newdistance < distance) {
+				distance = newdistance;
+				closestEl = $this;
+			}
+		});
+		if (closestEl) { //make sure we don't throw an error if there are no highlights
+			$(window).scrollTop(closestEl.offset().top - 100);
 		}
 	},
 	replace: function () {
