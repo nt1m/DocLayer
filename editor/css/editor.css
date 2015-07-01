@@ -120,6 +120,27 @@ p[align=right] {
 #document-editor strike {
 	background-position: 0px 0.5em;
 }
+/* when printing, background images don't show up, so we need to use the normal lines instead */
+
+@media print {
+	#document-editor u,
+	#document-editor strike {
+		background-image: none;
+	}
+	#document-editor u {
+		text-decoration: underline;
+	}
+	#document-editor strike {
+		text-decoration: line-through;
+	}
+}
+/*robotoDraft has an issue that makes preview on osx x render bold text as pixelated. This isn't the best solution, but there isn't really an alternative. */
+
+@media print {
+	#document-editor b {
+		font-family: Arial, sans-serif;
+	}
+}
 /* blocks - there isn't really a good place to put this */
 
 .extend-block {
