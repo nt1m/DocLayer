@@ -20,6 +20,9 @@ var tagWhitelist_ = {
 	"H3": true,
 	"BLOCKQUOTE": true,
 	"BR": true,
+	"OL": true,
+	"UL": true,
+	"LI": true,
 };
 
 var attributeWhitelist_ = {
@@ -29,6 +32,7 @@ var attributeWhitelist_ = {
 	//general attributes
 	"class": true,
 	"src": true,
+	"starred": true,
 	//paragraph alignment
 	"align": true,
 };
