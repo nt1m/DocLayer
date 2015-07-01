@@ -15,7 +15,7 @@
 
 #document-editor ul,
 #document-editor ol {
-	margin: 1.5em;
+	margin: 1em 1.5em;
 	line-height: 1.5em;
 }
 /* special header styles */
