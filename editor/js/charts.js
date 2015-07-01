@@ -195,10 +195,10 @@ scratchpad.modules.define("charts", {
 		//chart edit button
 		$(document.body).append('<div noprint class="chart-edit-button edit-button small fab color-green-500" title="Edit"><i class="icon-create"></i></div>'); //add the edit button
 		this.editButton = $(".chart-edit-button");
-		$("#document-editor").on("mouseover", ".extend-block.chart-extend-block", function () {
+		scratchpad.editregion.on("mouseover", ".extend-block.chart-extend-block", function () {
 			_.showEditButton($(this));
 		});
-		$("#document-editor").on("click", function () {
+		scratchpad.editregion.on("click", function () {
 			_.hideEdit();
 		});
 

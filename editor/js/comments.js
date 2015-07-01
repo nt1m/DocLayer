@@ -23,7 +23,7 @@ scratchpad.modules.define("comments", {
 			},
 		});
 
-		$("#document-editor").on("click", "comment", function (e) {
+		scratchpad.editregion.on("click", "comment", function (e) {
 			_.delete(e);
 		});
 	}

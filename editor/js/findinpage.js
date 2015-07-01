@@ -22,20 +22,20 @@ scratchpad.modules.define("findinpage", {
 		this.inputs.find.removeClass("no-matches");
 		$(document.body).addClass("find-in-page");
 		this.inputs.find.focus();
-		this.editor.attr("contenteditable", "false"); //temp fix for firefox bug
+		scratchpad.editregion.attr("contenteditable", "false"); //temp fix for firefox bug
 	},
 
 	endsearch: function () {
 		$(document.body).removeClass("find-in-page");
-		this.editor.removeHighlight();
-		this.editor.attr("contenteditable", "true"); //temp fix for firefox bug
-		this.editor.get(0).focus(); //the jquery focus method doesn't work on contenteditable, so the native method must be used instead
+		scratchpad.editregion.removeHighlight();
+		scratchpad.editregion.attr("contenteditable", "true"); //temp fix for firefox bug
+		scratchpad.editregion.get(0).focus(); //the jquery focus method doesn't work on contenteditable, so the native method must be used instead
 	},
 
 	highlightmatches: function () {
-		this.editor.removeHighlight();
-		this.editor.highlight(this.inputs.find.val());
-		var matches = $(".highlight").length
+		scratchpad.editregion.removeHighlight();
+		scratchpad.editregion.highlight(this.inputs.find.val());
+		var matches = highlights.length
 		this.findinpagecount.html(matches);
 		if (matches == 0 && this.inputs.find.val() != "") {
 			this.inputs.find.addClass("no-matches")
@@ -46,7 +46,7 @@ scratchpad.modules.define("findinpage", {
 	replace: function () {
 		this.highlightmatches();
 		$(".highlight").text(this.inputs.replace.val());
-		this.editor.removeHighlight();
+		scratchpad.editregion.removeHighlight();
 		this.endsearch();
 	},
 
@@ -60,7 +60,6 @@ scratchpad.modules.define("findinpage", {
 		this.inputs = {};
 		this.inputs.find = $("#find-input");
 		this.inputs.replace = $("#replace-input");
-		this.editor = $("#document-editor");
 		this.findinpagecount = $(".findinpage-count");
 
 		// Bind functions
@@ -72,7 +71,7 @@ scratchpad.modules.define("findinpage", {
 		// Event listeners
 
 		this.button.click(this.startsearch);
-		this.editor.click(this.endsearch);
+		scratchpad.editregion.click(this.endsearch);
 		this.inputs.find.keyup(this.highlightmatches);
 		this.inputs.replace.keyup(function (e) {
 			if (e.keyCode == 13) {

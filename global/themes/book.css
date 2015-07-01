@@ -23,6 +23,11 @@
 .card-container > .card {
 	box-shadow: none;
 }
+
+.fab {
+	background: #757575;
+	color: #fff;
+}
 /* specific to editor */
 
 .editor-toolbar {
@@ -31,11 +36,6 @@
 
 #document-editor {
 	padding: 45px calc(3.5% + 35px);
-}
-
-#start-menu-container .fab {
-	background: #fff;
-	color: #000;
 }
 
 .sidebar {

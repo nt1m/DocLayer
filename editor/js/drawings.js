@@ -101,7 +101,7 @@ scratchpad.modules.define("drawings", {
 
 		$(document.body).append('<div noprint class="drawing-edit-button edit-button small fab color-green-500" title="Edit"><i class="icon-create"></i></div>'); //add the edit button
 		this.editButton = $(".drawing-edit-button");
-		$("#document-editor").on("mouseover", ".extend-block.drawing-extend-block", function () {
+		scratchpad.editregion.on("mouseover", ".extend-block.drawing-extend-block", function () {
 			_.showEditButton($(this));
 		});
 

@@ -103,7 +103,7 @@ scratchpad.modules.define("imageEditor", {
 		this.updatePreview = this.updatePreview.bind(this);
 		$(document.body).append('<div noprint class="image-edit-button edit-button small fab color-green-500" title="Edit"><i class="icon-create"></i></div>'); //add the deletion button
 		this.editButton = $(".image-edit-button");
-		$("#document-editor").on("mouseover", ".extend-block.image-extend-block", function () {
+		scratchpad.editregion.on("mouseover", ".extend-block.image-extend-block", function () {
 			_.showEditButton($(this));
 		});
 		this.imageDialog.on("dialog-shown", this.startImageEditing);

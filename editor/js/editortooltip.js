@@ -1,6 +1,5 @@
 scratchpad.modules.define("editortooltip", {
 	html: '<div noprint id="editortooltip-menu" class="themeable"></div>',
-	editor: $("#document-editor"),
 	toggleFormatBlock: function (tag1, tag2) {
 		if (this.getCommonSelectionNode().tagName != tag1) {
 			document.execCommand("formatBlock", false, tag1);
@@ -34,7 +33,7 @@ scratchpad.modules.define("editortooltip", {
 		//bind events - mouseup is used because focus is stolen by the time click occurs
 		btn.on("mousedown", function (e) {
 			options.fn(e);
-			_.editor.trigger("selectionchange"); //the function might have changed the text position, so the menu bounds need to be updated
+			scratchpad.editregion.trigger("selectionchange"); //the function might have changed the text position, so the menu bounds need to be updated
 		});
 	},
 	toggleMenu: function () {
@@ -42,7 +41,7 @@ scratchpad.modules.define("editortooltip", {
 		var _ = this;
 		var range = window.getSelection().getRangeAt(0); //sometimes webkit throws an error this for unknown reasons - it doesn't seem to harm anything though
 
-		if (!range.collapsed && _.editor.is(":focus")) { //if there is actually some selected text
+		if (!range.collapsed && scratchpad.editregion.is(":focus")) { //if there is actually some selected text
 
 			//show the menu
 			_.menu.removeAttr("hidden");
@@ -72,7 +71,7 @@ scratchpad.modules.define("editortooltip", {
 			_.toggleMenu();
 		}, 150);
 
-		this.editor.on("selectionchange", _.toggleMenu);
+		scratchpad.editregion.on("selectionchange", _.toggleMenu);
 
 		//formatting default butons
 

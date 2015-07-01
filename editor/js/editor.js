@@ -102,7 +102,7 @@ scratchpad.modules.define("editor", {
 			_.insertItem("divider");
 		});
 
-		$("#document-editor").on("mouseover touchstart", ".extend-block", function () {
+		scratchpad.editregion.on("mouseover touchstart", ".extend-block", function () {
 			_.showDeletion($(this));
 		});
 
@@ -111,10 +111,10 @@ scratchpad.modules.define("editor", {
 			$(".edit-button, .deletion-button").hide();
 		});
 
-		$("#document-editor").on("click", function (e) {
+		scratchpad.editregion.on("click", function (e) {
 			_.starItem(e);
 		});
-		$("#document-editor").on("keyup", function () {
+		scratchpad.editregion.on("keyup", function () {
 			_.doesNeedListInsert();
 		});
 		scratchpad.keybindings.addBinding("tab", function () {

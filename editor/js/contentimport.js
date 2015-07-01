@@ -79,7 +79,7 @@ scratchpad.modules.define("contentimport", {
 	},
 	init: function () {
 		var _ = this;
-		$("#document-editor").on("paste", function (e) {
+		scratchpad.editregion.on("paste", function (e) {
 			e.preventDefault();
 			_.import(e);
 		});

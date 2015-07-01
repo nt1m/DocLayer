@@ -74,7 +74,7 @@ scratchpad.modules.define("embeds", {
 
 		$(document.body).append('<div noprint class="embed-open-button edit-button small fab color-black" title="Open in new tab"><i class="icon-open-in-browser"></i></div>'); //add the open in new tab button
 		this.openButton = $(".embed-open-button");
-		$("#document-editor").on("mouseover", ".extend-block.embed-extend-block", function () {
+		scratchpad.editregion.on("mouseover", ".extend-block.embed-extend-block", function () {
 			_.showOpenButton($(this));
 		});
 	}
