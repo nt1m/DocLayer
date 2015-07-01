@@ -23,6 +23,7 @@ var tagWhitelist_ = {
 	"OL": true,
 	"UL": true,
 	"LI": true,
+	"HR": true,
 };
 
 var attributeWhitelist_ = {
