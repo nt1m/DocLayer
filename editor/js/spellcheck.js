@@ -24,7 +24,8 @@ scratchpad.modules.define("spellcheck", {
 		var spellingIsFixed;
 
 		for (var i = 0; i < words.length; i++) {
-			var value = words[i];
+			//split() works differently in webkit, so there might be an extra space after the word that needs to be removed.
+			var value = words[i].replace(/\s/g, "");
 			if (!spellcheck.checkSpelling(value) && _.customDictionary.indexOf(value) < 0) { //the word is misspelled, and it isn't overriden by the custom dictionary
 				for (var z = 0; z < _.autocorrectWords.length; z++) { //check if we should autocorrect, or show a misspelling
 					var autocorrect = _.autocorrectWords[z];
