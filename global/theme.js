@@ -41,6 +41,23 @@ scratchpad.modules.define("theme", {
 		this.checktheme();
 		this.interval = setInterval(this.checktheme, 30000);
 	},
+	switchToolbarBackground: function (image) {
+		if (image) {
+			$(".toolbar").css({
+				"background-image": "url(" + image + ")",
+				"background-size": "cover",
+				"background-attachment": "fixed",
+				"background-position": "center center",
+			});
+		} else {
+			$(".toolbar").css({
+				"background-image": "",
+				"background-size": "",
+				"background-attachment": "",
+				"background-position": "",
+			});
+		}
+	},
 	init: function () {
 		var _ = this;
 		this.checktheme = this.checktheme.bind(this);
@@ -59,26 +76,40 @@ scratchpad.modules.define("theme", {
 			}
 		});
 
+		getPref("theme.toolbarBackground", function (image) {
+			_.switchToolbarBackground(image);
+		});
+
 		if (window.definePref) { //we're in the preferences view
 			definePref({
-				category: "Theme",
+				category: "Appearance",
 				description: "Theme",
 				pref: "theme",
 				values: ["default", "dark", "modern", "book"],
 				defaultValue: "default",
 			});
 			definePref({
-				category: "Theme",
+				category: "Appearance",
 				description: "Automatically switch to the dark theme at night",
 				pref: "theme.autoswitch",
 				values: [true, false],
 				defaultValue: true,
+			});
+			definePref({
+				category: "Appearance",
+				description: "Toolbar background image",
+				pref: "theme.toolbarBackground",
+				values: ["input:text:Enter a URL"],
+				defaultValue: "",
 			});
 		}
 		$(document).on("prefschange", function () {
 			getPref("theme", function (theme) {
 				_.switchToTheme(theme);
 				_.selectedTheme = theme;
+			});
+			getPref("theme.toolbarBackground", function (image) {
+				_.switchToolbarBackground(image);
 			});
 		});
 	}
