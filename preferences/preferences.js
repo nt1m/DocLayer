@@ -55,6 +55,33 @@ function definePref(options) {
 
 			prefInput.prependTo(pref_container);
 
+		} else if (options.values[0].indexOf("input:") == 0) { //can be any value. show a user input, using the value after the : as the input type. (ex. "input:text", "input:number", etc.)
+			var inputOptions = options.values[0].split(":");
+
+			var prefInput = $("<input class='float-right'>");
+			prefInput.attr("type", inputOptions[1]);
+
+			if (inputOptions[1] == "range") {
+				prefInput.addClass("slider");
+			} else {
+				prefInput.addClass("text-input");
+			}
+
+			prefInput.attr("placeholder", inputOptions[2] || options.defaultValue || "");
+
+			prefInput.val(options.currentValue || "");
+
+			prefInput.on("focus", function () {
+				prefInput.select();
+			});
+
+			prefInput.on("change", function () {
+				setPref(options.pref, prefInput.val());
+				$(document).trigger("prefschange");
+			});
+
+			prefInput.prependTo(pref_container);
+
 		} else { //generic preferences view
 			var dropdown = $("<select class='dropdown-menu float-right'>");
 

@@ -21,16 +21,20 @@
 
 .preferences-container > .card .switch {
 	padding: 0 0.75em;
+	line-height: 1em;
 }
 
 .preference-container {
 	overflow: hidden;
+	line-height: 1.75em;
 }
 
 .preference-container {
 	padding: 0.5em;
 }
 
-.preferences-container > .card .dropdown-menu {
+.preferences-container > .card .dropdown-menu,
+.preferences-container > .card .text-input,
+.preferences-container > .card .slider {
 	margin-top: -0.65em;
 }
