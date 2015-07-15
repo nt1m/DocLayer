@@ -2,6 +2,7 @@ scratchpad.modules.define("findinpage", {
 	/* this needs to be appended to the navbar, not the body, so it needs a custom insert */
 	customhtml: '\
 			<span class="findinpage-to-right">\
+				<button title="Back to document" class="icon-button" id="findinpage-exit"><i class="icon-arrow-back"></i></button>\
 				<span id="findinpage-inputs">\
 					<span class="findinpage-input-area">\
 						<input title="Enter text to find" type="text" id="find-input" class="text-input findinpage-input" placeholder="Find something..."/>\
@@ -89,6 +90,7 @@ scratchpad.modules.define("findinpage", {
 
 		this.button.click(this.startsearch);
 		scratchpad.editregion.click(this.endsearch);
+		$("#findinpage-exit").click(this.endsearch);
 		this.inputs.find.keyup(this.highlightmatches);
 		this.inputs.replace.keyup(function (e) {
 			if (e.keyCode == 13) {

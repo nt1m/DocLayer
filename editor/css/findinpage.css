@@ -4,6 +4,10 @@
 	background-color: inherit;
 }
 
+body.find-in-page .findinpage-to-right {
+	width: 100%;
+}
+
 #findinpage-inputs {
 	display: inline-block;
 	transition: .2s;
@@ -21,14 +25,18 @@
 }
 
 body.find-in-page #findinpage-inputs {
-	width: 30vw;
-	max-width: 500px;
+	/* can't use vw here, mobile safari doesn't support it inside calc() */
+	
+	width: calc(95% - 5em);
 }
 
 .findinpage-input {
 	width: 100%;
-	padding: 0;
+	padding: 0 !important;
+	;
 	vertical-align: bottom;
+	border-bottom: none;
+	font-size: 1.25em;
 }
 
 .findinpage-input.no-matches {
@@ -56,14 +64,20 @@ body.find-in-page #findinpage-inputs {
 .dark-theme .highlight {
 	color: #000 !important
 }
-/* doclist */
 
-@media all and (max-width: 900px) {
-	body.find-in-page .docs-name {
-		display: none;
-	}
-	body.find-in-page #findinpage-inputs {
-		width: calc(95vw - 125px);
-		max-width: none;
-	}
+body.find-in-page .editor-toolbar > *:not(.findinpage-to-right) {
+	display: none;
+}
+
+#findinpage-exit {
+	visibility: hidden;
+}
+
+body.find-in-page #findinpage-exit {
+	visibility: visible;
+}
+
+body.find-in-page #findinpage-button {
+	visibility: hidden;
+	width: 0;
 }

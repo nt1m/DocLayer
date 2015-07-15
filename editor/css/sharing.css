@@ -1,16 +1,6 @@
 .sharing-url-display {
 	width: 100%;
 }
-/* there isn't room for this, so we make it disappear with a transition instead */
-
-#sharing-button {
-	transition: 0.2s width;
-}
-
-.find-in-page #sharing-button {
-	width: 0;
-	overflow: hidden;
-}
 
 @media all and (max-width: 525px) {
 	#sharing-button {
