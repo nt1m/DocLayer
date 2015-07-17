@@ -107,6 +107,9 @@ scratchpad.modules.define("maps", {
 		case "clothes": //TODO find a better icon for this
 			icon = "icon-offer";
 			break;
+		case "laundry":
+			icon = "icon-laundry-service";
+			break;
 		case "park":
 		case "nature_reserve":
 			icon = "icon-landscape";
@@ -147,6 +150,9 @@ scratchpad.modules.define("maps", {
 		case "newspaper":
 		case "newsagent":
 			icon = "icon-news";
+			break;
+		case "residential":
+			icon = "icon-home";
 			break;
 		case "atm":
 			icon = "icon-atm";
@@ -242,8 +248,14 @@ scratchpad.modules.define("maps", {
 		$("#map-geolocation-button").on("click", function () {
 			_.setToCurrentLocation();
 		});
-		$("#map-search").on("change", function () {
-			_.updateResults($(this).val());
-		});
+		var searchBox = $("#map-search");
+		var previousEntry = "";
+
+		setInterval(function () {
+			if (searchBox.val() != previousEntry) {
+				previousEntry = searchBox.val();
+				_.updateResults(searchBox.val());
+			}
+		}, 1250);
 	}
 });
