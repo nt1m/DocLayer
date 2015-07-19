@@ -3,6 +3,8 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>Scratchpad | Create beautiful, interactive documents</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
 	<script src="config.js"></script>
@@ -10,49 +12,64 @@
 	<script src="splash/splash.js"></script>
 
 	<link rel="stylesheet" href="lib/material-framework/dist/material.min.css" />
+	<link rel="stylesheet" href="global/global.css" />
 	<link rel="stylesheet" href="splash/splash.css" />
 </head>
 
 <body>
-	<div class="toast">
-		<label class="toast-label">Note: Scratchpad is currently in beta, and some things may not work correctly. Report any issues you find <a href="https://github.com/palmeral/scratchpad/issues">here</a>.</label>
-	</div>
 	<div class="hero">
-		<div class="promo">
-			<h1 class="main-heading">Welcome to Scratchpad</h1>
-			<h2>A new kind of document editor</h2>
-			<button class="signin-button button">Connect to Dropbox</button>
-		</div>
-		<div class="sidefloat-image">
-			<img src="splash/promo-large.png" display="large" />
-			<img src="splash/promo-medium.png" display="medium" />
+		<div class="hero-content">
+			<h1>Create beautiful <span id="typist-element" data-typist="stories, ideas, presentations, lessons, narratives, explanations, writing">documents</span>.</h2>
+			<div class="hero-buttons">
+				<button id="details" class="button bg-blue-500">Learn more</button>
+				<button class="signin-button button">Connect to Dropbox</button>
+			</div>
 		</div>
 	</div>
 
-	<h2 class="section-title">Why you'll love Scratchpad</h2>
 
-	<div class="block-container">
-		<div class="iconblock">
-			<i class="icon-center-focus-strong"></i>
-			<span class="label">Distraction-free</span>
-			<span class="description">Everything you don't need gets out of the way so you can focus on what you do.</span>
+	<div class="feature-container">
+		<div class="image-fade">
+				<img src="splash/images/editor-toolbar-l.png" size="large" alt="The Scratchpad Editor"/>
+				<img src="splash/images/editor-toolbar-md.png" size="medium" alt="The Scratchpad Editor"/>
+				<img src="splash/images/editor-toolbar-sm.png" size="small" alt="The Scratchpad Editor"/>
 		</div>
-		<div class="iconblock">
-			<i class="icon-text-format"></i>
-			<span class="label">Powerful</span>
-			<span class="description">Format and edit content with ease. Research as you write without leaving your document.</span>
+		
+		<div class="feature-block">
+			<h1>Focus</h1>
+			<p>Create better documents, with minimal distractions and a clean, modern design.</p>
 		</div>
-		<div class="iconblock">
-			<i class="icon-chart"></i>
-			<span class="label">Interactive</span>
-			<span class="description">Create rich, engaging documents with charts, images, videos, embeds, and more.</span>
+
+		<div class="feature-block">
+			<h1>Present</h1>
+			<p>Create rich, engaging documents. Add maps, charts, drawings, images, and more to share your ideas.</p>
+		</div>
+
+		<div class="feature-block">
+			<h1>Create anywhere</h1>
+			<p>Wherever you go, Scratchpad follows – on your phone, tablet, or computer.</p>
 		</div>
 	</div>
 
-	<div class="block-container">
-		<h2 class="section-title">Try it today!</h2>
-		<button class="signin-button button">Connect to Dropbox</button>
+	<div class="hero small-hero dark-theme">
+		<div class="hero-content">
+			<h1>Try Scratchpad for free</h2>
+			<div class="hero-buttons">
+				<button class="signin-button button">Sign in with Dropbox</button>
+			</div>
+		</div>
 	</div>
+
+	<script src="lib/Typist/dist/typist.js"></script>
+	<script>
+		var typist = document.querySelector("#typist-element");
+		setTimeout(function () {
+			new Typist(typist, {
+				letterInterval: 200,
+				textInterval: 50000
+			});
+		}, 1250);
+	</script>
 </body>
 
 </html>
