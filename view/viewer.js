@@ -89,6 +89,7 @@ $.ajax(documentSource)
 		window.originalData = data; //having these as global variables makes debugging easier (because you can use them from the console)
 		window.sanitizedData = sanitizeHtml(data);
 		viewer[0].setAttribute("srcdoc", "<!DOCTYPE html><html><head>" + template + "</head><body id='document-editor'>" + sanitizedData + "</html>");
+		viewer.focus();
 	})
 	.fail(function () {
 		viewer.attr("srcdoc", "<!DOCTYPE html><html><head>" + template + "</head><body><span class='secondary-text'>An error occured while loading this document.</span></body></html>");
