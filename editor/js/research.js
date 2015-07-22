@@ -1,5 +1,6 @@
 scratchpad.modules.define("research", {
 	html: '\
+		<script async src="../lib/InfoCards.js/js/infocards.js"></script>\
 		<div noprint class="sidebar infocard-shell themeable" hidden>\
     <div class="toolbar theme-main-color">\
         <button class="icon-button panel-close"><i class="icon-close"></i></button>\
