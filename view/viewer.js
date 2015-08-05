@@ -48,6 +48,7 @@ function sanitizeHtml(input) {
 	iframe.style.display = 'none';
 	document.body.appendChild(iframe); // necessary so the iframe contains a document
 	iframe.contentDocument.body.innerHTML = input;
+	window.frames[1].stop();
 
 	function makeSanitizedCopy(node) {
 		if (node.nodeType == Node.TEXT_NODE) {
@@ -82,13 +83,23 @@ var viewer = $("#viewer");
 var documentSource = "https://dl.dropboxusercontent.com/s" + window_hash + ".html?dl=0";
 
 //stylesheets needed to render the document - global.css, editor.css, ui.css, material.css
-var template = "<link rel='stylesheet' href='" + config.basepath + "global/global.css'/><link rel='stylesheet' href='" + config.basepath + "editor/css/editor.css'/><link rel='stylesheet' href='" + config.basepath + "editor/css/ui.css'/><link rel='stylesheet' href='" + config.basepath + "lib/material-framework/css/material.css'/>";
+var template = "<link rel='stylesheet' href='" + config.basepath + "editor/css/editor.css'/>\
+	<link rel='stylesheet' href='" + config.basepath + "editor/css/ui.css'/>\
+	<link rel='stylesheet' href='" + config.basepath + "lib/material-framework/dist/material.min.css'/>\
+	<link rel='stylesheet' href='" + config.basepath + "global/global.css'/>\
+	<script src='" + config.basepath + "config.js'></script>\
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>\
+	<script src='" + config.basepath + "lib/mousetrap.js'></script>\
+	<script src='" + config.basepath + "global/modules.js'></script>\
+	<link rel='stylesheet' href='" + config.basepath + "view/viewerFrame.css'/>\
+	<script src='" + config.basepath + "lib/nlp_compromise/client_side/nlp.min.js'></script>\
+	<script src='" + config.basepath + "view/viewerFrame.js'></script>";
 
 $.ajax(documentSource)
 	.done(function (data) {
 		window.originalData = data; //having these as global variables makes debugging easier (because you can use them from the console)
 		window.sanitizedData = sanitizeHtml(data);
-		viewer[0].setAttribute("srcdoc", "<!DOCTYPE html><html><head>" + template + "</head><body id='document-editor'>" + sanitizedData + "</html>");
+		viewer[0].setAttribute("srcdoc", "<!DOCTYPE html><html><head>" + template + "</head><body><div id='document-editor'>" + sanitizedData + "</div></body></html>");
 		viewer.focus();
 	})
 	.fail(function () {

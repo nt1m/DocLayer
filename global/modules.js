@@ -15,7 +15,7 @@ var scratchpad = {
 				$(document.body).append(scratchpad[name].html);
 			}
 			if (scratchpad[name].css != false) { //this is loaded at define because it needs to access the css property of the module
-				var stylesheet = $("<link>").attr("rel", "stylesheet").attr("href", "css/" + name + ".css");
+				var stylesheet = $("<link>").attr("rel", "stylesheet").attr("href", config.basepath + "editor/css/" + name + ".css");
 				stylesheet.appendTo("body");
 			}
 			if (scratchpad[name].hasOwnProperty("init")) {

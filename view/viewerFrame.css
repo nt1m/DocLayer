@@ -1,0 +1,12 @@
+.sidebar {
+	top: 0px !important;
+	height: 100% !important;
+}
+
+span.entity {
+	cursor: pointer;
+}
+
+span.entity:hover {
+	background-color: rgba(0, 0, 0, 0.075);
+}

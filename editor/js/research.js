@@ -1,6 +1,6 @@
 scratchpad.modules.define("research", {
 	html: '\
-		<script async src="../lib/InfoCards.js/js/infocards.js"></script>\
+		<script async src="' + config.basepath + 'lib/InfoCards.js/js/infocards.js"></script>\
 		<div noprint class="sidebar infocard-shell themeable" hidden>\
     <div class="toolbar theme-main-color">\
         <button class="icon-button panel-close"><i class="icon-close"></i></button>\
@@ -59,12 +59,15 @@ scratchpad.modules.define("research", {
 			classNames: {
 				"category-item": "themeable",
 			},
-			protocol: window.location.protocol.replace(":", "")
+			protocol: "https"
 		});
 		scratchpad.ui.sidebars.show(this.panel);
 		this.getImages(data);
 	},
 	imageInsertFlow: function (e) {
+		if (!scratchpad.caret) {
+			return;
+		}
 		if (e.target.hasAttribute("noinsert")) {
 			return;
 		}
@@ -100,14 +103,18 @@ scratchpad.modules.define("research", {
 			_.insertButton.hide();
 		});
 
-		scratchpad.editortooltip.createButton({
-			name: "Research",
-			content: "<i class='icon-book'></i>",
-			section: "research",
-			fn: function () {
-				_.show(window.getSelection().toString()); //convert the selection object to a string
-			},
-		});
+		if (scratchpad.editortooltip) {
+
+			scratchpad.editortooltip.createButton({
+				name: "Research",
+				content: "<i class='icon-book'></i>",
+				section: "research",
+				fn: function () {
+					_.show(window.getSelection().toString()); //convert the selection object to a string
+				},
+			});
+
+		}
 
 		scratchpad.keybindings.addBinding("mod+option+shift+i", function () {
 			scratchpad.research.show(window.getSelection());
