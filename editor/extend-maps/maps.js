@@ -1,9 +1,21 @@
 //grab the synced data and create a map with it
 
 var hash = window.location.hash.replace("#", "");
-var coords = hash.split(",");
-var lat = coords[0]
-var lon = coords[1];
+var options = hash.split(",");
+var lat = options[0] || 0
+var lon = options[1] || 0;
+var minimalUI = options[2];
+var zoomOut = options[3];
+
+if (minimalUI == "true") {
+	$("body").addClass("minimalUI");
+}
+
+var mapZoom = 14;
+
+if (zoomOut == "true") {
+	mapZoom = 10;
+}
 
 var mapillary_popup = $(".mapillary-image-viewer");
 var mapillary_renderer = $("#mapillary-image");
@@ -14,7 +26,7 @@ var tabs = {
 	map: $("[mode=regular]"),
 }
 
-var map = L.map('map-main').setView([lat, lon], 14);
+var map = L.map('map-main').setView([lat, lon], mapZoom);
 var mapLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
 	maxZoom: 18,
 	subdomains: '1234',
