@@ -32,6 +32,39 @@ scratchpad.modules.define("research", {
 			});
 		});
 	},
+	getMap: function (name, callback) {
+		$.ajax("https://open.mapquestapi.com/nominatim/v1/search.php?format=json&limit=1&q=" + encodeURIComponent(name))
+			.done(function (results) {
+				if (results.length > 0) {
+					var item = results[0];
+					console.log(name, item.lat, item.lon);
+
+					var mapSource = config.basepath + "editor/extend-maps/map.html#{lat},{lon}".replace("{lat}", item.lat).replace("{lon}", item.lon);
+
+					var mapExtendBlock = $('<iframe class="extend-block map-extend-block">').attr("sandbox", "allow-scripts allow-popups").attr("src", mapSource);
+
+					var map = $("<iframe class='research-map'>").attr("src", mapSource + ",true,true").attr("sandbox", "allow-scripts allow-popups").attr("data-addtodocument", mapExtendBlock[0].outerHTML);
+
+					callback(map);
+				}
+			});
+	},
+	loadExtraCardData: function () {
+		var _ = this;
+
+		var card = $(".InfoCard-card");
+		if (card.hasClass("InfoCard-type-a")) { //if the card is a wikipedia article
+			var name = $(".InfoCard-title").text();
+			var entity = $(".InfoCard-entity").text();
+
+			console.log(name, entity);
+			if (entity == "location" || entity == "country") {
+				_.getMap(name, function (map) {
+					card.prepend(map);
+				});
+			}
+		}
+	},
 	show: function (data) {
 		var _ = this;
 		_.panel[0].scrollTop = 0; //sometimes firefox uses a previous scroll position and scrolls down at the start, but we always want to start at the top
@@ -45,6 +78,9 @@ scratchpad.modules.define("research", {
 			},
 			onError: function (container) {
 				container.innerHTML = "<div class='secondary-text error-message'>An error occured</div>"
+			},
+			onLoad: function () {
+				_.loadExtraCardData();
 			},
 			appReferName: "scratchpad",
 			onHeadingClick: function (e) {
@@ -64,15 +100,17 @@ scratchpad.modules.define("research", {
 		scratchpad.ui.sidebars.show(this.panel);
 		this.getImages(data);
 	},
-	imageInsertFlow: function (e) {
+	itemInsertFlow: function (e) {
+		var item = e.target;
+
 		if (!scratchpad.caret) {
 			return;
 		}
-		if (e.target.hasAttribute("noinsert")) {
+		if (item.hasAttribute("noinsert")) {
 			return;
 		}
 		var _ = this;
-		var position = $(e.target).offset();
+		var position = $(item).offset();
 		var shellposition = this.panel.offset();
 		var scroll = this.panel.scrollTop();
 		this.insertButton.css({
@@ -82,7 +120,7 @@ scratchpad.modules.define("research", {
 		this.insertButton.show();
 		this.insertButton.off();
 		this.insertButton.on("mousedown", function () {
-			scratchpad.caret.pasteHtmlAtCaret("<img class='extend-block image-extend-block' src='" + e.target.src + "'/>", false);
+			scratchpad.caret.pasteHtmlAtCaret(($(item).attr("data-addtodocument") || ("<img class='extend-block image-extend-block' src='" + item.src + "'/>")), false);
 		});
 	},
 	init: function () {
@@ -90,13 +128,14 @@ scratchpad.modules.define("research", {
 
 		this.panel = $(".infocard-shell");
 		this.imagespanel = $("#research-images-results");
-		this.imageInsertFlow = this.imageInsertFlow.bind(this);
+		this.itemInsertFlow = this.itemInsertFlow.bind(this);
 		this.getImages = this.getImages.bind(this);
-		this.panel.append('<div noprint hidden class="research-insert-button small fab color-green-500" title="Add image to document"><i class="icon-add"></i></div>');
+		this.loadExtraCardData = this.loadExtraCardData.bind(this);
+		this.panel.append('<div noprint hidden class="research-insert-button small fab color-green-500" title="Add to document"><i class="icon-add"></i></div>');
 		this.insertButton = $(".research-insert-button");
 
-		this.panel.on("mouseover", "img", function (e) {
-			_.imageInsertFlow(e);
+		this.panel.on("mouseover", "img, [data-addtodocument]", function (e) {
+			_.itemInsertFlow(e);
 		});
 
 		$(document.body).on("click", function () {

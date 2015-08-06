@@ -224,3 +224,14 @@ a.tx-clr--dk2,
 .infocard-shell #research-images-results .image-result .image-title {
 	padding: 1em;
 }
+/* map results */
+/* assumes 1em padding on the parent card */
+
+.InfoCard-type-a .research-map {
+	height: 50vh;
+	min-height: 12em;
+	max-height: 20em;
+	width: calc(100% + 2em);
+	max-width: none;
+	margin: -1em -1em 0px;
+}
