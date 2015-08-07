@@ -5,6 +5,9 @@
 	display: block;
 	padding: 1em;
 	background-size: cover;
+	/*image - path is relative to css file*/
+	
+	background-image: url(images/hero.jpg);
 }
 
 .hero-content {
@@ -108,6 +111,7 @@
 	text-align: center;
 	padding: 3em;
 	font-size: 0.75em;
+	background-image: none;
 }
 /* responsive images - the <picture> element isn't supported in safari yet */
 
