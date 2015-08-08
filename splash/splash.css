@@ -1,187 +1,146 @@
+body, html {
+    overflow-x: hidden;
+}
+
 .hero {
-	height: 70vh;
-	min-height: 225px;
-	padding: 0.5em 4em;
+	position: relative;
+	height: 80vh;
+	min-height: 300px;
+	display: block;
+	padding: 1em;
+	background-size: cover;
+	/*image - path is relative to css file*/
+	
+	background-image: url(images/hero.jpg);
+}
+
+.hero-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	font-size: 1.5em;
 	text-align: center;
+}
+
+@media all and (max-width: 400px) {
+	.hero-content {
+		font-size: 1em;
+	}
+}
+
+.hero-content > .hero-buttons {
+	margin: 1.5rem;
+	width: 70vw;
+}
+
+.hero .button {
+	font-size: 1rem;
+	margin-right: 0.5em;
+}
+
+.selectedText {
+	background: #009688;
+	color: white;
+}
+
+.button.signin-button {
+	background: #0782E3 !important;
+	color: #fff !important;
+}
+/* features */
+
+.feature-container {
+	padding: 1em 1.5em;
+	text-align: center;
+}
+
+.image-fade {
 	position: relative;
 	overflow: hidden;
-	background: #009688;
-}
-
-.promo > h1 {
-	font-weight: 300;
-}
-
-@keyframes fadein {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-.promo {
-	width: 40%;
-	position: absolute;
-	bottom: 30%;
-	left: 0%;
-	text-align: center;
-	color: #FFF;
-	font-size: 1.2em;
-	animation: fadein 2s;
-}
-
-.promo > h2 {
-	color: #FFF;
-}
-
-.promo > h1 {
-	margin: 0;
-}
-
-@keyframes slide-upwards {
-	0% {
-		bottom: -100%;
-	}
-	100% {
-		bottom: 0;
-	}
-}
-
-@keyframes slide-up-small {
-	0% {
-		bottom: -100%;
-	}
-	100% {
-		bottom: -30%;
-	}
-}
-
-@-webkit-keyframes slide-upwards {
-	0% {
-		bottom: -100%;
-	}
-	100% {
-		bottom: 0;
-	}
-}
-
-@-webkit-keyframes slide-up-small {
-	0% {
-		bottom: -100%;
-	}
-	100% {
-		bottom: -30%;
-	}
-}
-
-.sidefloat-image {
-	width: 50%;
-	max-width: 1300px;
-	display: inline-block;
-	overflow: hidden;
-	position: absolute;
-	right: 7%;
-	bottom: 0;
-	-webkit-animation: slide-upwards 1.5s;
-	animation: slide-upwards 1.5s;
-	max-height: 80%;
-}
-
-.sidefloat-image img {
-	width: 100%;
-}
-
-img[display="large"] {
-	display: block;
-}
-
-img[display="medium"], img[display="small"] {
-	display: none;
-}
-
-@media all and (max-width: 1800px) {
-	img[display="medium"] {
-	display: block;
-}
-
-img[display="large"], img[display="small"] {
-	display: none;
-}
-}
-
-@media all and (max-width: 1150px) {
-	.sidefloat-image {
-		bottom: -30%;
-		left: 27%;
-		-webkit-animation: slide-up-small 1.5s;
-		animation: slide-up-small 1.5s;
-	}
-	.promo {
-		bottom: 50%;
-		width: 90%;
-		left: 5%;
-	}
-	.hero {
-		height: 50vh;
-	}
-}
-
-@media all and (max-width: 750px) {
-	.sidefloat-image {
-		display: none;
-	}
-	.promo {
-		bottom: 25%;
-	}
-}
-
-/* icon promo */
-
-.section-title {
-	font-weight: 300;
-	text-align: center;
-	font-size: 1.5em;
-	margin: 0.5em 0;
-	position: static;
-}
-
-.block-container {
-	display: block;
-	width: 100%;
-	max-width: 1300px;
+	margin-top: -3em;
+	max-width: 1439px;
 	margin: auto;
-	text-align: center;
 }
 
-.iconblock {
+.image-fade:before {
+	content: "";
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	background: transparent linear-gradient(rgba(255, 255, 255, 0) 84%, #fff);
+	z-index: 0;
+}
+
+.image-fade img {
+	width: 100%;
+}
+/* feature blocks */
+
+.feature-block {
+	font-size: 16px;
 	display: inline-block;
-	width: 250px;
-	margin: 2em;
+	width: 20%;
+	margin: 3.25em 3em;
 	vertical-align: top;
 }
 
-.iconblock > i {
-	font-size: 4em;
-	padding: 0.5em;
-	margin: 0.25em 0;
-	border-radius: 50%;
-	border: 1px rgba(0, 0, 0, 0.12) solid;
+@media all and (max-width: 850px) {
+	.feature-block {
+		width: 40%;
+	}
 }
 
-.iconblock .label {
-	display: block;
-	padding: 0.5em 0;
-	font-size: 1.2em;
+@media all and (max-width: 525px) {
+	.feature-block {
+		width: 80%;
+		margin: 3em auto;
+	}
 }
 
-.description {
-	font-weight: 300;
+.feature-block > h1 {
+	color: #009688;
 }
 
-body .signin-button:not(.raised) {
-	background: #3277E3 !important;
-	color: #FFF !important;
-	margin: 1em;
+.feature-block p {
+	font-size: 1em;
+	margin-top: 0.5em;
+	text-align: left;
+}
+
+.small-hero {
+	height: 20vh;
+	min-height: 260px;
+	text-align: center;
+	padding: 3em;
+	font-size: 0.75em;
+	background-image: none;
+}
+/* responsive images - the <picture> element isn't supported in safari yet */
+
+img[size=medium],
+img[size=small] {
+	display: none;
+}
+
+@media all and (max-width: 800px) {
+	img[size=medium] {
+		display: inline;
+	}
+	img[size=large],
+	img[size=small] {
+		display: none;
+	}
+}
+
+@media all and (max-width: 350px) {
+	img[size=small] {
+		display: inline;
+	}
+	img[size=large],
+	img[size=medium] {
+		display: none;
+	}
 }

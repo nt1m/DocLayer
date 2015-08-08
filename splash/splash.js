@@ -9,7 +9,7 @@ client.authenticate({
 	interactive: false
 }, function (error, client) {
 	if (error) {
-		return handleError(error);
+		return console.log(error);
 	}
 	if (client.isAuthenticated()) {
 		window.location = config.basepath + "doclist";
@@ -20,11 +20,16 @@ client.authenticate({
 				// The user will have to click an 'Authorize' button.
 				client.authenticate(function (error, client) {
 					if (error) {
-						return handleError(error);
+						return console.log(error);
 					}
 					window.location = config.basepath + "doclist";
 				});
 			});
+			$("#details").on("click", function () {
+				$("body, html").animate({
+					scrollTop: $(window).height() * 0.82
+				}, '500');
+			})
 		});
 
 	}
