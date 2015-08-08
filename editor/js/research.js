@@ -58,8 +58,8 @@ scratchpad.modules.define("research", {
 			var entity = $(".InfoCard-entity").text();
 
 			console.log(name, entity);
-			if (entity == "location" || entity == "country") {
-				_.getMap(name, function (map) {
+			if (entity == "location" || entity == "country" || entity == "u.s. state") {
+				_.getMap(name.split(",")[0], function (map) {
 					card.prepend(map);
 				});
 			}
