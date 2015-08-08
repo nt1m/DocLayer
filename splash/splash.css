@@ -18,6 +18,7 @@ body, html {
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
 	font-size: 1.5em;
 	text-align: center;
@@ -69,7 +70,7 @@ body, html {
 	width: 100%;
 	position: absolute;
 	top: 0px;
-	background: transparent linear-gradient(transparent 84%, rgba(255, 255, 255, 1)) repeat scroll 0% 0%;
+	background: transparent linear-gradient(rgba(255, 255, 255, 0) 84%, #fff);
 	z-index: 0;
 }
 

@@ -26,7 +26,7 @@ client.authenticate({
 				});
 			});
 			$("#details").on("click", function () {
-				$("html").animate({
+				$("body, html").animate({
 					scrollTop: $(window).height() * 0.82
 				}, '500');
 			})
