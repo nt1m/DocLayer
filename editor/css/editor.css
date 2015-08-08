@@ -41,6 +41,7 @@
 
 #document-editor {
 	-moz-osx-font-smoothing: auto;
+	word-wrap: break-word;
 }
 
 p {
