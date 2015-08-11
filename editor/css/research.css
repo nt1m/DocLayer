@@ -1,11 +1,13 @@
 .infocard-shell * {
 	max-width: 100%;
 }
+
 /* result title */
 
 .InfoCard-title {
 	padding: 0.5em;
 }
+
 /* categories */
 
 .InfoCard-category > li > img {
@@ -13,18 +15,17 @@
 	max-width: 50%;
 	margin-left: 1.5em;
 }
-
 .InfoCard-category > li > h2 {
 	padding: 0 1em;
 	float: left;
 	cursor: pointer;
 	/* these are clickable - they take you to wikipedia article summaries */
 }
-
 .InfoCard-category > li > p {
 	clear: left;
 	padding: 0.5em 1em;
 }
+
 /* tabs */
 
 .InfoCard-tabs {
@@ -34,12 +35,12 @@
 	overflow: auto;
 	white-space: nowrap;
 }
+
 /* selected tab */
 
 .InfoCard-selected {
 	border-bottom: 2px solid currentcolor;
 }
-
 .InfoCard-tabs li {
 	line-height: 2.857em;
 	height: 2.857em;
@@ -53,33 +54,35 @@
 	text-align: center;
 	cursor: pointer;
 }
+
 /* cards - should not apply to list card containers */
 
 .InfoCard-card:not(.InfoCard-type-d),
 .infocard-shell #research-images-results .image-result,
-.InfoCard-category > li {
+.InfoCard-category > li,
+.research-result-card {
 	display: block;
 	width: 85%;
 	margin: 5% 7.5%;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
 	list-style: none;
 	/* make floats work correctly */
-	
 	height: 1%;
 	overflow: auto;
 }
+
 /* these have text and no images, so they need padding */
 
 .InfoCard-card:not(.InfoCard-type-d) {
 	padding: 1em;
 }
+
 /* wikipedia article summaries */
 
 .InfoCard-type-a .InfoCard-image-container {
 	display: none;
 	/* the images show up in the image search results anyway */
 }
-
 .InfoCard-entity {
 	padding: 0;
 	margin: 0;
@@ -92,25 +95,24 @@
 	color: currentColor;
 	opacity: 0.54;
 }
-
 .InfoCard-link-icon {
 	display: none;
 }
-
 .InfoCard-links {
 	display: none;
 }
+
 /* lists for wikipedia articles */
 
 .InfoCard-list {
 	margin: 1.5em 0.5em;
 }
-
 .InfoCard-list > li {
 	width: 100%;
 	padding: 0.33em;
 	list-style: none;
 }
+
 /* borders between list items - there isn't a border-opacity property, and we need currentColor to get this to work with the dark theme (also, it doesn't add a border after the end of the last item in the list) */
 
 .InfoCard-list > li + li:before {
@@ -122,13 +124,13 @@
 	background: currentColor;
 	opacity: 0.12;
 }
-
 .InfoCard-list > li > label,
 .InfoCard-list > li > span {
 	width: 50%;
 	display: inline-block;
 	vertical-align: top;
 }
+
 /* shrink font sizes for smaller screens */
 
 @media all and (max-width: 700px) {
@@ -136,6 +138,7 @@
 		font-size: 0.9em;
 	}
 }
+
 /* errors */
 
 .infocard-shell .error-message {
@@ -143,6 +146,7 @@
 	text-align: center;
 	margin: 1em;
 }
+
 /* image insert button */
 
 .research-insert-button {
@@ -153,6 +157,7 @@
 	margin: 10px;
 	display: none;
 }
+
 /* color circles */
 
 .InfoCard-color-display {
@@ -162,50 +167,47 @@
 	margin-bottom: 15px;
 	border: 3px solid rgba(0, 0, 0, 0.1);
 	/* make sure the color stands out from the background */
-	
 	float: left;
 	margin: 1.2em;
 }
-
 .zci--color-codes .column1 p {
 	padding: 0.2em 0;
 }
-
 .zci--color-codes .column1 {
 	padding: 2em 3em;
 }
-
 a.tx-clr--dk2,
 .separator {
 	/* hide the links to tineye */
-	
 	display: none;
 }
-
 .zci--color-codes .column2 {
 	display: none;
 	/* there isn't a good way to display this, so hide it */
 }
+
 /* credit links */
 
 .InfoCard-credit-link,
-#commons-credit-link {
+#commons-credit-link,
+.research-credit-link {
 	display: block;
 	width: 90%;
 	padding: 1em 0;
 }
+
 /* these need to line up with cards */
 
 .InfoCard-type-d .InfoCard-credit-link,
 #commons-credit-link {
 	padding: 0 2.5em;
 }
+
 /* this needs padding under it, since it's the last item in the panel */
 
 #commons-credit-link {
 	padding-bottom: 1em;
 }
-
 .InfoCard-credit-link::before {
 	content: "";
 	width: 2em;
@@ -215,16 +217,19 @@ a.tx-clr--dk2,
 	background-image: url("../css/ddg_logo.svg");
 	background-size: 2em auto;
 }
+
 /* image results */
 
 .infocard-shell #research-images-results .image-result img {
 	width: 100%;
 }
-
 .infocard-shell #research-images-results .image-result .image-title {
 	padding: 1em;
 }
+
 /* map results */
+
+
 /* assumes 1em padding on the parent card */
 
 .InfoCard-type-a .research-map {
@@ -234,4 +239,29 @@ a.tx-clr--dk2,
 	width: calc(100% + 2em);
 	max-width: none;
 	margin: -1em -1em 0px;
+}
+
+/* dictionary results */
+
+.dictionary-result-card {
+	padding: 1em;
+}
+.research-dictionary-result {
+	padding: 1em 0;
+}
+.research-dictionary-result i:after {
+	content: " ";
+}
+.research-dictionary-result + .research-dictionary-result {
+	padding-top: 0;
+	margin-top: -1em
+}
+.research-dictionary-result + .research-dictionary-result:before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: currentColor;
+	opacity: 0.12;
+	margin: 0.33em 0;
 }

@@ -1,12 +1,14 @@
 scratchpad.modules.define("research", {
 	html: '\
 		<script async src="' + config.basepath + 'lib/InfoCards.js/js/infocards.js"></script>\
+		<script async src="' + config.basepath + 'lib/wiktionary-parser/wiktionary-parser.js"></script>\
 		<div noprint class="sidebar infocard-shell themeable" hidden>\
     <div class="toolbar theme-main-color">\
         <button class="icon-button panel-close"><i class="icon-close"></i></button>\
         <span class="toolbar-label">Research</span>\
     </div>\
 		<div class="infocard-content"></div>\
+		<div class="research-card-results"></div>\
 		<div id="research-images-results"></div>\
 		<a id="commons-credit-link" target="_blank" href="http://commons.wikimedia.org/wiki/Main_Page">Images from Wikimedia Commons </a>\
 	</div>\
@@ -48,6 +50,24 @@ scratchpad.modules.define("research", {
 					callback(map);
 				}
 			});
+	},
+	getDefinition: function (data) {
+		var _ = this;
+		if (data.indexOf(" ") == -1) { //this is a single word, so there should be a definition shown
+			getDictionaryInfo(data, "English", function (results) {
+				if (results.definitions.length) {
+					var card = $("<div class='research-result-card dictionary-result-card'>");
+					$("<h1>").text("Dictionary").prependTo(card);
+					results.definitions.forEach(function (definition) {
+						var p = $("<p>").addClass("research-dictionary-result").text(definition.meaning);
+						$("<i>").text(definition.type).prependTo(p);
+						p.appendTo(card);
+					});
+					$("<a class='research-credit-link' target='_blank'>View full definition</a>").attr("href", "https://en.wiktionary.org/wiki/" + data).appendTo(card);
+					_.extrapanel.append(card);
+				}
+			});
+		}
 	},
 	loadExtraCardData: function () {
 		var _ = this;
@@ -98,7 +118,9 @@ scratchpad.modules.define("research", {
 			protocol: "https"
 		});
 		scratchpad.ui.sidebars.show(this.panel);
+		this.extrapanel.html("");
 		this.getImages(data);
+		this.getDefinition(data);
 	},
 	itemInsertFlow: function (e) {
 		var item = e.target;
@@ -128,8 +150,11 @@ scratchpad.modules.define("research", {
 
 		this.panel = $(".infocard-shell");
 		this.imagespanel = $("#research-images-results");
+		this.extrapanel = $(".research-card-results");
+
 		this.itemInsertFlow = this.itemInsertFlow.bind(this);
 		this.getImages = this.getImages.bind(this);
+		this.getDefinition = this.getDefinition.bind(this);
 		this.loadExtraCardData = this.loadExtraCardData.bind(this);
 		this.panel.append('<div noprint hidden class="research-insert-button small fab color-green-500" title="Add to document"><i class="icon-add"></i></div>');
 		this.insertButton = $(".research-insert-button");
