@@ -1,4 +1,6 @@
-var body = $(document.body);
+$(document).ready(function () {
+	window.body = $(document.body);
+});
 
 //make ripples work in ios
 document.addEventListener("touchstart", function () {}, false);

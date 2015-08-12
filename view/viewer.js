@@ -89,6 +89,7 @@ var template = "<link rel='stylesheet' href='" + config.basepath + "editor/css/e
 	<link rel='stylesheet' href='" + config.basepath + "global/global.css'/>\
 	<script src='" + config.basepath + "config.js'></script>\
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>\
+	<script src='" + config.basepath + "global/global.js'></script>\
 	<script src='" + config.basepath + "lib/mousetrap.js'></script>\
 	<script src='" + config.basepath + "global/modules.js'></script>\
 	<link rel='stylesheet' href='" + config.basepath + "view/viewerFrame.css'/>\
