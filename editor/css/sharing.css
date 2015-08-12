@@ -2,6 +2,10 @@
 	width: 100%;
 }
 
+.share-dialog .sharing-dialog-label {
+	display: block;
+	padding-top: 0.25em;
+}
 @media all and (max-width: 525px) {
 	#sharing-button {
 		display: none;

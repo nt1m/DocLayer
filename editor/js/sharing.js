@@ -3,7 +3,10 @@ scratchpad.modules.define("sharing", {
 			<div noprint class="dialog share-dialog url-input-dialog" hidden>\
 		<span class="dialog-title">Share this document</span>\
 		<div class="dialog-content">\
-			<input title="Share this link with others to let them view this document" type="text" class="sharing-url-display text-input"/>\
+			<label class="sharing-dialog-label">\
+				Let others view this document using the link below.\
+				<input title="Share this link with others to let them view this document" type="text" class="sharing-url-display text-input"/>\
+			</label>\
 		</div>\
 		<div class="dialog-footer">\
 			<span class="float-right">\
