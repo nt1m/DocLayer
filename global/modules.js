@@ -7,7 +7,7 @@ var scratchpad = {
 			*/
 
 			var script = document.createElement("script");
-			script.async = true;
+			script.async = false;
 			script.src = config.basepath + path;
 			document.body.appendChild(script);
 			script.onerror = function () {
