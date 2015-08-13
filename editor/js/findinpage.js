@@ -63,8 +63,12 @@ scratchpad.modules.define("findinpage", {
 	},
 	replace: function () {
 		this.highlightmatches();
-		$(".highlight").text(this.inputs.replace.val());
-		scratchpad.editregion.removeHighlight();
+		var newText = this.inputs.replace.val();
+		if (newText) {
+			$(".highlight").text(newText);
+		} else {
+			$(".highlight").remove();
+		}
 		this.endsearch();
 	},
 
