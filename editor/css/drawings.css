@@ -3,30 +3,29 @@
 	width: auto;
 	max-width: 50%;
 }
-/* drawings are transparent, so we need to compensate for that */
+
+/* drawings are transparent, so we need to compensate for that in the dark theme*/
 
 #drawing-editor-canvas,
 .drawing-extend-block {
-	background: rgba(255, 255, 255, 0.7);
+	background: #fff;
 }
-
 #drawing-editor-canvas {
 	margin-top: 1em;
 }
-
 @media all and (max-width: 330px) {
 	.drawing-dialog {
 		width: 100vw;
 		height: 100vh;
 	}
 }
+
 /* color picker */
 
 #drawing-editor-colors {
 	display: -webkit-flex;
 	display: flex;
 }
-
 #drawing-editor-colors > div {
 	height: 1.33em;
 	-webkit-flex: 1;
