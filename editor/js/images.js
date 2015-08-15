@@ -1,4 +1,4 @@
-scratchpad.modules.define("images", {
+docLayer.modules.define("images", {
 	html: ' \
 		<div noprint class="dialog image-dialog url-input-dialog" hidden>\
 		<span class="dialog-title">Choose an image</span>\
@@ -15,7 +15,7 @@ scratchpad.modules.define("images", {
 	',
 	ondialogopen: function () {
 		var input = "<img class='imageplaceholder'/>"; //add a placeholder to mark the cursor position
-		scratchpad.caret.pasteHtmlAtCaret(input, false);
+		docLayer.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function () {
 		$(".imageplaceholder").remove();
@@ -29,19 +29,19 @@ scratchpad.modules.define("images", {
 		var placeholder = $(".imageplaceholder");
 		placeholder.attr("src", newimage);
 		placeholder.removeClass("imageplaceholder").addClass("extend-block").addClass("image-extend-block"); //use the placeholder to add an image
-		scratchpad.ui.dialogs.hide($(this));
+		docLayer.ui.dialogs.hide($(this));
 	},
 	init: function () {
 		var _ = this;
 		this.dialogEl = $(".image-dialog");
 
-		scratchpad.menu.addItem({
+		docLayer.menu.addItem({
 			color: "white",
 			background: "blue-500",
 			name: "image",
 			icon: "icon-image",
 			fn: function () {
-				scratchpad.ui.dialogs.show(_.dialogEl);
+				docLayer.ui.dialogs.show(_.dialogEl);
 			}
 		});
 

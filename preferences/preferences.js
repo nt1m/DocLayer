@@ -3,7 +3,7 @@ if (!client.isAuthenticated()) {
 }
 
 config.preference_modules.forEach(function (value) {
-	scratchpad.modules.load(value);
+	docLayer.modules.load(value);
 });
 
 var prefs_container = $(".preferences-container");

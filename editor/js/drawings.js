@@ -1,4 +1,4 @@
-scratchpad.modules.define("drawings", {
+docLayer.modules.define("drawings", {
 	html: ' \
 		<script src="../lib/signature_pad/signature_pad.js"></script>\
 		<div noprint class="dialog drawing-dialog" hidden>\
@@ -34,7 +34,7 @@ scratchpad.modules.define("drawings", {
 
 		if (!$(".drawing-edit-target")[0]) { //we're not editing anything, we should add a placeholder
 			var input = "<img class='drawingplaceholder'/>"; //add a placeholder to mark the cursor position
-			scratchpad.caret.pasteHtmlAtCaret(input, false);
+			docLayer.caret.pasteHtmlAtCaret(input, false);
 		}
 	},
 	ondialogcancel: function () {
@@ -55,7 +55,7 @@ scratchpad.modules.define("drawings", {
 
 		target.attr("src", newimage);
 		target.removeClass("drawing-edit-target").addClass("extend-block").addClass("drawing-extend-block"); //load the changes
-		scratchpad.ui.dialogs.hide($(this.dialogEl));
+		docLayer.ui.dialogs.hide($(this.dialogEl));
 	},
 	showEditButton: function (item) {
 		var _ = this;
@@ -71,7 +71,7 @@ scratchpad.modules.define("drawings", {
 		button.on("click", function () {
 			item.addClass("drawing-edit-target");
 			_.drawingData = item.attr("src");
-			scratchpad.ui.dialogs.show(_.dialogEl);
+			docLayer.ui.dialogs.show(_.dialogEl);
 		});
 	},
 	init: function () {
@@ -83,13 +83,13 @@ scratchpad.modules.define("drawings", {
 		this.ondialogopen = this.ondialogopen.bind(this);
 		this.showEditButton = this.showEditButton.bind(this);
 
-		scratchpad.menu.addItem({
+		docLayer.menu.addItem({
 			color: "white",
 			background: "deep-purple-500",
 			name: "drawing",
 			icon: "icon-drive-drawing",
 			fn: function () {
-				scratchpad.ui.dialogs.show(_.dialogEl);
+				docLayer.ui.dialogs.show(_.dialogEl);
 			}
 		});
 
@@ -102,7 +102,7 @@ scratchpad.modules.define("drawings", {
 
 		$(document.body).append('<div noprint class="drawing-edit-button edit-button small fab color-green-500" title="Edit"><i class="icon-create"></i></div>'); //add the edit button
 		this.editButton = $(".drawing-edit-button");
-		scratchpad.editregion.on("mouseover", ".extend-block.drawing-extend-block", function () {
+		docLayer.editregion.on("mouseover", ".extend-block.drawing-extend-block", function () {
 			_.showEditButton($(this));
 		});
 

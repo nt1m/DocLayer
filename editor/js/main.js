@@ -1,9 +1,9 @@
-scratchpad.editregion = $("#document-editor");
+docLayer.editregion = $("#document-editor");
 
 //DO NOT remove core moduels
 var core = ["keybindings", "ui", "caret", "editortooltip"];
 core.forEach(function (value) {
-	scratchpad.modules.load("editor/js/" + value + ".js");
+	docLayer.modules.load("editor/js/" + value + ".js");
 });
 
 var lastCoreModule = core[core.length - 1]
@@ -17,7 +17,7 @@ $(document.body).on("moduleload", function (e, parameters) {
 		setTimeout(function () { //let the stylesheets for the core modules finish loading before removing the splash
 			$(".splashscreen.loading").remove();
 			modulesToLoad.forEach(function (name) {
-				scratchpad.modules.load("editor/js/" + name + ".js");
+				docLayer.modules.load("editor/js/" + name + ".js");
 			});
 		}, 280);
 		lastCoreModule = undefined;

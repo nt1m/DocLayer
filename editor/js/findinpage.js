@@ -1,4 +1,4 @@
-scratchpad.modules.define("findinpage", {
+docLayer.modules.define("findinpage", {
 	/* this needs to be appended to the navbar, not the body, so it needs a custom insert */
 	customhtml: '\
 			<span class="findinpage-to-right">\
@@ -23,19 +23,19 @@ scratchpad.modules.define("findinpage", {
 		this.inputs.find.removeClass("no-matches");
 		$(document.body).addClass("find-in-page");
 		this.inputs.find.focus();
-		scratchpad.editregion.attr("contenteditable", "false"); //temp fix for firefox bug
+		docLayer.editregion.attr("contenteditable", "false"); //temp fix for firefox bug
 	},
 
 	endsearch: function () {
 		$(document.body).removeClass("find-in-page");
-		scratchpad.editregion.removeHighlight();
-		scratchpad.editregion.attr("contenteditable", "true"); //temp fix for firefox bug
-		scratchpad.editregion.get(0).focus(); //the jquery focus method doesn't work on contenteditable, so the native method must be used instead
+		docLayer.editregion.removeHighlight();
+		docLayer.editregion.attr("contenteditable", "true"); //temp fix for firefox bug
+		docLayer.editregion.get(0).focus(); //the jquery focus method doesn't work on contenteditable, so the native method must be used instead
 	},
 
 	highlightmatches: function () {
-		scratchpad.editregion.removeHighlight();
-		scratchpad.editregion.highlight(this.inputs.find.val());
+		docLayer.editregion.removeHighlight();
+		docLayer.editregion.highlight(this.inputs.find.val());
 		var highlights = $(".highlight");
 		var matches = highlights.length
 		this.findinpagecount.html(matches);
@@ -93,7 +93,7 @@ scratchpad.modules.define("findinpage", {
 		// Event listeners
 
 		this.button.click(this.startsearch);
-		scratchpad.editregion.click(this.endsearch);
+		docLayer.editregion.click(this.endsearch);
 		$("#findinpage-exit").click(this.endsearch);
 		this.inputs.find.keyup(this.highlightmatches);
 		this.inputs.replace.keyup(function (e) {
@@ -101,7 +101,7 @@ scratchpad.modules.define("findinpage", {
 				_.replace();
 			}
 		});
-		scratchpad.keybindings.addBinding("mod+f", function () {
+		docLayer.keybindings.addBinding("mod+f", function () {
 			_.startsearch();
 		});
 	}

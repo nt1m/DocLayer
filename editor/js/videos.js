@@ -1,6 +1,6 @@
 /* this is disabled by default */
 
-scratchpad.modules.define("videos", {
+docLayer.modules.define("videos", {
 	html: '\
 		<div noprint class="dialog video-dialog url-input-dialog" hidden>\
 		<span class="dialog-title">Choose a video</span>\
@@ -16,7 +16,7 @@ scratchpad.modules.define("videos", {
 	</div>',
 	ondialogopen: function () {
 		var input = "<video controls class='videoplaceholder'/>"; //add a placeholder to mark the cursor position
-		scratchpad.caret.pasteHtmlAtCaret(input, false);
+		docLayer.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function () {
 		$(".videoplaceholder").remove();
@@ -46,19 +46,19 @@ scratchpad.modules.define("videos", {
 		var source = "<source type='" + type + "' codecs='" + codecs + "' src='" + video + "'></source>";
 		placeholder.html(source);
 		placeholder.removeClass("videoplaceholder").addClass("extend-block").addClass("video-extend-block"); //use the placeholder to add a video
-		scratchpad.ui.dialogs.hide($(this));
+		docLayer.ui.dialogs.hide($(this));
 	},
 	init: function () {
 		var _ = this;
 		this.dialogEl = $(".video-dialog");
 
-		scratchpad.menu.addItem({
+		docLayer.menu.addItem({
 			color: "white",
 			background: "grey-800",
 			name: "video",
 			icon: "icon-videocam",
 			fn: function () {
-				scratchpad.ui.dialogs.show(_.dialogEl);
+				docLayer.ui.dialogs.show(_.dialogEl);
 			}
 		});
 

@@ -1,4 +1,4 @@
-scratchpad.modules.define("theme", {
+docLayer.modules.define("theme", {
 	css: false,
 	checktheme: function () {
 		var _ = this;

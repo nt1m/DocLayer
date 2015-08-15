@@ -1,12 +1,12 @@
 /* convert pasted text from google docs/word */
 
-scratchpad.modules.define("contentimport", {
+docLayer.modules.define("contentimport", {
 	css: false,
 	import: function (e) {
 		var data = e.originalEvent.clipboardData;
 		var content = data.getData('text/html');
 
-		if (content) { //we have content, so it has html formatting. Convert it to scratchpad format
+		if (content) { //we have content, so it has html formatting. Convert it to docLayer format
 			var boxset = $("<div>" + content + "</div>");
 			boxset.find("span").each(function () { //remove google docs formatting spans and replace with correct tags
 				var $this = $(this);
@@ -52,7 +52,7 @@ scratchpad.modules.define("contentimport", {
 
 			//create tables using the charts, if the module is loaded
 
-			if (scratchpad.charts) {
+			if (docLayer.charts) {
 				boxset.find("table colgroup").remove(); //these are useless
 				boxset.find("table td *").contents().unwrap(); //remove formatting that won't work
 				boxset.find("table td").attr("data-previous-contenteditable-state", "true"); //hack to get the chart editor to work correctly with imported tables
@@ -60,7 +60,7 @@ scratchpad.modules.define("contentimport", {
 				boxset.find("table").each(function () {
 					var tabledata = $(this).html();
 					var chartbox = $("<iframe/>");
-					scratchpad.charts.renderChart(tabledata, "table", chartbox);
+					docLayer.charts.renderChart(tabledata, "table", chartbox);
 					$(this).replaceWith(chartbox);
 				});
 			} else { //we don't have a way to add tables
@@ -80,7 +80,7 @@ scratchpad.modules.define("contentimport", {
 	},
 	init: function () {
 		var _ = this;
-		scratchpad.editregion.on("paste", function (e) {
+		docLayer.editregion.on("paste", function (e) {
 			e.preventDefault();
 			_.import(e);
 		});

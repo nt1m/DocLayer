@@ -2,7 +2,7 @@
 
 /* example:
 
-		scratchpad.keybindings.addBinding(102, function() {
+		docLayer.keybindings.addBinding(102, function() {
 			_.startsearch();
 		})
 		
@@ -10,7 +10,7 @@
 		
 		*/
 
-scratchpad.modules.define("keybindings", {
+docLayer.modules.define("keybindings", {
 	css: false,
 	addBinding: function(keyset, eventFunction) {
 		Mousetrap.bind(keyset, function(e) {

@@ -1,4 +1,4 @@
-var scratchpad = {
+var docLayer = {
 	ismobilesafari: (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false),
 	modules: {
 		load: function (path) {
@@ -11,21 +11,21 @@ var scratchpad = {
 			script.src = config.basepath + path;
 			document.body.appendChild(script);
 			script.onerror = function () {
-				console.log("[scratchpad.modules.load] Failed to load module: " + name);
+				console.log("[docLayer.modules.load] Failed to load module: " + name);
 			}
 		},
 		define: function (name, code) {
-			scratchpad[name] = code;
+			docLayer[name] = code;
 
-			if (scratchpad[name].hasOwnProperty("html")) {
-				body.append(scratchpad[name].html);
+			if (docLayer[name].hasOwnProperty("html")) {
+				body.append(docLayer[name].html);
 			}
-			if (scratchpad[name].css != false) { //this is loaded at define because it needs to access the css property of the module
+			if (docLayer[name].css != false) { //this is loaded at define because it needs to access the css property of the module
 				var stylesheet = $("<link>").attr("rel", "stylesheet").attr("href", config.basepath + "editor/css/" + name + ".css");
 				stylesheet.appendTo("body");
 			}
-			if (scratchpad[name].hasOwnProperty("init")) {
-				scratchpad[name].init();
+			if (docLayer[name].hasOwnProperty("init")) {
+				docLayer[name].init();
 			}
 			console.log(name, performance.now());
 			body.trigger("moduleload", {
@@ -34,14 +34,14 @@ var scratchpad = {
 		}
 	},
 	init: function () {
-		if (scratchpad.ismobilesafari) {
+		if (docLayer.ismobilesafari) {
 			body.addClass("mobilesafari");
 		}
 		config.core_modules.forEach(function (path) {
-			scratchpad.modules.load(path);
+			docLayer.modules.load(path);
 		});
 	}
 }
 $(function () {
-	scratchpad.init();
+	docLayer.init();
 });

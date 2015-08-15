@@ -1,4 +1,4 @@
-scratchpad.modules.define("charts", {
+docLayer.modules.define("charts", {
 	strings: {
 		edit: "Edit",
 		create: "Add",
@@ -115,7 +115,7 @@ scratchpad.modules.define("charts", {
 	ondialogopen: function () {
 		if (!this.editExisting) { //if a new chart is being created, add a placeholder
 			var input = "<iframe class='chartplaceholder'> </iframe>"; //add a placeholder to mark the cursor position
-			scratchpad.caret.pasteHtmlAtCaret(input, false);
+			docLayer.caret.pasteHtmlAtCaret(input, false);
 			$(".chart-dialog .action").html(this.strings.create); //switch the strings
 		} else {
 			$(".chart-dialog .action").html(this.strings.edit); //switch the strings
@@ -133,7 +133,7 @@ scratchpad.modules.define("charts", {
 		var selectedchart = $('input:radio[name=charts]:checked').attr("id");
 		var placeholder = $(".chartplaceholder");
 		this.renderChart(tabledata, selectedchart, placeholder);
-		scratchpad.ui.dialogs.hide($(this.dialogEl));
+		docLayer.ui.dialogs.hide($(this.dialogEl));
 	},
 	switchToMode: function (mode) {
 		if (mode == "edit") {
@@ -163,7 +163,7 @@ scratchpad.modules.define("charts", {
 			_.editExisting = true;
 			$(".table").html(item.attr("data-table").replace(/data-previous-contenteditable-state/g, "contenteditable")); //make the table contenteditable again and show it in the editor
 			_.switchToMode("edit"); //start out showing the table data
-			scratchpad.ui.dialogs.show(_.dialogEl);
+			docLayer.ui.dialogs.show(_.dialogEl);
 		});
 	},
 	hideEdit: function () {
@@ -181,24 +181,24 @@ scratchpad.modules.define("charts", {
 
 		this.editTable($(".table")[0]);
 
-		scratchpad.menu.addItem({
+		docLayer.menu.addItem({
 			color: "white",
 			background: "orange-500",
 			name: "chart",
 			icon: "icon-chart",
 			fn: function () {
 				_.editExisting = false; //this creates a new chart, so change the editExisting to reflect that
-				scratchpad.ui.dialogs.show(_.dialogEl);
+				docLayer.ui.dialogs.show(_.dialogEl);
 			}
 		});
 
 		//chart edit button
 		$(document.body).append('<div noprint class="chart-edit-button edit-button small fab color-green-500" title="Edit"><i class="icon-create"></i></div>'); //add the edit button
 		this.editButton = $(".chart-edit-button");
-		scratchpad.editregion.on("mouseover", ".extend-block.chart-extend-block", function () {
+		docLayer.editregion.on("mouseover", ".extend-block.chart-extend-block", function () {
 			_.showEditButton($(this));
 		});
-		scratchpad.editregion.on("click", function () {
+		docLayer.editregion.on("click", function () {
 			_.hideEdit();
 		});
 

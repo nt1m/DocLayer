@@ -1,4 +1,4 @@
-scratchpad.modules.define("menu", {
+docLayer.modules.define("menu", {
 	html: '\
 		<div noprint id="start-menu-container">\
 			<div class="start-menu">\

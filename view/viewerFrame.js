@@ -10,13 +10,13 @@ function setPref() {
 
 $(document).on("ready", function () {
 	//setup
-	scratchpad.editregion = $("#document-editor");
+	docLayer.editregion = $("#document-editor");
 
-	scratchpad.modules.load("editor/js/keybindings.js");
-	scratchpad.modules.load("editor/js/ui.js");
-	scratchpad.modules.load("editor/js/research.js");
+	docLayer.modules.load("editor/js/keybindings.js");
+	docLayer.modules.load("editor/js/ui.js");
+	docLayer.modules.load("editor/js/research.js");
 
-	var documentData = scratchpad.editregion.html();
+	var documentData = docLayer.editregion.html();
 	var formattedData = documentData.replace("<br>", " ");
 	var documentText = $("<div>").html(formattedData).text();
 
@@ -30,14 +30,14 @@ $(document).on("ready", function () {
 		}
 	});
 
-	scratchpad.editregion.html(documentData);
+	docLayer.editregion.html(documentData);
 
 	//make sure we don't have nested entities
 
 	$(".entity > .entity").contents().unwrap();
 
-	scratchpad.editregion.on("click", "span.entity", function () {
-		scratchpad.research.show($(this).text());
+	docLayer.editregion.on("click", "span.entity", function () {
+		docLayer.research.show($(this).text());
 	});
 
 });
