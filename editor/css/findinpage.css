@@ -67,13 +67,8 @@ body.find-in-page #findinpage-inputs {
 body.find-in-page .editor-toolbar > *:not(.findinpage-to-right) {
 	display: none;
 }
-
-#findinpage-exit {
-	visibility: hidden;
-}
-
-body.find-in-page #findinpage-exit {
-	visibility: visible;
+body:not(.find-in-page) #findinpage-exit {
+	display: none;
 }
 
 body.find-in-page #findinpage-button {
