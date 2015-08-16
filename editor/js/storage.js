@@ -53,6 +53,11 @@ if (client.isAuthenticated()) {
 
 		window.metadata = JSON.parse(data);
 
+		if (document_id == 'tutorial') {
+			$("<script>").attr("src", config.basepath + "editor/tutorial.js").appendTo("body");
+			document_id = ""
+		}
+
 		if (document_id && metadata[document_id]) { //this document already exists - load it
 			client.readFile("/documents/" + document_id + ".html", function (error, data) {
 				if (error) {
