@@ -16,6 +16,7 @@ docLayer.modules.define("theme", {
 
 	},
 	switchToTheme: function (themeName) {
+		themeName = themeName || "default";
 		this.selectedTheme = themeName;
 		if (themeName == "default") {
 			$(document.body).removeClass("dark-theme");
