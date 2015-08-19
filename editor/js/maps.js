@@ -1,4 +1,4 @@
-scratchpad.modules.define("maps", {
+docLayer.modules.define("maps", {
 	html: '\
 		<div noprint class="dialog map-dialog" hidden>\
 		<span class="dialog-title">Choose map location</span>\
@@ -23,7 +23,7 @@ scratchpad.modules.define("maps", {
 	ondialogopen: function () {
 
 		//workaround for a mobile safari bug in which the dialog gets bigger every time it is opened, eventually leading to the dialog going off the screen.
-		if (scratchpad.ismobilesafari || scratchpad.maps.debugsafari == true) {
+		if (docLayer.ismobilesafari || docLayer.maps.debugsafari == true) {
 			var height = $(window).height() * 0.6;
 			height = Math.max(320, height);
 			height = Math.min(850, height);
@@ -32,7 +32,7 @@ scratchpad.modules.define("maps", {
 		}
 
 		var input = "<iframe sandbox='allow-scripts allow-popups' class='mapplaceholder'/>"; //add a placeholder to mark the cursor position
-		scratchpad.caret.pasteHtmlAtCaret(input, false);
+		docLayer.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function () {
 		$(".mapplaceholder").remove();
@@ -174,7 +174,7 @@ scratchpad.modules.define("maps", {
 		var placeholder = $(".mapplaceholder");
 		placeholder.attr("src", config.basepath + "editor/extend-maps/map.html#" + lat + "," + lon);
 		placeholder.removeClass("mapplaceholder").addClass("extend-block").addClass("map-extend-block"); //use the placeholder to add a map
-		scratchpad.ui.dialogs.hide(this.dialogEl);
+		docLayer.ui.dialogs.hide(this.dialogEl);
 	},
 	setToCurrentLocation: function () {
 		var _ = this;
@@ -229,13 +229,13 @@ scratchpad.modules.define("maps", {
 		this.dialogEl = $(".map-dialog");
 		this.resultsList = $("#map-results");
 
-		scratchpad.menu.addItem({
+		docLayer.menu.addItem({
 			color: "white",
 			background: "green-500",
 			name: "map",
 			icon: "icon-map",
 			fn: function () {
-				scratchpad.ui.dialogs.show(_.dialogEl);
+				docLayer.ui.dialogs.show(_.dialogEl);
 			}
 		});
 

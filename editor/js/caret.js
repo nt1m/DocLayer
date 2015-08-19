@@ -1,13 +1,13 @@
 //caret pasting api
 
-scratchpad.modules.define("caret", {
+docLayer.modules.define("caret", {
 	css: false,
 	pasteHtmlAtCaret: function (html, selectPastedContent) {
-		var origHTML = scratchpad.editregion.html();
+		var origHTML = docLayer.editregion.html();
 		document.execCommand("insertHTML", false, html);
 		//if the caret isn't in the editor, we want to append the html instead. however, there are cases where activeElement is not the editor even though the caret is in the editor, so instead we check if the html was changed by the execCommand and if not append the data instead.
-		if (origHTML == scratchpad.editregion.html()) {
-			scratchpad.editregion.append(html);
+		if (origHTML == docLayer.editregion.html()) {
+			docLayer.editregion.append(html);
 		}
 	},
 	pasteHtmlAfterCaret: function (html) { //http://stackoverflow.com/a/3599599/4603285

@@ -2,11 +2,9 @@
 	float: right;
 	vertical-align: middle;
 }
-
 body.find-in-page .findinpage-to-right {
 	width: 100%;
 }
-
 #findinpage-inputs {
 	display: inline-block;
 	transition: .2s;
@@ -15,34 +13,27 @@ body.find-in-page .findinpage-to-right {
 	overflow: hidden;
 	vertical-align: text-bottom;
 }
-
 .findinpage-input-area {
 	position: relative;
 	margin: 0 0.5em;
 	width: 50%;
 	display: inline-block;
 }
-
 body.find-in-page #findinpage-inputs {
 	/* can't use vw here, mobile safari doesn't support it inside calc() */
-	
 	width: calc(95% - 5em);
 }
-
 .findinpage-input {
 	width: 100%;
 	padding: 0 !important;
-	;
 	vertical-align: bottom;
 	border-bottom: none;
 	font-size: 1.25em;
 }
-
 .findinpage-input.no-matches {
 	color: #f44336;
 	border-color: #f44336;
 }
-
 .findinpage-count {
 	position: absolute;
 	right: 0;
@@ -51,31 +42,21 @@ body.find-in-page #findinpage-inputs {
 	background-clip: padding-box;
 	padding-left: 0.66em;
 }
-
 .dark-theme .findinpage-count {
 	background-color: #555;
 }
-
 .highlight {
 	background-color: #fdd835 !important
 }
-
 .dark-theme .highlight {
 	color: #000 !important
 }
-
 body.find-in-page .editor-toolbar > *:not(.findinpage-to-right) {
 	display: none;
 }
-
-#findinpage-exit {
-	visibility: hidden;
+body:not(.find-in-page) #findinpage-exit {
+	display: none;
 }
-
-body.find-in-page #findinpage-exit {
-	visibility: visible;
-}
-
 body.find-in-page #findinpage-button {
 	visibility: hidden;
 	width: 0;

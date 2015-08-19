@@ -1,9 +1,9 @@
 /* this is disabled by default */
 
-scratchpad.modules.define("comments", {
+docLayer.modules.define("comments", {
 	template: "<span contenteditable='false'><comment contenteditable>comment</comment></span>", //span needed to get :focus to work correctly
 	add: function () {
-		scratchpad.caret.pasteHtmlAfterCaret(this.template);
+		docLayer.caret.pasteHtmlAfterCaret(this.template);
 	},
 	delete: function (e) {
 		var rightedge = $(e.target).offset().left + $(e.target).width();
@@ -14,7 +14,7 @@ scratchpad.modules.define("comments", {
 	init: function () {
 		var _ = this;
 
-		scratchpad.editortooltip.createButton({
+		docLayer.editortooltip.createButton({
 			name: "Comment",
 			content: "<i class='icon-comment'></i>",
 			section: "comment",
@@ -23,7 +23,7 @@ scratchpad.modules.define("comments", {
 			},
 		});
 
-		scratchpad.editregion.on("click", "comment", function (e) {
+		docLayer.editregion.on("click", "comment", function (e) {
 			_.delete(e);
 		});
 	}

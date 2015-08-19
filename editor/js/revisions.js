@@ -1,4 +1,4 @@
-scratchpad.modules.define("revisions", {
+docLayer.modules.define("revisions", {
 	html: '\
 	<script src="../lib/moment.js/moment.min.js"></script>\
 		<div noprint id="revisions-shell" class="sidebar themeable" hidden>\
@@ -38,7 +38,7 @@ scratchpad.modules.define("revisions", {
 			if (error) {
 				return createToast("Error restoring file.");
 			}
-			scratchpad.ui.sidebars.hide();
+			docLayer.ui.sidebars.hide();
 			if (time) {
 				createToast("Restored to version from " + time);
 			}
@@ -84,7 +84,7 @@ scratchpad.modules.define("revisions", {
 		$(".editor-toolbar").append(this.customhtml);
 
 		$("#revisions-panel-button").on("click", function () {
-			scratchpad.ui.sidebars.show(_.panel);
+			docLayer.ui.sidebars.show(_.panel);
 			_.loadRevisions();
 		});
 

@@ -1,4 +1,4 @@
-scratchpad.modules.define("research", {
+docLayer.modules.define("research", {
 	html: '\
 		<script async src="' + config.basepath + 'lib/InfoCards.js/js/infocards.js"></script>\
 		<script async src="' + config.basepath + 'lib/wiktionary-parser/wiktionary-parser.js"></script>\
@@ -102,7 +102,7 @@ scratchpad.modules.define("research", {
 			onLoad: function () {
 				_.loadExtraCardData();
 			},
-			appReferName: "scratchpad",
+			appReferName: "docLayer",
 			onHeadingClick: function (e) {
 				if (e.target.tagName == "H2") { //category names for meanings
 					_.show(e.target.innerHTML);
@@ -117,7 +117,7 @@ scratchpad.modules.define("research", {
 			},
 			protocol: "https"
 		});
-		scratchpad.ui.sidebars.show(this.panel);
+		docLayer.ui.sidebars.show(this.panel);
 		this.extrapanel.html("");
 		this.getImages(data);
 		this.getDefinition(data);
@@ -125,7 +125,7 @@ scratchpad.modules.define("research", {
 	itemInsertFlow: function (e) {
 		var item = e.target;
 
-		if (!scratchpad.caret) {
+		if (!docLayer.caret) {
 			return;
 		}
 		if (item.hasAttribute("noinsert")) {
@@ -142,7 +142,7 @@ scratchpad.modules.define("research", {
 		this.insertButton.show();
 		this.insertButton.off();
 		this.insertButton.on("mousedown", function () {
-			scratchpad.caret.pasteHtmlAtCaret(($(item).attr("data-addtodocument") || ("<img class='extend-block image-extend-block' src='" + item.src + "'/>")), false);
+			docLayer.caret.pasteHtmlAtCaret(($(item).attr("data-addtodocument") || ("<img class='extend-block image-extend-block' src='" + item.src + "'/>")), false);
 		});
 	},
 	init: function () {
@@ -167,9 +167,9 @@ scratchpad.modules.define("research", {
 			_.insertButton.hide();
 		});
 
-		if (scratchpad.editortooltip) {
+		if (docLayer.editortooltip) {
 
-			scratchpad.editortooltip.createButton({
+			docLayer.editortooltip.createButton({
 				name: "Research",
 				content: "<i class='icon-book'></i>",
 				section: "research",
@@ -180,11 +180,11 @@ scratchpad.modules.define("research", {
 
 		}
 
-		scratchpad.keybindings.addBinding("mod+option+shift+i", function () {
-			scratchpad.research.show(window.getSelection());
+		docLayer.keybindings.addBinding("mod+option+shift+i", function () {
+			docLayer.research.show(window.getSelection());
 		});
-		scratchpad.keybindings.addBinding("esc", function () {
-			scratchpad.ui.sidebars.hide();
+		docLayer.keybindings.addBinding("esc", function () {
+			docLayer.ui.sidebars.hide();
 		});
 	}
 });

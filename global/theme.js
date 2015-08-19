@@ -1,4 +1,4 @@
-scratchpad.modules.define("theme", {
+docLayer.modules.define("theme", {
 	css: false,
 	checktheme: function () {
 		var _ = this;
@@ -16,6 +16,7 @@ scratchpad.modules.define("theme", {
 
 	},
 	switchToTheme: function (themeName) {
+		themeName = themeName || "default";
 		this.selectedTheme = themeName;
 		if (themeName == "default") {
 			$(document.body).removeClass("dark-theme");

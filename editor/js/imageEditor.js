@@ -1,4 +1,4 @@
-scratchpad.modules.define("imageEditor", {
+docLayer.modules.define("imageEditor", {
 	sliders: {
 		blur: $("#image-blur"),
 		brightness: $("#image-brightness"),
@@ -35,7 +35,7 @@ scratchpad.modules.define("imageEditor", {
 	},
 	editImage: function (item) {
 		this.selectedItem = item;
-		scratchpad.ui.dialogs.show(this.imageDialog);
+		docLayer.ui.dialogs.show(this.imageDialog);
 	},
 	startImageEditing: function () {
 		var editTarget = this.selectedItem;
@@ -61,7 +61,7 @@ scratchpad.modules.define("imageEditor", {
 			opacity: this.sliders.opacity.val(),
 			invert: this.sliders.invert.val(),
 		}, editTarget);
-		scratchpad.ui.dialogs.hide(this.imageDialog);
+		docLayer.ui.dialogs.hide(this.imageDialog);
 	},
 	updatePreview: function () {
 		this.renderImage({
@@ -103,7 +103,7 @@ scratchpad.modules.define("imageEditor", {
 		this.updatePreview = this.updatePreview.bind(this);
 		$(document.body).append('<div noprint class="image-edit-button edit-button small fab color-green-500" title="Edit"><i class="icon-create"></i></div>'); //add the deletion button
 		this.editButton = $(".image-edit-button");
-		scratchpad.editregion.on("mouseover", ".extend-block.image-extend-block", function () {
+		docLayer.editregion.on("mouseover", ".extend-block.image-extend-block", function () {
 			_.showEditButton($(this));
 		});
 		this.imageDialog.on("dialog-shown", this.startImageEditing);

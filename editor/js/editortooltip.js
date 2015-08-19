@@ -1,4 +1,4 @@
-scratchpad.modules.define("editortooltip", {
+docLayer.modules.define("editortooltip", {
 	html: '<div noprint id="editortooltip-menu" class="themeable"></div>',
 	toggleFormatBlock: function (tag1, tag2) {
 		if (this.getCommonSelectionNode().tagName != tag1) {
@@ -33,7 +33,7 @@ scratchpad.modules.define("editortooltip", {
 		//bind events - mouseup is used because focus is stolen by the time click occurs
 		btn.on("mousedown", function (e) {
 			options.fn(e);
-			scratchpad.editregion.trigger("selectionchange"); //the function might have changed the text position, so the menu bounds need to be updated
+			docLayer.editregion.trigger("selectionchange"); //the function might have changed the text position, so the menu bounds need to be updated
 		});
 	},
 	toggleMenu: function () {
@@ -41,7 +41,7 @@ scratchpad.modules.define("editortooltip", {
 		var _ = this;
 		var range = window.getSelection().getRangeAt(0); //sometimes webkit throws an error this for unknown reasons - it doesn't seem to harm anything though
 
-		if (!range.collapsed && scratchpad.editregion.is(":focus")) { //if there is actually some selected text
+		if (!range.collapsed && docLayer.editregion.is(":focus")) { //if there is actually some selected text
 
 			//show the menu
 			_.menu.removeAttr("hidden");
@@ -71,7 +71,7 @@ scratchpad.modules.define("editortooltip", {
 			_.toggleMenu();
 		}, 150);
 
-		scratchpad.editregion.on("selectionchange", _.toggleMenu);
+		docLayer.editregion.on("selectionchange", _.toggleMenu);
 
 		//formatting default butons
 
@@ -175,25 +175,25 @@ scratchpad.modules.define("editortooltip", {
 
 		//keyboard shortcuts
 
-		scratchpad.keybindings.addBinding("mod+b", function () {
+		docLayer.keybindings.addBinding("mod+b", function () {
 			document.execCommand("bold", false);
 		});
-		scratchpad.keybindings.addBinding("mod+i", function () {
+		docLayer.keybindings.addBinding("mod+i", function () {
 			document.execCommand("italic", false);
 		});
-		scratchpad.keybindings.addBinding("mod+u", function () {
+		docLayer.keybindings.addBinding("mod+u", function () {
 			document.execCommand("underline", false);
 		});
-		scratchpad.keybindings.addBinding("option+shift+5", function () {
+		docLayer.keybindings.addBinding("option+shift+5", function () {
 			document.execCommand("strikeThrough", false);
 		});
-		scratchpad.keybindings.addBinding("mod+option+1", function () {
+		docLayer.keybindings.addBinding("mod+option+1", function () {
 			_.toggleFormatBlock("H1", "P");
 		});
-		scratchpad.keybindings.addBinding("mod+option+2", function () {
+		docLayer.keybindings.addBinding("mod+option+2", function () {
 			_.toggleFormatBlock("H2", "P");
 		});
-		scratchpad.keybindings.addBinding("mod+option+3", function () {
+		docLayer.keybindings.addBinding("mod+option+3", function () {
 			_.toggleFormatBlock("H3", "P");
 		});
 

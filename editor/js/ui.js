@@ -1,4 +1,4 @@
-scratchpad.modules.define("ui", {
+docLayer.modules.define("ui", {
 	dialogs: {
 		overlayEl: $(".dialog-overlay"),
 		show: function (dialog) {
@@ -20,7 +20,7 @@ scratchpad.modules.define("ui", {
 			$(document.body).on("click", ".dialog-cancel", function () {
 				var dialog = $(this).parent().parent().parent(".dialog");
 				dialog.trigger("dialog-cancel");
-				scratchpad.ui.dialogs.hide(dialog);
+				docLayer.ui.dialogs.hide(dialog);
 			});
 		}
 	},
@@ -34,7 +34,7 @@ scratchpad.modules.define("ui", {
 		},
 		init: function () {
 			$(document.body).on("click", ".panel-close", function () {
-				scratchpad.ui.sidebars.hide();
+				docLayer.ui.sidebars.hide();
 			});
 		}
 	},
@@ -42,7 +42,7 @@ scratchpad.modules.define("ui", {
 		var _ = this;
 		this.dialogs.init();
 		this.sidebars.init();
-		scratchpad.keybindings.addBinding("esc", function () {
+		docLayer.keybindings.addBinding("esc", function () {
 			_.sidebars.hide();
 		});
 	}

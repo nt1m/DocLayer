@@ -1,11 +1,11 @@
-scratchpad.modules.define("editor", {
+docLayer.modules.define("editor", {
 	insertItem: function (item) {
 		switch (item) {
 		case "divider":
 			var input = "<hr class='divider'></hr>";
 			break;
 		}
-		scratchpad.caret.pasteHtmlAtCaret(input, false);
+		docLayer.caret.pasteHtmlAtCaret(input, false);
 	},
 	destroyUndoable: function (element) { //destroys an element using execCommand so that it is undoable. from http://stackoverflow.com/a/29759439/4603285
 		var el = element[0];
@@ -88,7 +88,7 @@ scratchpad.modules.define("editor", {
 		$(document.body).append('<div noprint class="deletion-button small fab color-red-500" title="Remove"><i class="icon-delete"></i></div>'); //add the deletion button
 		this.deletionButton = $(".deletion-button");
 
-		scratchpad.menu.addItem({
+		docLayer.menu.addItem({
 			color: "black",
 			background: "white",
 			name: "divider",
@@ -98,26 +98,26 @@ scratchpad.modules.define("editor", {
 			}
 		});
 
-		scratchpad.keybindings.addBinding("mod+enter", function () {
+		docLayer.keybindings.addBinding("mod+enter", function () {
 			_.insertItem("divider");
 		});
 
-		scratchpad.editregion.on("mouseover touchstart", ".extend-block", function () {
+		docLayer.editregion.on("mouseover touchstart", ".extend-block", function () {
 			_.showDeletion($(this));
 		});
 
 		//hide all block modifier buttons
-		scratchpad.editregion.on("click", function () {
+		docLayer.editregion.on("click", function () {
 			$(".edit-button, .deletion-button").hide();
 		});
 
-		scratchpad.editregion.on("click", function (e) {
+		docLayer.editregion.on("click", function (e) {
 			_.starItem(e);
 		});
-		scratchpad.editregion.on("keyup", function () {
+		docLayer.editregion.on("keyup", function () {
 			_.doesNeedListInsert();
 		});
-		scratchpad.keybindings.addBinding("tab", function () {
+		docLayer.keybindings.addBinding("tab", function () {
 			document.execCommand("insertHTML", false, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"); //TODO make this use real tabs (would require wrapping the editor in a <pre> block)
 		});
 	}

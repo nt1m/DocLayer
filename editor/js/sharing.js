@@ -1,4 +1,4 @@
-scratchpad.modules.define("sharing", {
+docLayer.modules.define("sharing", {
 	html: '\
 			<div noprint class="dialog share-dialog url-input-dialog" hidden>\
 		<span class="dialog-title">Share this document</span>\
@@ -42,7 +42,7 @@ scratchpad.modules.define("sharing", {
 		this.showSharingLink = this.showSharingLink.bind(this);
 
 		this.button.on("click", function () {
-			scratchpad.ui.dialogs.show(_.dialogEl);
+			docLayer.ui.dialogs.show(_.dialogEl);
 			_.showSharingLink();
 		})
 	}

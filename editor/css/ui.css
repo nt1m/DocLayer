@@ -9,14 +9,13 @@
 	padding-bottom: 4rem;
 	/* add enough padding that the menu button can't cover up text */
 }
-
 .dark-theme #document-editor *::selection {
 	background: #222;
 }
-
 .dark-theme #document-editor *::-moz-selection {
 	background: #222;
 }
+
 /* navbr styles */
 
 .editor-toolbar {
@@ -25,38 +24,40 @@
 	color: #444;
 	box-shadow: none;
 	/* override framework */
-	
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 99;
 }
+
 /* fixed positioning is really buggy on ios */
 
 .mobilesafari .editor-toolbar {
 	position: absolute;
 }
-
 .dark-theme .editor-toolbar {
 	background-color: #555;
 	color: #F5F5F5;
 }
-
 body.has-toolbar {
 	padding-top: 3.2em;
 }
-
 .doc-name {
 	vertical-align: middle;
 	width: 50%;
+	/* align the input with the toolbar-buttons */
+	padding: 0.75em 0;
 }
-
+.doc-name:focus {
+	padding: calc(0.75em - 1px) 0 !important;
+}
 .doc-name:not(:focus) {
 	border: 0;
 	text-overflow: ellipsis;
 	/* this causes weird issues if it is applied while the input is focused */
 }
+
 /* printing */
 
 @media print {
@@ -64,6 +65,7 @@ body.has-toolbar {
 		display: none !important;
 	}
 }
+
 /* buttons */
 
 .deletion-button,
@@ -74,19 +76,19 @@ body.has-toolbar {
 	margin: 10px;
 	display: none;
 }
-
 .edit-button {
 	margin-left: -2.1em;
 }
+
 /* webkit really doesn't like max heights on dialogs for some reason - it collapses the dialog content when you do. however, there still needs to be some max-height, so the max-height is applied to the content instead (which works) */
 
 .dialog {
 	max-height: none !important;
 }
-
 .dialog-content {
 	max-height: 70vh;
 }
+
 /* dialogs with just an input box need special styling */
 
 .url-input-dialog {
@@ -94,13 +96,13 @@ body.has-toolbar {
 	min-width: 300px;
 	max-width: 600px;
 }
+
 /* sidebars */
 
 .sidebar[hidden] {
 	display: block;
 	right: -575px;
 }
-
 .sidebar {
 	width: 50%;
 	min-width: 320px;
@@ -114,12 +116,10 @@ body.has-toolbar {
 	transition: 0.2s ease;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
 }
-
 .sidebar .toolbar {
 	position: sticky;
 	position: -webkit-sticky;
 	top: 0;
 	/* mobile safari wants this for some reason */
-	
 	z-index: 999;
 }

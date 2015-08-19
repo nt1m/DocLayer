@@ -1,4 +1,4 @@
-scratchpad.modules.define("embeds", {
+docLayer.modules.define("embeds", {
 	html: '\
 		<div noprint class="dialog embed-dialog url-input-dialog" hidden>\
 		<span class="dialog-title">Choose a URL to embed</span>\
@@ -15,7 +15,7 @@ scratchpad.modules.define("embeds", {
 	',
 	ondialogopen: function () {
 		var input = "<iframe allowfullscreen sandbox='allow-forms allow-same-origin allow-scripts' class='embedplaceholder'/>"; //add a placeholder to mark the cursor position (also add some sandbox attributes)
-		scratchpad.caret.pasteHtmlAtCaret(input, false);
+		docLayer.caret.pasteHtmlAtCaret(input, false);
 	},
 	ondialogcancel: function () {
 		$(".embedplaceholder").remove();
@@ -35,7 +35,7 @@ scratchpad.modules.define("embeds", {
 		var placeholder = $(".embedplaceholder");
 		placeholder.attr("src", embed);
 		placeholder.removeClass("embedplaceholder").addClass("extend-block").addClass("embed-extend-block"); //use the placeholder to add an image
-		scratchpad.ui.dialogs.hide($(this));
+		docLayer.ui.dialogs.hide($(this));
 	},
 	showOpenButton: function (item) {
 		var _ = this;
@@ -58,13 +58,13 @@ scratchpad.modules.define("embeds", {
 		this.showOpenButton = this.showOpenButton.bind(this);
 		this.dialogEl = $(".embed-dialog");
 
-		scratchpad.menu.addItem({
+		docLayer.menu.addItem({
 			color: "white",
 			background: "pink-500",
 			name: "embed",
 			icon: "icon-drive-code",
 			fn: function () {
-				scratchpad.ui.dialogs.show(_.dialogEl);
+				docLayer.ui.dialogs.show(_.dialogEl);
 			}
 		});
 
@@ -74,7 +74,7 @@ scratchpad.modules.define("embeds", {
 
 		$(document.body).append('<div noprint class="embed-open-button edit-button small fab color-black" title="Open in new tab"><i class="icon-open-in-browser"></i></div>'); //add the open in new tab button
 		this.openButton = $(".embed-open-button");
-		scratchpad.editregion.on("mouseover", ".extend-block.embed-extend-block", function () {
+		docLayer.editregion.on("mouseover", ".extend-block.embed-extend-block", function () {
 			_.showOpenButton($(this));
 		});
 	}

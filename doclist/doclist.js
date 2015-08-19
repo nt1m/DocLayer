@@ -1,6 +1,8 @@
 var window_hash = window.location.hash.replace("#", "");
 var mode;
 
+var editor_create = config.basepath + "editor";
+
 var doclist = $(".doclist");
 var dialog_overlay = $(".dialog-overlay");
 var deletion_dialog = $("#confirm-delete-dialog");
@@ -146,6 +148,7 @@ client.authenticate({
 
 				if ($.isEmptyObject(documents) || window_hash == "simulate_onboard") {
 					doclist.append('<span id="no-documents" class="error secondary-text">You don\'t have any documents yet - when you do, they\'ll show up here.</span>');
+					window.editor_create = config.basepath + "editor/" + "#tutorial";
 				}
 			});
 		}
@@ -206,7 +209,7 @@ client.authenticate({
 
 
 $("#document-create-button").on("click", function () {
-	window.location = config.basepath + "editor";
+	window.location = editor_create;
 });
 
 mode_switcher.on("click", function () {

@@ -1,4 +1,4 @@
-scratchpad.modules.define("spellcheck", {
+docLayer.modules.define("spellcheck", {
 	html: "<script src='../lib/spellcheck.js/spellcheck.js'></script><script async defer src='../lib/spellcheck.js/dictionary.js'></script>",
 	autocorrectWords: [],
 	customDictionary: [],
@@ -110,20 +110,20 @@ scratchpad.modules.define("spellcheck", {
 		this.showMenu = this.showMenu.bind(this);
 		this.regrade = this.regrade.bind(this);
 
-		scratchpad.editregion.attr("spellcheck", "false");
-		scratchpad.editregion.on("keyup", function (e) {
+		docLayer.editregion.attr("spellcheck", "false");
+		docLayer.editregion.on("keyup", function (e) {
 			if (e.keyCode == 32) {
 				_.correct();
 			}
 		});
 
-		scratchpad.editregion.on("keyup", function () {
+		docLayer.editregion.on("keyup", function () {
 			if ($(document.getSelection().anchorNode.parentNode).hasClass("misspelling")) {
 				_.regrade(document.getSelection().anchorNode.parentNode);
 			}
 		});
 
-		scratchpad.editregion.on("contextmenu touchend", ".misspelling", function (e) { //show a misspelling menu
+		docLayer.editregion.on("contextmenu touchend", ".misspelling", function (e) { //show a misspelling menu
 			e.preventDefault();
 			_.showMenu($(e.target));
 		});
