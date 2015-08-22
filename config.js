@@ -3,4 +3,5 @@ window.config = {
 	basepath: "https://standaert.net/doclayer/",
 	core_modules: ["global/theme.js"],
 	preference_modules: ["editor/js/editor.js"], //modules that define preferences and aren't in core
+	mapbox: "MAPBOX_APP_KEY"
 }

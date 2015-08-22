@@ -35,21 +35,14 @@ docLayer.modules.define("research", {
 		});
 	},
 	getMap: function (name, callback) {
-		$.ajax("https://open.mapquestapi.com/nominatim/v1/search.php?format=json&limit=1&q=" + encodeURIComponent(name))
-			.done(function (results) {
-				if (results.length > 0) {
-					var item = results[0];
-					console.log(name, item.lat, item.lon);
 
-					var mapSource = config.basepath + "editor/extend-maps/map.html#{lat},{lon}".replace("{lat}", item.lat).replace("{lon}", item.lon);
+					var mapSource = config.basepath + "editor/extend-maps/map.html#{place}".replace("{place}", btoa(name.replace(",", "")));
 
 					var mapExtendBlock = $('<iframe class="extend-block map-extend-block">').attr("sandbox", "allow-scripts allow-popups").attr("src", mapSource);
 
-					var map = $("<iframe class='research-map'>").attr("src", mapSource + ",true,true").attr("sandbox", "allow-scripts allow-popups").attr("data-addtodocument", mapExtendBlock[0].outerHTML);
+					var map = $("<iframe class='research-map'>").attr("src", mapSource + ",{lat},{lon},true,true").attr("sandbox", "allow-scripts allow-popups").attr("data-addtodocument", mapExtendBlock[0].outerHTML);
 
 					callback(map);
-				}
-			});
 	},
 	getDefinition: function (data) {
 		var _ = this;
@@ -79,7 +72,7 @@ docLayer.modules.define("research", {
 
 			console.log(name, entity);
 			if (entity == "location" || entity == "country" || entity == "u.s. state") {
-				_.getMap(name.split(",")[0], function (map) {
+				_.getMap(name, function (map) {
 					card.prepend(map);
 				});
 			}

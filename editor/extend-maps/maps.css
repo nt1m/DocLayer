@@ -16,14 +16,10 @@ html {
 	height: calc(100% - 48px);
 }
 
-.mapillary-popup .leaflet-popup-content-wrapper {
+.mapillary-popup .leaflet-popup-content {
 	border-radius: 0 !important;
 	padding: 0;
-}
-
-.mapillary-popup a.leaflet-popup-close-button {
-	color: #fff !important;
-	text-shadow: 1px 1px 2px black;
+	padding-top: 0 !important;
 }
 
 .mapillary-popup .leaflet-popup-content {
@@ -40,11 +36,9 @@ html {
 .popup-infotext {
 	padding: 0.33em;
 }
-
 .minimalUI .tabs {
 	display: none;
 }
-
 .minimalUI #map-main {
 	height: 100%;
 }

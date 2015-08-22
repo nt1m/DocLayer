@@ -2,19 +2,21 @@
 
 var hash = window.location.hash.replace("#", "");
 var options = hash.split(",");
-var lat = options[0] || 0
-var lon = options[1] || 0;
-var minimalUI = options[2];
-var zoomOut = options[3];
+var placeName = options[0]
+placeName = atob(placeName);
+var lat = options[1]
+var lon = options[2];
+var minimalUI = options[3];
+var zoomOut = options[4];
 
 if (minimalUI == "true") {
 	$("body").addClass("minimalUI");
 }
 
-var mapZoom = 14;
+var zoom = 14;
 
 if (zoomOut == "true") {
-	mapZoom = 10;
+	zoom = 10;
 }
 
 var mapillary_popup = $(".mapillary-image-viewer");
@@ -26,16 +28,30 @@ var tabs = {
 	map: $("[mode=regular]"),
 }
 
-var map = L.map('map-main').setView([lat, lon], mapZoom);
-var mapLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
-	maxZoom: 18,
-	subdomains: '1234',
-	attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. &copy; OpenStreetMap contributors (<a href="http://www.openstreetmap.org/copyright" target="_blank">license</a>)'
+L.mapbox.accessToken = config.mapbox
+var map = L.mapbox.map('map-main'),
+		geocoder = L.mapbox.geocoder('mapbox.places'),
+		mapLayer = L.mapbox.tileLayer('mapbox.streets');
+
+if(placeName) {
+
+geocoder.query(placeName, function(error, data) {
+    if (data.lbounds) {
+        map.fitBounds(data.lbounds);
+    } else if (data.latlng) {
+        map.setView([data.latlng[0], data.latlng[1]], zoom);
+				L.marker([data.latlng[0], data.latlng[1]]).addTo(map);
+    }
 });
+	
+} else {
+	        map.setView([lat, lon], zoom);
+					var marker = L.marker([lat, lon]).addTo(map)
+					
+}
+
 
 mapLayer.addTo(map);
-
-var marker = L.marker([lat, lon]).addTo(map);
 
 tabs.map.on("click", function () {
 	if (satelliteLayer) {
@@ -48,11 +64,7 @@ tabs.map.on("click", function () {
 
 tabs.satellite.on("click", function () {
 	if (!window.satelliteLayer) { //there isn't a satellite layer yet, create one
-		window.satelliteLayer = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-			maxZoom: 18,
-			subdomains: '1234',
-			attribution: 'Esri, DigitalGlobe, GeoEye, i-cubed, USDA, USGS, AEX, Getmapping, Aerogrid, IGN, IGP, swisstopo, and the GIS User Community, '
-		});
+		window.satelliteLayer = L.mapbox.tileLayer('mapbox.satellite');
 	}
 
 	map.addLayer(satelliteLayer);
