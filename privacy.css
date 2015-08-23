@@ -1,0 +1,14 @@
+body {
+	padding: 1em;
+}
+td,
+th {
+	padding: 0.5em;
+}
+th {
+	background: #ccc;
+}
+table {
+	max-width: 1300px;
+	margin: auto;
+}

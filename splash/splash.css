@@ -49,6 +49,17 @@ body, html {
 	background: #0782E3 !important;
 	color: #fff !important;
 }
+
+footer {
+	margin: 1em;
+	line-height: 1.7em;
+}
+
+footer a {
+	display: block;
+	color: rgba(0, 0, 0, 0.54);
+}
+
 /* features */
 
 .feature-container {
