@@ -12,6 +12,9 @@ html {
 	-webkit-user-select: none;
 	user-select: none;
 }
+.toolbar.tabs {
+	background-color: inherit;
+}
 #map-main {
 	width: 100%;
 	height: calc(100% - 48px);

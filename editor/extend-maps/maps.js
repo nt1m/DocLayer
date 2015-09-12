@@ -122,3 +122,22 @@ mapillary_close_button.on("click", function () {
 function enableMapillaryLayer() { //show where there are mapillary images. Not accessible through the UI, but useful for debugging.
 	L.tileLayer("http://{s}.tiles.mapillary.com/{z}/{x}/{y}").addTo(map);
 }
+
+//postmessage theme
+
+var theme = "default";
+
+window.addEventListener('message', function (e) {
+	if (e.data != theme) {
+		if (e.data == "dark") {
+			map.removeLayer(mapLayer);
+			mapLayer = L.mapbox.tileLayer("mapbox.dark").addTo(map);
+			$(document.body).addClass("dark-theme");
+		} else {
+			map.removeLayer(mapLayer);
+			mapLayer = L.mapbox.tileLayer("mapbox.streets").addTo(map);
+			$(document.body).removeClass("dark-theme");
+		}
+		theme = e.data;
+	}
+}, false);
