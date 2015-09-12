@@ -84,5 +84,10 @@ docLayer.modules.define("contentimport", {
 			e.preventDefault();
 			_.import(e);
 		});
+		docLayer.editregion.on("drop", function (e) {
+			setTimeout(function () {
+				docLayer.editregion.find("img").addClass("extend-block image-extend-block");
+			}, 500);
+		});
 	}
 });
