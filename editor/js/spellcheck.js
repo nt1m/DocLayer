@@ -2,6 +2,7 @@ docLayer.modules.define("spellcheck", {
 	html: "<script src='../lib/spellcheck.js/spellcheck.js'></script><script async defer src='../lib/spellcheck.js/dictionary.js'></script>",
 	autocorrectWords: [],
 	customDictionary: [],
+	shouldCheckSpelling: true,
 	replace: function (from, to) { //http://stackoverflow.com/questions/29067342/inline-autocorrect-with-contenteditable/29067657#29067657
 		var sel = document.getSelection(),
 			nd = sel.anchorNode,
@@ -106,13 +107,31 @@ docLayer.modules.define("spellcheck", {
 	},
 	init: function () {
 		var _ = this;
+
+		if (window.definePref) {
+			definePref({
+				category: "Editing",
+				description: "Check spelling as you type",
+				pref: "editor.spellcheck.enabled",
+				values: [true, false],
+				defaultValue: true,
+			});
+			return; //we aren't in the editor, don't try to run editor setup
+		}
+
+		getPref("editor.spellcheck.enabled", function (value) {
+			if (value == false) {
+				_.shouldCheckSpelling = false;
+			}
+		});
+
 		this.correct = this.correct.bind(this);
 		this.showMenu = this.showMenu.bind(this);
 		this.regrade = this.regrade.bind(this);
 
 		docLayer.editregion.attr("spellcheck", "false");
 		docLayer.editregion.on("keyup", function (e) {
-			if (e.keyCode == 32) {
+			if (e.keyCode == 32 && _.shouldCheckSpelling) {
 				_.correct();
 			}
 		});
