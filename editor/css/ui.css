@@ -37,7 +37,7 @@
 	position: absolute;
 }
 .dark-theme .editor-toolbar {
-	background-color: #555;
+	background-color: #555 !important;
 	color: #F5F5F5;
 }
 body.has-toolbar {
@@ -48,6 +48,7 @@ body.has-toolbar {
 	width: 50%;
 	/* align the input with the toolbar-buttons */
 	padding: 0.75em 0;
+	margin-bottom: 0 !important;
 }
 .doc-name:focus {
 	padding: calc(0.75em - 1px) 0 !important;

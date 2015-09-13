@@ -85,7 +85,7 @@ docLayer.modules.define("editor", {
 			}
 		});
 
-		$(document.body).append('<div noprint class="deletion-button small fab color-red-500" title="Remove"><i class="icon-delete"></i></div>'); //add the deletion button
+		$(document.body).append('<div noprint class="deletion-button small fab color-red-500" data-tooltip="Remove this item" aria-label="Remove this item"><i class="icon-delete"></i></div>'); //add the deletion button
 		this.deletionButton = $(".deletion-button");
 
 		docLayer.menu.addItem({

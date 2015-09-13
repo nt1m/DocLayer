@@ -53,3 +53,10 @@
 	-webkit-transform: scale(1) rotate(360deg);
 	transform: scale(1) rotate(360deg);
 }
+
+/* tooltips */
+
+#start-menu-container [data-tooltip]::before {
+	left: -100%;
+	top: 0;
+}

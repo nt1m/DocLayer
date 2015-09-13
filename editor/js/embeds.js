@@ -72,7 +72,7 @@ docLayer.modules.define("embeds", {
 		this.dialogEl.on("dialog-cancel", this.ondialogcancel);
 		this.dialogEl.on("dialog-confirm", this.insertembedfromdialog);
 
-		$(document.body).append('<div noprint class="embed-open-button edit-button small fab color-black" title="Open in new tab"><i class="icon-open-in-browser"></i></div>'); //add the open in new tab button
+		$(document.body).append('<div noprint class="embed-open-button edit-button small fab color-black" data-tooltip="Open in new tab" aria-label="Open in new tab"><i class="icon-open-in-browser"></i></div>'); //add the open in new tab button
 		this.openButton = $(".embed-open-button");
 		docLayer.editregion.on("mouseover", ".extend-block.embed-extend-block", function () {
 			_.showOpenButton($(this));

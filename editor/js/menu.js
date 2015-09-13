@@ -13,7 +13,8 @@ docLayer.modules.define("menu", {
 		button.addClass("fab").addClass("small");
 		button.addClass("color-" + options.color).addClass("bg-" + options.background);
 		button.attr("id", options.name + "-insert");
-		button.attr("title", options.name);
+		button.attr("aria-label", options.name);
+		button.attr("data-tooltip", options.name);
 		button.on("mousedown", options.fn);
 		var icon = $("<i>");
 		icon.addClass(options.icon);

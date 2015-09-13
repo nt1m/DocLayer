@@ -29,6 +29,7 @@ body.find-in-page #findinpage-inputs {
 	vertical-align: bottom;
 	border-bottom: none;
 	font-size: 1.25em;
+	margin-bottom: 0;
 }
 .findinpage-input.no-matches {
 	color: #f44336;
