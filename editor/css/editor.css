@@ -31,6 +31,14 @@
 	position: static;
 }
 
+#document-editor pre {
+	font-family: Consolas, Menlo, monospace;
+	display: block;
+	padding: 1em;
+	font-size: 0.875em;
+	line-height: 1.5em;
+	font-weight: 400;
+}
 #document-editor .divider {
 	margin: 1em 0;
 	/* make dividers work with floated elements */

@@ -173,6 +173,17 @@ docLayer.modules.define("editortooltip", {
 			},
 		});
 
+		//code button
+
+		this.createButton({
+			name: "Code",
+			content: "<i class='icon-format-indent-increase'></i>",
+			section: "code",
+			fn: function () {
+				_.toggleFormatBlock("PRE", "P");
+			},
+		});
+
 		//keyboard shortcuts
 
 		docLayer.keybindings.addBinding("mod+b", function () {
