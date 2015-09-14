@@ -1,4 +1,5 @@
 docLayer.modules.define("drawings", {
+	cacheScripts: false, //hack to use jquery insertion
 	html: ' \
 		<script src="../lib/signature_pad/signature_pad.js"></script>\
 		<div noprint class="dialog drawing-dialog" hidden>\
