@@ -1,3 +1,4 @@
+var body = $(document.body);
 $(document).ready(function () {
 	window.body = $(document.body);
 });

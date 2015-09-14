@@ -18,7 +18,7 @@ var docLayer = {
 			docLayer[name] = code;
 
 			if (docLayer[name].hasOwnProperty("html")) {
-				body.append(docLayer[name].html);
+				document.body.insertAdjacentHTML("beforeend", docLayer[name].html);
 			}
 			if (docLayer[name].css != false) { //this is loaded at define because it needs to access the css property of the module
 				var stylesheet = $("<link>").attr("rel", "stylesheet").attr("href", config.basepath + "editor/css/" + name + ".css");
