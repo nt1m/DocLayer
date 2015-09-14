@@ -25,13 +25,16 @@ overlay.on("click", function () {
 
 //show account data in the menu
 
-client.getAccountInfo({
-	httpCache: true
-}, function (error, data) {
-	if (error) {
-		console.log("error getting account data", error);
-		return createToast("An error occured.");
-	}
-	$("#userdata-name").text(data.name);
-	$("#userdata-email").text(data.email);
-})
+setTimeout(function () {
+
+	client.getAccountInfo({
+		httpCache: true
+	}, function (error, data) {
+		if (error) {
+			console.log("error getting account data", error);
+			return createToast("An error occured.");
+		}
+		$("#userdata-name").text(data.name);
+		$("#userdata-email").text(data.email);
+	})
+}, 2000);
