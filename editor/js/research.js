@@ -50,7 +50,8 @@ docLayer.modules.define("research", {
 			getDictionaryInfo(data, "English", function (results) {
 				if (results.definitions.length) {
 					var card = $("<div class='research-result-card dictionary-result-card'>");
-					$("<h1>").text("Dictionary").prependTo(card);
+					$("<h1>").text(data).appendTo(card);
+					$("<h2>").text("Dictionary").appendTo(card);
 					results.definitions.forEach(function (definition) {
 						var p = $("<p>").addClass("research-dictionary-result").text(definition.meaning);
 						$("<i>").text(definition.type).prependTo(p);
