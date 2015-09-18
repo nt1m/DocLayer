@@ -17,10 +17,8 @@ var docLayer = {
 		define: function (name, code) {
 			docLayer[name] = code;
 
-			if (docLayer[name].hasOwnProperty("html") && docLayer[name].cacheScripts != false) {
-				document.body.insertAdjacentHTML("beforeend", docLayer[name].html);
-			} else if (docLayer[name].hasOwnProperty("html")) {
-				body.append(docLayer[name].html);
+			if (docLayer[name].hasOwnProperty("html")) {
+				$(document.body).append(docLayer[name].html);
 			}
 			if (docLayer[name].css != false) { //this is loaded at define because it needs to access the css property of the module
 				var stylesheet = $("<link>").attr("rel", "stylesheet").attr("href", config.basepath + "editor/css/" + name + ".css");
@@ -41,6 +39,12 @@ var docLayer = {
 		}
 		config.core_modules.forEach(function (path) {
 			docLayer.modules.load(path);
+		});
+		//http://stackoverflow.com/a/7055016/4603285
+		$.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+			if (options.dataType == 'script' || originalOptions.dataType == 'script') {
+				options.cache = true;
+			}
 		});
 	}
 }
