@@ -6,6 +6,7 @@ var tagWhitelist_ = {
 	"HEAD": true,
 	"DIV": true,
 	"P": true,
+	"PRE": true,
 	"SPAN": true,
 	"B": true,
 	"I": true,
