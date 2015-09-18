@@ -19,6 +19,15 @@ docLayer.modules.define("spellcheck", {
 		nd.parentNode.focus();
 
 	},
+	focusElement: function (p) { //http://stackoverflow.com/a/16863913/4603285
+		var s = window.getSelection(),
+			r = document.createRange();
+		p.innerHTML = '\u00a0';
+		r.selectNodeContents(p);
+		s.removeAllRanges();
+		s.addRange(r);
+		document.execCommand('delete', false, null);
+	},
 	correct: function () {
 		var _ = this;
 		var words = document.getSelection().anchorNode.textContent.split(" "); //only check the currently selected node for performance
@@ -37,8 +46,16 @@ docLayer.modules.define("spellcheck", {
 				}
 
 				if (!spellingIsFixed) {
-					_.replace(value, "");
-					document.execCommand("insertHTML", false, "<span class='misspelling'>" + value + "</span>&nbsp;"); //this assumes the user just types the misspelled word - could be a problem when copy/pasting or when the ruleset changes
+					document.execCommand("insertHTML", false, "<span id='cursor-target'>a</span>");
+					$("#cursor-target").get(0).focus();
+
+					var oldHTML = docLayer.editregion.html();
+					var regex = new RegExp(value, "g");
+					var newHTML = oldHTML.replace(regex, "<span class='misspelling'>" + value + "</span>");
+					docLayer.editregion.html(newHTML);
+					_.focusElement($("#cursor-target").get(0));
+					$("#cursor-target").contents().unwrap();
+					$(".misspelling > .misspelling").contents().unwrap();
 				}
 			}
 		}
