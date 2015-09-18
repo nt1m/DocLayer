@@ -4,6 +4,7 @@ docLayer.modules.define("images", {
 		<span class="dialog-title">Choose an image</span>\
 		<div class="dialog-content">\
 			<input title="Choose an image source" type="text" class="image-url-chooser text-input" placeholder="Paste a URL here"/>\
+			<div id="image-preview"></div>\
 		</div>\
 		<div class="dialog-footer">\
 			<span class="float-right">\
@@ -20,20 +21,50 @@ docLayer.modules.define("images", {
 	ondialogcancel: function () {
 		$(".imageplaceholder").remove();
 	},
+	processImageUrl: function (newimage) {
+		if (!newimage.match("^(http://|https://)")) {
+			newimage = "https://" + newimage;
+		}
+
+		newimage = newimage.replace("http://", "https://");
+		return newimage;
+	},
 	insertimagefromdialog: function () {
 		var newimage = $(".image-url-chooser").val();
-		if (!newimage.match("^(http://|https://|mailto:)")) {
-			newimage = "http://" + newimage;
-		}
+		newimage = this.processImageUrl(newimage);
 
 		var placeholder = $(".imageplaceholder");
 		placeholder.attr("src", newimage);
 		placeholder.removeClass("imageplaceholder").addClass("extend-block").addClass("image-extend-block"); //use the placeholder to add an image
-		docLayer.ui.dialogs.hide($(this));
+		docLayer.ui.dialogs.hide(this.dialogEl);
+	},
+	updatePreview: function (text) {
+		var _ = this;
+		if (text) {
+			var pImage = $("<img>").on("error", function () {
+				_.previewEl.html("");
+				$("<span class='secondary-text'>").text("This image can't be found. Please try a different image.").appendTo(_.previewEl);
+			});
+			pImage.on("load", function () {
+				_.previewEl.html("");
+				$("<img>").attr("src", _.processImageUrl(text)).appendTo(_.previewEl);
+			});
+			pImage.attr("src", this.processImageUrl(text))
+		} else {
+			_.previewEl.html("");
+		}
 	},
 	init: function () {
 		var _ = this;
+		this.updatePreview = this.updatePreview.bind(this);
+		this.insertimagefromdialog = this.insertimagefromdialog.bind(this);
 		this.dialogEl = $(".image-dialog");
+		this.previewEl = $("#image-preview");
+		this.input = $(".image-url-chooser");
+
+		this.input.on("keyup", function (e) {
+			return _.updatePreview(e.target.value);
+		});
 
 		docLayer.menu.addItem({
 			color: "white",

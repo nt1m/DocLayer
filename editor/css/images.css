@@ -1,6 +1,7 @@
 .image-extend-block {
 	display: block;
-	width: auto; /* prevent scaling images up */
+	width: auto;
+	/* prevent scaling images up */
 	max-width: 50%;
 }
 
@@ -9,4 +10,10 @@
 .image-url-chooser {
 	width: 100%;
 	margin-top: 0.8em;
+}
+.image-dialog #image-preview img {
+	max-width: 100%;
+	max-height: 60vh;
+	/* for transparent images */
+	background-color: #616161;
 }
