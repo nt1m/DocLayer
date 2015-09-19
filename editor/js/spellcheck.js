@@ -47,13 +47,12 @@ docLayer.modules.define("spellcheck", {
 
 				if (!spellingIsFixed) {
 					document.execCommand("insertHTML", false, "<span id='cursor-target'>a</span>");
-					$("#cursor-target").get(0).focus();
 
 					var oldHTML = docLayer.editregion.html();
 					var regex = new RegExp(value, "g");
 					var newHTML = oldHTML.replace(regex, "<span class='misspelling'>" + value + "</span>");
 					docLayer.editregion.html(newHTML);
-					_.focusElement($("#cursor-target").get(0));
+					_.focusElement(document.getElementById("cursor-target"));
 					$("#cursor-target").contents().unwrap();
 					$(".misspelling > .misspelling").contents().unwrap();
 				}
