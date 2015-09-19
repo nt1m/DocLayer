@@ -19,18 +19,10 @@ docLayer.modules.define("spellcheck", {
 		nd.parentNode.focus();
 
 	},
-	focusElement: function (p) { //http://stackoverflow.com/a/16863913/4603285
-		var s = window.getSelection(),
-			r = document.createRange();
-		p.innerHTML = '\u00a0';
-		r.selectNodeContents(p);
-		s.removeAllRanges();
-		s.addRange(r);
-		document.execCommand('delete', false, null);
-	},
 	correct: function () {
 		var _ = this;
-		var words = document.getSelection().anchorNode.textContent.split(" "); //only check the currently selected node for performance
+		var selNode = document.getSelection().anchorNode;
+		var words = selNode.textContent.split(" "); //only check the currently selected node for performance
 		var spellingIsFixed;
 
 		for (var i = 0; i < words.length; i++) {
@@ -46,15 +38,16 @@ docLayer.modules.define("spellcheck", {
 				}
 
 				if (!spellingIsFixed) {
-					document.execCommand("insertHTML", false, "<span id='cursor-target'>a</span>");
-
-					var oldHTML = docLayer.editregion.html();
-					var regex = new RegExp(value, "g");
-					var newHTML = oldHTML.replace(regex, "<span class='misspelling'>" + value + "</span>");
-					docLayer.editregion.html(newHTML);
-					_.focusElement(document.getElementById("cursor-target"));
-					$("#cursor-target").contents().unwrap();
-					$(".misspelling > .misspelling").contents().unwrap();
+					//based on http://stackoverflow.com/a/6328851/4603285
+					var range = document.createRange();
+					var index = selNode.textContent.indexOf(value)
+					range.setStart(selNode, index);
+					range.setEnd(selNode, index + value.length);
+					var selectedText = range.extractContents();
+					var span = document.createElement("span");
+					span.classList.add("misspelling");
+					span.appendChild(selectedText);
+					range.insertNode(span);
 				}
 			}
 		}
