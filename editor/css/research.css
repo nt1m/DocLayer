@@ -1,6 +1,14 @@
 .infocard-shell * {
 	max-width: 100%;
 }
+.infocard-shell h1,
+.infocard-shell h2,
+.infocard-shell p {
+	margin: 0;
+}
+.infocard-shell ul {
+	padding: 0;
+}
 
 /* result title */
 
