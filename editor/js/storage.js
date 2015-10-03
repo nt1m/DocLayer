@@ -109,6 +109,9 @@ if (client.isAuthenticated()) {
 
 		function saveDocument() {
 			if (titleinput.val() != window.cachedDocument.title || editregion.html() != window.cachedDocument.content) { //to prevent conflicts, we only save the document when content is added in the current window
+				if (!navigator.onLine) {
+					return createToast("You are offline. Please reconnect to the internet to save changes.");
+				}
 				client.readFile("/metadata/metadata.json", function (error, data) { //we can't cache this
 					if (error) {
 						return createToast("Document could not be saved. Please make sure you are connected to the internet and try again.");
@@ -146,10 +149,16 @@ if (client.isAuthenticated()) {
 					}); //write file contents
 				});
 				removeToasts(); //clear any previous offiline errors, since the document saved successfully
-			} else {}
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		window.refreshIfNeeded = function () {
+			if (!navigator.onLine) {
+				return;
+			}
 			if ((new Date).getTime() - window.cachedDocument.lastUpdated > 5000) { //sometimes, if the document was saved just before running refreshIfNeeded, the document will revert to a previous state. To avoid this, we only refresh when we haven't saved anything in the past few seconds.
 				client.readFile("/documents/" + document_id + ".html", function (error, data) {
 					if (error) {

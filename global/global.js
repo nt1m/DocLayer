@@ -39,7 +39,7 @@ function createError(options) {
 function createToast(message) {
 	$(".floating-message").remove();
 	$(document.body).prepend('<div class="toast floating-message document-too-long"><label class="toast-label">' + message + '</label></div>');
-	setTimeout(removeToasts, 5000);
+	setTimeout(removeToasts, 5500);
 }
 
 function removeToasts() {
