@@ -98,9 +98,7 @@ docLayer.modules.define("research", {
 			},
 			appReferName: "docLayer",
 			onHeadingClick: function (e) {
-				if (e.target.tagName == "H2") { //category names for meanings
-					_.show(e.target.innerHTML);
-				} else { //headers that will just show the same results when clicked
+				if (e.target.tagName == "H1") {
 					window.open("https://duckduckgo.com/?q=" + encodeURIComponent(e.target.innerHTML), '_blank');
 				}
 			},
@@ -111,6 +109,7 @@ docLayer.modules.define("research", {
 			},
 			protocol: "https"
 		});
+		
 		docLayer.ui.sidebars.show(this.panel);
 		this.extrapanel.html("");
 		this.getImages(data);
@@ -159,6 +158,13 @@ docLayer.modules.define("research", {
 
 		$(document.body).on("click", function () {
 			_.insertButton.hide();
+		});
+		
+		//when the small cards are clicked, show a larger, more detailed card
+		$(".infocard-shell").on("click", ".InfoCard-category li", function(e) {
+			if($(this).find("h2")) {
+				_.show($(this).find("h2").html());
+			}
 		});
 
 		if (docLayer.editortooltip) {

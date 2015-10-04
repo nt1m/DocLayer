@@ -24,7 +24,9 @@
 	margin-left: 1.5em;
 }
 .InfoCard-category > li > h2 {
-	padding: 0 1em;
+	padding: 0.75em 1em 0.5em;
+	cursor: pointer;
+	display: block;
 	float: left;
 	cursor: pointer;
 	/* these are clickable - they take you to wikipedia article summaries */

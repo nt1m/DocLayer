@@ -102,12 +102,12 @@ body.has-toolbar {
 
 .sidebar[hidden] {
 	display: block;
-	right: -575px;
+	right: -625px;
 }
 .sidebar {
-	width: 50%;
+	width: 60%;
 	min-width: 320px;
-	max-width: 550px;
+	max-width: 600px;
 	height: calc(100% - 65px);
 	overflow: auto;
 	position: fixed;
