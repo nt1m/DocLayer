@@ -52,8 +52,8 @@ function addItem(data) {
 		var heading = $("<span class='item-text'>").text(data.title);
 
 		var subheading = $("<span class='secondary-text'>");
-		var createdRelativeTime = moment(data.createdAt).fromNow();
-		subheading.text("Created " + createdRelativeTime);
+		var modifiedRelativeTime = moment(data.lastModified).fromNow();
+		subheading.text("Last edited " + modifiedRelativeTime);
 
 		heading.appendTo(footer);
 		subheading.appendTo(heading);
@@ -134,15 +134,30 @@ client.authenticate({
 
 				doclist.html(""); //clear any previous document listings
 				var documents = JSON.parse(data);
+
+				//to sort objects, we need to convert them to an array
+
+				var documentsArray = [];
+
 				for (var document in documents) {
-					addItem({
-						title: documents[document].title,
-						description: documents[document].abstract,
-						id: document,
-						image: documents[document].posterImage,
-						createdAt: documents[document].created,
-					});
+					documents[document].id = document; //add the id as a property
+					documentsArray.push(documents[document]);
 				}
+
+				documentsArray.sort(function (a, b) {
+					return a.modified - b.modified;
+				});
+
+				documentsArray.forEach(function (document) {
+					addItem({
+						title: document.title,
+						description: document.abstract,
+						id: document.id,
+						image: document.posterImage,
+						createdAt: document.created,
+						lastModified: document.modified,
+					});
+				});
 
 				$(".splashscreen.loading").hide();
 
