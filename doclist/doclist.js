@@ -58,10 +58,10 @@ function addItem(data) {
 		heading.appendTo(footer);
 		subheading.appendTo(heading);
 
-		var deletebutton = $('<i class="icon-delete item-action"></i>');
-		deletebutton.on("click", deleteItem);
+		var deletionbutton = $("<i title='Delete this document' class='icon-delete item-action'>");
+		deletionbutton.on("click", deleteItem);
 
-		deletebutton.appendTo(footer);
+		deletionbutton.appendTo(footer);
 		footer.appendTo(card);
 		card.prependTo(doclist);
 

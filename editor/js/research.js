@@ -4,7 +4,7 @@ docLayer.modules.define("research", {
 		<script async src="' + config.basepath + 'lib/wiktionary-parser/wiktionary-parser.js"></script>\
 		<div noprint class="sidebar infocard-shell themeable" hidden>\
     <div class="toolbar theme-main-color">\
-        <button class="icon-button panel-close"><i class="icon-close"></i></button>\
+        <button class="icon-button panel-close" title="Close research panel"><i class="icon-close"></i></button>\
         <span class="toolbar-label">Research</span>\
     </div>\
 		<div class="infocard-content"></div>\
@@ -36,13 +36,13 @@ docLayer.modules.define("research", {
 	},
 	getMap: function (name, callback) {
 
-					var mapSource = config.basepath + "editor/extend-maps/map.html#{place}".replace("{place}", btoa(name.replace(",", "")));
+		var mapSource = config.basepath + "editor/extend-maps/map.html#{place}".replace("{place}", btoa(name.replace(",", "")));
 
-					var mapExtendBlock = $('<iframe class="extend-block map-extend-block">').attr("sandbox", "allow-scripts allow-popups").attr("src", mapSource);
+		var mapExtendBlock = $('<iframe class="extend-block map-extend-block">').attr("sandbox", "allow-scripts allow-popups").attr("src", mapSource);
 
-					var map = $("<iframe class='research-map'>").attr("src", mapSource + ",{lat},{lon},true,true").attr("sandbox", "allow-scripts allow-popups").attr("data-addtodocument", mapExtendBlock[0].outerHTML);
+		var map = $("<iframe class='research-map'>").attr("src", mapSource + ",{lat},{lon},true,true").attr("sandbox", "allow-scripts allow-popups").attr("data-addtodocument", mapExtendBlock[0].outerHTML);
 
-					callback(map);
+		callback(map);
 	},
 	getDefinition: function (data) {
 		var _ = this;

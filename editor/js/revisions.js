@@ -3,7 +3,7 @@ docLayer.modules.define("revisions", {
 	<script src="../lib/moment.js/moment.min.js"></script>\
 		<div noprint id="revisions-shell" class="sidebar themeable" hidden>\
     <div class="toolbar theme-main-color">\
-        <button class="icon-button panel-close"><i class="icon-close"></i></button>\
+        <button class="icon-button panel-close" title="Close revisions panel"><i class="icon-close"></i></button>\
         <span class="toolbar-label">Revisions</span>\
     </div>\
 		<ul class="list" id="revisions-list">\
